@@ -18,28 +18,16 @@
  */
 package edu.umn.se.trap.form;
 
-import java.util.List;
-import java.util.Map;
-
-import edu.umn.se.trap.TravelFormMetadata;
+import java.util.Set;
 
 /**
- * @author nick
+ * @author mark
  * 
  */
-public class Form
+public class GrantSet
 {
-
+    
     // Public member variables:
-    public Map<String, String> formInput;
-    public Map<String, String> formOutput;
-    public TravelFormMetadata formMetaData;
-    public GrantSet grantSet;
-    public User user;
-    public Trip trip;
-    public List<Expense> expenses;
-    
-    // Private member variables:
-    private Map<Integer, Double> accountToPercentMap;
-    
+    public Set<Grant> grantSet;
+
 }

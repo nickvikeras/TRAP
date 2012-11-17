@@ -16,30 +16,18 @@
     specific language governing permissions and limitations
     under the License. 
  */
+
 package edu.umn.se.trap.form;
 
-import java.util.List;
-import java.util.Map;
-
-import edu.umn.se.trap.TravelFormMetadata;
-
 /**
- * @author nick
+ * @author mark
  * 
  */
-public class Form
-{
 
-    // Public member variables:
-    public Map<String, String> formInput;
-    public Map<String, String> formOutput;
-    public TravelFormMetadata formMetaData;
-    public GrantSet grantSet;
-    public User user;
-    public Trip trip;
-    public List<Expense> expenses;
+public enum AccountType
+{
     
-    // Private member variables:
-    private Map<Integer, Double> accountToPercentMap;
-    
+    SPONSORED,
+    NONSPONSORED
+
 }
