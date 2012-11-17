@@ -29,19 +29,19 @@ public class Trip
 {
     
     // Public member variables:
-    public Date departureDateTime;
-    public Date arrivalDateTime;
-    public boolean travelTypeCseSponsored;
-    public boolean travelTypeDtcSponsored;
-    public boolean travelTypeNonsponsored;
-    public String justificationConferenceTitle;
-    public boolean justificationPresented;
-    public String justificationPresentationTitle;
-    public String justificationPresentationAbstract;
-    public String justificationPresentationAcknowledgement;
-    public String justificationNonsponsored;
-    public String justificationSponsored;
-    public int numDays;
+    private Date departureDateTime;
+    private Date arrivalDateTime;
+    private boolean travelTypeCseSponsored;
+    private boolean travelTypeDtcSponsored;
+    private boolean travelTypeNonsponsored;
+    private String justificationConferenceTitle;
+    private boolean justificationPresented;
+    private String justificationPresentationTitle;
+    private String justificationPresentationAbstract;
+    private String justificationPresentationAcknowledgement;
+    private String justificationNonsponsored;
+    private String justificationSponsored;
+    private int numDays;
     
  // Getters and setters:
     

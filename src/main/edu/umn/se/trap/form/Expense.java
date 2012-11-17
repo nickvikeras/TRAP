@@ -27,14 +27,14 @@ import java.util.Date;
 public class Expense
 {
 
-    // Public member variables:
-    public ExpenseType type;
-    public Date date;
-    public double amount;
-    public String currency;
-    public Location location;
-    public GrantSet eligibleGrants;
-    public String justification;
+    // private member variables:
+    private ExpenseType type;
+    private Date date;
+    private double amount;
+    private String currency;
+    private Location location;
+    private GrantSet eligibleGrants;
+    private String justification;
 
     // Getters and setters:
 

@@ -30,16 +30,133 @@ import edu.umn.se.trap.TravelFormMetadata;
 public class Form
 {
 
-    // Public member variables:
-    public Map<String, String> formInput;
-    public Map<String, String> formOutput;
-    public TravelFormMetadata formMetaData;
-    public GrantSet grantSet;
-    public User user;
-    public Trip trip;
-    public List<Expense> expenses;
-    
     // Private member variables:
+    private Map<String, String> formInput;
+    private Map<String, String> formOutput;
+    private TravelFormMetadata formMetaData;
+    private GrantSet grantSet;
+    private User user;
+    private Trip trip;
+    private List<Expense> expenses;
     private Map<Integer, Double> accountToPercentMap;
-    
+
+    /**
+     * @return the formInput
+     */
+    public Map<String, String> getFormInput()
+    {
+	return formInput;
+    }
+
+    /**
+     * @param formInput
+     *            the formInput to set
+     */
+    public void setFormInput(Map<String, String> formInput)
+    {
+	this.formInput = formInput;
+    }
+
+    /**
+     * @return the formOutput
+     */
+    public Map<String, String> getFormOutput()
+    {
+	return formOutput;
+    }
+
+    /**
+     * @param formOutput
+     *            the formOutput to set
+     */
+    public void setFormOutput(Map<String, String> formOutput)
+    {
+	this.formOutput = formOutput;
+    }
+
+    /**
+     * @return the formMetaData
+     */
+    public TravelFormMetadata getFormMetaData()
+    {
+	return formMetaData;
+    }
+
+    /**
+     * @param formMetaData
+     *            the formMetaData to set
+     */
+    public void setFormMetaData(TravelFormMetadata formMetaData)
+    {
+	this.formMetaData = formMetaData;
+    }
+
+    /**
+     * @return the grantSet
+     */
+    public GrantSet getGrantSet()
+    {
+	return grantSet;
+    }
+
+    /**
+     * @param grantSet
+     *            the grantSet to set
+     */
+    public void setGrantSet(GrantSet grantSet)
+    {
+	this.grantSet = grantSet;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser()
+    {
+	return user;
+    }
+
+    /**
+     * @param user
+     *            the user to set
+     */
+    public void setUser(User user)
+    {
+	this.user = user;
+    }
+
+    /**
+     * @return the trip
+     */
+    public Trip getTrip()
+    {
+	return trip;
+    }
+
+    /**
+     * @param trip
+     *            the trip to set
+     */
+    public void setTrip(Trip trip)
+    {
+	this.trip = trip;
+    }
+
+    /**
+     * @return the expenses
+     */
+    public List<Expense> getExpenses()
+    {
+	return expenses;
+    }
+
+    /**
+     * @param expenses
+     *            the expenses to set
+     */
+    public void setExpenses(List<Expense> expenses)
+    {
+	this.expenses = expenses;
+    }
+
 }

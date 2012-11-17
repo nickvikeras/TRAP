@@ -27,9 +27,9 @@ public class User
 {
 
     // Public member variables:
-    public String userName;
-    public String emergencyContactName;
-    public String emergencyContactPhone;
+    private String userName;
+    private String emergencyContactName;
+    private String emergencyContactPhone;
     
     // Getters and setters:
     

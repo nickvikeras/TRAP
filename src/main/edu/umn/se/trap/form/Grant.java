@@ -27,10 +27,10 @@ public class Grant
 {
 
     // Public member variables:
-    public Integer accountNumber;
-    public AccountType accountType;
-    public String fundingOrganization;
-    public Double accountBalance;
+    private Integer accountNumber;
+    private AccountType accountType;
+    private String fundingOrganization;
+    private Double accountBalance;
 
     // Getters and setters:
     

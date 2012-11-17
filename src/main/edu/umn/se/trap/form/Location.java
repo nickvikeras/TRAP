@@ -27,9 +27,9 @@ public class Location
 {
 
     // Public member variables:
-    public String city;
-    public String state;
-    public String country;
+    private String city;
+    private String state;
+    private String country;
 
     // Getters and setters:
 

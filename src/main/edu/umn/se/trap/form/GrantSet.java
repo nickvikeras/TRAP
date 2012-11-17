@@ -26,8 +26,29 @@ import java.util.Set;
  */
 public class GrantSet
 {
-    
+
     // Public member variables:
-    public Set<Grant> grantSet;
+    private Set<Grant> grants;
+
+    public GrantSet(Set<Grant> grants)
+    {
+	this.grants = grants;
+    }
+
+    public void removeGrant(Integer accountNumber)
+    {
+	Grant grantToRemove = null;
+	for (Grant grant : grants)
+	{
+	    if (grant.getAccountNumber().equals(accountNumber))
+	    {
+		grantToRemove = grant;
+	    }
+	}
+	if (grantToRemove != null)
+	{
+	    grants.remove(grantToRemove);
+	}
+    }
 
 }

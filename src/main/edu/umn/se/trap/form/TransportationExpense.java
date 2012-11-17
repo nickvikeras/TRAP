@@ -26,9 +26,9 @@ public class TransportationExpense
 {
 
     // Public member variables:
-    public TransportationType tranportationType;
-    public String carrier;
-    public int milesTraveled;
+    private TransportationType tranportationType;
+    private String carrier;
+    private int milesTraveled;
 
     // Getters and setters:
 
