@@ -34,6 +34,19 @@ public class Location
     // Getters and setters:
 
     /**
+     * @param city
+     * @param state
+     * @param country
+     */
+    public Location(String city, String state, String country)
+    {
+	super();
+	this.city = city;
+	this.state = state;
+	this.country = country;
+    }
+
+    /**
      * @return the city
      */
     public String getCity()

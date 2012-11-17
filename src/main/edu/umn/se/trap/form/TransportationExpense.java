@@ -18,17 +18,39 @@
  */
 package edu.umn.se.trap.form;
 
+import java.util.Date;
+
 /**
  * @author mark
  * 
  */
-public class TransportationExpense
+public class TransportationExpense extends Expense
 {
 
     // Public member variables:
     private TransportationType tranportationType;
     private String carrier;
     private int milesTraveled;
+
+    /**
+     * @param type
+     * @param date
+     * @param amount
+     * @param currency
+     * @param location
+     * @param eligibleGrants
+     * @param justification
+     */
+    public TransportationExpense(ExpenseType type, Date date, double amount,
+	    String currency, Location location, GrantSet eligibleGrants,
+	    String justification, TransportationType tranportationType,
+	    String carrier, int milesTraveled)
+    {
+	super(type, date, amount, currency, location, eligibleGrants, justification);
+	this.tranportationType = tranportationType;
+	this.carrier = carrier;
+	this.milesTraveled = milesTraveled;
+    }
 
     // Getters and setters:
 
@@ -37,7 +59,7 @@ public class TransportationExpense
      */
     public TransportationType getTranportationType()
     {
-        return tranportationType;
+	return tranportationType;
     }
 
     /**
@@ -46,7 +68,7 @@ public class TransportationExpense
      */
     public void setTranportationType(TransportationType tranportationType)
     {
-        this.tranportationType = tranportationType;
+	this.tranportationType = tranportationType;
     }
 
     /**
@@ -54,7 +76,7 @@ public class TransportationExpense
      */
     public String getCarrier()
     {
-        return carrier;
+	return carrier;
     }
 
     /**
@@ -63,7 +85,7 @@ public class TransportationExpense
      */
     public void setCarrier(String carrier)
     {
-        this.carrier = carrier;
+	this.carrier = carrier;
     }
 
     /**
@@ -71,7 +93,7 @@ public class TransportationExpense
      */
     public int getMilesTraveled()
     {
-        return milesTraveled;
+	return milesTraveled;
     }
 
     /**
@@ -80,7 +102,7 @@ public class TransportationExpense
      */
     public void setMilesTraveled(int milesTraveled)
     {
-        this.milesTraveled = milesTraveled;
+	this.milesTraveled = milesTraveled;
     }
 
 }

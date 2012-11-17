@@ -35,6 +35,22 @@ public class Grant
     // Getters and setters:
     
     /**
+     * @param accountNumber
+     * @param accountType
+     * @param fundingOrganization
+     * @param accountBalance
+     */
+    public Grant(Integer accountNumber, AccountType accountType,
+            String fundingOrganization, Double accountBalance)
+    {
+	super();
+	this.accountNumber = accountNumber;
+	this.accountType = accountType;
+	this.fundingOrganization = fundingOrganization;
+	this.accountBalance = accountBalance;
+    }
+
+    /**
      * @return the accountNumber
      */
     public Integer getAccountNumber()

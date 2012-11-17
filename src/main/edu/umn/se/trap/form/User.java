@@ -34,6 +34,20 @@ public class User
     // Getters and setters:
     
     /**
+     * @param userName
+     * @param emergencyContactName
+     * @param emergencyContactPhone
+     */
+    public User(String userName, String emergencyContactName,
+            String emergencyContactPhone)
+    {
+	super();
+	this.userName = userName;
+	this.emergencyContactName = emergencyContactName;
+	this.emergencyContactPhone = emergencyContactPhone;
+    }
+
+    /**
      * @return the userName
      */
     public String getUserName()

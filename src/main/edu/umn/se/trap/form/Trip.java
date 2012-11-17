@@ -46,6 +46,48 @@ public class Trip
  // Getters and setters:
     
     /**
+     * @param departureDateTime
+     * @param arrivalDateTime
+     * @param travelTypeCseSponsored
+     * @param travelTypeDtcSponsored
+     * @param travelTypeNonsponsored
+     * @param justificationConferenceTitle
+     * @param justificationPresented
+     * @param justificationPresentationTitle
+     * @param justificationPresentationAbstract
+     * @param justificationPresentationAcknowledgement
+     * @param justificationNonsponsored
+     * @param justificationSponsored
+     * @param numDays
+     */
+    public Trip(Date departureDateTime, Date arrivalDateTime,
+            boolean travelTypeCseSponsored, boolean travelTypeDtcSponsored,
+            boolean travelTypeNonsponsored,
+            String justificationConferenceTitle,
+            boolean justificationPresented,
+            String justificationPresentationTitle,
+            String justificationPresentationAbstract,
+            String justificationPresentationAcknowledgement,
+            String justificationNonsponsored, String justificationSponsored,
+            int numDays)
+    {
+	super();
+	this.departureDateTime = departureDateTime;
+	this.arrivalDateTime = arrivalDateTime;
+	this.travelTypeCseSponsored = travelTypeCseSponsored;
+	this.travelTypeDtcSponsored = travelTypeDtcSponsored;
+	this.travelTypeNonsponsored = travelTypeNonsponsored;
+	this.justificationConferenceTitle = justificationConferenceTitle;
+	this.justificationPresented = justificationPresented;
+	this.justificationPresentationTitle = justificationPresentationTitle;
+	this.justificationPresentationAbstract = justificationPresentationAbstract;
+	this.justificationPresentationAcknowledgement = justificationPresentationAcknowledgement;
+	this.justificationNonsponsored = justificationNonsponsored;
+	this.justificationSponsored = justificationSponsored;
+	this.numDays = numDays;
+    }
+
+    /**
      * @return the departureDateTime
      */
     public Date getDepartureDateTime()

@@ -28,13 +28,36 @@ public class Expense
 {
 
     // private member variables:
-    private ExpenseType type;
     private Date date;
     private double amount;
     private String currency;
     private Location location;
     private GrantSet eligibleGrants;
-    private String justification;
+    private String justification;    
+    private ExpenseType type;
+    
+    /**
+     * @param type
+     * @param date
+     * @param amount
+     * @param currency
+     * @param location
+     * @param eligibleGrants
+     * @param justification
+     */
+    public Expense(ExpenseType type, Date date, double amount, String currency,
+            Location location, GrantSet eligibleGrants, String justification)
+    {
+	super();
+	this.type = type;
+	this.date = date;
+	this.amount = amount;
+	this.currency = currency;
+	this.location = location;
+	this.eligibleGrants = eligibleGrants;
+	this.justification = justification;
+    }
+
 
     // Getters and setters:
 
