@@ -31,6 +31,7 @@ public class Form
 {
 
     // Private member variables:
+    private Integer formId;
     private Map<String, String> formInput;
     private Map<String, String> formOutput;
     private TravelFormMetadata formMetaData;
@@ -39,6 +40,14 @@ public class Form
     private Trip trip;
     private List<Expense> expenses;
     private Map<Integer, Double> accountToPercentMap;
+
+    /**
+     * @return the formId
+     */
+    public Integer getFormId()
+    {
+        return formId;
+    }
 
     /**
      * @return the formInput
