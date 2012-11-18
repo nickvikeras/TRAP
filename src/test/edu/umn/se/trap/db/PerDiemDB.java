@@ -105,6 +105,21 @@ public class PerDiemDB
         rates.add(250.0);				/* Hotel ceiling in USD */
         
         this.perDiemInfo.put(location,rates);
+        
+        /*Example 4: Domestic */
+    	
+    	location = new ArrayList<String>();
+        rates = new ArrayList<Double>();
+        location.add(null); 	/* City. */
+        location.add("colorado"); 		/* State. Only applicable for domestic travel. */
+        location.add("united states"); 	/* Country */
+        rates.add(8.0); 				/* Breakfast rate in USD */
+        rates.add(13.0); 				/* Lunch rate in USD */
+        rates.add(27.0); 				/* Dinner rate in USD */
+        rates.add(6.0); 				/* Incidental ceiling in USD */
+        rates.add(151.0);				/* Lodging ceiling in USD */
+        
+        this.perDiemInfo.put(location,rates);
     }
     
     

@@ -39,10 +39,16 @@ public class TrapDateUtil
      * @return
      * @throws TrapException
      */
-    public static Date parseTrapDateTime(final String dateString) throws ParseException
+    public static Date parseTrapDateTime(final String dateString) throws TrapException
     {
 	DateFormat dateFormat = new SimpleDateFormat(formatDateTimeString);
-	return dateFormat.parse(dateString);
+	try
+	{
+	    return dateFormat.parse(dateString);
+	} catch (ParseException e)
+	{
+	    throw new TrapException("unparseable date");
+	}
     }
 
     /**
@@ -50,10 +56,16 @@ public class TrapDateUtil
      * @return
      * @throws TrapException
      */
-    public static Date parseTrapDate(final String dateString) throws ParseException
+    public static Date parseTrapDate(final String dateString) throws TrapException
     {
 	DateFormat dateFormat = new SimpleDateFormat(formatDateString);
-	return dateFormat.parse(dateString);
+	try
+	{
+	    return dateFormat.parse(dateString);
+	} catch (ParseException e)
+	{
+	    throw new TrapException("unparseable date");
+	}
     }
 
     /**

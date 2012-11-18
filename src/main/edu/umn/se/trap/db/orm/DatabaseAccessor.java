@@ -78,12 +78,12 @@ public class DatabaseAccessor
 	try
 	{
 	    List<String> userInfo = userDB.getUserInfo(userName);
-	    String fullName = userInfo.get(0);
-	    String email = userInfo.get(1);
-	    String employeeId = userInfo.get(2);
-	    String citizenship = userInfo.get(3);
-	    String visaStatus = userInfo.get(4);
-	    boolean paidByUniversity = StringUtils.equalsIgnoreCase(userInfo.get(5), "yes");
+	    String fullName = userInfo.get(1);
+	    String email = userInfo.get(2);
+	    String employeeId = userInfo.get(3);
+	    String citizenship = userInfo.get(4);
+	    String visaStatus = userInfo.get(5);
+	    boolean paidByUniversity = StringUtils.equalsIgnoreCase(userInfo.get(6), "yes");
 	    return new User(userName, fullName, email, employeeId, citizenship, visaStatus, paidByUniversity);
 	} catch (KeyNotFoundException e)
 	{
@@ -182,7 +182,7 @@ public class DatabaseAccessor
 	{
 	    List<String> userGrantInfo = userGrantDB.getUserGrantInfo(accountName);
 	    String grantAdmin = userGrantInfo.get(1);
-	    String[] authorizedPayees = StringUtils.split(userGrantInfo.get(2), ',');
+	    String[] authorizedPayees = StringUtils.split(userGrantInfo.get(2), ", ");
 	    return new UserGrant(accountName, grantAdmin, authorizedPayees);
 	} catch (KeyNotFoundException e)
 	{
