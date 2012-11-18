@@ -15,20 +15,21 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap.db.orm;
 
 /**
  * @author nick
- *
+ * 
  */
 public class PerDiem
 {
-    private Double breakfastRate;        
-    private Double lunchRate;           
-    private Double dinnerRate;    
+    private Double breakfastRate;
+    private Double lunchRate;
+    private Double dinnerRate;
     private Double incidentalCeiling;
     private Double lodgingCeiling;
+
     /**
      * @param breakfastRate
      * @param lunchRate
@@ -45,74 +46,89 @@ public class PerDiem
 	this.incidentalCeiling = incidentalCeiling;
 	this.lodgingCeiling = lodgingCeiling;
     }
+
     /**
      * @return the breakfastRate
      */
     public Double getBreakfastRate()
     {
-        return breakfastRate;
+	return breakfastRate;
     }
+
     /**
-     * @param breakfastRate the breakfastRate to set
+     * @param breakfastRate
+     *            the breakfastRate to set
      */
     public void setBreakfastRate(Double breakfastRate)
     {
-        this.breakfastRate = breakfastRate;
+	this.breakfastRate = breakfastRate;
     }
+
     /**
      * @return the lunchRate
      */
     public Double getLunchRate()
     {
-        return lunchRate;
+	return lunchRate;
     }
+
     /**
-     * @param lunchRate the lunchRate to set
+     * @param lunchRate
+     *            the lunchRate to set
      */
     public void setLunchRate(Double lunchRate)
     {
-        this.lunchRate = lunchRate;
+	this.lunchRate = lunchRate;
     }
+
     /**
      * @return the dinnerRate
      */
     public Double getDinnerRate()
     {
-        return dinnerRate;
+	return dinnerRate;
     }
+
     /**
-     * @param dinnerRate the dinnerRate to set
+     * @param dinnerRate
+     *            the dinnerRate to set
      */
     public void setDinnerRate(Double dinnerRate)
     {
-        this.dinnerRate = dinnerRate;
+	this.dinnerRate = dinnerRate;
     }
+
     /**
      * @return the incidentalCeiling
      */
     public Double getIncidentalCeiling()
     {
-        return incidentalCeiling;
+	return incidentalCeiling;
     }
+
     /**
-     * @param incidentalCeiling the incidentalCeiling to set
+     * @param incidentalCeiling
+     *            the incidentalCeiling to set
      */
     public void setIncidentalCeiling(Double incidentalCeiling)
     {
-        this.incidentalCeiling = incidentalCeiling;
+	this.incidentalCeiling = incidentalCeiling;
     }
+
     /**
      * @return the lodgingCeiling
      */
     public Double getLodgingCeiling()
     {
-        return lodgingCeiling;
+	return lodgingCeiling;
     }
+
     /**
-     * @param lodgingCeiling the lodgingCeiling to set
+     * @param lodgingCeiling
+     *            the lodgingCeiling to set
      */
     public void setLodgingCeiling(Double lodgingCeiling)
     {
-        this.lodgingCeiling = lodgingCeiling;
+	this.lodgingCeiling = lodgingCeiling;
     }
 }

@@ -260,7 +260,7 @@ public class FormFactory
 	    Grant grant = dbAccessor.getGrant(accountName);
 	    FormGrant formGrant = new FormGrant(accountName, grant.getAccountType(), grant.getFundingOrganization(), grant.getAccountBalance());
 	    grants.add(formGrant);
-	}	
+	}
 	return new GrantSet(grants);
     }
 
