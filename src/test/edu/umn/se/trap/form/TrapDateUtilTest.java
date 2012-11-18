@@ -50,36 +50,6 @@ public class TrapDateUtilTest
     }
 
     /**
-     * Test method for {@link edu.umn.se.trap.form.TrapDateUtil#parseTrapDateTime(java.lang.String)}.
-     */
-    @Test
-    public void testParseTrapDateTime()
-    {
-	try
-        {
-	    assertTrue(TrapDateUtil.parseTrapDateTime("19690031 061200").equals(new Date(0)));
-        } catch (TrapException e)
-        {
-	    fail("failed To Parse Date");
-        }
-    }
-
-    /**
-     * Test method for {@link edu.umn.se.trap.form.TrapDateUtil#parseTrapDate(java.lang.String)}.
-     */
-    @Test
-    public void testParseTrapDate()
-    {
-	try
-        {
-	    assertTrue(TrapDateUtil.parseTrapDate("19690031").equals(new Date(0)));
-        } catch (TrapException e)
-        {
-	    fail("failed To Parse Date");
-        }
-    }
-
-    /**
      * Test method for {@link edu.umn.se.trap.form.TrapDateUtil#printDate(java.util.Date)}.
      */
     @Test
