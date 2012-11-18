@@ -19,8 +19,8 @@
 package edu.umn.se.trap;
 
 import java.util.Map;
+
 import edu.umn.se.trap.calculator.TrapCalculator;
-import edu.umn.se.trap.calculator.TrapException;
 import edu.umn.se.trap.db.CurrencyDB;
 import edu.umn.se.trap.db.GrantDB;
 import edu.umn.se.trap.db.KeyNotFoundException;

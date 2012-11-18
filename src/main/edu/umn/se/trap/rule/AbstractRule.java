@@ -18,6 +18,7 @@
  */
 package edu.umn.se.trap.rule;
 
+import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 
 /**
@@ -26,5 +27,5 @@ import edu.umn.se.trap.form.TrapForm;
  */
 public abstract class AbstractRule
 {
-    public abstract String validateRule(TrapForm form);
+    public abstract String validateRule(TrapForm form) throws TrapException;
 }

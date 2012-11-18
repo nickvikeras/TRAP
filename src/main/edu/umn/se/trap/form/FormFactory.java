@@ -28,9 +28,9 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
+import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.TravelFormMetadata;
 import edu.umn.se.trap.TravelFormProcessorIntf.FORM_STATUS;
-import edu.umn.se.trap.calculator.TrapException;
 import edu.umn.se.trap.db.orm.DatabaseAccessor;
 import edu.umn.se.trap.db.orm.Grant;
 import edu.umn.se.trap.db.orm.PerDiem;

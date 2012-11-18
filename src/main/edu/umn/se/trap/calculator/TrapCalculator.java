@@ -21,6 +21,7 @@ package edu.umn.se.trap.calculator;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 
 /**

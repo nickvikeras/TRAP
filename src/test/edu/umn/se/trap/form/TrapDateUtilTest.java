@@ -18,13 +18,13 @@
 */
 package edu.umn.se.trap.form;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import edu.umn.se.trap.calculator.TrapException;
 
 /**
  * @author nick

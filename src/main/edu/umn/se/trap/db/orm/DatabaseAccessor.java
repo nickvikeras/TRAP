@@ -18,13 +18,12 @@
  */
 package edu.umn.se.trap.db.orm;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import edu.umn.se.trap.calculator.TrapException;
+import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.db.CurrencyDB;
 import edu.umn.se.trap.db.FormDB;
 import edu.umn.se.trap.db.GrantDB;

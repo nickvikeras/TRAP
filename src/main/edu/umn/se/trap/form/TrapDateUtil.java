@@ -23,7 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import edu.umn.se.trap.calculator.TrapException;
+import edu.umn.se.trap.TrapException;
 
 /**
  * @author nick

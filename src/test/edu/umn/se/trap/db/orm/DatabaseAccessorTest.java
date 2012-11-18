@@ -24,15 +24,11 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.umn.se.trap.calculator.TrapException;
+import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.db.CurrencyDB;
 import edu.umn.se.trap.db.GrantDB;
 import edu.umn.se.trap.db.PerDiemDB;

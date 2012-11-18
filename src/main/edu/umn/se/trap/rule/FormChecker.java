@@ -21,7 +21,7 @@ package edu.umn.se.trap.rule;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.umn.se.trap.calculator.TrapException;
+import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 
 /**

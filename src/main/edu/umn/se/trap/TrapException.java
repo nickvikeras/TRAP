@@ -16,7 +16,7 @@
     specific language governing permissions and limitations
     under the License. 
  */
-package edu.umn.se.trap.calculator;
+package edu.umn.se.trap;
 
 /**
  * @author nick
