@@ -24,21 +24,21 @@ package edu.umn.se.trap.rule;
  */
 public class FormCheckerFactory
 {
-    public FormChecker createWellFormedChecker()
+    public static FormChecker createWellFormedChecker()
     {
 	FormChecker checker = new FormChecker();
 	//add rules here with checker.addRule(rule);
 	return checker;
     }
 
-    public FormChecker createBusinessRuleChecker()
+    public static FormChecker createBusinessRuleChecker()
     {
 	FormChecker checker = new FormChecker();
 	//add rules here with checker.addRule(rule);
 	return checker;
     }
 
-    public FormChecker createGrantRuleChecker()
+    public static FormChecker createGrantRuleChecker()
     {
 	FormChecker checker = new FormChecker();
 	//add rules here with checker.addRule(rule);

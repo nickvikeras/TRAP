@@ -27,7 +27,7 @@ import edu.umn.se.trap.TravelFormMetadata;
  * @author nick
  * 
  */
-public class Form
+public class TrapForm
 {
 
     // Private member variables:
@@ -40,6 +40,38 @@ public class Form
     private Trip trip;
     private List<Expense> expenses;
     private Map<Integer, Double> accountToPercentMap;
+    
+    /**
+     * @param formId
+     * @param formInput
+     * @param formOutput
+     * @param formMetaData
+     * @param grantSet
+     * @param user
+     * @param trip
+     * @param expenses
+     * @param accountToPercentMap
+     */
+    public TrapForm(Integer formId, Map<String, String> formInput,
+            Map<String, String> formOutput, TravelFormMetadata formMetaData,
+            GrantSet grantSet, User user, Trip trip, List<Expense> expenses,
+            Map<Integer, Double> accountToPercentMap)
+    {
+	super();
+	this.formId = formId;
+	this.formInput = formInput;
+	this.formOutput = formOutput;
+	this.formMetaData = formMetaData;
+	this.grantSet = grantSet;
+	this.user = user;
+	this.trip = trip;
+	this.expenses = expenses;
+	this.accountToPercentMap = accountToPercentMap;
+    }
+
+    public void buildOutput(Map<Integer, Double> accountAmountMap){
+	
+    }
 
     /**
      * @return the formId

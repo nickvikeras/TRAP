@@ -15,16 +15,47 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
- */
-package edu.umn.se.trap.rule;
+*/
+package edu.umn.se.trap.db;
 
-import edu.umn.se.trap.form.TrapForm;
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * @author nick
- * 
+ *
  */
-public abstract class AbstractRule
+public class DatabaseSingletonTest
 {
-    public abstract String validateRule(TrapForm form);
+
+    /**
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception
+    {
+    }
+
+    /**
+     * @throws java.lang.Exception
+     */
+    @After
+    public void tearDown() throws Exception
+    {
+    }
+
+    @Test
+    public void test()
+    {
+	//I am just testing if this thing actually works.
+	FormDB formDB = DatabaseSingleton.getFormDBInstance();
+	assertNotNull(formDB);
+	
+	FormDB formDB2 = DatabaseSingleton.getFormDBInstance();
+	assertTrue(formDB == formDB2);
+    }
+
 }

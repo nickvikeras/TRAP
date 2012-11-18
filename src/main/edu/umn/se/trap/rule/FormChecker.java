@@ -21,7 +21,7 @@ package edu.umn.se.trap.rule;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.umn.se.trap.form.Form;
+import edu.umn.se.trap.form.TrapForm;
 
 /**
  * @author nick
@@ -35,7 +35,7 @@ public class FormChecker
 	rules.add(rule);
     }
 
-    public void fireRules(Form form) throws RuleException
+    public void fireRules(TrapForm form) throws RuleException
     {
 	RuleException ruleException = new RuleException();
 	for (AbstractRule rule : rules)

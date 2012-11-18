@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import edu.umn.se.trap.TravelFormMetadata;
-import edu.umn.se.trap.form.Form;
+import edu.umn.se.trap.form.TrapForm;
 
 /**
  * @author nick
@@ -31,16 +31,16 @@ import edu.umn.se.trap.form.Form;
  */
 public class FormDB
 {
-    private Map<Integer, Form> map = new HashMap<Integer, Form>();
+    private Map<Integer, TrapForm> map = new HashMap<Integer, TrapForm>();
 
-    public void saveForm(Form form)
+    public void saveForm(TrapForm form)
     {
 	map.put(form.getFormId(), form);
     }
 
-    public Form getForm(Integer formId) throws KeyNotFoundException
+    public TrapForm getForm(Integer formId) throws KeyNotFoundException
     {
-	Form form = map.get(formId);
+	TrapForm form = map.get(formId);
 	if (form == null)
 	{
 	    throw new KeyNotFoundException();
@@ -52,10 +52,19 @@ public class FormDB
     public Map<Integer, TravelFormMetadata> getSavedForms()
     {
 	Map<Integer, TravelFormMetadata> savedForms = new HashMap<Integer, TravelFormMetadata>();
-	for (Entry<Integer, Form> entry : map.entrySet())
+	for (Entry<Integer, TrapForm> entry : map.entrySet())
 	{
 	    savedForms.put(entry.getKey(), entry.getValue().getFormMetaData());
 	}
 	return savedForms;
+    }
+
+    /**
+     * 
+     */
+    public void clear()
+    {
+	map.clear();
+	
     }
 }

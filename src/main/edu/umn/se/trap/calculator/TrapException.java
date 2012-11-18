@@ -22,12 +22,12 @@ package edu.umn.se.trap.calculator;
  * @author nick
  * 
  */
-public class InsufficientFundsException extends Exception
+public class TrapException extends Exception
 {
     private static final long serialVersionUID = 2228180953419390437L;
     String message;
 
-    public InsufficientFundsException(String message)
+    public TrapException(String message)
     {
 	this.message = message;
     }

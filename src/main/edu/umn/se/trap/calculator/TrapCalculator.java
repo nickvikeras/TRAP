@@ -21,15 +21,15 @@ package edu.umn.se.trap.calculator;
 import java.util.HashMap;
 import java.util.Map;
 
-import edu.umn.se.trap.form.Form;
+import edu.umn.se.trap.form.TrapForm;
 
 /**
  * @author nick
  * 
  */
-public class Calculator
+public class TrapCalculator
 {
-    public Map<Integer, Double> calculateAmountsToCharge(Form form) throws InsufficientFundsException
+    public static Map<Integer, Double> calculateAmountsToCharge(TrapForm form) throws TrapException
     {
 	Map<Integer, Double> accountNumToChargeAmount = new HashMap<Integer, Double>();
 	//figure out logic

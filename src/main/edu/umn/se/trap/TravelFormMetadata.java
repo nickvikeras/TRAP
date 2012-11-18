@@ -53,4 +53,14 @@ public class TravelFormMetadata
      * enum) 
      */
     public FORM_STATUS   status;
+    
+    /**
+     * @param description
+     * @param status
+     */
+    public TravelFormMetadata(String description, FORM_STATUS status)
+    {
+	this.description = description;
+	this.status = status;
+    }
 }
