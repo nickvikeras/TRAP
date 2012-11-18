@@ -15,7 +15,7 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap.form;
 
 import static org.junit.Assert.assertEquals;
@@ -28,7 +28,7 @@ import org.junit.Test;
 
 /**
  * @author nick
- *
+ * 
  */
 public class TrapDateUtilTest
 {
@@ -50,23 +50,25 @@ public class TrapDateUtilTest
     }
 
     /**
-     * Test method for {@link edu.umn.se.trap.form.TrapDateUtil#printDate(java.util.Date)}.
+     * Test method for
+     * {@link edu.umn.se.trap.form.TrapDateUtil#printDate(java.util.Date)}.
      */
     @Test
     public void testPrintDate()
     {
-	Date date = new Date(0);
-	assertEquals("19690031", TrapDateUtil.printDate(date));
+        Date date = new Date(0);
+        assertEquals("19690031", TrapDateUtil.printDate(date));
     }
 
     /**
-     * Test method for {@link edu.umn.se.trap.form.TrapDateUtil#printDateTime(java.util.Date)}.
+     * Test method for
+     * {@link edu.umn.se.trap.form.TrapDateUtil#printDateTime(java.util.Date)}.
      */
     @Test
     public void testPrintDateTime()
     {
-	Date date = new Date(0);
-	assertEquals("19690031 061200", TrapDateUtil.printDateTime(date));
+        Date date = new Date(0);
+        assertEquals("19690031 061200", TrapDateUtil.printDateTime(date));
     }
 
 }

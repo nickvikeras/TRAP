@@ -64,9 +64,9 @@ public class GrantDB
     {
     	/* Example 1: Sponsored Grant */
         ArrayList<Object> grant = new ArrayList<Object>();
-        grant.add("010101010101");		/* Account number */
-        grant.add("sponsored");			/* Account type */
-        grant.add("DARPA"); 			/* Funding organization */
+        grant.add("010101010101"); /* Account number */
+        grant.add("sponsored"); /* Account type */
+        grant.add("DARPA"); /* Funding organization */
         grant.add("government");		/* Organization type 
         								 * (i.e., government, industry) */
         grant.add((double)250000);		/* Account balance */

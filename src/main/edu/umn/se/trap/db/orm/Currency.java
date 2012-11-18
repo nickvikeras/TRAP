@@ -15,20 +15,21 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap.db.orm;
 
 import java.util.Date;
 
 /**
  * @author nick
- *
+ * 
  */
 public class Currency
 {
-    private String currency;        
-    private Date date;    
+    private String currency;
+    private Date date;
     private Double conversionRate;
+
     /**
      * @param currency
      * @param date
@@ -36,11 +37,12 @@ public class Currency
      */
     public Currency(String currency, Date date, Double conversionRate)
     {
-	super();
-	this.currency = currency;
-	this.date = date;
-	this.conversionRate = conversionRate;
+        super();
+        this.currency = currency;
+        this.date = date;
+        this.conversionRate = conversionRate;
     }
+
     /**
      * @return the currency
      */
@@ -48,13 +50,16 @@ public class Currency
     {
         return currency;
     }
+
     /**
-     * @param currency the currency to set
+     * @param currency
+     *            the currency to set
      */
     public void setCurrency(String currency)
     {
         this.currency = currency;
     }
+
     /**
      * @return the date
      */
@@ -62,13 +67,16 @@ public class Currency
     {
         return date;
     }
+
     /**
-     * @param date the date to set
+     * @param date
+     *            the date to set
      */
     public void setDate(Date date)
     {
         this.date = date;
     }
+
     /**
      * @return the conversionRate
      */
@@ -76,8 +84,10 @@ public class Currency
     {
         return conversionRate;
     }
+
     /**
-     * @param conversionRate the conversionRate to set
+     * @param conversionRate
+     *            the conversionRate to set
      */
     public void setConversionRate(Double conversionRate)
     {

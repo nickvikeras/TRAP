@@ -33,27 +33,27 @@ public class RuleException extends Exception
 
     public void addMessage(String message)
     {
-	messages.add(message);
+        messages.add(message);
     }
 
     @Override
     public String getMessage()
     {
-	StringBuilder builder = new StringBuilder();
-	for (int i = 0; i < messages.size(); i++)
-	{
-	    builder.append(messages.get(i));
-	    if (i != messages.size() - 1)
-	    {
-		builder.append(",");
-		builder.append(" ");
-	    }
-	}
-	return builder.toString();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < messages.size(); i++)
+        {
+            builder.append(messages.get(i));
+            if (i != messages.size() - 1)
+            {
+                builder.append(",");
+                builder.append(" ");
+            }
+        }
+        return builder.toString();
     }
 
     public int getNumMessages()
     {
-	return messages.size();
+        return messages.size();
     }
 }

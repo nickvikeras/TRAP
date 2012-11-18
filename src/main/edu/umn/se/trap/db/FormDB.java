@@ -35,28 +35,28 @@ public class FormDB
 
     public void saveForm(TrapForm form)
     {
-	map.put(form.getFormId(), form);
+        map.put(form.getFormId(), form);
     }
 
     public TrapForm getForm(Integer formId) throws KeyNotFoundException
     {
-	TrapForm form = map.get(formId);
-	if (form == null)
-	{
-	    throw new KeyNotFoundException();
-	}
-	return form;
+        TrapForm form = map.get(formId);
+        if (form == null)
+        {
+            throw new KeyNotFoundException();
+        }
+        return form;
 
     }
 
     public Map<Integer, TravelFormMetadata> getSavedForms()
     {
-	Map<Integer, TravelFormMetadata> savedForms = new HashMap<Integer, TravelFormMetadata>();
-	for (Entry<Integer, TrapForm> entry : map.entrySet())
-	{
-	    savedForms.put(entry.getKey(), entry.getValue().getFormMetaData());
-	}
-	return savedForms;
+        Map<Integer, TravelFormMetadata> savedForms = new HashMap<Integer, TravelFormMetadata>();
+        for (Entry<Integer, TrapForm> entry : map.entrySet())
+        {
+            savedForms.put(entry.getKey(), entry.getValue().getFormMetaData());
+        }
+        return savedForms;
     }
 
     /**
@@ -64,7 +64,7 @@ public class FormDB
      */
     public void clear()
     {
-	map.clear();
-	
+        map.clear();
+
     }
 }

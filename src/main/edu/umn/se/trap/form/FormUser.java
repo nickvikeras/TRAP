@@ -18,7 +18,6 @@
  */
 package edu.umn.se.trap.form;
 
-
 /**
  * @author mark
  * 
@@ -36,6 +35,7 @@ public class FormUser
     private String citizenship;
     private String visaStatus;
     private boolean paidByUniversity;
+
     /**
      * @param userName
      * @param emergencyContactName
@@ -49,17 +49,18 @@ public class FormUser
      */
     public FormUser(String userName, String emergencyContactName, String emergencyContactPhone, String fullName, String email, String employeeId, String citizenship, String visaStatus, boolean paidByUniversity)
     {
-	super();
-	this.userName = userName;
-	this.emergencyContactName = emergencyContactName;
-	this.emergencyContactPhone = emergencyContactPhone;
-	this.fullName = fullName;
-	this.email = email;
-	this.employeeId = employeeId;
-	this.citizenship = citizenship;
-	this.visaStatus = visaStatus;
-	this.paidByUniversity = paidByUniversity;
+        super();
+        this.userName = userName;
+        this.emergencyContactName = emergencyContactName;
+        this.emergencyContactPhone = emergencyContactPhone;
+        this.fullName = fullName;
+        this.email = email;
+        this.employeeId = employeeId;
+        this.citizenship = citizenship;
+        this.visaStatus = visaStatus;
+        this.paidByUniversity = paidByUniversity;
     }
+
     /**
      * @return the userName
      */
@@ -67,13 +68,16 @@ public class FormUser
     {
         return userName;
     }
+
     /**
-     * @param userName the userName to set
+     * @param userName
+     *            the userName to set
      */
     public void setUserName(String userName)
     {
         this.userName = userName;
     }
+
     /**
      * @return the emergencyContactName
      */
@@ -81,13 +85,16 @@ public class FormUser
     {
         return emergencyContactName;
     }
+
     /**
-     * @param emergencyContactName the emergencyContactName to set
+     * @param emergencyContactName
+     *            the emergencyContactName to set
      */
     public void setEmergencyContactName(String emergencyContactName)
     {
         this.emergencyContactName = emergencyContactName;
     }
+
     /**
      * @return the emergencyContactPhone
      */
@@ -95,13 +102,16 @@ public class FormUser
     {
         return emergencyContactPhone;
     }
+
     /**
-     * @param emergencyContactPhone the emergencyContactPhone to set
+     * @param emergencyContactPhone
+     *            the emergencyContactPhone to set
      */
     public void setEmergencyContactPhone(String emergencyContactPhone)
     {
         this.emergencyContactPhone = emergencyContactPhone;
     }
+
     /**
      * @return the fullName
      */
@@ -109,13 +119,16 @@ public class FormUser
     {
         return fullName;
     }
+
     /**
-     * @param fullName the fullName to set
+     * @param fullName
+     *            the fullName to set
      */
     public void setFullName(String fullName)
     {
         this.fullName = fullName;
     }
+
     /**
      * @return the email
      */
@@ -123,13 +136,16 @@ public class FormUser
     {
         return email;
     }
+
     /**
-     * @param email the email to set
+     * @param email
+     *            the email to set
      */
     public void setEmail(String email)
     {
         this.email = email;
     }
+
     /**
      * @return the employeeId
      */
@@ -137,13 +153,16 @@ public class FormUser
     {
         return employeeId;
     }
+
     /**
-     * @param employeeId the employeeId to set
+     * @param employeeId
+     *            the employeeId to set
      */
     public void setEmployeeId(String employeeId)
     {
         this.employeeId = employeeId;
     }
+
     /**
      * @return the citizenship
      */
@@ -151,13 +170,16 @@ public class FormUser
     {
         return citizenship;
     }
+
     /**
-     * @param citizenship the citizenship to set
+     * @param citizenship
+     *            the citizenship to set
      */
     public void setCitizenship(String citizenship)
     {
         this.citizenship = citizenship;
     }
+
     /**
      * @return the visaStatus
      */
@@ -165,13 +187,16 @@ public class FormUser
     {
         return visaStatus;
     }
+
     /**
-     * @param visaStatus the visaStatus to set
+     * @param visaStatus
+     *            the visaStatus to set
      */
     public void setVisaStatus(String visaStatus)
     {
         this.visaStatus = visaStatus;
     }
+
     /**
      * @return the paidByUniversity
      */
@@ -179,11 +204,13 @@ public class FormUser
     {
         return paidByUniversity;
     }
+
     /**
-     * @param paidByUniversity the paidByUniversity to set
+     * @param paidByUniversity
+     *            the paidByUniversity to set
      */
     public void setPaidByUniversity(boolean paidByUniversity)
     {
         this.paidByUniversity = paidByUniversity;
-    }   
+    }
 }

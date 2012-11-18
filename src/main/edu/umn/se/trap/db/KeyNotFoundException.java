@@ -31,12 +31,11 @@ package edu.umn.se.trap.db;
 /**
  * Exception that is thrown when a mocked DB key is not found.
  * 
- * NOTE:  This should never be seen by someone using the 
- * TravelFormProcessorIntf.  You need to properly rethrow this as an exception 
- * of your own type.
+ * NOTE: This should never be seen by someone using the TravelFormProcessorIntf.
+ * You need to properly rethrow this as an exception of your own type.
  * 
  * @author ian
- *
+ * 
  */
 @SuppressWarnings("serial")
 public class KeyNotFoundException extends Exception
@@ -52,7 +51,8 @@ public class KeyNotFoundException extends Exception
 
     /**
      * 
-     * @param message  the message to be displayed for the exception
+     * @param message
+     *            the message to be displayed for the exception
      */
     public KeyNotFoundException(String message)
     {
@@ -60,7 +60,8 @@ public class KeyNotFoundException extends Exception
     }
 
     /**
-     * @param throwable  the existing throwable
+     * @param throwable
+     *            the existing throwable
      */
     public KeyNotFoundException(Throwable throwable)
     {
@@ -68,8 +69,10 @@ public class KeyNotFoundException extends Exception
     }
 
     /**
-     * @param message  the message to be displayed for the exception
-     * @param throwable  the existing throwable
+     * @param message
+     *            the message to be displayed for the exception
+     * @param throwable
+     *            the existing throwable
      */
     public KeyNotFoundException(String message, Throwable throwable)
     {

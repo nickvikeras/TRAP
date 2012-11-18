@@ -26,13 +26,7 @@ package edu.umn.se.trap.form;
 
 public enum ExpenseType
 {
-    
-    BREAKFAST,
-    LUNCH,
-    DINNER,
-    LODGING,
-    INCIDENTAL,
-    TRANSPORTATION,
-    OTHER
+
+    BREAKFAST, LUNCH, DINNER, LODGING, INCIDENTAL, TRANSPORTATION, OTHER
 
 }

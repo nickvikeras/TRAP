@@ -29,12 +29,12 @@ public class TrapException extends Exception
 
     public TrapException(String message)
     {
-	this.message = message;
+        this.message = message;
     }
 
     @Override
     public String getMessage()
     {
-	return message;
+        return message;
     }
 }

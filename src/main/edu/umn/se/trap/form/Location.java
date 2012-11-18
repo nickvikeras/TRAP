@@ -18,7 +18,6 @@
  */
 package edu.umn.se.trap.form;
 
-
 /**
  * @author mark
  * 
@@ -40,10 +39,10 @@ public class Location
      */
     public Location(String city, String state, String country)
     {
-	super();
-	this.city = city;
-	this.state = state;
-	this.country = country;
+        super();
+        this.city = city;
+        this.state = state;
+        this.country = country;
     }
 
     /**

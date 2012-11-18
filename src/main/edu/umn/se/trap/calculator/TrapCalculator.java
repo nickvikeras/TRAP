@@ -32,8 +32,8 @@ public class TrapCalculator
 {
     public static Map<Integer, Double> calculateAmountsToCharge(TrapForm form) throws TrapException
     {
-	Map<Integer, Double> accountNumToChargeAmount = new HashMap<Integer, Double>();
-	//figure out logic
-	return accountNumToChargeAmount;
+        Map<Integer, Double> accountNumToChargeAmount = new HashMap<Integer, Double>();
+        // figure out logic
+        return accountNumToChargeAmount;
     }
 }

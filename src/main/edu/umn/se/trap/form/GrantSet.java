@@ -32,23 +32,23 @@ public class GrantSet
 
     public GrantSet(Set<FormGrant> grants)
     {
-	this.grants = grants;
+        this.grants = grants;
     }
 
     public void removeGrant(String accountName)
     {
-	FormGrant grantToRemove = null;
-	for (FormGrant grant : grants)
-	{
-	    if (grant.getAccountName().equals(accountName))
-	    {
-		grantToRemove = grant;
-	    }
-	}
-	if (grantToRemove != null)
-	{
-	    grants.remove(grantToRemove);
-	}
+        FormGrant grantToRemove = null;
+        for (FormGrant grant : grants)
+        {
+            if (grant.getAccountName().equals(accountName))
+            {
+                grantToRemove = grant;
+            }
+        }
+        if (grantToRemove != null)
+        {
+            grants.remove(grantToRemove);
+        }
     }
 
 }

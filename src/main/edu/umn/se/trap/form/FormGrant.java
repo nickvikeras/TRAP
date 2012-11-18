@@ -18,7 +18,6 @@
  */
 package edu.umn.se.trap.form;
 
-
 /**
  * @author mark
  * 
@@ -33,21 +32,20 @@ public class FormGrant
     private Double accountBalance;
 
     // Getters and setters:
-    
+
     /**
      * @param accountNumber
      * @param accountType
      * @param fundingOrganization
      * @param accountBalance
      */
-    public FormGrant(String accountName, String accountType,
-            String fundingOrganization, Double accountBalance)
+    public FormGrant(String accountName, String accountType, String fundingOrganization, Double accountBalance)
     {
-	super();
-	this.accountName = accountName;
-	this.accountType = accountType;
-	this.fundingOrganization = fundingOrganization;
-	this.accountBalance = accountBalance;
+        super();
+        this.accountName = accountName;
+        this.accountType = accountType;
+        this.fundingOrganization = fundingOrganization;
+        this.accountBalance = accountBalance;
     }
 
     /**

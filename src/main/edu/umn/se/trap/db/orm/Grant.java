@@ -29,6 +29,7 @@ public class Grant
     private String fundingOrganization;
     private String organizationType;
     private double accountBalance;
+
     /**
      * @param accountNumber
      * @param accountType
@@ -38,13 +39,14 @@ public class Grant
      */
     public Grant(String accountNumber, String accountType, String fundingOrganization, String organizationType, double accountBalance)
     {
-	super();
-	this.accountNumber = accountNumber;
-	this.accountType = accountType;
-	this.fundingOrganization = fundingOrganization;
-	this.organizationType = organizationType;
-	this.accountBalance = accountBalance;
+        super();
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.fundingOrganization = fundingOrganization;
+        this.organizationType = organizationType;
+        this.accountBalance = accountBalance;
     }
+
     /**
      * @return the accountNumber
      */
@@ -52,13 +54,16 @@ public class Grant
     {
         return accountNumber;
     }
+
     /**
-     * @param accountNumber the accountNumber to set
+     * @param accountNumber
+     *            the accountNumber to set
      */
     public void setAccountNumber(String accountNumber)
     {
         this.accountNumber = accountNumber;
     }
+
     /**
      * @return the accountType
      */
@@ -66,13 +71,16 @@ public class Grant
     {
         return accountType;
     }
+
     /**
-     * @param accountType the accountType to set
+     * @param accountType
+     *            the accountType to set
      */
     public void setAccountType(String accountType)
     {
         this.accountType = accountType;
     }
+
     /**
      * @return the fundingOrganization
      */
@@ -80,13 +88,16 @@ public class Grant
     {
         return fundingOrganization;
     }
+
     /**
-     * @param fundingOrganization the fundingOrganization to set
+     * @param fundingOrganization
+     *            the fundingOrganization to set
      */
     public void setFundingOrganization(String fundingOrganization)
     {
         this.fundingOrganization = fundingOrganization;
     }
+
     /**
      * @return the organizationType
      */
@@ -94,13 +105,16 @@ public class Grant
     {
         return organizationType;
     }
+
     /**
-     * @param organizationType the organizationType to set
+     * @param organizationType
+     *            the organizationType to set
      */
     public void setOrganizationType(String organizationType)
     {
         this.organizationType = organizationType;
     }
+
     /**
      * @return the accountBalance
      */
@@ -108,8 +122,10 @@ public class Grant
     {
         return accountBalance;
     }
+
     /**
-     * @param accountBalance the accountBalance to set
+     * @param accountBalance
+     *            the accountBalance to set
      */
     public void setAccountBalance(double accountBalance)
     {

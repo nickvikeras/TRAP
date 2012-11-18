@@ -20,14 +20,13 @@ package edu.umn.se.trap.form;
 
 import java.util.Date;
 
-
 /**
  * @author mark
  * 
  */
 public class Trip
 {
-    
+
     // Public member variables:
     private Date departureDateTime;
     private Date arrivalDateTime;
@@ -42,9 +41,9 @@ public class Trip
     private String justificationNonsponsored;
     private String justificationSponsored;
     private int numDays;
-    
- // Getters and setters:
-    
+
+    // Getters and setters:
+
     /**
      * @param departureDateTime
      * @param arrivalDateTime
@@ -60,31 +59,22 @@ public class Trip
      * @param justificationSponsored
      * @param numDays
      */
-    public Trip(Date departureDateTime, Date arrivalDateTime,
-            boolean travelTypeCseSponsored, boolean travelTypeDtcSponsored,
-            boolean travelTypeNonsponsored,
-            String justificationConferenceTitle,
-            boolean justificationPresented,
-            String justificationPresentationTitle,
-            String justificationPresentationAbstract,
-            String justificationPresentationAcknowledgement,
-            String justificationNonsponsored, String justificationSponsored,
-            int numDays)
+    public Trip(Date departureDateTime, Date arrivalDateTime, boolean travelTypeCseSponsored, boolean travelTypeDtcSponsored, boolean travelTypeNonsponsored, String justificationConferenceTitle, boolean justificationPresented, String justificationPresentationTitle, String justificationPresentationAbstract, String justificationPresentationAcknowledgement, String justificationNonsponsored, String justificationSponsored, int numDays)
     {
-	super();
-	this.departureDateTime = departureDateTime;
-	this.arrivalDateTime = arrivalDateTime;
-	this.travelTypeCseSponsored = travelTypeCseSponsored;
-	this.travelTypeDtcSponsored = travelTypeDtcSponsored;
-	this.travelTypeNonsponsored = travelTypeNonsponsored;
-	this.justificationConferenceTitle = justificationConferenceTitle;
-	this.justificationPresented = justificationPresented;
-	this.justificationPresentationTitle = justificationPresentationTitle;
-	this.justificationPresentationAbstract = justificationPresentationAbstract;
-	this.justificationPresentationAcknowledgement = justificationPresentationAcknowledgement;
-	this.justificationNonsponsored = justificationNonsponsored;
-	this.justificationSponsored = justificationSponsored;
-	this.numDays = numDays;
+        super();
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
+        this.travelTypeCseSponsored = travelTypeCseSponsored;
+        this.travelTypeDtcSponsored = travelTypeDtcSponsored;
+        this.travelTypeNonsponsored = travelTypeNonsponsored;
+        this.justificationConferenceTitle = justificationConferenceTitle;
+        this.justificationPresented = justificationPresented;
+        this.justificationPresentationTitle = justificationPresentationTitle;
+        this.justificationPresentationAbstract = justificationPresentationAbstract;
+        this.justificationPresentationAcknowledgement = justificationPresentationAcknowledgement;
+        this.justificationNonsponsored = justificationNonsponsored;
+        this.justificationSponsored = justificationSponsored;
+        this.numDays = numDays;
     }
 
     /**
@@ -94,15 +84,16 @@ public class Trip
     {
         return departureDateTime;
     }
-    
+
     /**
-     * @param departureDateTime the departureDateTime to set
+     * @param departureDateTime
+     *            the departureDateTime to set
      */
     public void setDepartureDateTime(Date departureDateTime)
     {
         this.departureDateTime = departureDateTime;
     }
-    
+
     /**
      * @return the arrivalDateTime
      */
@@ -110,15 +101,16 @@ public class Trip
     {
         return arrivalDateTime;
     }
-    
+
     /**
-     * @param arrivalDateTime the arrivalDateTime to set
+     * @param arrivalDateTime
+     *            the arrivalDateTime to set
      */
     public void setArrivalDateTime(Date arrivalDateTime)
     {
         this.arrivalDateTime = arrivalDateTime;
     }
-    
+
     /**
      * @return the travelTypeCseSponsored
      */
@@ -126,15 +118,16 @@ public class Trip
     {
         return travelTypeCseSponsored;
     }
-    
+
     /**
-     * @param travelTypeCseSponsored the travelTypeCseSponsored to set
+     * @param travelTypeCseSponsored
+     *            the travelTypeCseSponsored to set
      */
     public void setTravelTypeCseSponsored(boolean travelTypeCseSponsored)
     {
         this.travelTypeCseSponsored = travelTypeCseSponsored;
     }
-    
+
     /**
      * @return the travelTypeDtcSponsored
      */
@@ -142,15 +135,16 @@ public class Trip
     {
         return travelTypeDtcSponsored;
     }
-    
+
     /**
-     * @param travelTypeDtcSponsored the travelTypeDtcSponsored to set
+     * @param travelTypeDtcSponsored
+     *            the travelTypeDtcSponsored to set
      */
     public void setTravelTypeDtcSponsored(boolean travelTypeDtcSponsored)
     {
         this.travelTypeDtcSponsored = travelTypeDtcSponsored;
     }
-    
+
     /**
      * @return the travelTypeNonsponsored
      */
@@ -158,15 +152,16 @@ public class Trip
     {
         return travelTypeNonsponsored;
     }
-    
+
     /**
-     * @param travelTypeNonsponsored the travelTypeNonsponsored to set
+     * @param travelTypeNonsponsored
+     *            the travelTypeNonsponsored to set
      */
     public void setTravelTypeNonsponsored(boolean travelTypeNonsponsored)
     {
         this.travelTypeNonsponsored = travelTypeNonsponsored;
     }
-    
+
     /**
      * @return the justificationConferenceTitle
      */
@@ -174,15 +169,16 @@ public class Trip
     {
         return justificationConferenceTitle;
     }
-    
+
     /**
-     * @param justificationConferenceTitle the justificationConferenceTitle to set
+     * @param justificationConferenceTitle
+     *            the justificationConferenceTitle to set
      */
     public void setJustificationConferenceTitle(String justificationConferenceTitle)
     {
         this.justificationConferenceTitle = justificationConferenceTitle;
     }
-    
+
     /**
      * @return the justificationPresented
      */
@@ -190,15 +186,16 @@ public class Trip
     {
         return justificationPresented;
     }
-    
+
     /**
-     * @param justificationPresented the justificationPresented to set
+     * @param justificationPresented
+     *            the justificationPresented to set
      */
     public void setJustificationPresented(boolean justificationPresented)
     {
         this.justificationPresented = justificationPresented;
     }
-    
+
     /**
      * @return the justificationPresentationTitle
      */
@@ -206,16 +203,16 @@ public class Trip
     {
         return justificationPresentationTitle;
     }
-    
+
     /**
-     * @param justificationPresentationTitle the justificationPresentationTitle to set
+     * @param justificationPresentationTitle
+     *            the justificationPresentationTitle to set
      */
-    public void setJustificationPresentationTitle(
-            String justificationPresentationTitle)
+    public void setJustificationPresentationTitle(String justificationPresentationTitle)
     {
         this.justificationPresentationTitle = justificationPresentationTitle;
     }
-    
+
     /**
      * @return the justificationPresentationAbstract
      */
@@ -223,16 +220,16 @@ public class Trip
     {
         return justificationPresentationAbstract;
     }
-    
+
     /**
-     * @param justificationPresentationAbstract the justificationPresentationAbstract to set
+     * @param justificationPresentationAbstract
+     *            the justificationPresentationAbstract to set
      */
-    public void setJustificationPresentationAbstract(
-            String justificationPresentationAbstract)
+    public void setJustificationPresentationAbstract(String justificationPresentationAbstract)
     {
         this.justificationPresentationAbstract = justificationPresentationAbstract;
     }
-    
+
     /**
      * @return the justificationPresentationAcknowledgement
      */
@@ -240,16 +237,16 @@ public class Trip
     {
         return justificationPresentationAcknowledgement;
     }
-    
+
     /**
-     * @param justificationPresentationAcknowledgement the justificationPresentationAcknowledgement to set
+     * @param justificationPresentationAcknowledgement
+     *            the justificationPresentationAcknowledgement to set
      */
-    public void setJustificationPresentationAcknowledgement(
-            String justificationPresentationAcknowledgement)
+    public void setJustificationPresentationAcknowledgement(String justificationPresentationAcknowledgement)
     {
         this.justificationPresentationAcknowledgement = justificationPresentationAcknowledgement;
     }
-    
+
     /**
      * @return the justificationNonsponsored
      */
@@ -257,15 +254,16 @@ public class Trip
     {
         return justificationNonsponsored;
     }
-    
+
     /**
-     * @param justificationNonsponsored the justificationNonsponsored to set
+     * @param justificationNonsponsored
+     *            the justificationNonsponsored to set
      */
     public void setJustificationNonsponsored(String justificationNonsponsored)
     {
         this.justificationNonsponsored = justificationNonsponsored;
     }
-    
+
     /**
      * @return the justificationSponsored
      */
@@ -273,15 +271,16 @@ public class Trip
     {
         return justificationSponsored;
     }
-    
+
     /**
-     * @param justificationSponsored the justificationSponsored to set
+     * @param justificationSponsored
+     *            the justificationSponsored to set
      */
     public void setJustificationSponsored(String justificationSponsored)
     {
         this.justificationSponsored = justificationSponsored;
     }
-    
+
     /**
      * @return the numDays
      */
@@ -289,9 +288,10 @@ public class Trip
     {
         return numDays;
     }
-    
+
     /**
-     * @param numDays the numDays to set
+     * @param numDays
+     *            the numDays to set
      */
     public void setNumDays(int numDays)
     {

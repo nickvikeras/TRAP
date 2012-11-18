@@ -31,16 +31,17 @@ import edu.umn.se.trap.form.TrapForm;
 public class FormChecker
 {
     private List<AbstractRule> rules = new ArrayList<AbstractRule>();
-    
-    public void addRule(AbstractRule rule){
-	rules.add(rule);
+
+    public void addRule(AbstractRule rule)
+    {
+        rules.add(rule);
     }
 
     public void fireRules(TrapForm form) throws TrapException
     {
-	for (AbstractRule rule : rules)
-	{
-	    rule.validateRule(form);
-	}
+        for (AbstractRule rule : rules)
+        {
+            rule.validateRule(form);
+        }
     }
 }

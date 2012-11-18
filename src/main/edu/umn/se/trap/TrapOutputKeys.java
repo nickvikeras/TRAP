@@ -15,12 +15,12 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap;
 
 /**
  * @author nick
- *
+ * 
  */
 public class TrapOutputKeys
 {
@@ -56,15 +56,15 @@ public class TrapOutputKeys
     public static final String TRANSPORTATIONb_DATE = "TRANSPORTATION%d_DATE";
     public static final String TRANSPORTATIONb_TYPE = "TRANSPORTATION%d_TYPE";
     public static final String TRANSPORTATIONb_TOTAL = "TRANSPORTATION%d_TOTAL";
-    public static final String NUM_OTHER_EXPENSES = "NUM_OTHER_EXPENSES";  
+    public static final String NUM_OTHER_EXPENSES = "NUM_OTHER_EXPENSES";
     public static final String OTHERc_DATE = "OTHER%d_DATE";
     public static final String OTHERc_JUSTIFICATION = "";
     public static final String OTHERc_TOTAL = "OTHER%d_TOTAL";
-    public static final String NUM_GRANTS  = "NUM_GRANTS";
+    public static final String NUM_GRANTS = "NUM_GRANTS";
     public static final String GRANTd_ACCOUNT = "GRANT%d_ACCOUNT";
-    public static final String GRANTd_PERCENT = "GRANT%d_PERCENT";   
+    public static final String GRANTd_PERCENT = "GRANT%d_PERCENT";
     public static final String GRANTd_AMOUNT_TO_CHARGE = "GRANT%d_AMOUNT_TO_CHARGE";
-    public static final String GRANTd_APPROVER_NAME = "GRANT%d_APPROVER_NAME"; 
+    public static final String GRANTd_APPROVER_NAME = "GRANT%d_APPROVER_NAME";
     public static final String TOTAL_REIMBURSEMENT = "TOTAL_REIMBURSEMENT";
-    public static final String NUM_DAYS = "NUM_DAYS"; 
+    public static final String NUM_DAYS = "NUM_DAYS";
 }

@@ -40,7 +40,7 @@ public class TrapForm
     private Trip trip;
     private List<Expense> expenses;
     private Map<String, Double> accountToPercentMap;
-    
+
     /**
      * @param formId
      * @param formInput
@@ -52,25 +52,23 @@ public class TrapForm
      * @param expenses
      * @param accountToPercentMap
      */
-    public TrapForm(Integer formId, Map<String, String> formInput,
-            Map<String, String> formOutput, TravelFormMetadata formMetaData,
-            GrantSet grantSet, FormUser user, Trip trip, List<Expense> expenses,
-            Map<String, Double> accountToPercentMap)
+    public TrapForm(Integer formId, Map<String, String> formInput, Map<String, String> formOutput, TravelFormMetadata formMetaData, GrantSet grantSet, FormUser user, Trip trip, List<Expense> expenses, Map<String, Double> accountToPercentMap)
     {
-	super();
-	this.formId = formId;
-	this.formInput = formInput;
-	this.formOutput = formOutput;
-	this.formMetaData = formMetaData;
-	this.grantSet = grantSet;
-	this.user = user;
-	this.trip = trip;
-	this.expenses = expenses;
-	this.accountToPercentMap = accountToPercentMap;
+        super();
+        this.formId = formId;
+        this.formInput = formInput;
+        this.formOutput = formOutput;
+        this.formMetaData = formMetaData;
+        this.grantSet = grantSet;
+        this.user = user;
+        this.trip = trip;
+        this.expenses = expenses;
+        this.accountToPercentMap = accountToPercentMap;
     }
 
-    public void buildOutput(Map<Integer, Double> accountAmountMap){
-	
+    public void buildOutput(Map<Integer, Double> accountAmountMap)
+    {
+
     }
 
     /**
@@ -86,7 +84,7 @@ public class TrapForm
      */
     public Map<String, String> getFormInput()
     {
-	return formInput;
+        return formInput;
     }
 
     /**
@@ -95,7 +93,7 @@ public class TrapForm
      */
     public void setFormInput(Map<String, String> formInput)
     {
-	this.formInput = formInput;
+        this.formInput = formInput;
     }
 
     /**
@@ -103,7 +101,7 @@ public class TrapForm
      */
     public Map<String, String> getFormOutput()
     {
-	return formOutput;
+        return formOutput;
     }
 
     /**
@@ -112,7 +110,7 @@ public class TrapForm
      */
     public void setFormOutput(Map<String, String> formOutput)
     {
-	this.formOutput = formOutput;
+        this.formOutput = formOutput;
     }
 
     /**
@@ -120,7 +118,7 @@ public class TrapForm
      */
     public TravelFormMetadata getFormMetaData()
     {
-	return formMetaData;
+        return formMetaData;
     }
 
     /**
@@ -129,7 +127,7 @@ public class TrapForm
      */
     public void setFormMetaData(TravelFormMetadata formMetaData)
     {
-	this.formMetaData = formMetaData;
+        this.formMetaData = formMetaData;
     }
 
     /**
@@ -137,7 +135,7 @@ public class TrapForm
      */
     public GrantSet getGrantSet()
     {
-	return grantSet;
+        return grantSet;
     }
 
     /**
@@ -146,7 +144,7 @@ public class TrapForm
      */
     public void setGrantSet(GrantSet grantSet)
     {
-	this.grantSet = grantSet;
+        this.grantSet = grantSet;
     }
 
     /**
@@ -154,7 +152,7 @@ public class TrapForm
      */
     public FormUser getUser()
     {
-	return user;
+        return user;
     }
 
     /**
@@ -163,7 +161,7 @@ public class TrapForm
      */
     public void setUser(FormUser user)
     {
-	this.user = user;
+        this.user = user;
     }
 
     /**
@@ -171,7 +169,7 @@ public class TrapForm
      */
     public Trip getTrip()
     {
-	return trip;
+        return trip;
     }
 
     /**
@@ -180,7 +178,7 @@ public class TrapForm
      */
     public void setTrip(Trip trip)
     {
-	this.trip = trip;
+        this.trip = trip;
     }
 
     /**
@@ -188,7 +186,7 @@ public class TrapForm
      */
     public List<Expense> getExpenses()
     {
-	return expenses;
+        return expenses;
     }
 
     /**
@@ -197,7 +195,7 @@ public class TrapForm
      */
     public void setExpenses(List<Expense> expenses)
     {
-	this.expenses = expenses;
+        this.expenses = expenses;
     }
 
 }

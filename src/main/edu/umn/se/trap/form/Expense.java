@@ -32,9 +32,9 @@ public class Expense
     private double amount;
     private Location location;
     private GrantSet eligibleGrants;
-    private String justification;    
+    private String justification;
     private ExpenseType type;
-    
+
     /**
      * @param type
      * @param date
@@ -44,18 +44,16 @@ public class Expense
      * @param eligibleGrants
      * @param justification
      */
-    public Expense(ExpenseType type, Date date, double amount,
-            Location location, GrantSet eligibleGrants, String justification)
+    public Expense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification)
     {
-	super();
-	this.type = type;
-	this.date = date;
-	this.amount = amount;
-	this.location = location;
-	this.eligibleGrants = eligibleGrants;
-	this.justification = justification;
+        super();
+        this.type = type;
+        this.date = date;
+        this.amount = amount;
+        this.location = location;
+        this.eligibleGrants = eligibleGrants;
+        this.justification = justification;
     }
-
 
     // Getters and setters:
 

@@ -44,11 +44,11 @@ public class TransportationExpense extends Expense
      */
     public TransportationExpense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification, String tranportationType, String carrier, int milesTraveled, boolean isRental)
     {
-	super(type, date, amount, location, eligibleGrants, justification);
-	this.tranportationType = tranportationType;
-	this.carrier = carrier;
-	this.milesTraveled = milesTraveled;
-	this.setRental(isRental);
+        super(type, date, amount, location, eligibleGrants, justification);
+        this.tranportationType = tranportationType;
+        this.carrier = carrier;
+        this.milesTraveled = milesTraveled;
+        this.setRental(isRental);
     }
 
     // Getters and setters:
@@ -58,7 +58,7 @@ public class TransportationExpense extends Expense
      */
     public String getTranportationType()
     {
-	return tranportationType;
+        return tranportationType;
     }
 
     /**
@@ -67,7 +67,7 @@ public class TransportationExpense extends Expense
      */
     public void setTranportationType(String tranportationType)
     {
-	this.tranportationType = tranportationType;
+        this.tranportationType = tranportationType;
     }
 
     /**
@@ -75,7 +75,7 @@ public class TransportationExpense extends Expense
      */
     public String getCarrier()
     {
-	return carrier;
+        return carrier;
     }
 
     /**
@@ -84,7 +84,7 @@ public class TransportationExpense extends Expense
      */
     public void setCarrier(String carrier)
     {
-	this.carrier = carrier;
+        this.carrier = carrier;
     }
 
     /**
@@ -92,7 +92,7 @@ public class TransportationExpense extends Expense
      */
     public int getMilesTraveled()
     {
-	return milesTraveled;
+        return milesTraveled;
     }
 
     /**
@@ -101,7 +101,7 @@ public class TransportationExpense extends Expense
      */
     public void setMilesTraveled(int milesTraveled)
     {
-	this.milesTraveled = milesTraveled;
+        this.milesTraveled = milesTraveled;
     }
 
     /**
@@ -109,15 +109,16 @@ public class TransportationExpense extends Expense
      */
     public boolean isRental()
     {
-	return isRental;
+        return isRental;
     }
 
     /**
-     * @param isRental the isRental to set
+     * @param isRental
+     *            the isRental to set
      */
     public void setRental(boolean isRental)
     {
-	this.isRental = isRental;
+        this.isRental = isRental;
     }
 
 }

@@ -15,20 +15,21 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap.db.orm;
 
 import java.util.List;
 
 /**
  * @author nick
- *
+ * 
  */
 public class UserGrant
 {
     private String accountNumber;
     private String grantAdmin;
     private String[] authorizedPayees;
+
     /**
      * @param accountNumber
      * @param grantAdmin
@@ -36,11 +37,12 @@ public class UserGrant
      */
     public UserGrant(String accountNumber, String grantAdmin, String[] authorizedPayees)
     {
-	super();
-	this.accountNumber = accountNumber;
-	this.grantAdmin = grantAdmin;
-	this.authorizedPayees = authorizedPayees;
+        super();
+        this.accountNumber = accountNumber;
+        this.grantAdmin = grantAdmin;
+        this.authorizedPayees = authorizedPayees;
     }
+
     /**
      * @return the accountNumber
      */
@@ -48,13 +50,16 @@ public class UserGrant
     {
         return accountNumber;
     }
+
     /**
-     * @param accountNumber the accountNumber to set
+     * @param accountNumber
+     *            the accountNumber to set
      */
     public void setAccountNumber(String accountNumber)
     {
         this.accountNumber = accountNumber;
     }
+
     /**
      * @return the grantAdmin
      */
@@ -62,13 +67,16 @@ public class UserGrant
     {
         return grantAdmin;
     }
+
     /**
-     * @param grantAdmin the grantAdmin to set
+     * @param grantAdmin
+     *            the grantAdmin to set
      */
     public void setGrantAdmin(String grantAdmin)
     {
         this.grantAdmin = grantAdmin;
     }
+
     /**
      * @return the authorizedPayees
      */
@@ -76,8 +84,10 @@ public class UserGrant
     {
         return authorizedPayees;
     }
+
     /**
-     * @param authorizedPayees the authorizedPayees to set
+     * @param authorizedPayees
+     *            the authorizedPayees to set
      */
     public void setAuthorizedPayees(String[] authorizedPayees)
     {

@@ -26,10 +26,7 @@ package edu.umn.se.trap.form;
 
 public enum TransportationType
 {
-    
-    AIR,
-    PUBLIC,
-    CAR_RENTAL,
-    GAS
+
+    AIR, PUBLIC, CAR_RENTAL, GAS
 
 }

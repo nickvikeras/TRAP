@@ -39,12 +39,12 @@ public class PerDiem
      */
     public PerDiem(Double breakfastRate, Double lunchRate, Double dinnerRate, Double incidentalCeiling, Double lodgingCeiling)
     {
-	super();
-	this.breakfastRate = breakfastRate;
-	this.lunchRate = lunchRate;
-	this.dinnerRate = dinnerRate;
-	this.incidentalCeiling = incidentalCeiling;
-	this.lodgingCeiling = lodgingCeiling;
+        super();
+        this.breakfastRate = breakfastRate;
+        this.lunchRate = lunchRate;
+        this.dinnerRate = dinnerRate;
+        this.incidentalCeiling = incidentalCeiling;
+        this.lodgingCeiling = lodgingCeiling;
     }
 
     /**
@@ -52,7 +52,7 @@ public class PerDiem
      */
     public Double getBreakfastRate()
     {
-	return breakfastRate;
+        return breakfastRate;
     }
 
     /**
@@ -61,7 +61,7 @@ public class PerDiem
      */
     public void setBreakfastRate(Double breakfastRate)
     {
-	this.breakfastRate = breakfastRate;
+        this.breakfastRate = breakfastRate;
     }
 
     /**
@@ -69,7 +69,7 @@ public class PerDiem
      */
     public Double getLunchRate()
     {
-	return lunchRate;
+        return lunchRate;
     }
 
     /**
@@ -78,7 +78,7 @@ public class PerDiem
      */
     public void setLunchRate(Double lunchRate)
     {
-	this.lunchRate = lunchRate;
+        this.lunchRate = lunchRate;
     }
 
     /**
@@ -86,7 +86,7 @@ public class PerDiem
      */
     public Double getDinnerRate()
     {
-	return dinnerRate;
+        return dinnerRate;
     }
 
     /**
@@ -95,7 +95,7 @@ public class PerDiem
      */
     public void setDinnerRate(Double dinnerRate)
     {
-	this.dinnerRate = dinnerRate;
+        this.dinnerRate = dinnerRate;
     }
 
     /**
@@ -103,7 +103,7 @@ public class PerDiem
      */
     public Double getIncidentalCeiling()
     {
-	return incidentalCeiling;
+        return incidentalCeiling;
     }
 
     /**
@@ -112,7 +112,7 @@ public class PerDiem
      */
     public void setIncidentalCeiling(Double incidentalCeiling)
     {
-	this.incidentalCeiling = incidentalCeiling;
+        this.incidentalCeiling = incidentalCeiling;
     }
 
     /**
@@ -120,7 +120,7 @@ public class PerDiem
      */
     public Double getLodgingCeiling()
     {
-	return lodgingCeiling;
+        return lodgingCeiling;
     }
 
     /**
@@ -129,6 +129,6 @@ public class PerDiem
      */
     public void setLodgingCeiling(Double lodgingCeiling)
     {
-	this.lodgingCeiling = lodgingCeiling;
+        this.lodgingCeiling = lodgingCeiling;
     }
 }

@@ -66,21 +66,21 @@ public class DatabaseAccessorTest
     @Test
     public void testGetUser()
     {
-	try
-	{
-	    User user = dbAccessor.getUser("linc001");
-	    assertNotNull(user);
-	    assertEquals(user.getUserName(), "linc001");
-	    assertEquals(user.getFullName(), "Lincoln, Abraham");
-	    assertEquals(user.getEmployeeId(), "1849304");
-	    assertEquals(user.getEmail(), "linc001@umn.edu");
-	    assertEquals(user.getCitizenship(), "United States");
-	    assertNull(user.getVisaStatus());
-	    assertTrue(user.isPaidByUniversity());
-	} catch (TrapException e)
-	{
-	    fail("User not found.");
-	}
+        try
+        {
+            User user = dbAccessor.getUser("linc001");
+            assertNotNull(user);
+            assertEquals(user.getUserName(), "linc001");
+            assertEquals(user.getFullName(), "Lincoln, Abraham");
+            assertEquals(user.getEmployeeId(), "1849304");
+            assertEquals(user.getEmail(), "linc001@umn.edu");
+            assertEquals(user.getCitizenship(), "United States");
+            assertNull(user.getVisaStatus());
+            assertTrue(user.isPaidByUniversity());
+        } catch (TrapException e)
+        {
+            fail("User not found.");
+        }
 
     }
 
@@ -92,19 +92,19 @@ public class DatabaseAccessorTest
     @Test
     public void testGetDomesticPerdiemString()
     {
-	try
-	{
-	    PerDiem perDiem = dbAccessor.getDomesticPerdiem("colorado");
-	    assertNotNull(perDiem);
-	    assertTrue(8.0 == perDiem.getBreakfastRate().doubleValue());
-	    assertTrue(13.0 == perDiem.getLunchRate().doubleValue());
-	    assertTrue(27.0 == perDiem.getDinnerRate().doubleValue());
-	    assertTrue(6.0 == perDiem.getIncidentalCeiling().doubleValue());
-	    assertTrue(151.0 == perDiem.getLodgingCeiling().doubleValue());
-	} catch (TrapException e)
-	{
-	    fail("per diem not found");
-	}
+        try
+        {
+            PerDiem perDiem = dbAccessor.getDomesticPerdiem("colorado");
+            assertNotNull(perDiem);
+            assertTrue(8.0 == perDiem.getBreakfastRate().doubleValue());
+            assertTrue(13.0 == perDiem.getLunchRate().doubleValue());
+            assertTrue(27.0 == perDiem.getDinnerRate().doubleValue());
+            assertTrue(6.0 == perDiem.getIncidentalCeiling().doubleValue());
+            assertTrue(151.0 == perDiem.getLodgingCeiling().doubleValue());
+        } catch (TrapException e)
+        {
+            fail("per diem not found");
+        }
     }
 
     /**
@@ -115,19 +115,19 @@ public class DatabaseAccessorTest
     @Test
     public void testGetDomesticPerdiemStringString()
     {
-	try
-	{
-	    PerDiem perDiem = dbAccessor.getDomesticPerdiem("minneapolis", "minnesota");
-	    assertNotNull(perDiem);
-	    assertTrue(7.0 == perDiem.getBreakfastRate().doubleValue());
-	    assertTrue(12.0 == perDiem.getLunchRate().doubleValue());
-	    assertTrue(26.0 == perDiem.getDinnerRate().doubleValue());
-	    assertTrue(5.0 == perDiem.getIncidentalCeiling().doubleValue());
-	    assertTrue(150.0 == perDiem.getLodgingCeiling().doubleValue());
-	} catch (TrapException e)
-	{
-	    fail("per diem not found");
-	}
+        try
+        {
+            PerDiem perDiem = dbAccessor.getDomesticPerdiem("minneapolis", "minnesota");
+            assertNotNull(perDiem);
+            assertTrue(7.0 == perDiem.getBreakfastRate().doubleValue());
+            assertTrue(12.0 == perDiem.getLunchRate().doubleValue());
+            assertTrue(26.0 == perDiem.getDinnerRate().doubleValue());
+            assertTrue(5.0 == perDiem.getIncidentalCeiling().doubleValue());
+            assertTrue(150.0 == perDiem.getLodgingCeiling().doubleValue());
+        } catch (TrapException e)
+        {
+            fail("per diem not found");
+        }
     }
 
     /**
@@ -138,20 +138,20 @@ public class DatabaseAccessorTest
     @Test
     public void testGetIntlPerdiemString()
     {
-	PerDiem perDiem;
-	try
-	{
-	    perDiem = dbAccessor.getIntlPerdiem("switzerland");
-	    assertNotNull(perDiem);
-	    assertTrue(10.0 == perDiem.getBreakfastRate().doubleValue());
-	    assertTrue(20.0 == perDiem.getLunchRate().doubleValue());
-	    assertTrue(40.0 == perDiem.getDinnerRate().doubleValue());
-	    assertTrue(20.0 == perDiem.getIncidentalCeiling().doubleValue());
-	    assertTrue(250.0 == perDiem.getLodgingCeiling().doubleValue());
-	} catch (TrapException e)
-	{
-	    fail("perDiem not found");
-	}
+        PerDiem perDiem;
+        try
+        {
+            perDiem = dbAccessor.getIntlPerdiem("switzerland");
+            assertNotNull(perDiem);
+            assertTrue(10.0 == perDiem.getBreakfastRate().doubleValue());
+            assertTrue(20.0 == perDiem.getLunchRate().doubleValue());
+            assertTrue(40.0 == perDiem.getDinnerRate().doubleValue());
+            assertTrue(20.0 == perDiem.getIncidentalCeiling().doubleValue());
+            assertTrue(250.0 == perDiem.getLodgingCeiling().doubleValue());
+        } catch (TrapException e)
+        {
+            fail("perDiem not found");
+        }
     }
 
     /**
@@ -162,19 +162,19 @@ public class DatabaseAccessorTest
     @Test
     public void testGetIntlPerdiemStringString()
     {
-	try
-	{
-	    PerDiem perDiem = dbAccessor.getIntlPerdiem("zurich", "switzerland");
-	    assertNotNull(perDiem);
-	    assertTrue(12.0 == perDiem.getBreakfastRate().doubleValue());
-	    assertTrue(25.0 == perDiem.getLunchRate().doubleValue());
-	    assertTrue(50.0 == perDiem.getDinnerRate().doubleValue());
-	    assertTrue(20.0 == perDiem.getIncidentalCeiling().doubleValue());
-	    assertTrue(225.0 == perDiem.getLodgingCeiling().doubleValue());
-	} catch (TrapException e)
-	{
-	    fail("per diem not found");
-	}
+        try
+        {
+            PerDiem perDiem = dbAccessor.getIntlPerdiem("zurich", "switzerland");
+            assertNotNull(perDiem);
+            assertTrue(12.0 == perDiem.getBreakfastRate().doubleValue());
+            assertTrue(25.0 == perDiem.getLunchRate().doubleValue());
+            assertTrue(50.0 == perDiem.getDinnerRate().doubleValue());
+            assertTrue(20.0 == perDiem.getIncidentalCeiling().doubleValue());
+            assertTrue(225.0 == perDiem.getLodgingCeiling().doubleValue());
+        } catch (TrapException e)
+        {
+            fail("per diem not found");
+        }
     }
 
     /**
@@ -185,18 +185,18 @@ public class DatabaseAccessorTest
     @Test
     public void testGetGrant()
     {
-	try
-	{
-	    Grant grant = dbAccessor.getGrant("010101010101");
-	    assertNotNull(grant);
-	    assertEquals("010101010101", grant.getAccountNumber());
-	    assertEquals("sponsored", grant.getAccountType());
-	    assertEquals("DARPA", grant.getFundingOrganization());
-	    assertEquals("government", grant.getOrganizationType());
-	} catch (TrapException e)
-	{
-	    fail("grant not found");
-	}
+        try
+        {
+            Grant grant = dbAccessor.getGrant("010101010101");
+            assertNotNull(grant);
+            assertEquals("010101010101", grant.getAccountNumber());
+            assertEquals("sponsored", grant.getAccountType());
+            assertEquals("DARPA", grant.getFundingOrganization());
+            assertEquals("government", grant.getOrganizationType());
+        } catch (TrapException e)
+        {
+            fail("grant not found");
+        }
     }
 
     /**
@@ -207,19 +207,20 @@ public class DatabaseAccessorTest
     @Test
     public void testGetUserGrant()
     {
-	try
+        try
         {
-	    UserGrant userGrant = dbAccessor.getUserGrant("010101010101");
-	    assertNotNull(userGrant);
-	    assertEquals("010101010101", userGrant.getAccountNumber());
-	    assertEquals(userGrant.getGrantAdmin(), "heimd001");
-	    String[] payees = {"linc001","gayxx067"};
-	    for(int i = 0; i < payees.length; i++){
-		assertEquals(payees[i], userGrant.getAuthorizedPayees()[i]);
-	    }
+            UserGrant userGrant = dbAccessor.getUserGrant("010101010101");
+            assertNotNull(userGrant);
+            assertEquals("010101010101", userGrant.getAccountNumber());
+            assertEquals(userGrant.getGrantAdmin(), "heimd001");
+            String[] payees = { "linc001", "gayxx067" };
+            for (int i = 0; i < payees.length; i++)
+            {
+                assertEquals(payees[i], userGrant.getAuthorizedPayees()[i]);
+            }
         } catch (TrapException e)
         {
-	   fail("userGrant not found");
+            fail("userGrant not found");
         }
     }
 
@@ -237,8 +238,8 @@ public class DatabaseAccessorTest
             assertTrue(18.0 == usdValue);
         } catch (TrapException e)
         {
-	    fail("conversion not found");
-        } 
+            fail("conversion not found");
+        }
     }
 
 }

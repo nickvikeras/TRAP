@@ -41,14 +41,14 @@ public class TrapDateUtil
      */
     public static Date parseTrapDateTime(final String dateString) throws TrapException
     {
-	DateFormat dateFormat = new SimpleDateFormat(formatDateTimeString);
-	try
-	{
-	    return dateFormat.parse(dateString);
-	} catch (ParseException e)
-	{
-	    throw new TrapException("unparseable date");
-	}
+        DateFormat dateFormat = new SimpleDateFormat(formatDateTimeString);
+        try
+        {
+            return dateFormat.parse(dateString);
+        } catch (ParseException e)
+        {
+            throw new TrapException("unparseable date");
+        }
     }
 
     /**
@@ -58,14 +58,14 @@ public class TrapDateUtil
      */
     public static Date parseTrapDate(final String dateString) throws TrapException
     {
-	DateFormat dateFormat = new SimpleDateFormat(formatDateString);
-	try
-	{
-	    return dateFormat.parse(dateString);
-	} catch (ParseException e)
-	{
-	    throw new TrapException("unparseable date");
-	}
+        DateFormat dateFormat = new SimpleDateFormat(formatDateString);
+        try
+        {
+            return dateFormat.parse(dateString);
+        } catch (ParseException e)
+        {
+            throw new TrapException("unparseable date");
+        }
     }
 
     /**
@@ -75,8 +75,8 @@ public class TrapDateUtil
      */
     public static String printDate(Date date)
     {
-	DateFormat dateFormat = new SimpleDateFormat(formatDateString);
-	return dateFormat.format(date);
+        DateFormat dateFormat = new SimpleDateFormat(formatDateString);
+        return dateFormat.format(date);
     }
 
     /**
@@ -86,8 +86,8 @@ public class TrapDateUtil
      */
     public static String printDateTime(Date date)
     {
-	DateFormat dateFormat = new SimpleDateFormat(formatDateTimeString);
-	return dateFormat.format(date);
+        DateFormat dateFormat = new SimpleDateFormat(formatDateTimeString);
+        return dateFormat.format(date);
     }
 
 }

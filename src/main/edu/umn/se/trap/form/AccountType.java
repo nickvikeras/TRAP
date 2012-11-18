@@ -26,8 +26,7 @@ package edu.umn.se.trap.form;
 
 public enum AccountType
 {
-    
-    SPONSORED,
-    NONSPONSORED
+
+    SPONSORED, NONSPONSORED
 
 }

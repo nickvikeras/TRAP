@@ -31,7 +31,7 @@ public class User
     private String citizenship;
     private String visaStatus;
     private boolean paidByUniversity;
-    
+
     /**
      * @param userName
      * @param fullName
@@ -43,15 +43,16 @@ public class User
      */
     public User(String userName, String fullName, String email, String employeeId, String citizenship, String visaStatus, boolean paidByUniversity)
     {
-	super();
-	this.userName = userName;
-	this.fullName = fullName;
-	this.email = email;
-	this.employeeId = employeeId;
-	this.citizenship = citizenship;
-	this.visaStatus = visaStatus;
-	this.paidByUniversity = paidByUniversity;
+        super();
+        this.userName = userName;
+        this.fullName = fullName;
+        this.email = email;
+        this.employeeId = employeeId;
+        this.citizenship = citizenship;
+        this.visaStatus = visaStatus;
+        this.paidByUniversity = paidByUniversity;
     }
+
     /**
      * @return the userName
      */
@@ -59,13 +60,16 @@ public class User
     {
         return userName;
     }
+
     /**
-     * @param userName the userName to set
+     * @param userName
+     *            the userName to set
      */
     public void setUserName(String userName)
     {
         this.userName = userName;
     }
+
     /**
      * @return the fullName
      */
@@ -73,13 +77,16 @@ public class User
     {
         return fullName;
     }
+
     /**
-     * @param fullName the fullName to set
+     * @param fullName
+     *            the fullName to set
      */
     public void setFullName(String fullName)
     {
         this.fullName = fullName;
     }
+
     /**
      * @return the email
      */
@@ -87,13 +94,16 @@ public class User
     {
         return email;
     }
+
     /**
-     * @param email the email to set
+     * @param email
+     *            the email to set
      */
     public void setEmail(String email)
     {
         this.email = email;
     }
+
     /**
      * @return the eMPLOYEE_ID
      */
@@ -101,13 +111,16 @@ public class User
     {
         return employeeId;
     }
+
     /**
-     * @param eMPLOYEE_ID the eMPLOYEE_ID to set
+     * @param eMPLOYEE_ID
+     *            the eMPLOYEE_ID to set
      */
     public void setEmployeeId(String employeeId)
     {
         this.employeeId = employeeId;
     }
+
     /**
      * @return the citizenship
      */
@@ -115,13 +128,16 @@ public class User
     {
         return citizenship;
     }
+
     /**
-     * @param citizenship the citizenship to set
+     * @param citizenship
+     *            the citizenship to set
      */
     public void setCitizenship(String citizenship)
     {
         this.citizenship = citizenship;
     }
+
     /**
      * @return the visaStatus
      */
@@ -129,13 +145,16 @@ public class User
     {
         return visaStatus;
     }
+
     /**
-     * @param visaStatus the visaStatus to set
+     * @param visaStatus
+     *            the visaStatus to set
      */
     public void setVisaStatus(String visaStatus)
     {
         this.visaStatus = visaStatus;
     }
+
     /**
      * @return the pAID_BY_UNIVERSITY
      */
@@ -143,8 +162,10 @@ public class User
     {
         return paidByUniversity;
     }
+
     /**
-     * @param paidByUniversity the paidByUniversity to set
+     * @param paidByUniversity
+     *            the paidByUniversity to set
      */
     public void setPaidByUniversity(boolean paidByUniversity)
     {
