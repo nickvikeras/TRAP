@@ -36,10 +36,10 @@ public class TrapForm
     private Map<String, String> formOutput;
     private TravelFormMetadata formMetaData;
     private GrantSet grantSet;
-    private User user;
+    private FormUser user;
     private Trip trip;
     private List<Expense> expenses;
-    private Map<Integer, Double> accountToPercentMap;
+    private Map<String, Double> accountToPercentMap;
     
     /**
      * @param formId
@@ -54,8 +54,8 @@ public class TrapForm
      */
     public TrapForm(Integer formId, Map<String, String> formInput,
             Map<String, String> formOutput, TravelFormMetadata formMetaData,
-            GrantSet grantSet, User user, Trip trip, List<Expense> expenses,
-            Map<Integer, Double> accountToPercentMap)
+            GrantSet grantSet, FormUser user, Trip trip, List<Expense> expenses,
+            Map<String, Double> accountToPercentMap)
     {
 	super();
 	this.formId = formId;
@@ -152,7 +152,7 @@ public class TrapForm
     /**
      * @return the user
      */
-    public User getUser()
+    public FormUser getUser()
     {
 	return user;
     }
@@ -161,7 +161,7 @@ public class TrapForm
      * @param user
      *            the user to set
      */
-    public void setUser(User user)
+    public void setUser(FormUser user)
     {
 	this.user = user;
     }

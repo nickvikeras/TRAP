@@ -19,16 +19,15 @@
 package edu.umn.se.trap;
 
 import java.util.Map;
-import java.util.Map.Entry;
 import edu.umn.se.trap.calculator.TrapCalculator;
 import edu.umn.se.trap.calculator.TrapException;
 import edu.umn.se.trap.db.CurrencyDB;
-import edu.umn.se.trap.db.DatabaseSingleton;
 import edu.umn.se.trap.db.GrantDB;
 import edu.umn.se.trap.db.KeyNotFoundException;
 import edu.umn.se.trap.db.PerDiemDB;
 import edu.umn.se.trap.db.UserDB;
 import edu.umn.se.trap.db.UserGrantDB;
+import edu.umn.se.trap.db.orm.DatabaseAccessor;
 import edu.umn.se.trap.form.FormFactory;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.FormChecker;
@@ -41,11 +40,7 @@ import edu.umn.se.trap.rule.FormCheckerFactory;
 public class TravelFormProcessorImpl implements TravelFormProcessorIntf
 {
     private String userId;
-    private UserDB userDB;
-    private PerDiemDB perDiemDB;
-    private GrantDB grantDB;
-    private UserGrantDB userGrantDB;
-    private CurrencyDB currencyDB;
+    private DatabaseAccessor databaseAccessor;
     
     /**
     * Constructor -- uses parameters to allow for unit testing.
@@ -56,12 +51,9 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     * @param currencyDB the table abstraction for the currency DB. */
     public TravelFormProcessorImpl(UserDB userDB, PerDiemDB perDiemDB, GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
     {
-	this.userDB = userDB;
-	this.perDiemDB = perDiemDB;
-	this.grantDB = grantDB;
-	this.userGrantDB = userGrantDB;
-	this.currencyDB = currencyDB;
+	this.databaseAccessor = new DatabaseAccessor(userDB, perDiemDB, grantDB, userGrantDB, currencyDB);
     }
+
 
     /**
      * 
@@ -92,7 +84,7 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     @Override
     public Map<Integer, TravelFormMetadata> getSavedForms() throws Exception
     {
-	return DatabaseSingleton.getFormDBInstance().getSavedForms();
+	return databaseAccessor.getFormDB().getSavedForms();
     }
 
     /*
@@ -103,7 +95,7 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     @Override
     public void clearSavedForms() throws Exception
     {
-	DatabaseSingleton.getFormDBInstance().clear();
+	databaseAccessor.getFormDB().clear();
 
     }
 
@@ -118,7 +110,7 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     public Map<String, String> getSavedFormData(Integer formId)
 	    throws Exception
     {
-	TrapForm form = DatabaseSingleton.getFormDBInstance().getForm(formId);
+	TrapForm form = databaseAccessor.getFormDB().getForm(formId);
 	if(form == null){
 	    throw new TrapException("No form with id " + formId + " found.");
 	}
@@ -135,8 +127,8 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     public Integer saveFormData(Map<String, String> formData, String description)
 	    throws Exception
     {
-	TrapForm form = FormFactory.getNewForm(formData, description);
-	DatabaseSingleton.getFormDBInstance().saveForm(form);
+	TrapForm form = FormFactory.getNewForm(formData, description, databaseAccessor);
+	databaseAccessor.getFormDB().saveForm(form);
 	return form.getFormId();
     }
 
@@ -150,9 +142,9 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     public Integer saveFormData(Map<String, String> formData, Integer id)
 	    throws Exception
     {
-	TrapForm form = DatabaseSingleton.getFormDBInstance().getForm(id);
-	form = FormFactory.getNewForm(formData, form.getFormMetaData().description, id);
-	DatabaseSingleton.getFormDBInstance().saveForm(form);
+	TrapForm form = databaseAccessor.getFormDB().getForm(id);
+	form = FormFactory.getNewForm(formData, form.getFormMetaData().description, id, databaseAccessor);
+	databaseAccessor.getFormDB().saveForm(form);
 	return form.getFormId();
     }
 
@@ -165,7 +157,7 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
     @Override
     public void submitFormData(Integer formId) throws Exception
     {
-	TrapForm form = DatabaseSingleton.getFormDBInstance().getForm(formId);
+	TrapForm form = databaseAccessor.getFormDB().getForm(formId);
 	FormChecker wellFormedChecker = FormCheckerFactory.createWellFormedChecker();
 	FormChecker businessRuleChecker = FormCheckerFactory.createBusinessRuleChecker();
 	FormChecker grantRuleChecker = FormCheckerFactory.createGrantRuleChecker();
@@ -205,7 +197,7 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
 	Map<String, String> completedForm  = null;
 	try
 	{
-	   completedForm = DatabaseSingleton.getFormDBInstance().getForm(formId).getFormOutput();
+	   completedForm = databaseAccessor.getFormDB().getForm(formId).getFormOutput();
 
 	} 
 	catch (KeyNotFoundException e)

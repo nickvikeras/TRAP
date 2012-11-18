@@ -30,7 +30,6 @@ public class Expense
     // private member variables:
     private Date date;
     private double amount;
-    private String currency;
     private Location location;
     private GrantSet eligibleGrants;
     private String justification;    
@@ -45,14 +44,13 @@ public class Expense
      * @param eligibleGrants
      * @param justification
      */
-    public Expense(ExpenseType type, Date date, double amount, String currency,
+    public Expense(ExpenseType type, Date date, double amount,
             Location location, GrantSet eligibleGrants, String justification)
     {
 	super();
 	this.type = type;
 	this.date = date;
 	this.amount = amount;
-	this.currency = currency;
 	this.location = location;
 	this.eligibleGrants = eligibleGrants;
 	this.justification = justification;
@@ -110,23 +108,6 @@ public class Expense
     public void setAmount(double amount)
     {
         this.amount = amount;
-    }
-
-    /**
-     * @return the currency
-     */
-    public String getCurrency()
-    {
-        return currency;
-    }
-
-    /**
-     * @param currency
-     *            the currency to set
-     */
-    public void setCurrency(String currency)
-    {
-        this.currency = currency;
     }
 
     /**

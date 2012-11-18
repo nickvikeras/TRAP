@@ -28,9 +28,10 @@ public class TransportationExpense extends Expense
 {
 
     // Public member variables:
-    private TransportationType tranportationType;
+    private String tranportationType;
     private String carrier;
     private int milesTraveled;
+    private boolean isRental;
 
     /**
      * @param type
@@ -41,15 +42,13 @@ public class TransportationExpense extends Expense
      * @param eligibleGrants
      * @param justification
      */
-    public TransportationExpense(ExpenseType type, Date date, double amount,
-	    String currency, Location location, GrantSet eligibleGrants,
-	    String justification, TransportationType tranportationType,
-	    String carrier, int milesTraveled)
+    public TransportationExpense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification, String tranportationType, String carrier, int milesTraveled, boolean isRental)
     {
-	super(type, date, amount, currency, location, eligibleGrants, justification);
+	super(type, date, amount, location, eligibleGrants, justification);
 	this.tranportationType = tranportationType;
 	this.carrier = carrier;
 	this.milesTraveled = milesTraveled;
+	this.setRental(isRental);
     }
 
     // Getters and setters:
@@ -57,7 +56,7 @@ public class TransportationExpense extends Expense
     /**
      * @return the tranportationType
      */
-    public TransportationType getTranportationType()
+    public String getTranportationType()
     {
 	return tranportationType;
     }
@@ -66,7 +65,7 @@ public class TransportationExpense extends Expense
      * @param tranportationType
      *            the tranportationType to set
      */
-    public void setTranportationType(TransportationType tranportationType)
+    public void setTranportationType(String tranportationType)
     {
 	this.tranportationType = tranportationType;
     }
@@ -103,6 +102,22 @@ public class TransportationExpense extends Expense
     public void setMilesTraveled(int milesTraveled)
     {
 	this.milesTraveled = milesTraveled;
+    }
+
+    /**
+     * @return the isRental
+     */
+    public boolean isRental()
+    {
+	return isRental;
+    }
+
+    /**
+     * @param isRental the isRental to set
+     */
+    public void setRental(boolean isRental)
+    {
+	this.isRental = isRental;
     }
 
 }

@@ -28,19 +28,19 @@ public class GrantSet
 {
 
     // Public member variables:
-    private Set<Grant> grants;
+    private Set<FormGrant> grants;
 
-    public GrantSet(Set<Grant> grants)
+    public GrantSet(Set<FormGrant> grants)
     {
 	this.grants = grants;
     }
 
-    public void removeGrant(Integer accountNumber)
+    public void removeGrant(String accountName)
     {
-	Grant grantToRemove = null;
-	for (Grant grant : grants)
+	FormGrant grantToRemove = null;
+	for (FormGrant grant : grants)
 	{
-	    if (grant.getAccountNumber().equals(accountNumber))
+	    if (grant.getAccountName().equals(accountName))
 	    {
 		grantToRemove = grant;
 	    }
