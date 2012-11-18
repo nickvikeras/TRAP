@@ -21,6 +21,7 @@ package edu.umn.se.trap.rule;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.umn.se.trap.calculator.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 
 /**
@@ -35,16 +36,11 @@ public class FormChecker
 	rules.add(rule);
     }
 
-    public void fireRules(TrapForm form) throws RuleException
+    public void fireRules(TrapForm form) throws TrapException
     {
-	RuleException ruleException = new RuleException();
 	for (AbstractRule rule : rules)
 	{
-	    ruleException.addMessage(rule.validateRule(form));
-	}
-	if (ruleException.getNumMessages() > 0)
-	{
-	    throw ruleException;
+	    rule.validateRule(form);
 	}
     }
 }
