@@ -32,7 +32,7 @@ public class USCarrierRule extends AbstractRule
 {
 
     @Override
-    public String validateRule(TrapForm form) throws TrapException
+    public void validateRule(TrapForm form) throws TrapException
     {
         if(form != null) 
         {
@@ -51,7 +51,6 @@ public class USCarrierRule extends AbstractRule
                         if(((TransportationExpense) expense).getCarrier().equals(""))
                         {
                             
-                            return "Rule approved";
 
                         }
                         else
@@ -66,8 +65,6 @@ public class USCarrierRule extends AbstractRule
         {
             throw new TrapException("Invalid TrapForm object: form was null.");
         }
-       
-        return null;
-    }
+     }
 
 }

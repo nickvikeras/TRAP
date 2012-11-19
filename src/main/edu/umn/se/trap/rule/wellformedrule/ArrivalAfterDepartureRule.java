@@ -16,16 +16,46 @@
     specific language governing permissions and limitations
     under the License. 
  */
-package edu.umn.se.trap.rule;
+package edu.umn.se.trap.rule.wellformedrule;
+
+import java.util.Date;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
+import edu.umn.se.trap.rule.AbstractRule;
 
 /**
  * @author nick
  * 
  */
-public abstract class AbstractRule
+public class ArrivalAfterDepartureRule extends AbstractRule
 {
-    public abstract void validateRule(TrapForm form) throws TrapException;
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
+     * )
+     */
+    @Override
+    public void validateRule(TrapForm form) throws TrapException
+    {
+        checkDates(form.getTrip().getDepartureDateTime(), form.getTrip().getArrivalDateTime());
+    }
+
+    /**
+     * @param departureDateTime
+     * @param arrivalDateTime
+     * @throws TrapException 
+     */
+    protected void checkDates(Date departureDateTime, Date arrivalDateTime) throws TrapException
+    {
+        if (arrivalDateTime.getTime() <= departureDateTime.getTime())
+        {
+            throw new TrapException("Departure time must come before arrival time");
+        }
+
+    }
+
 }
