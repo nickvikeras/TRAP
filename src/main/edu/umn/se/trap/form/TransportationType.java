@@ -29,6 +29,8 @@ public enum TransportationType
 
     // These correlate to the following strings respectively:
     // air, car, rail, taxi, public transportation, gas, parking, toll, luggage
-    AIR, CAR, RAIL, TAXI, PUBLIC_TRANSPORTATION, GAS, PARKING, TOLL, LUGGAGE
+    // RENTAL refers to the case when TRANSPORTATION<#>_TYPE = car and
+    // TRANSPORTATION<#>_RENTAL= yes.
+    AIR, CAR, RAIL, TAXI, PUBLIC_TRANSPORTATION, GAS, PARKING, TOLL, LUGGAGE, RENTAL
 
 }

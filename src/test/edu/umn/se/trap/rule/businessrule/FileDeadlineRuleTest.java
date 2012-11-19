@@ -31,13 +31,13 @@ import edu.umn.se.trap.rule.wellformedrule.ArrivalAfterDepartureRule;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class FileDeadlineRuleTest
 {
 
     private final int numberOfMillesecondsInADay = 86400000;
-    
+
     /**
      * @throws java.lang.Exception
      */
@@ -45,7 +45,7 @@ public class FileDeadlineRuleTest
     public void setUp() throws Exception
     {
     }
-    
+
     /**
      * @throws java.lang.Exception
      */
@@ -61,25 +61,28 @@ public class FileDeadlineRuleTest
         try
         {
             rule.checkDeadline(new Date(0), new Date(1));
-        } catch (TrapException e)
+        }
+        catch (TrapException e)
         {
             fail("The form was filed too long after the arrival date");
         }
     }
-    
+
     @Test
     public void testBadCase()
     {
         FileDeadlineRule rule = new FileDeadlineRule();
         try
         {
-            rule.checkDeadline(new Date(0), new Date((rule.getDEADLINE_DAYS()*numberOfMillesecondsInADay) + 1));
+            rule.checkDeadline(new Date(0), new Date(
+                    (rule.getDEADLINE_DAYS() * numberOfMillesecondsInADay) + 1));
             fail("The form passed even though the form was filed too late");
-        } catch (TrapException e)
+        }
+        catch (TrapException e)
         {
         }
     }
-    
+
     @Test
     public void testEdgeCase()
     {
@@ -87,7 +90,8 @@ public class FileDeadlineRuleTest
         try
         {
             rule.checkDeadline(new Date(0), new Date(rule.getDEADLINE_DAYS()));
-        } catch (TrapException e)
+        }
+        catch (TrapException e)
         {
             fail("The form was filed too long after the arrival date");
         }
@@ -100,7 +104,8 @@ public class FileDeadlineRuleTest
         try
         {
             rule.checkDeadline(new Date(5), new Date(0));
-        } catch (TrapException e)
+        }
+        catch (TrapException e)
         {
             fail("The form was filed too long after the arrival date");
         }

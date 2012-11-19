@@ -28,59 +28,77 @@ import edu.umn.se.trap.rule.AbstractRule;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class FileDeadlineRule extends AbstractRule
 {
-    
+
     private final int DEADLINE_DAYS = 15;
 
-    /* (non-Javadoc)
-     * @see edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
+     * )
      */
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
-        Trip trip = form.getTrip();
 
-        if (trip == null)
+        if (form != null)
         {
-            throw new TrapException(
-                    "Invalid TrapForm object: trip was null.");
+            Trip trip = form.getTrip();
+
+            if (trip == null)
+            {
+                throw new TrapException(
+                        "Invalid TrapForm object: trip was null.");
+            }
+
+            Date arrivalTime = trip.getArrivalDateTime();
+
+            if (arrivalTime == null)
+            {
+                throw new TrapException(
+                        "Invalid TrapForm object: arrivalDateTime was null.");
+            }
+
+            Date current = new Date();
+
+            checkDeadline(arrivalTime, current);
         }
-        
-        Date arrivalTime = trip.getArrivalDateTime();
-        
-        if (arrivalTime == null)
+        else
         {
-            throw new TrapException(
-                    "Invalid TrapForm object: arrivalDateTime was null.");
+
+            throw new TrapException("Invalid TrapForm object: form was null.");
+
         }
-        
-        Date current = new Date();
-        
-        checkDeadline(arrivalTime, current);
 
     }
 
     /**
      * @param arrival
      * @param current
-     * @throws TrapException 
+     * @throws TrapException
      */
-    protected void checkDeadline(Date arrival, Date current) throws TrapException
+    protected void checkDeadline(Date arrival, Date current)
+            throws TrapException
     {
-    
+
         // Get the number of milleseconds in DEADLINE_DAYS.
-        Integer deadlineTime =  DEADLINE_DAYS * 86400000;
-        
-        /* Check to see if the time between the current time and the arrival time
-        is greater than the deadline time. If so, throw an error.*/
-        if((current.getTime() - arrival.getTime()) > deadlineTime)
+        Integer deadlineTime = DEADLINE_DAYS * 86400000;
+
+        /*
+         * Check to see if the time between the current time and the arrival
+         * time is greater than the deadline time. If so, throw an error.
+         */
+        if ((current.getTime() - arrival.getTime()) > deadlineTime)
         {
-            throw new TrapException("Forms must be filed no more than " + DEADLINE_DAYS + " after the arrival time.");
+            throw new TrapException("Forms must be filed no more than "
+                    + DEADLINE_DAYS + " after the arrival time.");
         }
-        
+
     }
 
     /**

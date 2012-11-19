@@ -41,7 +41,15 @@ public class ArrivalAfterDepartureRule extends AbstractRule
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
-        checkDates(form.getTrip().getDepartureDateTime(), form.getTrip().getArrivalDateTime());
+        
+        if(form != null)
+        {
+            checkDates(form.getTrip().getDepartureDateTime(), form.getTrip().getArrivalDateTime());
+        }
+        else 
+        {
+            throw new TrapException("Invalid TrapForm object: form was null.");
+        }
     }
 
     /**

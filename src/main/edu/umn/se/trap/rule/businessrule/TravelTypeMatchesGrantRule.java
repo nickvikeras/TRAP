@@ -21,6 +21,8 @@ package edu.umn.se.trap.rule.businessrule;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.FormUser;
@@ -31,7 +33,7 @@ import edu.umn.se.trap.rule.AbstractRule;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class TravelTypeMatchesGrantRule extends AbstractRule
 {
@@ -89,14 +91,14 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
      * @param trip
      * @throws TrapException
      */
-    protected void checkExportGrantCitizen(Set<FormGrant> grants,
-            Trip trip) throws TrapException
+    protected void checkExportGrantCitizen(Set<FormGrant> grants, Trip trip)
+            throws TrapException
     {
 
         boolean cseSponsored = trip.isTravelTypeCseSponsored();
         boolean dtcSponsored = trip.isTravelTypeDtcSponsored();
         boolean nonSponsored = trip.isTravelTypeNonsponsored();
-        
+
         /*
          * Iterate over the set and throw an error if any of the grants are
          * non-export.
@@ -108,27 +110,30 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
         {
             FormGrant grant = grantIter.next();
 
-            if (grant.getAccountType().equals("Sponsored"))
+            if (StringUtils.equals(grant.getAccountType(), "Sponsored"))
             {
                 // Throw an error if the grant is not sponsored by Dtc or Cse.
-                if(!(cseSponsored || dtcSponsored))
+                if (!(cseSponsored || dtcSponsored))
                 {
-                    
-                    throw new TrapException("A trip must be sponsored by Dtc or CSE to charge to a sponsored grant.");
-                    
+
+                    throw new TrapException(
+                            "A trip must be sponsored by Dtc or CSE to charge to a sponsored grant.");
+
                 }
-                
+
             }
-            else if(grant.getAccountType().equals("Non-sponsored"))
+            else if (StringUtils.equals(grant.getAccountType(), "Non-sponsored"))
             {
-                // Throw an error if the trip is sponsored and trying to charge to a non-sponsored grant.
-                if(!nonSponsored)
+                // Throw an error if the trip is sponsored and trying to charge
+                // to a non-sponsored grant.
+                if (!nonSponsored)
                 {
-                    throw new TrapException("A trip must be non-sponsored to charge to a non-sponsored grant.");
+                    throw new TrapException(
+                            "A trip must be non-sponsored to charge to a non-sponsored grant.");
                 }
             }
         }
 
     }
-    
+
 }

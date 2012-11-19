@@ -21,6 +21,8 @@ package edu.umn.se.trap.rule.businessrule;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
@@ -63,8 +65,8 @@ public class USCarrierRule extends AbstractRule
                 {
 
                     // TODO: Check to see that the air carrier is a US Carrier.
-                    if (((TransportationExpense) expense).getCarrier().equals(
-                            ""))
+                    if (StringUtils.equals(
+                            ((TransportationExpense) expense).getCarrier(), ""))
                     {
                     }
                     else

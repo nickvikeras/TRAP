@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.FormGrant;
@@ -95,7 +97,7 @@ public class ExportGrantCitizenRule extends AbstractRule
             FormUser formUser) throws TrapException
     {
 
-        if (!(formUser.getCitizenship().equals("United States")))
+        if (!(StringUtils.equals(formUser.getCitizenship(), "United States")))
         {
 
             /*
@@ -109,7 +111,7 @@ public class ExportGrantCitizenRule extends AbstractRule
             {
                 FormGrant grant = grantIter.next();
 
-                if (grant.getOrganizationType().equals("noExport"))
+                if (StringUtils.equals(grant.getOrganizationType(), "noExport"))
                 {
                     throw new TrapException(
                             "Only U.S. citizens can use non-export grants");
