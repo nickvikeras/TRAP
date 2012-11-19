@@ -261,7 +261,7 @@ public class FormFactory
         {
             String accountName = formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i));
             Grant grant = dbAccessor.getGrant(accountName);
-            FormGrant formGrant = new FormGrant(accountName, grant.getAccountType(), grant.getFundingOrganization(), grant.getAccountBalance());
+            FormGrant formGrant = new FormGrant(accountName, grant.getAccountType(), grant.getFundingOrganization(), grant.getAccountBalance(), grant.getOrganizationType());
             grants.add(formGrant);
         }
         return new GrantSet(grants);

@@ -29,6 +29,7 @@ public class FormGrant
     private String accountName;
     private String accountType;
     private String fundingOrganization;
+    private String organizationType;
     private Double accountBalance;
 
     // Getters and setters:
@@ -38,13 +39,15 @@ public class FormGrant
      * @param accountType
      * @param fundingOrganization
      * @param accountBalance
+     * @param organizationType 
      */
-    public FormGrant(String accountName, String accountType, String fundingOrganization, Double accountBalance)
+    public FormGrant(String accountName, String accountType, String fundingOrganization, Double accountBalance, String organizationType)
     {
         super();
         this.accountName = accountName;
         this.accountType = accountType;
         this.fundingOrganization = fundingOrganization;
+        this.organizationType = organizationType;
         this.accountBalance = accountBalance;
     }
 
@@ -97,6 +100,22 @@ public class FormGrant
     public void setFundingOrganization(String fundingOrganization)
     {
         this.fundingOrganization = fundingOrganization;
+    }
+
+    /**
+     * @return the organizationType
+     */
+    public String getOrganizationType()
+    {
+        return organizationType;
+    }
+
+    /**
+     * @param organizationType the organizationType to set
+     */
+    public void setOrganizationType(String organizationType)
+    {
+        this.organizationType = organizationType;
     }
 
     /**
