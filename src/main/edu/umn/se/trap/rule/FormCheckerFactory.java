@@ -18,6 +18,8 @@
  */
 package edu.umn.se.trap.rule;
 
+import edu.umn.se.trap.rule.wellformedrule.ArrivalAfterDepartureRule;
+
 /**
  * @author nick
  * 
@@ -27,7 +29,7 @@ public class FormCheckerFactory
     public static FormChecker createWellFormedChecker()
     {
         FormChecker checker = new FormChecker();
-        // add rules here with checker.addRule(rule);
+        checker.addRule(new ArrivalAfterDepartureRule());
         return checker;
     }
 

@@ -76,8 +76,8 @@ public class FormFactory
         Integer numGrants = Integer.parseInt(formData.get(TrapInputKeys.NUM_GRANTS));
         for (int i = 0; i < numGrants; i++)
         {
-            String accountNumber = formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i));
-            Double percentToCharge = Double.parseDouble(formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i)));
+            String accountNumber = formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i + 1));
+            Double percentToCharge = Double.parseDouble(formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i + 1)));
             accountToPercentMap.put(accountNumber, percentToCharge);
         }
         return accountToPercentMap;
@@ -97,9 +97,9 @@ public class FormFactory
             Date date = TrapDateUtil.parseTrapDateTime(formData.get(TrapInputKeys.DEPARTURE_DATETIME));
             // get date for this day.
             date.setTime(date.getTime() + ((3600 * 24) * i));
-            String breakfastCity = formData.get(String.format(TrapInputKeys.DAYa_BREAKFAST_CITY, i));
-            String breakfastState = formData.get(String.format(TrapInputKeys.DAYa_BREAKFAST_STATE, i));
-            String breakfastCountry = formData.get(String.format(TrapInputKeys.DAYa_BREAKFAST_COUNTRY, i));
+            String breakfastCity = formData.get(String.format(TrapInputKeys.DAYa_BREAKFAST_CITY, i + 1));
+            String breakfastState = formData.get(String.format(TrapInputKeys.DAYa_BREAKFAST_STATE, i + 1));
+            String breakfastCountry = formData.get(String.format(TrapInputKeys.DAYa_BREAKFAST_COUNTRY, i + 1));
             PerDiem breakfastPerDiem = getPerDiem(breakfastCity, breakfastState, breakfastCountry, dbAccessor);
             if (breakfastPerDiem != null)
             {
@@ -107,9 +107,9 @@ public class FormFactory
                 expenses.add(expense);
             }
 
-            String lunchCity = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_CITY, i));
-            String lunchState = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_STATE, i));
-            String lunchCountry = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_COUNTRY, i));
+            String lunchCity = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_CITY, i + 1));
+            String lunchState = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_STATE, i + 1));
+            String lunchCountry = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_COUNTRY, i + 1));
             PerDiem lunchPerDiem = getPerDiem(lunchCity, lunchState, lunchCountry, dbAccessor);
             if (lunchPerDiem != null)
             {
@@ -117,24 +117,24 @@ public class FormFactory
                 expenses.add(expense);
             }
 
-            String dinnerCity = formData.get(String.format(TrapInputKeys.DAYa_DINNER_CITY, i));
-            String dinnerState = formData.get(String.format(TrapInputKeys.DAYa_DINNER_STATE, i));
-            String dinnerCountry = formData.get(String.format(TrapInputKeys.DAYa_DINNER_COUNTRY, i));
+            String dinnerCity = formData.get(String.format(TrapInputKeys.DAYa_DINNER_CITY, i + 1));
+            String dinnerState = formData.get(String.format(TrapInputKeys.DAYa_DINNER_STATE, i + 1));
+            String dinnerCountry = formData.get(String.format(TrapInputKeys.DAYa_DINNER_COUNTRY, i + 1));
             PerDiem dinnerPerDiem = getPerDiem(dinnerCity, dinnerState, dinnerCountry, dbAccessor);
             if (dinnerPerDiem != null)
             {
                 Expense expense = new Expense(ExpenseType.DINNER, date, breakfastPerDiem.getDinnerRate(), new Location(dinnerCity, dinnerState, dinnerCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }
-            String incidentalCity = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CITY, i));
-            String incidentalState = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_STATE, i));
-            String incidentalCountry = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_COUNTRY, i));
-            Double incidentalAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_AMOUNT, i)));
-            String incidentalCurrency = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CURRENCY, i));
-            String incidentalJustification = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i));
+            String incidentalCity = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CITY, i + 1));
+            String incidentalState = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_STATE, i + 1));
+            String incidentalCountry = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_COUNTRY, i + 1));
             PerDiem incidentalPerdiem = getPerDiem(incidentalCity, incidentalState, incidentalCountry, dbAccessor);
             if (incidentalPerdiem != null)
             {
+                Double incidentalAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_AMOUNT, i + 1)));
+                String incidentalCurrency = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CURRENCY, i + 1));
+                String incidentalJustification = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i + 1));
                 Double incidentalAmountUSD = dbAccessor.getUsd(incidentalCurrency, incidentalAmount, date);
                 if (incidentalAmount > incidentalPerdiem.getIncidentalCeiling())
                 {
@@ -144,14 +144,14 @@ public class FormFactory
                 expenses.add(expense);
             }
 
-            String lodgingCity = formData.get(String.format(TrapInputKeys.DAYa_LODGING_CITY, i));
-            String lodgingState = formData.get(String.format(TrapInputKeys.DAYa_LODGING_STATE, i));
-            String lodgingCountry = formData.get(String.format(TrapInputKeys.DAYa_LODGING_COUNTRY, i));
-            double lodgingAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.DAYa_LODGING_AMOUNT, i)));
-            String lodgingCurrency = formData.get(String.format(TrapInputKeys.DAYa_LODGING_CURRENCY, i));
+            String lodgingCity = formData.get(String.format(TrapInputKeys.DAYa_LODGING_CITY, i + 1));
+            String lodgingState = formData.get(String.format(TrapInputKeys.DAYa_LODGING_STATE, i + 1));
+            String lodgingCountry = formData.get(String.format(TrapInputKeys.DAYa_LODGING_COUNTRY, i + 1));
             PerDiem lodgingPerDiem = getPerDiem(lodgingCity, lodgingState, lodgingCountry, dbAccessor);
             if (lodgingPerDiem != null)
             {
+                double lodgingAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.DAYa_LODGING_AMOUNT, i + 1)));
+                String lodgingCurrency = formData.get(String.format(TrapInputKeys.DAYa_LODGING_CURRENCY, i + 1));
                 Double lodgingAmountUSD = dbAccessor.getUsd(lodgingCurrency, lodgingAmount, date);
                 if (lodgingAmountUSD > lodgingPerDiem.getLodgingCeiling())
                 {
@@ -166,13 +166,18 @@ public class FormFactory
         final int numXport = Integer.parseInt(formData.get(TrapInputKeys.NUM_TRANSPORTATION));
         for (int i = 0; i < numXport; i++)
         {
-            Date transportationDate = TrapDateUtil.parseTrapDate(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_DATE)));
-            String transportationType = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_TYPE));
-            boolean isRental = StringUtils.equals(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_RENTAL)), null);
-            String carrier = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_CARRIER));
-            int milesTraveled = Integer.parseInt(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_MILES_TRAVELED)));
-            double transportationAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_AMOUNT)));
-            String transportationCurrensy = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_CURRENCY));
+            Date transportationDate = TrapDateUtil.parseTrapDate(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_DATE, i + 1)));
+            String transportationType = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_TYPE, i + 1));
+            boolean isRental = StringUtils.equals(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_RENTAL, i + 1)), null);
+            String carrier = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_CARRIER, i + 1));
+            String milesTravelStr = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_MILES_TRAVELED, i + 1));
+            Integer milesTraveled = null;
+            if (milesTravelStr != null)
+            {
+                milesTraveled  = Integer.parseInt(milesTravelStr);
+            }
+            double transportationAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_AMOUNT, i + 1)));
+            String transportationCurrensy = formData.get(String.format(TrapInputKeys.TRANSPORTATIONb_CURRENCY, i + 1));
             double transportationAmountUSD = dbAccessor.getUsd(transportationCurrensy, transportationAmount, transportationDate);
             Expense expense = new TransportationExpense(ExpenseType.TRANSPORTATION, transportationDate, transportationAmountUSD, null, getNewGrantSet(formData, dbAccessor), null, transportationType, carrier, milesTraveled, isRental);
             expenses.add(expense);
@@ -184,10 +189,10 @@ public class FormFactory
         final int numOther = Integer.parseInt(formData.get(TrapInputKeys.NUM_OTHER_EXPENSES));
         for (int i = 0; i < numOther; i++)
         {
-            Date otherDate = TrapDateUtil.parseTrapDate(formData.get(String.format(TrapInputKeys.OTHERc_DATE)));
-            String otherJustification = formData.get(String.format(TrapInputKeys.OTHERc_JUSTIFICATION));
-            Double otherAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.OTHERc_AMOUNT)));
-            String otherCurrency = formData.get(String.format(TrapInputKeys.OTHERc_CURRENCY));
+            Date otherDate = TrapDateUtil.parseTrapDate(formData.get(String.format(TrapInputKeys.OTHERc_DATE, i + 1)));
+            String otherJustification = formData.get(String.format(TrapInputKeys.OTHERc_JUSTIFICATION, i + 1));
+            Double otherAmount = Double.parseDouble(formData.get(String.format(TrapInputKeys.OTHERc_AMOUNT, i + 1)));
+            String otherCurrency = formData.get(String.format(TrapInputKeys.OTHERc_CURRENCY, i + 1));
             Double otherAmountUSD = dbAccessor.getUsd(otherCurrency, otherAmount, otherDate);
             Expense expense = new Expense(ExpenseType.OTHER, otherDate, otherAmountUSD, null, getNewGrantSet(formData, dbAccessor), otherJustification);
             expenses.add(expense);
@@ -206,21 +211,6 @@ public class FormFactory
     private static PerDiem getPerDiem(String city, String state, String country, DatabaseAccessor dbAccessor) throws TrapException
     {
         PerDiem perDiem = null;
-        if (country != null && state != null)
-        {
-            throw new TrapException("Invalid location.");
-        }
-
-        if (country != null)
-        {
-            if (city != null)
-            {
-                perDiem = dbAccessor.getIntlPerdiem(city, country);
-            } else
-            {
-                perDiem = dbAccessor.getIntlPerdiem(country);
-            }
-        }
         if (state != null)
         {
             if (city != null)
@@ -230,8 +220,16 @@ public class FormFactory
             {
                 dbAccessor.getDomesticPerdiem(state);
             }
+        } else if (country != null)
+        {
+            if (city != null)
+            {
+                perDiem = dbAccessor.getIntlPerdiem(city, country);
+            } else
+            {
+                perDiem = dbAccessor.getIntlPerdiem(country);
+            }
         }
-
         return perDiem;
     }
 
@@ -259,7 +257,7 @@ public class FormFactory
         Set<FormGrant> grants = new HashSet<FormGrant>();
         for (int i = 0; i < numGrants; i++)
         {
-            String accountName = formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i));
+            String accountName = formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i + 1));
             Grant grant = dbAccessor.getGrant(accountName);
             FormGrant formGrant = new FormGrant(accountName, grant.getAccountType(), grant.getFundingOrganization(), grant.getAccountBalance(), grant.getOrganizationType());
             grants.add(formGrant);
