@@ -35,44 +35,47 @@ public class USCarrierRule extends AbstractRule
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
-        if(form != null) 
+        if (form != null)
         {
             checkCarrier(form.getExpenses());
 
         }
-        else 
+        else
         {
             throw new TrapException("Invalid TrapForm object: form was null.");
         }
-     }
-    
+    }
+
     /**
      * @param expenses
      * @throws TrapException
      */
     protected void checkCarrier(List<Expense> expenses) throws TrapException
     {
-        
-        for(Expense expense : expenses) 
+
+        for (Expense expense : expenses)
         {
-            if(expense.getType().equals(ExpenseType.TRANSPORTATION))
+            if (expense.getType().equals(ExpenseType.TRANSPORTATION))
             {
                 // Check to see that the expense is an AIR type.
-                if(((TransportationExpense) expense).getTranportationType().equals("AIR")) 
+                if (((TransportationExpense) expense).getTranportationType()
+                        .equals("AIR"))
                 {
-                    
+
                     // TODO: Check to see that the air carrier is a US Carrier.
-                    if(((TransportationExpense) expense).getCarrier().equals(""))
+                    if (((TransportationExpense) expense).getCarrier().equals(
+                            ""))
                     {
                     }
                     else
                     {
-                        throw new TrapException("Invalid Air Carrier: Not a US Air Carrier.");
+                        throw new TrapException(
+                                "Invalid Air Carrier: Not a US Air Carrier.");
                     }
                 }
             }
         }
-        
+
     }
 
 }
