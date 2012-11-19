@@ -23,6 +23,7 @@ import java.util.List;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
+import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
@@ -36,35 +37,42 @@ public class USCarrierRule extends AbstractRule
     {
         if(form != null) 
         {
-            
-            List<Expense> expenses = form.getExpenses();
-            
-            for(Expense expense : expenses) 
-            {
-                if(expense instanceof TransportationExpense)
-                {
-                    // Check to see that the expense is an AIR type.
-                    if(((TransportationExpense) expense).getTranportationType().equals("AIR")) 
-                    {
-                        
-                        // TODO: Check to see that the air carrier is a US Carrier.
-                        if(((TransportationExpense) expense).getCarrier().equals(""))
-                        {
-                            
+            checkCarrier(form.getExpenses());
 
-                        }
-                        else
-                        {
-                            throw new TrapException("Invalid Air Carrier: Not a US Air Carrier.");
-                        }
-                    }
-                }
-            }
         }
         else 
         {
             throw new TrapException("Invalid TrapForm object: form was null.");
         }
      }
+    
+    /**
+     * @param expenses
+     * @throws TrapException
+     */
+    protected void checkCarrier(List<Expense> expenses) throws TrapException
+    {
+        
+        for(Expense expense : expenses) 
+        {
+            if(expense.getType().equals(ExpenseType.TRANSPORTATION))
+            {
+                // Check to see that the expense is an AIR type.
+                if(((TransportationExpense) expense).getTranportationType().equals("AIR")) 
+                {
+                    
+                    // TODO: Check to see that the air carrier is a US Carrier.
+                    if(((TransportationExpense) expense).getCarrier().equals(""))
+                    {
+                    }
+                    else
+                    {
+                        throw new TrapException("Invalid Air Carrier: Not a US Air Carrier.");
+                    }
+                }
+            }
+        }
+        
+    }
 
 }
