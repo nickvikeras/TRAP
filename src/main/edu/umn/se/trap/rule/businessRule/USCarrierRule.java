@@ -17,7 +17,7 @@
     under the License. 
  */
 
-package edu.umn.se.trap.rule.rules;
+package edu.umn.se.trap.rule.businessRule;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class USCarrierRule extends AbstractRule
                         {
                             
                             return "Rule approved";
-                            
+
                         }
                         else
                         {
