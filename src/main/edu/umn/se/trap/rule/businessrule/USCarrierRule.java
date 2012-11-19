@@ -17,7 +17,7 @@
     under the License. 
  */
 
-package edu.umn.se.trap.rule.businessRule;
+package edu.umn.se.trap.rule.businessrule;
 
 import java.util.List;
 
