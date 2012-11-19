@@ -30,7 +30,7 @@ public class TransportationExpense extends Expense
     // Public member variables:
     private String tranportationType;
     private String carrier;
-    private int milesTraveled;
+    private Integer milesTraveled;
     private boolean isRental;
 
     /**
@@ -42,7 +42,7 @@ public class TransportationExpense extends Expense
      * @param eligibleGrants
      * @param justification
      */
-    public TransportationExpense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification, String tranportationType, String carrier, int milesTraveled, boolean isRental)
+    public TransportationExpense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification, String tranportationType, String carrier, Integer milesTraveled, boolean isRental)
     {
         super(type, date, amount, location, eligibleGrants, justification);
         this.tranportationType = tranportationType;

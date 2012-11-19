@@ -86,7 +86,7 @@ public class DatabaseAccessor
             return new User(userName, fullName, email, employeeId, citizenship, visaStatus, paidByUniversity);
         } catch (KeyNotFoundException e)
         {
-            throw new TrapException("");
+            throw new TrapException("cannot find user info");
         }
 
     }
@@ -171,7 +171,7 @@ public class DatabaseAccessor
             return new Grant(accountName, accountType, fundingOrganization, organizationType, accountBalance);
         } catch (KeyNotFoundException e)
         {
-            throw new TrapException("Cannot find perDiem info");
+            throw new TrapException("Cannot find grant info");
         }
     }
 
@@ -185,7 +185,7 @@ public class DatabaseAccessor
             return new UserGrant(accountName, grantAdmin, authorizedPayees);
         } catch (KeyNotFoundException e)
         {
-            throw new TrapException("Cannot find perDiem info");
+            throw new TrapException("Cannot find userGrant info");
         }
     }
 
@@ -204,7 +204,7 @@ public class DatabaseAccessor
 
         } catch (KeyNotFoundException e)
         {
-            throw new TrapException("Cannot find perDiem info");
+            throw new TrapException("Cannot find currency info");
         }
     }
 }

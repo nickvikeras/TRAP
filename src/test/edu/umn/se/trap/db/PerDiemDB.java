@@ -67,7 +67,7 @@ public class PerDiemDB
         ArrayList<Double> rates = new ArrayList<Double>();
         location.add("minneapolis"); 	/* City. */
         location.add("minnesota"); 		/* State. Only applicable for domestic travel. */
-        location.add("united states"); 	/* Country */
+        location.add("usa"); 	/* Country */
         rates.add(7.0); 				/* Breakfast rate in USD */
         rates.add(12.0); 				/* Lunch rate in USD */
         rates.add(26.0); 				/* Dinner rate in USD */
@@ -112,12 +112,51 @@ public class PerDiemDB
         rates = new ArrayList<Double>();
         location.add(null); 	/* City. */
         location.add("colorado"); 		/* State. Only applicable for domestic travel. */
-        location.add("united states"); 	/* Country */
+        location.add("usa"); 	/* Country */
         rates.add(8.0); 				/* Breakfast rate in USD */
         rates.add(13.0); 				/* Lunch rate in USD */
         rates.add(27.0); 				/* Dinner rate in USD */
         rates.add(6.0); 				/* Incidental ceiling in USD */
         rates.add(151.0);				/* Lodging ceiling in USD */
+        
+        this.perDiemInfo.put(location,rates);
+        
+        location = new ArrayList<String>();
+        rates = new ArrayList<Double>();
+        location.add("lawrence");     /* City. */
+        location.add("ks");       /* State. Only applicable for domestic travel. */
+        location.add("usa");  /* Country */
+        rates.add(7.0);                 /* Breakfast rate in USD */
+        rates.add(11.0);                /* Lunch rate in USD */
+        rates.add(23.0);                /* Dinner rate in USD */
+        rates.add(0.0);                 /* Incidental ceiling in USD */
+        rates.add(150.0);               /* Lodging ceiling in USD */
+        
+        this.perDiemInfo.put(location,rates);
+        
+        location = new ArrayList<String>();
+        rates = new ArrayList<Double>();
+        location.add("des moines");     /* City. */
+        location.add("ia");       /* State. Only applicable for domestic travel. */
+        location.add("usa");  /* Country */
+        rates.add(7.0);                 /* Breakfast rate in USD */
+        rates.add(11.0);                /* Lunch rate in USD */
+        rates.add(23.0);                /* Dinner rate in USD */
+        rates.add(0.0);                 /* Incidental ceiling in USD */
+        rates.add(150.0);               /* Lodging ceiling in USD */
+        
+        this.perDiemInfo.put(location,rates);
+        
+        location = new ArrayList<String>();
+        rates = new ArrayList<Double>();
+        location.add("kansas city");     /* City. */
+        location.add("mo");       /* State. Only applicable for domestic travel. */
+        location.add("usa");  /* Country */
+        rates.add(7.0);                 /* Breakfast rate in USD */
+        rates.add(11.0);                /* Lunch rate in USD */
+        rates.add(23.0);                /* Dinner rate in USD */
+        rates.add(0.0);                 /* Incidental ceiling in USD */
+        rates.add(150.0);               /* Lodging ceiling in USD */
         
         this.perDiemInfo.put(location,rates);
     }
@@ -139,7 +178,7 @@ public class PerDiemDB
     	ArrayList<String> location = new ArrayList<String>();
     	location.add(city.toLowerCase());
     	location.add(state.toLowerCase());
-    	location.add("united states");
+    	location.add("usa");
         List<Double> rateInfo = this.perDiemInfo.get(location);
         if(rateInfo == null)
         {
@@ -165,7 +204,7 @@ public class PerDiemDB
     	ArrayList<String> location = new ArrayList<String>();
     	location.add(null);
     	location.add(state.toLowerCase());
-    	location.add("united states");
+    	location.add("usa");
         List<Double> rateInfo = this.perDiemInfo.get(location);
         if(rateInfo == null)
         {
