@@ -52,12 +52,13 @@ public class GrantSet
     }
 
     /**
-     * @param grants the grants to set
+     * @return the grants
      */
-    public void setGrants(Set<FormGrant> grants)
+    public Set<FormGrant> getGrants()
     {
-        this.grants = grants;
+        return grants;
     }
+
     
 
 
