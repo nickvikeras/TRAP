@@ -27,6 +27,8 @@ package edu.umn.se.trap.form;
 public enum TransportationType
 {
 
-    AIR, PUBLIC, CAR_RENTAL, GAS
+    // These correlate to the following strings respectively:
+    // air, car, rail, taxi, public transportation, gas, parking, toll, luggage
+    AIR, CAR, RAIL, TAXI, PUBLIC_TRANSPORTATION, GAS, PARKING, TOLL, LUGGAGE
 
 }

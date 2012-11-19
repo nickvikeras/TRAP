@@ -51,4 +51,15 @@ public class GrantSet
         }
     }
 
+    /**
+     * @return the grants
+     */
+    public Set<FormGrant> getGrants()
+    {
+        return grants;
+    }
+
+    
+
+
 }
