@@ -1,0 +1,53 @@
+Rules That need to be implemented based on updates on the forum, the requirements document, and the design document.
+
+Please see the relevant documents for more information and update this document as rules are written:
+
+From Forum:
+Numbers in (#) point to requirements document. #: points to forum post
+
+2: (24) All domestic car rentals must be booked with carrier “National Travel,” unless a grant rule specifically overrides it (rule 5: overrides this).
+
+3: (17) The DOD will not pay for any expenses incurred in a foreign country, or involving travel to a foreign country.
+
+5: (16) The DOD will only reimburse car rentals with carrier Hertz.
+
+6: (19) The NIH will not pay for food.
+
+7: (20) The NIH will only reimburse transportation expenses related to air travel or public transportation.
+
+8: (22) Alcohol cannot be charged to sponsored funds.
+
+9: (23) Internet access cannot be charges to sponsored funds.
+
+11: (21) Grants from foreign governments cannot be used for domestic travel.
+
+
+
+From Design Document/Requirements Document with consideration to the rules listed above:
+(numbers are from requirements document)
+
+Pending: Any pending rules may be removed shortly.
+
+2: PersonalAndRentalCarRule
+
+3: NumBaggageClaimsRule
+
+4: BaggageCostLimitRule
+
+8: GrantAuthorizationRule
+
+9: VisaStatusRule
+
+10: HotelOvernightRule
+
+12: RequiredFieldsRule
+
+14: ItemizedCostsBetweenDatesRule 
+
+15: ValidDollarAmountRule
+
+
+
+
+
+
