@@ -36,7 +36,7 @@ import edu.umn.se.trap.rule.AbstractRule;
  * @author Mark
  * 
  */
-public class DodNoBreakfastRule extends AbstractRule
+public class DodNoBreakfastRule extends AbstractGrantRule
 {
 
     /*
@@ -47,12 +47,12 @@ public class DodNoBreakfastRule extends AbstractRule
      * )
      */
     @Override
-    public void validateRule(TrapForm form) throws TrapException
+    public void removeGrants(Expense expense) throws TrapException
     {
 
-        if (form != null)
+        if (expense != null)
         {
-            checkExpenseGrants(form.getExpenses());
+            checkExpenseGrants(expense);
 
         }
         else
@@ -66,46 +66,40 @@ public class DodNoBreakfastRule extends AbstractRule
      * @param expenses
      * @throws TrapException
      */
-    private void checkExpenseGrants(List<Expense> expenses)
-            throws TrapException
+    private void checkExpenseGrants(Expense expense) throws TrapException
     {
 
-        for (Expense expense : expenses)
+        if (expense.getType().equals(ExpenseType.BREAKFAST))
+
         {
+            GrantSet grantSet = expense.getEligibleGrants();
 
-            if (expense.getType().equals(ExpenseType.BREAKFAST))
-
+            if (grantSet == null)
             {
-                GrantSet grantSet = expense.getEligibleGrants();
+                throw new TrapException(
+                        "Invalid TrapForm object: grantSet was null.");
+            }
 
-                if (grantSet == null)
+            Set<FormGrant> grants = grantSet.getGrants();
+
+            if (grants == null)
+            {
+                throw new TrapException(
+                        "Invalid TrapForm object: grants was null.");
+            }
+
+            Iterator<FormGrant> grantIter = grants.iterator();
+
+            while (grantIter.hasNext())
+            {
+                FormGrant grant = grantIter.next();
+
+                if (StringUtils.equalsIgnoreCase(
+                        grant.getFundingOrganization(), "DOD"))
                 {
-                    throw new TrapException(
-                            "Invalid TrapForm object: grantSet was null.");
+                    // Remove the grant if it is a DOD grant trying to cover a breakfast expense.
+                    grantSet.removeGrant(grant.getAccountName());
                 }
-
-                Set<FormGrant> grants = grantSet.getGrants();
-
-                if (grants == null)
-                {
-                    throw new TrapException(
-                            "Invalid TrapForm object: grants was null.");
-                }
-
-                Iterator<FormGrant> grantIter = grants.iterator();
-
-                while (grantIter.hasNext())
-                {
-                    FormGrant grant = grantIter.next();
-
-                    if (StringUtils.equalsIgnoreCase(
-                            grant.getFundingOrganization(), "DOD"))
-                    {
-                        throw new TrapException(
-                                "The DOD grant will not cover breakfast costs.");
-                    }
-                }
-
             }
 
         }

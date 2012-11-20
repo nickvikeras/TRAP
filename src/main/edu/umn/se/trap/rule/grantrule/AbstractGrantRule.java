@@ -53,6 +53,6 @@ public abstract class AbstractGrantRule extends AbstractRule
     /**
      * @param expense
      */
-    protected abstract void removeGrants(Expense expense);
+    protected abstract void removeGrants(Expense expense) throws TrapException;
 
 }
