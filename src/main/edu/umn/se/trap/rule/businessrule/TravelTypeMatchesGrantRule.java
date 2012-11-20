@@ -110,7 +110,7 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
         {
             FormGrant grant = grantIter.next();
 
-            if (StringUtils.equals(grant.getAccountType(), "Sponsored"))
+            if (StringUtils.equalsIgnoreCase(grant.getAccountType(), "Sponsored"))
             {
                 // Throw an error if the grant is not sponsored by Dtc or Cse.
                 if (!(cseSponsored || dtcSponsored))
@@ -122,7 +122,7 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
                 }
 
             }
-            else if (StringUtils.equals(grant.getAccountType(), "Non-sponsored"))
+            else if (StringUtils.equalsIgnoreCase(grant.getAccountType(), "Non-sponsored"))
             {
                 // Throw an error if the trip is sponsored and trying to charge
                 // to a non-sponsored grant.

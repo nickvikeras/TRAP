@@ -34,6 +34,10 @@ import edu.umn.se.trap.rule.AbstractRule;
 public class USCarrierRule extends AbstractRule
 {
 
+    private final String[] USCARRIERS = { "Southwest", "Alaska Airlines",
+            "American", "Delta", "Frontier", "Great Lakes", "Spirit",
+            "Sun County", "United", "US Airways" };
+
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
@@ -60,13 +64,14 @@ public class USCarrierRule extends AbstractRule
             if (expense.getType().equals(ExpenseType.TRANSPORTATION))
             {
                 // Check to see that the expense is an AIR type.
-                if (((TransportationExpense) expense).getTranportationType()
-                        .equals("AIR"))
+                if (StringUtils.equalsIgnoreCase(
+                        ((TransportationExpense) expense)
+                                .getTranportationType(), "AIR"))
                 {
 
-                    // TODO: Check to see that the air carrier is a US Carrier.
-                    if (StringUtils.equals(
-                            ((TransportationExpense) expense).getCarrier(), ""))
+                    // Check to see that the air carrier is a US Carrier.
+                    if (checkCarrierString(((TransportationExpense) expense)
+                            .getCarrier()))
                     {
                     }
                     else
@@ -78,6 +83,25 @@ public class USCarrierRule extends AbstractRule
             }
         }
 
+    }
+
+    /**
+     * @param carrier
+     */
+    protected boolean checkCarrierString(String carrier)
+    {
+
+        // Return false if the carrier is not one of the US carriers.
+
+        for (int i = 0; i < USCARRIERS.length; i++)
+        {
+            if (StringUtils.equalsIgnoreCase(carrier, USCARRIERS[i]))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

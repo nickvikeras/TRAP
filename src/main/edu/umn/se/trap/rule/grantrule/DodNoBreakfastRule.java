@@ -16,7 +16,7 @@
     specific language governing permissions and limitations
     under the License. 
  */
-package edu.umn.se.trap.rule.businessrule;
+package edu.umn.se.trap.rule.grantrule;
 
 import java.util.Iterator;
 import java.util.List;
@@ -26,10 +26,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
+import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
-import edu.umn.se.trap.form.FormUser;
 import edu.umn.se.trap.form.GrantSet;
-import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
 
@@ -37,7 +36,7 @@ import edu.umn.se.trap.rule.AbstractRule;
  * @author Mark
  * 
  */
-public class ExportGrantCitizenRule extends AbstractRule
+public class DodNoBreakfastRule extends AbstractRule
 {
 
     /*
@@ -53,32 +52,7 @@ public class ExportGrantCitizenRule extends AbstractRule
 
         if (form != null)
         {
-
-            GrantSet grantSet = form.getGrantSet();
-
-            if (grantSet == null)
-            {
-                throw new TrapException(
-                        "Invalid TrapForm object: grantSet was null.");
-            }
-
-            Set<FormGrant> grants = grantSet.getGrants();
-
-            if (grants == null)
-            {
-                throw new TrapException(
-                        "Invalid TrapForm object: grants was null.");
-            }
-
-            FormUser formUser = form.getUser();
-
-            if (formUser == null)
-            {
-                throw new TrapException(
-                        "Invalid TrapForm object: user was null.");
-            }
-
-            checkExportGrantCitizen(grants, formUser);
+            checkExpenseGrants(form.getExpenses());
 
         }
         else
@@ -89,37 +63,49 @@ public class ExportGrantCitizenRule extends AbstractRule
     }
 
     /**
-     * @param grants
-     * @param formUser
+     * @param expenses
      * @throws TrapException
      */
-    protected void checkExportGrantCitizen(Set<FormGrant> grants,
-            FormUser formUser) throws TrapException
+    private void checkExpenseGrants(List<Expense> expenses)
+            throws TrapException
     {
 
-        if (!(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
-                "United States"))
-                || !(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
-                        "USA")))
+        for (Expense expense : expenses)
         {
 
-            /*
-             * Iterate over the set and throw an error if any of the grants are
-             * non-export.
-             */
+            if (expense.getType().equals(ExpenseType.BREAKFAST))
 
-            Iterator<FormGrant> grantIter = grants.iterator();
-
-            while (grantIter.hasNext())
             {
-                FormGrant grant = grantIter.next();
+                GrantSet grantSet = expense.getEligibleGrants();
 
-                if (StringUtils.equalsIgnoreCase(grant.getOrganizationType(),
-                        "noExport"))
+                if (grantSet == null)
                 {
                     throw new TrapException(
-                            "Only U.S. citizens can use non-export grants");
+                            "Invalid TrapForm object: grantSet was null.");
                 }
+
+                Set<FormGrant> grants = grantSet.getGrants();
+
+                if (grants == null)
+                {
+                    throw new TrapException(
+                            "Invalid TrapForm object: grants was null.");
+                }
+
+                Iterator<FormGrant> grantIter = grants.iterator();
+
+                while (grantIter.hasNext())
+                {
+                    FormGrant grant = grantIter.next();
+
+                    if (StringUtils.equalsIgnoreCase(
+                            grant.getFundingOrganization(), "DOD"))
+                    {
+                        throw new TrapException(
+                                "The DOD grant will not cover breakfast costs.");
+                    }
+                }
+
             }
 
         }
