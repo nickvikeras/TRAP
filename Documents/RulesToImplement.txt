@@ -9,12 +9,6 @@ Numbers in (#) point to requirements document. #: points to forum post
 
 3: (17) The DOD will not pay for any expenses incurred in a foreign country, or involving travel to a foreign country.
 
-5: (16) The DOD will only reimburse car rentals with carrier Hertz.
-
-6: (19) The NIH will not pay for food.
-
-7: (20) The NIH will only reimburse transportation expenses related to air travel or public transportation.
-
 8: (22) Alcohol cannot be charged to sponsored funds.
 
 9: (23) Internet access cannot be charges to sponsored funds.

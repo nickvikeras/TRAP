@@ -19,7 +19,6 @@
 package edu.umn.se.trap.rule.grantrule;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
@@ -29,48 +28,63 @@ import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
-import edu.umn.se.trap.form.TrapForm;
-import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.form.TransportationExpense;
 
 /**
  * @author Mark
  * 
  */
-public class DodNoBreakfastRule extends AbstractGrantRule
+public class DodGrantHertzRule extends AbstractGrantRule
 {
 
     /*
      * (non-Javadoc)
      * 
      * @see
-     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
-     * )
+     * edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn
+     * .se.trap.form.Expense)
      */
     @Override
-    public void removeGrants(Expense expense) throws TrapException
+    protected void removeGrants(Expense expense) throws TrapException
     {
 
         if (expense != null)
         {
-            checkExpenseGrants(expense);
+            checkDodHertz(expense);
 
         }
         else
         {
-            throw new TrapException("Invalid TrapForm object: expense was null.");
+            throw new TrapException(
+                    "Invalid TrapForm object: expense was null.");
         }
 
     }
 
     /**
-     * @param expenses
-     * @throws TrapException
+     * @param expense
+     * @throws TrapException 
      */
-    private void checkExpenseGrants(Expense expense) throws TrapException
+    private void checkDodHertz(Expense expense) throws TrapException
     {
 
-        if (expense.getType().equals(ExpenseType.BREAKFAST))
+        /*
+         * Expense Type: TRANSPORTATION 
+         * isRental: true 
+         * Transportation Type: CAR
+         * Carrier: Hertz
+         */
+        if (expense.getType().equals(ExpenseType.TRANSPORTATION)
+                && ((TransportationExpense) expense).isRental()
+                && StringUtils.equalsIgnoreCase(
+                        ((TransportationExpense) expense)
+                                .getTranportationType(), "CAR")
+                && StringUtils
+                        .equalsIgnoreCase(
+                                ((TransportationExpense) expense).getCarrier(),
+                                "Hertz"))
         {
+            
             GrantSet grantSet = expense.getEligibleGrants();
 
             if (grantSet == null)
@@ -93,14 +107,14 @@ public class DodNoBreakfastRule extends AbstractGrantRule
             {
                 FormGrant grant = grantIter.next();
 
-                if (StringUtils.equalsIgnoreCase(
+                if (!StringUtils.equalsIgnoreCase(
                         grant.getFundingOrganization(), "DOD"))
                 {
-                    // Remove the grant if it is a DOD grant trying to cover a breakfast expense.
+                    // Remove the grant if it is NOT a DOD grant.
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }
-
+            
         }
 
     }

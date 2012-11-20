@@ -19,7 +19,6 @@
 package edu.umn.se.trap.rule.grantrule;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
@@ -29,48 +28,57 @@ import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
-import edu.umn.se.trap.form.TrapForm;
-import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.form.TransportationExpense;
 
 /**
  * @author Mark
- * 
+ *
  */
-public class DodNoBreakfastRule extends AbstractGrantRule
+public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
 {
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
-     * )
+    /* (non-Javadoc)
+     * @see edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn.se.trap.form.Expense)
      */
     @Override
-    public void removeGrants(Expense expense) throws TrapException
+    protected void removeGrants(Expense expense) throws TrapException
     {
-
+        
         if (expense != null)
         {
-            checkExpenseGrants(expense);
+            checkNihTransportation(expense);
 
         }
         else
         {
-            throw new TrapException("Invalid TrapForm object: expense was null.");
+            throw new TrapException(
+                    "Invalid TrapForm object: expense was null.");
         }
 
     }
 
     /**
-     * @param expenses
-     * @throws TrapException
+     * @param expense
+     * @throws TrapException 
      */
-    private void checkExpenseGrants(Expense expense) throws TrapException
+    private void checkNihTransportation(Expense expense) throws TrapException
     {
-
-        if (expense.getType().equals(ExpenseType.BREAKFAST))
+        
+        /*
+         * Check to make sure the expense is a transportation expense,
+         * excluding public transportation and air expenses.
+         */
+        if (expense.getType().equals(ExpenseType.TRANSPORTATION)
+                && !(StringUtils.equalsIgnoreCase(
+                        ((TransportationExpense) expense)
+                                .getTranportationType(),
+                                "PUBLIC_TRANSPORTATION") 
+                         || StringUtils.equalsIgnoreCase(
+                                 ((TransportationExpense) expense)
+                                 .getTranportationType(), 
+                                 "AIR")))
         {
+            
             GrantSet grantSet = expense.getEligibleGrants();
 
             if (grantSet == null)
@@ -94,15 +102,15 @@ public class DodNoBreakfastRule extends AbstractGrantRule
                 FormGrant grant = grantIter.next();
 
                 if (StringUtils.equalsIgnoreCase(
-                        grant.getFundingOrganization(), "DOD"))
+                        grant.getFundingOrganization(), "NIH"))
                 {
-                    // Remove the grant if it is a DOD grant trying to cover a breakfast expense.
+                    // Remove the grant if it is a NIH grant.
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }
-
+            
         }
-
+        
     }
 
 }
