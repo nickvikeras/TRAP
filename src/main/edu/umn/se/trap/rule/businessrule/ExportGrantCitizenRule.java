@@ -97,7 +97,10 @@ public class ExportGrantCitizenRule extends AbstractRule
             FormUser formUser) throws TrapException
     {
 
-        if (!(StringUtils.equals(formUser.getCitizenship(), "United States")))
+        if (!(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
+                "United States"))
+                || !(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
+                        "USA")))
         {
 
             /*
@@ -111,7 +114,8 @@ public class ExportGrantCitizenRule extends AbstractRule
             {
                 FormGrant grant = grantIter.next();
 
-                if (StringUtils.equals(grant.getOrganizationType(), "noExport"))
+                if (StringUtils.equalsIgnoreCase(grant.getOrganizationType(),
+                        "noExport"))
                 {
                     throw new TrapException(
                             "Only U.S. citizens can use non-export grants");
