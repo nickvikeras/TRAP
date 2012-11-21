@@ -10,7 +10,7 @@ Numbers in (#) point to requirements document. #: points to forum post
 From Design Document/Requirements Document with consideration to the rules listed above:
 (numbers are from requirements document)
 
-2: PersonalAndRentalCarRule
+
 
 3: NumBaggageClaimsRule
 
