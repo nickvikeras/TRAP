@@ -5,8 +5,6 @@ Please see the relevant documents for more information and update this document 
 From Forum:
 Numbers in (#) point to requirements document. #: points to forum post
 
-2: (24) All domestic car rentals must be booked with carrier “National Travel,” unless a grant rule specifically overrides it (rule 5: overrides this).
-
 3: (17) The DOD will not pay for any expenses incurred in a foreign country, or involving travel to a foreign country.
 
 8: (22) Alcohol cannot be charged to sponsored funds.
