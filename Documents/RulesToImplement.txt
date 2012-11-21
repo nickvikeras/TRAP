@@ -36,6 +36,9 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 15: ValidDollarAmountRule
 
+NEW: From the forum, "Another is that you are only reimbursed for 75% of the meal rates on the first and last day of the trip."
+We will need to add it to the Requirements document and Design document later.
+
 
 
 
