@@ -7,10 +7,6 @@ Numbers in (#) point to requirements document. #: points to forum post
 
 3: (17) The DOD will not pay for any expenses incurred in a foreign country, or involving travel to a foreign country.
 
-8: (22) Alcohol cannot be charged to sponsored funds.
-
-9: (23) Internet access cannot be charges to sponsored funds.
-
 11: (21) Grants from foreign governments cannot be used for domestic travel.
 
 
