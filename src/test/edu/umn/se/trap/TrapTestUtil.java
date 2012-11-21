@@ -18,8 +18,18 @@
  */
 package edu.umn.se.trap;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+
+import edu.umn.se.trap.form.Expense;
+import edu.umn.se.trap.form.ExpenseType;
+import edu.umn.se.trap.form.FormGrant;
+import edu.umn.se.trap.form.GrantSet;
+import edu.umn.se.trap.form.Location;
+import edu.umn.se.trap.form.TransportationExpense;
 
 /**
  * @author nick
@@ -36,7 +46,8 @@ public class TrapTestUtil
         map.put("TRAVEL_TYPE_CSE_SPONSORED", "yes");
         map.put("EMERGENCY_CONTACT_NAME", "Greg Gay");
         map.put("EMERGENCY_CONTACT_PHONE", "765-432-1098");
-        map.put("JUSTIFICATION_CONFERENCE_TITLE", "SE2012: 26th IEEE/ACM International Conference on Automated Software Engineering");
+        map.put("JUSTIFICATION_CONFERENCE_TITLE",
+                "SE2012: 26th IEEE/ACM International Conference on Automated Software Engineering");
         map.put("JUSTIFICATION_PRESENTED", "no");
         map.put("JUSTIFICATION_SPONSORED", "Learn about research in the field.");
         map.put("NUM_GRANTS", "1");
@@ -113,5 +124,102 @@ public class TrapTestUtil
         map.put("TRANSPORTATION6_AMOUNT", "1.60");
         map.put("TRANSPORTATION6_CURRENCY", "USD");
         return map;
+    }
+
+    /*
+     * Sample Expense Utils
+     */
+
+    public static Expense getSampleExpenseDodGrantHertzRule(String rentalPlace)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+                500.00, "noExport");
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
+                "needed rental car", "CAR", rentalPlace, 53, true);
+
+        return transportationExpense;
+    }
+
+    public static Expense getSampleExpenseDodGrantNoBreakfast()
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+                500.00, "noExport");
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        Expense expense = new Expense(ExpenseType.BREAKFAST, date, 13.34,
+                location, grantSet, "I was hungry");
+
+        return expense;
+    }
+
+    public static Expense getSampleExpenseDodGrantNoForeign(String country)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+                500.00, "noExport");
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Generic", "Place", country);
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
+                "needed rental car", "CAR", "Hertz", 53, true);
+
+        return transportationExpense;
+    }
+    
+    public static Expense getSampleExpenseForeignGrantForeignTravel(String organizationType, String country)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+                500.00, organizationType);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Generic", "Place", country);
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
+                "needed rental car", "CAR", "Hertz", 53, true);
+
+        return transportationExpense;
     }
 }

@@ -21,7 +21,6 @@ package edu.umn.se.trap.rule.businessrule;
 
 import java.util.List;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -60,43 +59,41 @@ public class NumBaggageClaimsRule extends AbstractRule
      * @param expenses
      * @throws TrapException
      */
-    protected void checkNumBaggageClaims(List<Expense> expenses) throws TrapException
+    protected void checkNumBaggageClaims(List<Expense> expenses)
+            throws TrapException
     {
 
-    	int numClaims = 0;
-    	int numFlights = 0;
-    	
+        int numClaims = 0;
+        int numFlights = 0;
+
         for (Expense expense : expenses)
         {
             if (expense.getType().equals(ExpenseType.TRANSPORTATION))
             {
-                
+
                 if (StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
                                 .getTranportationType(), "BAGGAGE"))
                 {
-                	numClaims++;
-                	               	
+                    numClaims++;
+
                 }
                 if (StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
                                 .getTranportationType(), "AIR"))
                 {
-                	numFlights++;
-                	               	
+                    numFlights++;
+
                 }
             }
         }
 
-        if ( numFlights < numClaims ){
-        	throw new TrapException("Invalid Number of Baggage Claims: More claims than flights.");
+        if (numFlights < numClaims)
+        {
+            throw new TrapException(
+                    "Invalid Number of Baggage Claims: More claims than flights.");
         }
-        
 
-
-    }    
-
-
+    }
 
 }
-

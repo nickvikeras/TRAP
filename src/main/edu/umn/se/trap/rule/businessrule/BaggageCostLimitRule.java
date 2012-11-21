@@ -21,7 +21,6 @@ package edu.umn.se.trap.rule.businessrule;
 
 import java.util.List;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -41,8 +40,8 @@ import edu.umn.se.trap.rule.AbstractRule;
  */
 public class BaggageCostLimitRule extends AbstractRule
 {
-	private double maxClaim = 25;
-	
+    private double maxClaim = 25;
+
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
@@ -61,35 +60,30 @@ public class BaggageCostLimitRule extends AbstractRule
      * @param expenses
      * @throws TrapException
      */
-    protected void checkBaggageClaimCost(List<Expense> expenses) throws TrapException
+    protected void checkBaggageClaimCost(List<Expense> expenses)
+            throws TrapException
     {
-    	
-    	
+
         for (Expense expense : expenses)
         {
             if (expense.getType().equals(ExpenseType.TRANSPORTATION))
             {
-                
+
                 if (StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
                                 .getTranportationType(), "BAGGAGE"))
                 {
-                	if ( expense.getAmount() > maxClaim ){
-                		throw new TrapException("Invalid Baggage Claim: Cost exceeds maximum amount");
-                	}
-                	               	
+                    if (expense.getAmount() > maxClaim)
+                    {
+                        throw new TrapException(
+                                "Invalid Baggage Claim: Cost exceeds maximum amount");
+                    }
+
                 }
 
             }
         }
 
-        
-
-
-    }    
-
-
+    }
 
 }
-
-

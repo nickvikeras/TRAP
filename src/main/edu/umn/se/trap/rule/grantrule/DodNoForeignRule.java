@@ -72,7 +72,7 @@ public class DodNoForeignRule extends AbstractGrantRule
 
         if (!StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(),
                 "USA")
-                || !StringUtils.equalsIgnoreCase(expense.getLocation()
+                && !StringUtils.equalsIgnoreCase(expense.getLocation()
                         .getCountry(), "United States"))
         {
             GrantSet grantSet = expense.getEligibleGrants();
