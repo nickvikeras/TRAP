@@ -33,15 +33,19 @@ import edu.umn.se.trap.form.GrantSet;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class SponsoredNoAlcoholRule extends AbstractGrantRule
 {
-    
+
     private final String alcoholRegex = "alcohol";
 
-    /* (non-Javadoc)
-     * @see edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn.se.trap.form.Expense)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn
+     * .se.trap.form.Expense)
      */
     @Override
     protected void removeGrants(Expense expense) throws TrapException
@@ -61,11 +65,11 @@ public class SponsoredNoAlcoholRule extends AbstractGrantRule
 
     /**
      * @param expense
-     * @throws TrapException 
+     * @throws TrapException
      */
     private void checkSponsoredAlcohol(Expense expense) throws TrapException
     {
-        
+
         /*
          * Check to make sure the expense is an other expense.
          */
@@ -74,13 +78,15 @@ public class SponsoredNoAlcoholRule extends AbstractGrantRule
             /*
              * Try to match "alcohol" in the justification field.
              */
-            
-            Pattern alcoholPattern = Pattern.compile(alcoholRegex, Pattern.CASE_INSENSITIVE);
-            
-            Matcher alcoholMatcher = alcoholPattern.matcher(expense.getJustification());
-            
+
+            Pattern alcoholPattern = Pattern.compile(alcoholRegex,
+                    Pattern.CASE_INSENSITIVE);
+
+            Matcher alcoholMatcher = alcoholPattern.matcher(expense
+                    .getJustification());
+
             // If alcohol is found, check the grants.
-            if(alcoholMatcher.find())
+            if (alcoholMatcher.find())
             {
                 GrantSet grantSet = expense.getEligibleGrants();
 
@@ -104,16 +110,17 @@ public class SponsoredNoAlcoholRule extends AbstractGrantRule
                 {
                     FormGrant grant = grantIter.next();
 
-                    if (StringUtils.equalsIgnoreCase(
-                            grant.getAccountType(), "Sponsored"))
+                    if (StringUtils.equalsIgnoreCase(grant.getAccountType(),
+                            "Sponsored"))
                     {
-                        // Remove the grant if it is a sponsored grant trying to cover alcohol.
+                        // Remove the grant if it is a sponsored grant trying to
+                        // cover alcohol.
                         grantSet.removeGrant(grant.getAccountName());
                     }
                 }
             }
         }
-        
+
     }
 
 }

@@ -63,28 +63,23 @@ public class DodGrantHertzRule extends AbstractGrantRule
 
     /**
      * @param expense
-     * @throws TrapException 
+     * @throws TrapException
      */
     private void checkDodHertz(Expense expense) throws TrapException
     {
 
         /*
-         * Expense Type: TRANSPORTATION 
-         * isRental: true 
-         * Transportation Type: CAR
+         * Expense Type: TRANSPORTATION isRental: true Transportation Type: CAR
          * Carrier: Hertz
          */
         if (expense.getType().equals(ExpenseType.TRANSPORTATION)
                 && ((TransportationExpense) expense).isRental()
                 && StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
-                                .getTranportationType(), "CAR")
-                && StringUtils
-                        .equalsIgnoreCase(
-                                ((TransportationExpense) expense).getCarrier(),
-                                "Hertz"))
+                                .getTranportationType(), "CAR"))
+
         {
-            
+
             GrantSet grantSet = expense.getEligibleGrants();
 
             if (grantSet == null)
@@ -107,14 +102,19 @@ public class DodGrantHertzRule extends AbstractGrantRule
             {
                 FormGrant grant = grantIter.next();
 
-                if (!StringUtils.equalsIgnoreCase(
+                if (StringUtils.equalsIgnoreCase(
                         grant.getFundingOrganization(), "DOD"))
                 {
-                    // Remove the grant if it is NOT a DOD grant.
-                    grantSet.removeGrant(grant.getAccountName());
+                    if (!StringUtils.equalsIgnoreCase(
+                            ((TransportationExpense) expense).getCarrier(),
+                            "Hertz"))
+                    {
+                        // If it's not Hertz being charged to DOD, remove it.
+                        grantSet.removeGrant(grant.getAccountName());
+                    }
                 }
             }
-            
+
         }
 
     }

@@ -31,6 +31,10 @@ import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
 
+/**
+ * @author Mark
+ * 
+ */
 public class USCarrierRule extends AbstractRule
 {
 
@@ -38,6 +42,13 @@ public class USCarrierRule extends AbstractRule
             "American", "Delta", "Frontier", "Great Lakes", "Spirit",
             "Sun County", "United", "US Airways" };
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
+     * )
+     */
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
