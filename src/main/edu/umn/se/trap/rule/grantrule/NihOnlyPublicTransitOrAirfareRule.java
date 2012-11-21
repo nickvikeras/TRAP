@@ -32,18 +32,22 @@ import edu.umn.se.trap.form.TransportationExpense;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
 {
 
-    /* (non-Javadoc)
-     * @see edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn.se.trap.form.Expense)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn
+     * .se.trap.form.Expense)
      */
     @Override
     protected void removeGrants(Expense expense) throws TrapException
     {
-        
+
         if (expense != null)
         {
             checkNihTransportation(expense);
@@ -59,26 +63,28 @@ public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
 
     /**
      * @param expense
-     * @throws TrapException 
+     * @throws TrapException
      */
     private void checkNihTransportation(Expense expense) throws TrapException
     {
-        
+
         /*
-         * Check to make sure the expense is a transportation expense,
-         * excluding public transportation and air expenses.
+         * Check to make sure the expense is a transportation expense, excluding
+         * public transportation and air expenses.
          */
         if (expense.getType().equals(ExpenseType.TRANSPORTATION)
                 && !(StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
                                 .getTranportationType(),
-                                "PUBLIC_TRANSPORTATION") 
-                         || StringUtils.equalsIgnoreCase(
-                                 ((TransportationExpense) expense)
-                                 .getTranportationType(), 
-                                 "AIR")))
+                        "PUBLIC_TRANSPORTATION")
+                        || StringUtils.equalsIgnoreCase(
+                                ((TransportationExpense) expense)
+                                        .getTranportationType(), "AIR") 
+                        || StringUtils
+                            .equalsIgnoreCase(((TransportationExpense) expense)
+                                    .getTranportationType(), "LUGGAGE")))
         {
-            
+
             GrantSet grantSet = expense.getEligibleGrants();
 
             if (grantSet == null)
@@ -108,9 +114,9 @@ public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }
-            
+
         }
-        
+
     }
 
 }

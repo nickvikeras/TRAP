@@ -199,8 +199,9 @@ public class TrapTestUtil
 
         return transportationExpense;
     }
-    
-    public static Expense getSampleExpenseForeignGrantForeignTravel(String organizationType, String country)
+
+    public static Expense getSampleExpenseForeignGrantForeignTravel(
+            String organizationType, String country)
     {
 
         Set<FormGrant> grants = new HashSet<FormGrant>();
@@ -219,6 +220,54 @@ public class TrapTestUtil
         TransportationExpense transportationExpense = new TransportationExpense(
                 ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
                 "needed rental car", "CAR", "Hertz", 53, true);
+
+        return transportationExpense;
+    }
+
+    public static Expense getSampleExpenseNihNoFood(ExpenseType type)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
+                500.00, "noExport");
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        Expense expense = new Expense(type, date, 40.34, location, grantSet,
+                "needed rental car");
+
+        return expense;
+    }
+
+    public static Expense getSampleExpenseNihPublicTransitOrAirfare(
+            String type, ExpenseType expenseType)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
+                500.00, "noExport");
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                expenseType, date, 40.34, location, grantSet,
+                "needed rental car", type, "Hertz", 53, true);
 
         return transportationExpense;
     }
