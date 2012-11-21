@@ -36,9 +36,9 @@ import edu.umn.se.trap.form.TransportationExpense;
  * 
  */
 
-public class DodNoForeignRule extends AbstractGrantRule {
+public class DodNoForeignRule extends AbstractGrantRule
+{
 
-	
     /*
      * (non-Javadoc)
      * 
@@ -57,20 +57,23 @@ public class DodNoForeignRule extends AbstractGrantRule {
         }
         else
         {
-            throw new TrapException("Invalid TrapForm object: expense was null.");
+            throw new TrapException(
+                    "Invalid TrapForm object: expense was null.");
         }
 
     }
-	/**
+
+    /**
      * @param expenses
      * @throws TrapException
      */
     private void checkExpenseGrants(Expense expense) throws TrapException
     {
 
-        if (	!StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(), "USA")
-        		||!StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(), "United States")        		
-        	)
+        if (!StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(),
+                "USA")
+                || !StringUtils.equalsIgnoreCase(expense.getLocation()
+                        .getCountry(), "United States"))
         {
             GrantSet grantSet = expense.getEligibleGrants();
 
@@ -97,7 +100,8 @@ public class DodNoForeignRule extends AbstractGrantRule {
                 if (StringUtils.equalsIgnoreCase(
                         grant.getFundingOrganization(), "DOD"))
                 {
-                    // Remove the grant if it is a DOD grant trying to cover a foreign expense
+                    // Remove the grant if it is a DOD grant trying to cover a
+                    // foreign expense
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }

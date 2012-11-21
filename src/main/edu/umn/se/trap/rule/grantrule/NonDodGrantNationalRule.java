@@ -36,9 +36,10 @@ import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.TransportationExpense;
 
-public class NonDodGrantNationalRule extends AbstractGrantRule {
+public class NonDodGrantNationalRule extends AbstractGrantRule
+{
 
-	 /*
+    /*
      * (non-Javadoc)
      * 
      * @see
@@ -64,7 +65,7 @@ public class NonDodGrantNationalRule extends AbstractGrantRule {
 
     /**
      * @param expense
-     * @throws TrapException 
+     * @throws TrapException
      */
     private void checkCarRental(Expense expense) throws TrapException
     {
@@ -79,10 +80,9 @@ public class NonDodGrantNationalRule extends AbstractGrantRule {
                 && ((TransportationExpense) expense).isRental()
                 && StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
-                                .getTranportationType(), "CAR")
-        	)
+                                .getTranportationType(), "CAR"))
         {
-            
+
             GrantSet grantSet = expense.getEligibleGrants();
 
             if (grantSet == null)
@@ -106,20 +106,19 @@ public class NonDodGrantNationalRule extends AbstractGrantRule {
                 FormGrant grant = grantIter.next();
 
                 if (!StringUtils.equalsIgnoreCase(
-                        grant.getFundingOrganization(), "DOD")                
-                     && !StringUtils
-                        .equalsIgnoreCase(
+                        grant.getFundingOrganization(), "DOD")
+                        && !StringUtils.equalsIgnoreCase(
                                 ((TransportationExpense) expense).getCarrier(),
                                 "National"))
                 {
-                    // Remove the grant if it is NOT a DOD grant and does not have National as the rental agency.
+                    // Remove the grant if it is NOT a DOD grant and does not
+                    // have National as the rental agency.
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }
-            
+
         }
 
     }
-	
-	
+
 }

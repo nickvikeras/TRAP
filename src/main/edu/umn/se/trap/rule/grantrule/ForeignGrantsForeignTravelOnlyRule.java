@@ -36,9 +36,9 @@ import edu.umn.se.trap.form.TransportationExpense;
  * 
  */
 
-public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule {
+public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule
+{
 
-	
     /*
      * (non-Javadoc)
      * 
@@ -57,20 +57,23 @@ public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule {
         }
         else
         {
-            throw new TrapException("Invalid TrapForm object: expense was null.");
+            throw new TrapException(
+                    "Invalid TrapForm object: expense was null.");
         }
 
     }
-	/**
+
+    /**
      * @param expenses
      * @throws TrapException
      */
     private void checkExpenseGrants(Expense expense) throws TrapException
     {
 
-        if (	StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(), "USA")
-        		||StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(), "United States")        		
-        	)
+        if (StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(),
+                "USA")
+                || StringUtils.equalsIgnoreCase(expense.getLocation()
+                        .getCountry(), "United States"))
         {
             GrantSet grantSet = expense.getEligibleGrants();
 
@@ -94,10 +97,11 @@ public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule {
             {
                 FormGrant grant = grantIter.next();
 
-                if (StringUtils.equalsIgnoreCase(
-                        grant.getOrganizationType(), "foreign"))
+                if (StringUtils.equalsIgnoreCase(grant.getOrganizationType(),
+                        "foreign"))
                 {
-                    // Remove the grant if it is a foreign grant trying to cover a domestic expense
+                    // Remove the grant if it is a foreign grant trying to cover
+                    // a domestic expense
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }
