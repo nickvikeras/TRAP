@@ -17,7 +17,7 @@
     under the License. 
  */
 
-package edu.umn.se.trap.rule.businessrule;
+package edu.umn.se.trap.rule.wellformedrule;
 
 import java.util.List;
 
