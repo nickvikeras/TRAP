@@ -17,10 +17,12 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 8: GrantAuthorizationRule (in progress by Andrew)
 
-12: RequiredFieldsRule
+12: RequiredFieldsRule 
 
-14: ItemizedCostsBetweenDatesRule 
+Rewrite ForeignGrantsForeignTravelOnlyRule
 
+
+THIS ONE SHOULD BE HANDLED IN THE CALCULATOR!!!!!!!!!!!!!!!
 
 NEW: From the forum, "Another is that you are only reimbursed for 75% of the meal rates on the first and last day of the trip."
 We will need to add it to the Requirements document and Design document later.
