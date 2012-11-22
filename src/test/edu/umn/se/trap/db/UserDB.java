@@ -37,29 +37,29 @@ import java.util.List;
  * Mimics the X500 database.
  * 
  * @author desilva
- * 
+ *
  */
 public class UserDB
 {
-    /**
-     * This type enumerates the fields of the {@link ArrayList} with the user
+	/**
+     * This type enumerates the fields of the {@link ArrayList} with the user 
      * information.
      */
     public static enum USER_FIELDS
     {
-        USER_NAME, /* X500 user name */
-        FULL_NAME, /* Full name of user */
-        EMAIL, /* E-mail address of user */
-        EMPLOYEE_ID, /* ID number */
-        CITIZENSHIP, /* Citizenship of the user */
-        VISA_STATUS, /* US visa status if not a US citizenship */
-        PAID_BY_UNIVERSITY /* Are they paid by the university? */
+        USER_NAME,                 /* X500 user name */
+        FULL_NAME,                 /* Full name of user */
+        EMAIL,           			/* E-mail address of user */
+        EMPLOYEE_ID,              /* ID number */
+        CITIZENSHIP,				/*Citizenship of the user*/
+        VISA_STATUS,				/* US visa status if not a US citizenship */
+        PAID_BY_UNIVERSITY			/* Are they paid by the university? */
     };
-
+    
     Map<String, List<String>> userInfo = new HashMap<String, List<String>>();
-
+    
     /**
-     * Constructor. Sets up the object.
+     * Constructor.  Sets up the object.
      */
     public UserDB()
     {
@@ -71,31 +71,30 @@ public class UserDB
         user.add("United States");
         user.add(null);
         user.add("Yes");
-
+        
         this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
     }
-
+    
+    
     /**
      * Gets the user's information as a list of strings.
-     * 
-     * @param userName
-     *            the X500 user id of the person to be retrieved from the
-     *            system.
-     * @return a list containing the user's infomation. This contains the X500
-     *         id, user's real name (in Last, First (MI.) form), the user's
-     *         e-mail address, and the user's employee id number. A null or
-     *         empty list returned from this method should be treated as an
-     *         invalid user name.
-     * @throws KeyNotFoundException
-     *             if the specified user name could not be found in the
-     *             database.
+     * @param userName  the X500 user id of the person to be retrieved from the
+     *      system.
+     * @return  a list containing the user's infomation.  This contains the
+     *      X500 id, user's real name (in Last, First (MI.) form), the user's 
+     *      e-mail address, and the user's employee id number.  A null or empty
+     *      list returned from this method should be treated as an invalid user 
+     *      name.
+     * @throws KeyNotFoundException  if the specified user name could not be 
+     *      found in the database.
      */
     public List<String> getUserInfo(String userName) throws KeyNotFoundException
     {
         List<String> userInfo = this.userInfo.get(userName.toLowerCase());
-        if (userInfo == null)
+        if(userInfo == null)
         {
-            throw new KeyNotFoundException("Could not find user, " + userName + ", in user DB.");
+            throw new KeyNotFoundException("Could not find user, " + userName +
+                    ", in user DB.");
         }
         return userInfo;
     }

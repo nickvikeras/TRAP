@@ -31,7 +31,6 @@ package edu.umn.se.trap.db;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 
 /**
  * Mimics the currency conversion database.
@@ -51,175 +50,223 @@ public class CurrencyDB
         DATE,               	/* Date of conversion */
     };
     
-    Map<List<String>, Double> currencyInfo = new HashMap<List<String>, Double>();
+    Map<Currency, Double> currencyInfo = new HashMap<Currency, Double>();
+    
+    /**
+     * This type combines the currency code and date into a single key for  
+     * indexing purposes.
+     */
+    public class Currency implements Comparable<Currency>
+    {
+        public String currencyCode;
+        public String date;
+    	
+        /**
+         * Constructor.  Sets up the object.
+         */
+        public Currency(String c, String d)
+        {
+            this.currencyCode=c;
+            this.date=d;
+        }
+
+        /**
+         * Compares equality of two Currency objects.
+         * @param object to compare to.
+         * @return a Boolean indicating equality.
+         */
+        @Override
+        public boolean equals(Object o)
+        {
+            if(o==this) return true;
+            if(o==null || !(o instanceof Currency)) return false;
+            Currency c= Currency.class.cast(o);
+            return currencyCode.equals(c.currencyCode) && date.equals(c.date);
+        }
+
+      /**
+       * Compares two Currency objects for ordering purposes
+       * @param Currency to compare to.
+       * @return a negative integer, zero, or a positive integer as this 
+       * object is less than, equal to, or greater than the specified object.
+       */
+       public int compareTo(Currency c)
+       {
+           if(c==this) return 0;
+           int code= currencyCode.compareTo(c.currencyCode);
+           if(code!=0) return code;
+           return date.compareTo(c.date);
+        }
+
+    }
     
     /**
      * Constructor.  Sets up the object.
      */
     public CurrencyDB()
     {
-        ArrayList<String> currency = new ArrayList<String>();
-        currency.add("eur"); 			/* Currency to be converted */
-        currency.add("20121009");		/* Date */
+        Currency entry1 = new Currency("eur", /* Currency to be converted */
+                                       "20121009");		/* Date */
         Double value=1.5;				/* USD value of 1 unit of that currency 
          									(i.e. 1 EURO = 1.5 USD)*/
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121010");
+        this.currencyInfo.put(entry1, value);
+  
+        Currency entry2 = new Currency("eur","20121010");
         value=1.50;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121011");
+        this.currencyInfo.put(entry2, value);
+        Currency entry3 = new Currency("eur","20121011");
         value=1.51;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121012");
+        this.currencyInfo.put(entry3, value);
+        Currency entry4 = new Currency("eur","20121012");
         value=1.60;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121013");
+        this.currencyInfo.put(entry4, value);
+        Currency entry5 = new Currency("eur","20121013");
         value=1.58;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121014");
+        this.currencyInfo.put(entry5, value);
+        Currency entry6 = new Currency("eur","20121014");
         value=1.56;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121015");
+        this.currencyInfo.put(entry6, value);
+        Currency entry7 = new Currency("eur","20121015");
         value=1.50;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121016");
+        this.currencyInfo.put(entry7, value);
+        Currency entry8 = new Currency("eur","20121016");
         value=1.70;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121017");
+        this.currencyInfo.put(entry8, value);
+        Currency entry9 = new Currency("eur","20121017");
         value=1.69;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121018");
+        this.currencyInfo.put(entry9, value);
+        Currency entry10 = new Currency("eur","20121018");
         value=1.68;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121019");
+        this.currencyInfo.put(entry10, value);
+        Currency entry11 = new Currency("eur","20121019");
         value=1.68;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121020");
+        this.currencyInfo.put(entry11, value);
+        Currency entry12 = new Currency("eur","20121020");
         value=1.69;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121021");
+        this.currencyInfo.put(entry12, value);
+        Currency entry13 = new Currency("eur","20121021");
         value=1.75;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121022");
+        this.currencyInfo.put(entry13, value);
+        Currency entry14 = new Currency("eur","20121022");
         value=1.70;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121023");
+        this.currencyInfo.put(entry14, value);
+        Currency entry15 = new Currency("eur","20121023");
         value=1.69;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121024");
+        this.currencyInfo.put(entry15, value);
+        Currency entry16 = new Currency("eur","20121024");
         value=1.50;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121025");
+        this.currencyInfo.put(entry16, value);
+        Currency entry17 = new Currency("eur","20121025");
         value=1.50;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121026");
+        this.currencyInfo.put(entry17, value);
+        Currency entry18 = new Currency("eur","20121026");
         value=1.51;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121027");
+        this.currencyInfo.put(entry18, value);
+        Currency entry19 = new Currency("eur","20121027");
         value=1.51;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121028");
+        this.currencyInfo.put(entry19, value);
+        Currency entry20 = new Currency("eur","20121028");
         value=1.50;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121029");
+        this.currencyInfo.put(entry20, value);
+        Currency entry21 = new Currency("eur","20121029");
         value=1.55;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121030");
+        this.currencyInfo.put(entry21, value);
+        Currency entry22 = new Currency("eur","20121030");
         value=1.50;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121031");
+        this.currencyInfo.put(entry22, value);
+        Currency entry23 = new Currency("eur","20121031");
         value=1.60;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121101");
+        this.currencyInfo.put(entry23, value);
+        Currency entry24 = new Currency("eur","20121101");
         value=2.00;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121102");
+        this.currencyInfo.put(entry24, value);
+        Currency entry25 = new Currency("eur","20121102");
         value=2.01;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121103");
+        this.currencyInfo.put(entry25, value);
+        Currency entry26 = new Currency("eur","20121103");
         value=2.00;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121104");
+        this.currencyInfo.put(entry26, value);
+        Currency entry27 = new Currency("eur","20121104");
         value=1.98;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121105");
+        this.currencyInfo.put(entry27, value);
+        Currency entry28 = new Currency("eur","20121105");
         value=1.97;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121106");
+        this.currencyInfo.put(entry28, value);
+        Currency entry29 = new Currency("eur","20121106");
         value=1.95;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121107");
+        this.currencyInfo.put(entry29, value);
+        Currency entry30 = new Currency("eur","20121107");
         value=1.80;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121108");
+        this.currencyInfo.put(entry30, value);
+        Currency entry31 = new Currency("eur","20121108");
         value=1.70;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121109");
+        this.currencyInfo.put(entry31, value);
+        Currency entry32 = new Currency("eur","20121109");
         value=1.71;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121110");
+        this.currencyInfo.put(entry32, value);
+        Currency entry33 = new Currency("eur","20121110");
         value=1.69;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121111");
+        this.currencyInfo.put(entry33, value);
+        Currency entry34 = new Currency("eur","20121111");
         value=1.69;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121112");
+        this.currencyInfo.put(entry34, value);
+        Currency entry35 = new Currency("eur","20121112");
         value=1.71;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121113");
+        this.currencyInfo.put(entry35, value);
+        Currency entry36 = new Currency("eur","20121113");
         value=1.69;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121114");
+        this.currencyInfo.put(entry36, value);
+        Currency entry37 = new Currency("eur","20121114");
         value=1.65;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121115");
+        this.currencyInfo.put(entry37, value);
+        Currency entry38 = new Currency("eur","20121115");
         value=1.66;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121116");
+        this.currencyInfo.put(entry38, value);
+        Currency entry39 = new Currency("eur","20121116");
         value=1.75;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121117");
+        this.currencyInfo.put(entry39, value);
+        Currency entry40 = new Currency("eur","20121117");
         value=1.75;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121118");
+        this.currencyInfo.put(entry40, value);
+        Currency entry41 = new Currency("eur","20121118");
         value=2.00;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121119");
+        this.currencyInfo.put(entry41, value);
+        Currency entry42 = new Currency("eur","20121119");
         value=2.10;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121120");
+        this.currencyInfo.put(entry42, value);
+        Currency entry43 = new Currency("eur","20121120");
         value=2.09;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121121");
+        this.currencyInfo.put(entry43, value);
+        Currency entry44 = new Currency("eur","20121121");
         value=2.10;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121122");
+        this.currencyInfo.put(entry44, value);
+        Currency entry45 = new Currency("eur","20121122");
         value=2.08;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121123");
+        this.currencyInfo.put(entry45, value);
+        Currency entry46 = new Currency("eur","20121123");
         value=2.05;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121124");
+        this.currencyInfo.put(entry46, value);
+        Currency entry47 = new Currency("eur","20121124");
         value=2.00;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121125");
+        this.currencyInfo.put(entry47, value);
+        Currency entry48 = new Currency("eur","20121125");
         value=1.98;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121126");
+        this.currencyInfo.put(entry48, value);
+        Currency entry49 = new Currency("eur","20121126");
         value=1.99;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121127");
+        this.currencyInfo.put(entry49, value);
+        Currency entry50 = new Currency("eur","20121127");
         value=1.89;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121128");
+        this.currencyInfo.put(entry50, value);
+        Currency entry51 = new Currency("eur","20121128");
         value=1.80;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121129");
+        this.currencyInfo.put(entry51, value);
+        Currency entry52 = new Currency("eur","20121129");
         value=1.81;
-        this.currencyInfo.put(currency, value);
-        currency.set(CURRENCY_FIELDS.DATE.ordinal(), "20121130");
+        this.currencyInfo.put(entry52, value);
+        Currency entry53 = new Currency("eur","20121130");
         value=1.80;
-        this.currencyInfo.put(currency, value);
+        this.currencyInfo.put(entry53, value);
     }
     
     /**

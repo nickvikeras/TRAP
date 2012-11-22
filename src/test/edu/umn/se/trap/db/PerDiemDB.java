@@ -54,7 +54,59 @@ public class PerDiemDB
         LODGING_CEILING;		/* Lodging ceiling in USD */
     };
     
-    Map<List<String>, List<Double>> perDiemInfo = new HashMap<List<String>, List<Double>>();
+    Map<Location, List<Double>> perDiemInfo = new HashMap<Location, List<Double>>();
+    
+    /**
+     * This type combines the city, state, and country into a 
+     * single key for indexing purposes.
+     */
+    public class Location implements Comparable<Location>
+    {
+        public String city;
+        public String state;
+        public String country; 
+    	
+        /**
+         * Constructor.  Sets up the object.
+         */
+        public Location(String ci, String s, String co)
+        {
+            this.city=ci;
+            this.state=s;
+            this.country=co;
+        }
+
+        /**
+         * Compares equality of two Location objects.
+         * @param object to compare to.
+         * @return  a Boolean indicating equality.
+         */
+        @Override
+        public boolean equals(Object o)
+        {
+            if(o==this) return true;
+            if(o==null || !(o instanceof Location)) return false;
+            Location l= Location.class.cast(o);
+            return city.equals(l.city) && state.equals(l.state) && country.equals(l.country);
+        }
+
+       /**
+        * Compares two Location objects for ordering purposes
+        * @param Location to compare to.
+        * @return a negative integer, zero, or a positive integer as this 
+        * object is less than, equal to, or greater than the specified object.
+        */
+       public int compareTo(Location l)
+       {
+           if(l==this) return 0;
+           int c= city.compareTo(l.city);
+           if(c!=0) return c;
+           int s = state.compareTo(l.state);
+           if(s!=0) return s;
+           return country.compareTo(l.country);
+        }
+
+    }
     
     /**
      * Constructor.  Sets up the object.
@@ -63,11 +115,10 @@ public class PerDiemDB
     {
     	/*Example 1: Domestic */
     	
-    	ArrayList<String> location = new ArrayList<String>();
+        Location location = new Location("minneapolis", /* City. */
+                                         "mn", /* State. Only applicable for domestic travel. */
+                                         "united states"); /* Country */
         ArrayList<Double> rates = new ArrayList<Double>();
-        location.add("minneapolis"); 	/* City. */
-        location.add("minnesota"); 		/* State. Only applicable for domestic travel. */
-        location.add("usa"); 	/* Country */
         rates.add(7.0); 				/* Breakfast rate in USD */
         rates.add(12.0); 				/* Lunch rate in USD */
         rates.add(26.0); 				/* Dinner rate in USD */
@@ -78,87 +129,48 @@ public class PerDiemDB
         
         /*Example 2: International, specific city */
         
-        location = new ArrayList<String>();
-        rates = new ArrayList<Double>();
-        location.add("zurich"); 		/* City */ 
-        location.add(null); 			/* State. Only applicable for domestic */
-        location.add("switzerland"); 	/* Country */
+        Location location2 = new Location("zurich","","switzerland");
+        ArrayList<Double> rates2 = new ArrayList<Double>();
         rates.add(12.0); 				/* Breakfast rate in USD */
         rates.add(25.0); 				/* Lunch rate in USD */
         rates.add(50.0); 				/* Dinner rate in USD */
         rates.add(20.0); 				/* Incidental ceiling in USD */
         rates.add(225.0);				/* Lodging ceiling in USD */
         
-        this.perDiemInfo.put(location,rates);
+        this.perDiemInfo.put(location2,rates2);
         
         /*Example 3: International, country rate */
         
-        location = new ArrayList<String>();
-        rates = new ArrayList<Double>();
-        location.add(null); 			/* City */
-        location.add(null); 			/* State. Only applicable for domestic travel */
-        location.add("switzerland"); 	/* Country */
+        Location location3 = new Location("","","switzerland");
+        ArrayList<Double> rates3 = new ArrayList<Double>();
         rates.add(10.0); 				/* Breakfast rate in USD */
         rates.add(20.0); 				/* Lunch rate in USD */
         rates.add(40.0); 				/* Dinner rate in USD */
         rates.add(20.0);    			/* Incidental ceiling in USD */
         rates.add(250.0);				/* Hotel ceiling in USD */
         
-        this.perDiemInfo.put(location,rates);
+        this.perDiemInfo.put(location3,rates3);
         
-        /*Example 4: Domestic */
-    	
-    	location = new ArrayList<String>();
-        rates = new ArrayList<Double>();
-        location.add(null); 	/* City. */
-        location.add("colorado"); 		/* State. Only applicable for domestic travel. */
-        location.add("usa"); 	/* Country */
-        rates.add(8.0); 				/* Breakfast rate in USD */
-        rates.add(13.0); 				/* Lunch rate in USD */
-        rates.add(27.0); 				/* Dinner rate in USD */
-        rates.add(6.0); 				/* Incidental ceiling in USD */
-        rates.add(151.0);				/* Lodging ceiling in USD */
-        
-        this.perDiemInfo.put(location,rates);
-        
-        location = new ArrayList<String>();
-        rates = new ArrayList<Double>();
-        location.add("lawrence");     /* City. */
-        location.add("ks");       /* State. Only applicable for domestic travel. */
-        location.add("usa");  /* Country */
-        rates.add(7.0);                 /* Breakfast rate in USD */
+        Location location4 = new Location("des moines","ia","united states");
+        ArrayList<Double> rates4 = new ArrayList<Double>();
+        rates.add( 7.0);                 /* Breakfast rate in USD */
         rates.add(11.0);                /* Lunch rate in USD */
         rates.add(23.0);                /* Dinner rate in USD */
-        rates.add(0.0);                 /* Incidental ceiling in USD */
-        rates.add(150.0);               /* Lodging ceiling in USD */
+        rates.add( 0.0);                /* Incidental ceiling in USD */
+        rates.add(150.0);               /* Hotel ceiling in USD */
         
-        this.perDiemInfo.put(location,rates);
+        this.perDiemInfo.put(location4,rates4);
         
-        location = new ArrayList<String>();
-        rates = new ArrayList<Double>();
-        location.add("des moines");     /* City. */
-        location.add("ia");       /* State. Only applicable for domestic travel. */
-        location.add("usa");  /* Country */
-        rates.add(7.0);                 /* Breakfast rate in USD */
-        rates.add(11.0);                /* Lunch rate in USD */
-        rates.add(23.0);                /* Dinner rate in USD */
-        rates.add(0.0);                 /* Incidental ceiling in USD */
-        rates.add(150.0);               /* Lodging ceiling in USD */
+        //NOTE, I'm using the same rates here.  If the rates change for 1, 
+        //      even at runtime, they will all change!
         
-        this.perDiemInfo.put(location,rates);
-        
-        location = new ArrayList<String>();
-        rates = new ArrayList<Double>();
-        location.add("kansas city");     /* City. */
-        location.add("mo");       /* State. Only applicable for domestic travel. */
-        location.add("usa");  /* Country */
-        rates.add(7.0);                 /* Breakfast rate in USD */
-        rates.add(11.0);                /* Lunch rate in USD */
-        rates.add(23.0);                /* Dinner rate in USD */
-        rates.add(0.0);                 /* Incidental ceiling in USD */
-        rates.add(150.0);               /* Lodging ceiling in USD */
-        
-        this.perDiemInfo.put(location,rates);
+        //Same rates for Kansas City, MO
+        Location location5 = new Location("kansas city","mo","united states");
+        this.perDiemInfo.put(location5,rates4);
+       
+        //Same rates for Lawrence, KS
+        Location location6 = new Location("lawrence","ks","united states");
+        this.perDiemInfo.put(location6,rates4);
     }
     
     
@@ -175,10 +187,7 @@ public class PerDiemDB
      */
     public List<Double> getDomesticPerDiem(String city, String state) throws KeyNotFoundException
     {
-    	ArrayList<String> location = new ArrayList<String>();
-    	location.add(city.toLowerCase());
-    	location.add(state.toLowerCase());
-    	location.add("usa");
+    	Location location = new Location(city.toLowerCase(),state.toLowerCase(),"united states");
         List<Double> rateInfo = this.perDiemInfo.get(location);
         if(rateInfo == null)
         {
@@ -201,10 +210,7 @@ public class PerDiemDB
      */
     public List<Double> getDomesticPerDiem(String state) throws KeyNotFoundException
     {
-    	ArrayList<String> location = new ArrayList<String>();
-    	location.add(null);
-    	location.add(state.toLowerCase());
-    	location.add("usa");
+    	Location location = new Location("",state.toLowerCase(),"united states");
         List<Double> rateInfo = this.perDiemInfo.get(location);
         if(rateInfo == null)
         {
@@ -229,10 +235,7 @@ public class PerDiemDB
     public List<Double> getInternationalPerDiem(String city, String country) 
             throws KeyNotFoundException
     {
-    	ArrayList<String> location = new ArrayList<String>();
-    	location.add(city.toLowerCase());
-    	location.add(null);
-    	location.add(country.toLowerCase());
+    	Location location = new Location(city.toLowerCase(),"",country.toLowerCase());
         List<Double> rateInfo = this.perDiemInfo.get(location);
         if(rateInfo == null)
         {
@@ -256,10 +259,7 @@ public class PerDiemDB
     public List<Double> getInternationalPerDiem(String country) 
             throws KeyNotFoundException
     {
-    	ArrayList<String> location = new ArrayList<String>();
-    	location.add(null);
-    	location.add(null);
-    	location.add(country.toLowerCase());
+    	Location location = new Location("","",country.toLowerCase());
         List<Double> rateInfo = this.perDiemInfo.get(location);
         if(rateInfo == null)
         {

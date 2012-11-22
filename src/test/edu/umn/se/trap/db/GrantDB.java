@@ -64,9 +64,9 @@ public class GrantDB
     {
     	/* Example 1: Sponsored Grant */
         ArrayList<Object> grant = new ArrayList<Object>();
-        grant.add("010101010101"); /* Account number */
-        grant.add("sponsored"); /* Account type */
-        grant.add("DARPA"); /* Funding organization */
+        grant.add("010101010101");		/* Account number */
+        grant.add("sponsored");			/* Account type */
+        grant.add("DARPA"); 			/* Funding organization */
         grant.add("government");		/* Organization type 
         								 * (i.e., government, industry) */
         grant.add((double)250000);		/* Account balance */
@@ -75,15 +75,15 @@ public class GrantDB
                             grant);
         
         /* Example 2: Non-sponsored funds */
-        grant = new ArrayList<Object>();
-        grant.add("99999");				/* Account number */
-        grant.add("non-sponsored");		/* Account type */
-        grant.add(null); 				/* Funding organization */
-        grant.add("mixed");				/* Organization type */
-        grant.add((double)98000);		/* Account balance */
+        ArrayList<Object> grant2 = new ArrayList<Object>();
+        grant2.add("99999");				/* Account number */
+        grant2.add("non-sponsored");		/* Account type */
+        grant2.add(null); 				/* Funding organization */
+        grant2.add("mixed");				/* Organization type */
+        grant2.add((double)98000);		/* Account balance */
         
-        this.grantInfo.put((String) grant.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
-                           grant);
+        this.grantInfo.put((String) grant2.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                           grant2);
 
     }
     

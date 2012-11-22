@@ -35,25 +35,25 @@ import edu.umn.se.trap.TravelFormProcessorIntf.FORM_STATUS;
  * This defines a simple data class (a struct) to use to represent travel form
  * metadata (specifically the description and state of the form).
  * 
- * NOTE: In your implementation, you will typically not make internal data
- * public.
+ * NOTE: In your implementation, you will typically not make internal data 
+ *       public.
  * 
  * @author desilva
  */
 public class TravelFormMetadata
 {
     /**
-     * The description of the form data to allow easy identification of the
+     * The description of the form data to allow easy identification of the 
      * form.
      */
-    public String description;
-
+    public String       description;
+    
     /**
      * The state of the form (valid values for this are the {@link FORM_STATUS}
-     * enum)
+     * enum) 
      */
-    public FORM_STATUS status;
-
+    public FORM_STATUS   status;
+    
     /**
      * @param description
      * @param status
