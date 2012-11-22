@@ -13,7 +13,7 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 
 
-4: BaggageCostLimitRule
+
 
 8: GrantAuthorizationRule
 
