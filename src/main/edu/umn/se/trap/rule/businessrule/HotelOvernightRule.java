@@ -18,27 +18,24 @@
  */
 package edu.umn.se.trap.rule.businessrule;
 
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
-import org.apache.commons.lang3.StringUtils;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
-import edu.umn.se.trap.form.FormGrant;
-import edu.umn.se.trap.form.FormUser;
-import edu.umn.se.trap.form.GrantSet;
-import edu.umn.se.trap.form.TransportationExpense;
+import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.TrapForm;
+import edu.umn.se.trap.form.Trip;
 import edu.umn.se.trap.rule.AbstractRule;
 
 /**
- * @author Andrew
+ * @author Mark
  * 
  */
-public class VisaStatusRule extends AbstractRule
+public class HotelOvernightRule extends AbstractRule
 {
+
+    private final int DAY_LENGTH = 86400000;
 
     /*
      * (non-Javadoc)
@@ -50,73 +47,72 @@ public class VisaStatusRule extends AbstractRule
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
-
         if (form != null)
         {
+            Trip trip = form.getTrip();
 
-            GrantSet grantSet = form.getGrantSet();
-
-            if (grantSet == null)
+            if (trip == null)
             {
                 throw new TrapException(
-                        "Invalid TrapForm object: grantSet was null.");
+                        "Invalid TrapForm object: trip was null.");
             }
 
-            Set<FormGrant> grants = grantSet.getGrants();
+            Date arrivalTime = trip.getArrivalDateTime();
 
-            if (grants == null)
+            if (arrivalTime == null)
             {
                 throw new TrapException(
-                        "Invalid TrapForm object: grants was null.");
+                        "Invalid TrapForm object: arrivalDateTime was null.");
             }
 
-            FormUser formUser = form.getUser();
+            Date departureTime = trip.getDepartureDateTime();
 
-            if (formUser == null)
+            if (departureTime == null)
             {
                 throw new TrapException(
-                        "Invalid TrapForm object: user was null.");
+                        "Invalid TrapForm object: departureDateTime was null.");
             }
 
-            checkVisaStatus(grants, formUser);
+            List<Expense> expenses = form.getExpenses();
 
+            if (expenses == null)
+            {
+                throw new TrapException(
+                        "Invalid TrapForm object: expenses was null.");
+            }
+
+            checkHotel(arrivalTime, departureTime, expenses);
         }
         else
         {
+
             throw new TrapException("Invalid TrapForm object: form was null.");
+
         }
 
     }
 
     /**
-     * @param grants
-     * @param formUser
+     * @param arrivalTime
+     * @param departureTime
+     * @param expenses
      * @throws TrapException
      */
-    protected void checkVisaStatus(Set<FormGrant> grants, FormUser formUser)
-            throws TrapException
+    protected void checkHotel(Date departureTime, Date arrivalTime,
+            List<Expense> expenses) throws TrapException
     {
 
-        if (!(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
-                "United States"))
-                || !(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
-                        "USA")))
+        // Only consider trips that are less than 1 day (24 hours).
+        if ((arrivalTime.getTime() - departureTime.getTime()) < DAY_LENGTH)
         {
-
-            /*
-             * Iterate over the set and throw an error if any of the grants are
-             * non-export.
-             */
-
-            if (!(StringUtils.equalsIgnoreCase(formUser.getVisaStatus(),
-                    "valid")))
+            for (Expense expense : expenses)
             {
-
-                throw new TrapException(
-                        "Invalid citizenship and visa status");
-
+                if (expense.getType().equals(ExpenseType.LODGING))
+                {
+                    throw new TrapException(
+                            "Lodging expenses cannot be claimed for a trip less than 1 day.");
+                }
             }
-
         }
 
     }

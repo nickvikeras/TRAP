@@ -18,9 +18,11 @@
  */
 package edu.umn.se.trap;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -270,5 +272,33 @@ public class TrapTestUtil
                 "needed rental car", type, "Hertz", 53, true);
 
         return transportationExpense;
+    }
+    
+    public static List<Expense> getSampleExpenseHotelOvernight()
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
+                500.00, "noExport");
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        Expense expense = new Expense(
+                ExpenseType.LODGING, date, 40.34, location, grantSet,
+                "I was sleepy.");
+        
+        List<Expense> expenseList = new ArrayList<Expense>();
+        
+        expenseList.add(expense);
+
+        return expenseList;
     }
 }
