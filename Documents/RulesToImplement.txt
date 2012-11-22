@@ -15,9 +15,7 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 
 
-8: GrantAuthorizationRule
-
-9: VisaStatusRule
+8: GrantAuthorizationRule (in progress by Andrew)
 
 10: HotelOvernightRule
 
