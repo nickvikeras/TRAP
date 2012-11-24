@@ -301,4 +301,27 @@ public class TrapTestUtil
 
         return expenseList;
     }
+    
+    public static Expense getSampleExpenseSponsoredNoAlcohol(String justification)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Generic", "Place", "USA");
+        
+        Expense otherExpense = new Expense ( ExpenseType.OTHER, date, 50, location, grantSet, "Alcohol" );
+
+
+        return otherExpense;
+    }
+
 }
