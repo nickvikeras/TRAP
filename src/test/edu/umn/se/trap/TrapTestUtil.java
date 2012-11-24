@@ -347,5 +347,35 @@ public class TrapTestUtil
 
         return transportationExpense;
     }
+    
+    public static List<Expense> getSampleExpenseBaggageClaim(Double expense)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored", null,
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, expense, location, grantSet,
+                "needed checked bags", "BAGGAGE","American Airlines" , 53, true);
+        
+        
+        List<Expense> expenseList = new ArrayList<Expense>();
+        
+        expenseList.add(transportationExpense);
+
+        return expenseList;
+       
+    }
 
 }
