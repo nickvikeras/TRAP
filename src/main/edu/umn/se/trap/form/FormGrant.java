@@ -31,6 +31,8 @@ public class FormGrant
     private String fundingOrganization;
     private String organizationType;
     private Double accountBalance;
+    private String grantAdmin;
+    private String[] authorizedPayees;
 
     // Getters and setters:
 
@@ -41,7 +43,7 @@ public class FormGrant
      * @param accountBalance
      * @param organizationType 
      */
-    public FormGrant(String accountName, String accountType, String fundingOrganization, Double accountBalance, String organizationType)
+    public FormGrant(String accountName, String accountType, String fundingOrganization, Double accountBalance, String organizationType, String grantAdmin, String[] authorizedPayees)
     {
         super();
         this.accountName = accountName;
@@ -49,6 +51,8 @@ public class FormGrant
         this.fundingOrganization = fundingOrganization;
         this.organizationType = organizationType;
         this.accountBalance = accountBalance;
+        this.grantAdmin = grantAdmin;
+        this.authorizedPayees = authorizedPayees;
     }
 
     /**
@@ -133,6 +137,38 @@ public class FormGrant
     public void setAccountBalance(Double accountBalance)
     {
         this.accountBalance = accountBalance;
+    }
+
+    /**
+     * @return the grantAdmin
+     */
+    public String getGrantAdmin()
+    {
+        return grantAdmin;
+    }
+
+    /**
+     * @param grantAdmin the grantAdmin to set
+     */
+    public void setGrantAdmin(String grantAdmin)
+    {
+        this.grantAdmin = grantAdmin;
+    }
+
+    /**
+     * @return the authorizedPayees
+     */
+    public String[] getAuthorizedPayees()
+    {
+        return authorizedPayees;
+    }
+
+    /**
+     * @param authorizedPayees the authorizedPayees to set
+     */
+    public void setAuthorizedPayees(String[] authorizedPayees)
+    {
+        this.authorizedPayees = authorizedPayees;
     }
 
 }

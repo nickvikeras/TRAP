@@ -35,6 +35,7 @@ import edu.umn.se.trap.db.orm.DatabaseAccessor;
 import edu.umn.se.trap.db.orm.Grant;
 import edu.umn.se.trap.db.orm.PerDiem;
 import edu.umn.se.trap.db.orm.User;
+import edu.umn.se.trap.db.orm.UserGrant;
 
 /**
  * @author mark
@@ -259,7 +260,8 @@ public class FormFactory
         {
             String accountName = formData.get(String.format(TrapInputKeys.GRANTd_ACCOUNT, i + 1));
             Grant grant = dbAccessor.getGrant(accountName);
-            FormGrant formGrant = new FormGrant(accountName, grant.getAccountType(), grant.getFundingOrganization(), grant.getAccountBalance(), grant.getOrganizationType());
+            UserGrant ug = dbAccessor.getUserGrant(accountName);
+            FormGrant formGrant = new FormGrant(accountName, grant.getAccountType(), grant.getFundingOrganization(), grant.getAccountBalance(), grant.getOrganizationType(), ug.getGrantAdmin(), ug.getAuthorizedPayees());
             grants.add(formGrant);
         }
         return new GrantSet(grants);
