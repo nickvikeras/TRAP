@@ -323,5 +323,29 @@ public class TrapTestUtil
 
         return otherExpense;
     }
+    
+    public static Expense getSampleExpenseNonDodGrantNationalRule(String rentalPlace)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored", null,
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
+                "needed rental car", "CAR", rentalPlace, 53, true);
+
+        return transportationExpense;
+    }
 
 }
