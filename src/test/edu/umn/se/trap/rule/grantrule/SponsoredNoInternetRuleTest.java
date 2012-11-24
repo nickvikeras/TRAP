@@ -33,7 +33,7 @@ import edu.umn.se.trap.form.ExpenseType;
  * @author Andrew
  *
  */
-public class SponsoredNoAlcoholRuleTest
+public class SponsoredNoInternetRuleTest
 {
 
     /**
@@ -53,12 +53,12 @@ public class SponsoredNoAlcoholRuleTest
     }
 
     @Test
-    public void testAlcohol() throws TrapException
+    public void testInternet() throws TrapException
     {
         Expense testExpense = TrapTestUtil
-                .getSampleExpenseSponsoredOtherExpense("Alcohol");
+                .getSampleExpenseSponsoredOtherExpense("Internet");
 
-        SponsoredNoAlcoholRule rule = new SponsoredNoAlcoholRule();
+        SponsoredNoInternetRule rule = new SponsoredNoInternetRule();
 
         rule.removeGrants(testExpense);
 
@@ -69,12 +69,12 @@ public class SponsoredNoAlcoholRuleTest
     }
     
     @Test
-    public void testNotAlcohol() throws TrapException
+    public void testNotInternet() throws TrapException
     {
         Expense testExpense = TrapTestUtil
                 .getSampleExpenseSponsoredOtherExpense("bananas");
 
-        SponsoredNoAlcoholRule rule = new SponsoredNoAlcoholRule();
+        SponsoredNoInternetRule rule = new SponsoredNoInternetRule();
 
         rule.removeGrants(testExpense);
 

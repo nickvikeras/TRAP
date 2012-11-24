@@ -302,7 +302,7 @@ public class TrapTestUtil
         return expenseList;
     }
     
-    public static Expense getSampleExpenseSponsoredNoAlcohol(String justification)
+    public static Expense getSampleExpenseSponsoredOtherExpense(String justification)
     {
 
         Set<FormGrant> grants = new HashSet<FormGrant>();
