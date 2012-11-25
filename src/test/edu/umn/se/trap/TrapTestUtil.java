@@ -455,6 +455,40 @@ public class TrapTestUtil
         return expenseList;
        
     }
+    public static List<Expense> getSampleExpensePersonalandCarRental( Date personal, Date rental)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored", null,
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, personal, 50, location, grantSet,
+                "needed checked bags", "CAR","National" , 53, true);
+        
+        TransportationExpense personalExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, rental, 50, location, grantSet,
+                "needed checked bags", "CAR","National" , 53, true);
+        
+        
+        List<Expense> expenseList = new ArrayList<Expense>();
+        
+        expenseList.add(transportationExpense);
+        expenseList.add(personalExpense);
+
+        return expenseList;
+       
+    }
 
 
 }
