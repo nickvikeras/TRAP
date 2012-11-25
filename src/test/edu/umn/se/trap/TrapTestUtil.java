@@ -377,5 +377,84 @@ public class TrapTestUtil
         return expenseList;
        
     }
+    public static List<Expense> getSampleExpenseNumBaggageClaim(int moreClaims)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored", null,
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+        
+        List<Expense> expenseList = new ArrayList<Expense>();
+        
+        if ( moreClaims == 1 ){
+
+            for (int i=0; i <5; i++){
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location, grantSet,
+                        "needed checked bags", "BAGGAGE","American Airlines" , 53, true);
+                expenseList.add(transportationExpense);
+            }
+            
+            for (int i=0; i <4; i++){
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location, grantSet,
+                        "needed checked bags", "AIR","American Airlines" , 53, true);
+                expenseList.add(transportationExpense);
+            }
+        
+        }
+        
+        if ( moreClaims == 0 ){
+            
+
+                for (int i=0; i <5; i++){
+                    TransportationExpense transportationExpense = new TransportationExpense(
+                            ExpenseType.TRANSPORTATION, date, 100, location, grantSet,
+                            "needed checked bags", "BAGGAGE","American Airlines" , 53, true);
+                    expenseList.add(transportationExpense);
+                }
+                
+                for (int i=0; i<5; i++){
+                    TransportationExpense transportationExpense = new TransportationExpense(
+                            ExpenseType.TRANSPORTATION, date, 100, location, grantSet,
+                            "needed checked bags", "AIR","American Airlines" , 53, true);
+                    expenseList.add(transportationExpense);
+                }
+            
+           }
+        
+        if ( moreClaims == -1 ){
+            
+
+            for (int i=0; i <4; i++){
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location, grantSet,
+                        "needed checked bags", "BAGGAGE","American Airlines" , 53, true);
+                expenseList.add(transportationExpense);
+            }
+            
+            for (int i=0; i<5; i++){
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location, grantSet,
+                        "needed checked bags", "AIR","American Airlines" , 53, true);
+                expenseList.add(transportationExpense);
+            }
+        
+       }
+
+        return expenseList;
+       
+    }
+
 
 }
