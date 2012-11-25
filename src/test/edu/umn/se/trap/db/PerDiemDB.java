@@ -90,6 +90,16 @@ public class PerDiemDB
             return city.equals(l.city) && state.equals(l.state) && country.equals(l.country);
         }
 
+        /**
+         * Check the hashcode of a Location object for equality purposes
+         * @return integer hashcode for this Location object.
+         */
+        @Override
+        public int hashCode()
+        {
+        	return this.city.hashCode()*3+this.state.hashCode()*5+this.country.hashCode()*7;
+        }
+        
        /**
         * Compares two Location objects for ordering purposes
         * @param Location to compare to.
@@ -131,11 +141,11 @@ public class PerDiemDB
         
         Location location2 = new Location("zurich","","switzerland");
         ArrayList<Double> rates2 = new ArrayList<Double>();
-        rates.add(12.0); 				/* Breakfast rate in USD */
-        rates.add(25.0); 				/* Lunch rate in USD */
-        rates.add(50.0); 				/* Dinner rate in USD */
-        rates.add(20.0); 				/* Incidental ceiling in USD */
-        rates.add(225.0);				/* Lodging ceiling in USD */
+        rates2.add(12.0); 				/* Breakfast rate in USD */
+        rates2.add(25.0); 				/* Lunch rate in USD */
+        rates2.add(50.0); 				/* Dinner rate in USD */
+        rates2.add(20.0); 				/* Incidental ceiling in USD */
+        rates2.add(225.0);				/* Lodging ceiling in USD */
         
         this.perDiemInfo.put(location2,rates2);
         
@@ -143,21 +153,21 @@ public class PerDiemDB
         
         Location location3 = new Location("","","switzerland");
         ArrayList<Double> rates3 = new ArrayList<Double>();
-        rates.add(10.0); 				/* Breakfast rate in USD */
-        rates.add(20.0); 				/* Lunch rate in USD */
-        rates.add(40.0); 				/* Dinner rate in USD */
-        rates.add(20.0);    			/* Incidental ceiling in USD */
-        rates.add(250.0);				/* Hotel ceiling in USD */
+        rates3.add(10.0); 				/* Breakfast rate in USD */
+        rates3.add(20.0); 				/* Lunch rate in USD */
+        rates3.add(40.0); 				/* Dinner rate in USD */
+        rates3.add(20.0);    			/* Incidental ceiling in USD */
+        rates3.add(250.0);				/* Hotel ceiling in USD */
         
         this.perDiemInfo.put(location3,rates3);
         
         Location location4 = new Location("des moines","ia","united states");
         ArrayList<Double> rates4 = new ArrayList<Double>();
-        rates.add( 7.0);                 /* Breakfast rate in USD */
-        rates.add(11.0);                /* Lunch rate in USD */
-        rates.add(23.0);                /* Dinner rate in USD */
-        rates.add( 0.0);                /* Incidental ceiling in USD */
-        rates.add(150.0);               /* Hotel ceiling in USD */
+        rates4.add( 7.0);                 /* Breakfast rate in USD */
+        rates4.add(11.0);                /* Lunch rate in USD */
+        rates4.add(23.0);                /* Dinner rate in USD */
+        rates4.add( 0.0);                /* Incidental ceiling in USD */
+        rates4.add(150.0);               /* Hotel ceiling in USD */
         
         this.perDiemInfo.put(location4,rates4);
         
