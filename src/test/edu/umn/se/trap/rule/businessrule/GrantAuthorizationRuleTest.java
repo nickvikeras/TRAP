@@ -69,7 +69,7 @@ public class GrantAuthorizationRuleTest
         grants.add(grant1);
 
         FormUser user = new FormUser("linc001", "Greg Gay", "765-432-1098",
-                "Ron Smith", "smith@umn.edu", "8790111", "Icelandic", "valid",
+                "Ron Smith", "smith@umn.edu", "8790111", "US", "valid",
                 true);
 
         try
@@ -100,7 +100,7 @@ public class GrantAuthorizationRuleTest
         grants.add(grant1);
 
         FormUser user = new FormUser("linc001", "Greg Gay", "765-432-1098",
-                "Ron Smith", "smith@umn.edu", "8790111", "Icelandic", "NA",
+                "Gene Smith", "smith@umn.edu", "8790111", "US", "NA",
                 true);
 
         try
