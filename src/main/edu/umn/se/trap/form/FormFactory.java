@@ -349,6 +349,26 @@ public class FormFactory
             expenses.add(expense);
         }
 
+        for (Expense expense : expenses)
+        {
+            if (TrapUtil.sameDay(expense.getDate(), TrapDateUtil
+                    .parseTrapDateTime(formData
+                            .get(TrapInputKeys.DEPARTURE_DATETIME)))
+                    || TrapUtil.sameDay(expense.getDate(), TrapDateUtil
+                            .parseTrapDateTime(formData
+                                    .get(TrapInputKeys.ARRIVAL_DATETIME))))
+            {
+                ExpenseType type = expense.getType();
+                if (type.equals(ExpenseType.BREAKFAST)
+                        || type.equals(ExpenseType.LUNCH)
+                        || type.equals(ExpenseType.DINNER))
+                {
+                    expense.setAmount(expense.getAmount() * .75);
+                }
+            }
+
+        }
+
         return expenses;
     }
 
