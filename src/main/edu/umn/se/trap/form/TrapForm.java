@@ -30,6 +30,8 @@ import java.util.Set;
 
 import javax.print.attribute.standard.Destination;
 
+import org.apache.commons.lang3.StringUtils;
+
 import edu.umn.se.trap.TrapOutputKeys;
 import edu.umn.se.trap.TravelFormMetadata;
 
@@ -86,108 +88,139 @@ public class TrapForm
     public void buildOutput(Map<String, Double> accountAmountMap)
     {
         Map<String, String> output = new HashMap<String, String>();
-        output.put(TrapOutputKeys.USER_NAME, getUser().getUserName());
-        output.put(TrapOutputKeys.EMAIL, getUser().getEmail());
-        output.put(TrapOutputKeys.CITIZENSHIP, getUser().getCitizenship());
-        output.put(TrapOutputKeys.VISA_STATUS, getUser().getVisaStatus());
-        output.put(TrapOutputKeys.FORM_SUBMISSION_DATETIME,
+        putIfNotNull(output, TrapOutputKeys.NAME, getUser().getFullName());
+        putIfNotNull(output, TrapOutputKeys.USER_NAME, getUser().getUserName());
+        putIfNotNull(output, TrapOutputKeys.EMAIL, getUser().getEmail());
+        putIfNotNull(output, TrapOutputKeys.CITIZENSHIP, getUser()
+                .getCitizenship());
+        putIfNotNull(output, TrapOutputKeys.VISA_STATUS, getUser()
+                .getVisaStatus());
+        putIfNotNull(output, TrapOutputKeys.FORM_SUBMISSION_DATETIME,
                 TrapDateUtil.printDateTime(getSubmissionDate()));
-        output.put(TrapOutputKeys.DEPARTURE_DATETIME,
+        putIfNotNull(output, TrapOutputKeys.DEPARTURE_DATETIME,
                 TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
-        output.put(TrapOutputKeys.ARRIVAL_DATETIME,
+        putIfNotNull(output, TrapOutputKeys.ARRIVAL_DATETIME,
                 TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
-        output.put(TrapOutputKeys.PAID_BY_UNIVERSITY,
+        putIfNotNull(output, TrapOutputKeys.PAID_BY_UNIVERSITY,
                 TrapUtil.boolToYesNo(getUser().isPaidByUniversity()));
-        output.put(TrapOutputKeys.EMERGENCY_CONTACT_NAME, getUser()
+        putIfNotNull(output, TrapOutputKeys.EMERGENCY_CONTACT_NAME, getUser()
                 .getEmergencyContactName());
-        output.put(TrapOutputKeys.EMERGENCY_CONTACT_PHONE, getUser()
+        putIfNotNull(output, TrapOutputKeys.EMERGENCY_CONTACT_PHONE, getUser()
                 .getEmergencyContactPhone());
-        output.put(TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED,
+        putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED,
                 TrapUtil.boolToYesNo(getTrip().isTravelTypeCseSponsored()));
-        output.put(TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED,
+        putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED,
                 TrapUtil.boolToYesNo(getTrip().isTravelTypeDtcSponsored()));
-        output.put(TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED,
+        putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED,
                 TrapUtil.boolToYesNo(getTrip().isTravelTypeNonsponsored()));
-        output.put(TrapOutputKeys.JUSTIFICATION_CONFERENCE_TITLE, getTrip()
-                .getJustificationConferenceTitle());
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTED,
+        putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_CONFERENCE_TITLE,
+                getTrip().getJustificationConferenceTitle());
+        putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_PRESENTED,
                 TrapUtil.boolToYesNo(getTrip().isJustificationPresented()));
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_TITLE, getTrip()
-                .getJustificationPresentationTitle());
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ABSTRACT,
-                getTrip().getJustificationPresentationAbstract());
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ACKNOWLEDGEMENT,
+        putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_PRESENTATION_TITLE,
+                getTrip().getJustificationPresentationTitle());
+        putIfNotNull(output,
+                TrapOutputKeys.JUSTIFICATION_PRESENTATION_ABSTRACT, getTrip()
+                        .getJustificationPresentationAbstract());
+        putIfNotNull(output,
+                TrapOutputKeys.JUSTIFICATION_PRESENTATION_ACKNOWLEDGEMENT,
                 getTrip().getJustificationPresentationAcknowledgement());
-        output.put(TrapOutputKeys.JUSTIFICATION_NONSPONSORED, getTrip()
-                .getJustificationNonsponsored());
-        output.put(TrapOutputKeys.JUSTIFICATION_SPONSORED, getTrip()
+        putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_NONSPONSORED,
+                getTrip().getJustificationNonsponsored());
+        putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_SPONSORED, getTrip()
                 .getJustificationSponsored());
+
+        List<Location> locations = getLocations();
+        putIfNotNull(output, TrapOutputKeys.NUM_DESTINATIONS,
+                String.valueOf(locations.size()));
+        int i = 1;
+        for (Location location : locations)
+        {
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.DESTINATIONa_CITY, i),
+                    location.getCity());
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.DESTINATIONa_STATE, i),
+                    location.getState());
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.DESTINATIONa_COUNTRY, i),
+                    location.getCountry());
+        }
 
         List<Day> days = getDays();
         java.util.Collections.sort(days, new DayComparator());
-        int i = 0;
+        i = 1;
         for (Day day : getDays())
         {
-            output.put(String.format(TrapOutputKeys.DAYa_DATE, i),
+            putIfNotNull(output, String.format(TrapOutputKeys.DAYa_DATE, i),
                     TrapDateUtil.printDate(day.getDate()));
-            output.put(String.format(TrapOutputKeys.DAYa_TOTAL, i),
+            putIfNotNull(output, String.format(TrapOutputKeys.DAYa_TOTAL, i),
                     String.valueOf(day.getTotal()));
-            output.put(String.format(TrapOutputKeys.DAYa_INCIDENTAL_TOTAL, i),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.DAYa_INCIDENTAL_TOTAL, i),
                     String.valueOf(day.getIncidentalTotal()));
-            output.put(String.format(
-                    TrapOutputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i), day
-                    .getIncidentalJustification());
+            putIfNotNull(output, String.format(
+                    TrapOutputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i),
+                    day.getIncidentalJustification());
             i++;
         }
 
         List<Expense> travelExpenses = getExpensesForType(ExpenseType.TRANSPORTATION);
-        output.put(TrapOutputKeys.NUM_TRANSPORTATION,
+        putIfNotNull(output, TrapOutputKeys.NUM_TRANSPORTATION,
                 String.valueOf(travelExpenses.size()));
-        int j = 0;
+        i = 1;
         for (Expense expense : travelExpenses)
         {
             TransportationExpense tExpense = (TransportationExpense) expense;
-            output.put(String.format(TrapOutputKeys.TRANSPORTATIONb_DATE, j),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.TRANSPORTATIONb_DATE, i),
                     TrapDateUtil.printDate(tExpense.getDate()));
-            output.put(String.format(TrapOutputKeys.TRANSPORTATIONb_TYPE, j),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.TRANSPORTATIONb_TYPE, i),
                     tExpense.getTranportationType());
-            output.put(String.format(TrapOutputKeys.TRANSPORTATIONb_TOTAL, j),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.TRANSPORTATIONb_TOTAL, i),
                     String.valueOf(tExpense.getAmount()));
-            j++;
+            i++;
         }
 
         List<Expense> otherExpenses = getExpensesForType(ExpenseType.OTHER);
-        output.put(TrapOutputKeys.NUM_OTHER_EXPENSES,
+        putIfNotNull(output, TrapOutputKeys.NUM_OTHER_EXPENSES,
                 String.valueOf(travelExpenses.size()));
-        int k = 0;
+        i = 1;
         for (Expense expense : otherExpenses)
         {
-            output.put(String.format(TrapOutputKeys.OTHERc_DATE, k),
+            putIfNotNull(output, String.format(TrapOutputKeys.OTHERc_DATE, i),
                     TrapDateUtil.printDate(expense.getDate()));
-            output.put(String.format(TrapOutputKeys.OTHERc_JUSTIFICATION, k),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.OTHERc_JUSTIFICATION, i),
                     expense.getJustification());
-            output.put(String.format(TrapOutputKeys.OTHERc_TOTAL, k),
+            putIfNotNull(output, String.format(TrapOutputKeys.OTHERc_TOTAL, i),
                     String.valueOf(expense.getAmount()));
-            k++;
+            i++;
         }
 
-        output.put(TrapOutputKeys.NUM_GRANTS,
+        putIfNotNull(output, TrapOutputKeys.NUM_GRANTS,
                 String.valueOf(getGrantSet().getGrants().size()));
-        int l = 0;
+        i = 1;
         for (FormGrant grant : getGrantSet().getGrants())
         {
-            output.put(String.format(TrapOutputKeys.GRANTd_ACCOUNT, l),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.GRANTd_ACCOUNT, i),
                     grant.getAccountName());
-            output.put(
-                    String.format(TrapOutputKeys.GRANTd_PERCENT, l),
+            putIfNotNull(
+                    output,
+                    String.format(TrapOutputKeys.GRANTd_PERCENT, i),
                     String.valueOf(getAccountToPercentMap().get(
                             grant.getAccountName())));
-            output.put(
-                    String.format(TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, l),
+            putIfNotNull(
+                    output,
+                    String.format(TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, i),
                     String.valueOf(accountAmountMap.get(grant.getAccountName())));
-            output.put(String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, l),
+            putIfNotNull(output,
+                    String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, i),
                     grant.getGrantAdmin());
-            l++;
+            i++;
         }
 
         double total = 0;
@@ -195,9 +228,31 @@ public class TrapForm
         {
             total += entry.getValue();
         }
-        output.put(TrapOutputKeys.TOTAL_REIMBURSEMENT, String.valueOf(total));
-        output.put(TrapOutputKeys.NUM_DAYS,
+        putIfNotNull(output, TrapOutputKeys.TOTAL_REIMBURSEMENT,
+                String.valueOf(total));
+        putIfNotNull(output, TrapOutputKeys.NUM_DAYS,
                 String.valueOf(getTrip().getNumDays()));
+
+        for (Entry<String, String> entry : output.entrySet())
+        {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+        this.formOutput = output;
+
+    }
+
+    /**
+     * @param output
+     * @param numDays
+     * @param valueOf
+     */
+    private void putIfNotNull(Map<String, String> output, String key,
+            String value)
+    {
+        if (value != null && !StringUtils.equals(value, ""))
+        {
+            output.put(key, value);
+        }
 
     }
 
@@ -252,7 +307,9 @@ public class TrapForm
                 locations.add(expense.getLocation());
             }
         }
-        return Arrays.asList((Location[]) locations.toArray());
+        List<Location> locationList = new ArrayList<Location>();
+        locationList.addAll(locations);
+        return locationList;
     }
 
     /**

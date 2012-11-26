@@ -90,7 +90,7 @@ public class FormFactory
             String accountNumber = formData.get(String.format(
                     TrapInputKeys.GRANTd_ACCOUNT, i + 1));
             Double percentToCharge = Double.parseDouble(formData.get(String
-                    .format(TrapInputKeys.GRANTd_ACCOUNT, i + 1)));
+                    .format(TrapInputKeys.GRANTd_PERCENT, i + 1)));
             accountToPercentMap.put(accountNumber, percentToCharge);
         }
         return accountToPercentMap;

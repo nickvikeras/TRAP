@@ -58,7 +58,7 @@ public class TrapOutputKeys
     public static final String TRANSPORTATIONb_TOTAL = "TRANSPORTATION%d_TOTAL";
     public static final String NUM_OTHER_EXPENSES = "NUM_OTHER_EXPENSES";
     public static final String OTHERc_DATE = "OTHER%d_DATE";
-    public static final String OTHERc_JUSTIFICATION = "";
+    public static final String OTHERc_JUSTIFICATION = "OTHER%d_JUSTIFICATION";
     public static final String OTHERc_TOTAL = "OTHER%d_TOTAL";
     public static final String NUM_GRANTS = "NUM_GRANTS";
     public static final String GRANTd_ACCOUNT = "GRANT%d_ACCOUNT";
@@ -67,4 +67,5 @@ public class TrapOutputKeys
     public static final String GRANTd_APPROVER_NAME = "GRANT%d_APPROVER_NAME";
     public static final String TOTAL_REIMBURSEMENT = "TOTAL_REIMBURSEMENT";
     public static final String NUM_DAYS = "NUM_DAYS";
+    public static final String NAME = "NAME";
 }
