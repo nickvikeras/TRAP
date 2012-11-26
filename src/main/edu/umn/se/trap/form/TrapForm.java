@@ -171,22 +171,33 @@ public class TrapForm
             k++;
         }
 
-         output.put(TrapOutputKeys.NUM_GRANTS, String.valueOf(getGrantSet().getGrants().size()));
-         int l = 0;
-         for(FormGrant grant : getGrantSet().getGrants()){
-             output.put(String.format(TrapOutputKeys.GRANTd_ACCOUNT, l), grant.getAccountName()); 
-                     output.put(String.format(TrapOutputKeys.GRANTd_PERCENT, l), String.valueOf(getAccountToPercentMap().get(grant.getAccountName())));
-                     output.put(String.format(TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, l), String.valueOf(accountAmountMap.get(grant.getAccountName())));
-                     output.put(String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, l), grant.getGrantAdmin());
-                             l++;
-         }
-         
-         double total = 0;
-         for(Entry<String, Double> entry : accountAmountMap.entrySet()){
-             total += entry.getValue();
-         }
-         output.put(TrapOutputKeys.TOTAL_REIMBURSEMENT, String.valueOf(total));
-         output.put(TrapOutputKeys.NUM_DAYS, String.valueOf(getTrip().getNumDays()));
+        output.put(TrapOutputKeys.NUM_GRANTS,
+                String.valueOf(getGrantSet().getGrants().size()));
+        int l = 0;
+        for (FormGrant grant : getGrantSet().getGrants())
+        {
+            output.put(String.format(TrapOutputKeys.GRANTd_ACCOUNT, l),
+                    grant.getAccountName());
+            output.put(
+                    String.format(TrapOutputKeys.GRANTd_PERCENT, l),
+                    String.valueOf(getAccountToPercentMap().get(
+                            grant.getAccountName())));
+            output.put(
+                    String.format(TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, l),
+                    String.valueOf(accountAmountMap.get(grant.getAccountName())));
+            output.put(String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, l),
+                    grant.getGrantAdmin());
+            l++;
+        }
+
+        double total = 0;
+        for (Entry<String, Double> entry : accountAmountMap.entrySet())
+        {
+            total += entry.getValue();
+        }
+        output.put(TrapOutputKeys.TOTAL_REIMBURSEMENT, String.valueOf(total));
+        output.put(TrapOutputKeys.NUM_DAYS,
+                String.valueOf(getTrip().getNumDays()));
 
     }
 
