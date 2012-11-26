@@ -81,9 +81,19 @@ public class CurrencyDB
             if(o==this) return true;
             if(o==null || !(o instanceof Currency)) return false;
             Currency c= Currency.class.cast(o);
-            return currencyCode.equals(c.currencyCode) && date.equals(c.date);
+            return this.currencyCode.equals(c.currencyCode) && this.date.equals(c.date);
         }
 
+        /**
+         * Check the hashcode of a Currency object for equality purposes
+         * @return integer hashcode for this Currency object.
+         */
+        @Override
+        public int hashCode()
+        {
+        	return this.currencyCode.hashCode()*3+this.date.hashCode()*5;
+        }
+        
       /**
        * Compares two Currency objects for ordering purposes
        * @param Currency to compare to.
@@ -93,9 +103,9 @@ public class CurrencyDB
        public int compareTo(Currency c)
        {
            if(c==this) return 0;
-           int code= currencyCode.compareTo(c.currencyCode);
+           int code= this.currencyCode.compareTo(c.currencyCode);
            if(code!=0) return code;
-           return date.compareTo(c.date);
+           return this.date.compareTo(c.date);
         }
 
     }
@@ -280,9 +290,7 @@ public class CurrencyDB
      */
     public Double getConversion(String currency, String date) throws KeyNotFoundException
     {
-    	ArrayList<String> conversion = new ArrayList<String>();
-    	conversion.add(currency.toLowerCase());
-    	conversion.add(date);
+    	Currency conversion = new Currency(currency.toLowerCase(),date); 
     	Double value = this.currencyInfo.get(conversion);
         if(value == null)
         {

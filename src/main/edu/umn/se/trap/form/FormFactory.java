@@ -71,7 +71,7 @@ public class FormFactory
      * @param formData
      * @return
      */
-    private static Map<String, Double> getNewAccountToPercentMap(Map<String, String> formData) throws Exception
+    protected static Map<String, Double> getNewAccountToPercentMap(Map<String, String> formData) throws Exception
     {
         Map<String, Double> accountToPercentMap = new HashMap<String, Double>();
         Integer numGrants = Integer.parseInt(formData.get(TrapInputKeys.NUM_GRANTS));
@@ -89,7 +89,7 @@ public class FormFactory
      * @param dbAccessor
      * @return
      */
-    private static List<Expense> getNewExpenseList(Map<String, String> formData, DatabaseAccessor dbAccessor) throws Exception
+    protected static List<Expense> getNewExpenseList(Map<String, String> formData, DatabaseAccessor dbAccessor) throws Exception
     {
         List<Expense> expenses = new ArrayList<Expense>();
         final int numDays = Integer.parseInt(formData.get(TrapInputKeys.NUM_DAYS));
@@ -238,7 +238,7 @@ public class FormFactory
      * @param formData
      * @return
      */
-    private static FormUser getNewUser(Map<String, String> formData, DatabaseAccessor dbAccessor) throws Exception
+    protected static FormUser getNewUser(Map<String, String> formData, DatabaseAccessor dbAccessor) throws Exception
     {
         String userName = formData.get(TrapInputKeys.USER_NAME);
         String emergencyContactName = formData.get(TrapInputKeys.EMERGENCY_CONTACT_NAME);
@@ -252,7 +252,7 @@ public class FormFactory
      * @param dbAccessor
      * @return
      */
-    private static GrantSet getNewGrantSet(Map<String, String> formData, DatabaseAccessor dbAccessor) throws Exception
+    protected static GrantSet getNewGrantSet(Map<String, String> formData, DatabaseAccessor dbAccessor) throws Exception
     {
         int numGrants = Integer.parseInt(formData.get(TrapInputKeys.NUM_GRANTS));
         Set<FormGrant> grants = new HashSet<FormGrant>();
@@ -280,7 +280,7 @@ public class FormFactory
      * @return
      * @throws TrapException
      */
-    private static Trip getNewTrip(Map<String, String> formData) throws Exception
+    protected static Trip getNewTrip(Map<String, String> formData) throws Exception
     {
         Date departureDateTime = TrapDateUtil.parseTrapDateTime(formData.get(TrapInputKeys.DEPARTURE_DATETIME));
         Date arrivalDateTime = TrapDateUtil.parseTrapDateTime(formData.get(TrapInputKeys.ARRIVAL_DATETIME));

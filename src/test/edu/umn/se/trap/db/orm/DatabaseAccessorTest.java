@@ -89,23 +89,23 @@ public class DatabaseAccessorTest
      * {@link edu.umn.se.trap.db.orm.DatabaseAccessor#getDomesticPerdiem(java.lang.String)}
      * .
      */
-    @Test
-    public void testGetDomesticPerdiemString()
-    {
-        try
-        {
-            PerDiem perDiem = dbAccessor.getDomesticPerdiem("colorado");
-            assertNotNull(perDiem);
-            assertTrue(8.0 == perDiem.getBreakfastRate().doubleValue());
-            assertTrue(13.0 == perDiem.getLunchRate().doubleValue());
-            assertTrue(27.0 == perDiem.getDinnerRate().doubleValue());
-            assertTrue(6.0 == perDiem.getIncidentalCeiling().doubleValue());
-            assertTrue(151.0 == perDiem.getLodgingCeiling().doubleValue());
-        } catch (TrapException e)
-        {
-            fail("per diem not found");
-        }
-    }
+//    @Test
+//    public void testGetDomesticPerdiemString()
+//    {
+//        try
+//        {
+//            PerDiem perDiem = dbAccessor.getDomesticPerdiem("");
+//            assertNotNull(perDiem);
+//            assertTrue(8.0 == perDiem.getBreakfastRate().doubleValue());
+//            assertTrue(13.0 == perDiem.getLunchRate().doubleValue());
+//            assertTrue(27.0 == perDiem.getDinnerRate().doubleValue());
+//            assertTrue(6.0 == perDiem.getIncidentalCeiling().doubleValue());
+//            assertTrue(151.0 == perDiem.getLodgingCeiling().doubleValue());
+//        } catch (TrapException e)
+//        {
+//            fail("per diem not found");
+//        }
+//    }
 
     /**
      * Test method for
@@ -117,7 +117,7 @@ public class DatabaseAccessorTest
     {
         try
         {
-            PerDiem perDiem = dbAccessor.getDomesticPerdiem("minneapolis", "minnesota");
+            PerDiem perDiem = dbAccessor.getDomesticPerdiem("minneapolis", "mn");
             assertNotNull(perDiem);
             assertTrue(7.0 == perDiem.getBreakfastRate().doubleValue());
             assertTrue(12.0 == perDiem.getLunchRate().doubleValue());
