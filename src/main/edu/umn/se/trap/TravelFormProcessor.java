@@ -174,6 +174,7 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
         Map<String, Double> amountsToCharge = TrapCalculator.calculateAmountsToCharge(form);
         chargeAccounts(amountsToCharge);
         form.buildOutput(amountsToCharge);
+        databaseAccessor.getFormDB().saveForm(form);
     }
 
     /**
