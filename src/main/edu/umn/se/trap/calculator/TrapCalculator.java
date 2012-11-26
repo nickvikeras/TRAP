@@ -18,15 +18,11 @@
  */
 package edu.umn.se.trap.calculator;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
-import edu.umn.se.trap.form.ExpenseComparator;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.TrapForm;
 
@@ -39,35 +35,50 @@ public class TrapCalculator
     public static Map<String, Double> calculateAmountsToCharge(TrapForm form)
             throws TrapException
     {
-        Map<String, Double> accountNumToChargeAmount = new HashMap<String, Double>();
-        List<Expense> expenses = form.getExpenses();
-        java.util.Collections.sort(expenses, new ExpenseComparator());
-        Set<FormGrant> formGrants = form.getGrantSet().getGrants();
-        List<FormGrant> formGrantList = Arrays.asList((FormGrant[]) formGrants.toArray());
-        java.util.Collections.sort(formGrantList, new FormGrantComparator());
-        for (Expense expense : expenses)
-        {
-            for (FormGrant grant : formGrantList)
-            {
-                if (expense.getEligibleGrants()
-                        .contains(grant.getAccountName()))
-                {
-                    String accountToCharge = grant.getAccountName();
-                    Double amountToCharge = expense.getAmount();
-                    grant.setAccountBalance(grant.getAccountBalance() - amountToCharge);
-                    if(grant.getAccountBalance() < 0){
-                        throw new TrapException("Grants do not have enough available funds to cover all expenses");
-                    }
-                    Double amount = accountNumToChargeAmount.get(accountToCharge);
-                    if(amount != null){
-                        amountToCharge += amount;
-                    }
-                    java.util.Collections.sort(formGrantList, new FormGrantComparator());
-                    accountNumToChargeAmount.put(accountToCharge, amountToCharge);
-                    break;
-                }                
-            }
+        // Map<String, Double> accountNumToChargeAmount = new HashMap<String,
+        // Double>();
+        // List<Expense> expenses = form.getExpenses();
+        // java.util.Collections.sort(expenses, new ExpenseComparator());
+        // Set<FormGrant> formGrants = form.getGrantSet().getGrants();
+        // List<FormGrant> formGrantList = Arrays.asList((FormGrant[])
+        // formGrants.toArray());
+        // java.util.Collections.sort(formGrantList, new FormGrantComparator());
+        // for (Expense expense : expenses)
+        // {
+        // for (FormGrant grant : formGrantList)
+        // {
+        // if (expense.getEligibleGrants()
+        // .contains(grant.getAccountName()))
+        // {
+        // String accountToCharge = grant.getAccountName();
+        // Double amountToCharge = expense.getAmount();
+        // grant.setAccountBalance(grant.getAccountBalance() - amountToCharge);
+        // if(grant.getAccountBalance() < 0){
+        // throw new
+        // TrapException("Grants do not have enough available funds to cover all expenses");
+        // }
+        // Double amount = accountNumToChargeAmount.get(accountToCharge);
+        // if(amount != null){
+        // amountToCharge += amount;
+        // }
+        // java.util.Collections.sort(formGrantList, new FormGrantComparator());
+        // accountNumToChargeAmount.put(accountToCharge, amountToCharge);
+        // break;
+        // }
+        // }
+        //
+        // }
+        // return accountNumToChargeAmount;
 
+        double grandTotal = 0;
+        for (Expense expense : form.getExpenses())
+        {
+            grandTotal += expense.getAmount();
+        }
+        Map<String, Double> accountNumToChargeAmount = new HashMap<String, Double>();
+        for(FormGrant grant : form.getGrantSet().getGrants()){
+            double grantAmount = form.getAccountToPercentMap().get(grant.getAccountName()) * grandTotal;
+            accountNumToChargeAmount.put(grant.getAccountName(), grantAmount);
         }
         return accountNumToChargeAmount;
     }

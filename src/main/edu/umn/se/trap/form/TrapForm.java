@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.print.attribute.standard.Destination;
@@ -122,12 +123,90 @@ public class TrapForm
         output.put(TrapOutputKeys.JUSTIFICATION_SPONSORED, getTrip()
                 .getJustificationSponsored());
 
+        List<Day> days = getDays();
+        java.util.Collections.sort(days, new DayComparator());
+        int i = 0;
+        for (Day day : getDays())
+        {
+            output.put(String.format(TrapOutputKeys.DAYa_DATE, i),
+                    TrapDateUtil.printDate(day.getDate()));
+            output.put(String.format(TrapOutputKeys.DAYa_TOTAL, i),
+                    String.valueOf(day.getTotal()));
+            output.put(String.format(TrapOutputKeys.DAYa_INCIDENTAL_TOTAL, i),
+                    String.valueOf(day.getIncidentalTotal()));
+            output.put(String.format(
+                    TrapOutputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i), day
+                    .getIncidentalJustification());
+            i++;
+        }
+
+        List<Expense> travelExpenses = getExpensesForType(ExpenseType.TRANSPORTATION);
+        output.put(TrapOutputKeys.NUM_TRANSPORTATION,
+                String.valueOf(travelExpenses.size()));
+        int j = 0;
+        for (Expense expense : travelExpenses)
+        {
+            TransportationExpense tExpense = (TransportationExpense) expense;
+            output.put(String.format(TrapOutputKeys.TRANSPORTATIONb_DATE, j),
+                    TrapDateUtil.printDate(tExpense.getDate()));
+            output.put(String.format(TrapOutputKeys.TRANSPORTATIONb_TYPE, j),
+                    tExpense.getTranportationType());
+            output.put(String.format(TrapOutputKeys.TRANSPORTATIONb_TOTAL, j),
+                    String.valueOf(tExpense.getAmount()));
+            j++;
+        }
+
+        List<Expense> otherExpenses = getExpensesForType(ExpenseType.OTHER);
+        output.put(TrapOutputKeys.NUM_OTHER_EXPENSES,
+                String.valueOf(travelExpenses.size()));
+        int k = 0;
+        for (Expense expense : otherExpenses)
+        {
+            output.put(String.format(TrapOutputKeys.OTHERc_DATE, k),
+                    TrapDateUtil.printDate(expense.getDate()));
+            output.put(String.format(TrapOutputKeys.OTHERc_JUSTIFICATION, k),
+                    expense.getJustification());
+            output.put(String.format(TrapOutputKeys.OTHERc_TOTAL, k),
+                    String.valueOf(expense.getAmount()));
+            k++;
+        }
+
+         output.put(TrapOutputKeys.NUM_GRANTS, String.valueOf(getGrantSet().getGrants().size()));
+         int l = 0;
+         for(FormGrant grant : getGrantSet().getGrants()){
+             output.put(String.format(TrapOutputKeys.GRANTd_ACCOUNT, l), grant.getAccountName()); 
+                     output.put(String.format(TrapOutputKeys.GRANTd_PERCENT, l), String.valueOf(getAccountToPercentMap().get(grant.getAccountName())));
+                     output.put(String.format(TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, l), String.valueOf(accountAmountMap.get(grant.getAccountName())));
+                     output.put(String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, l), grant.getGrantAdmin());
+                             l++;
+         }
+         
+         double total = 0;
+         for(Entry<String, Double> entry : accountAmountMap.entrySet()){
+             total += entry.getValue();
+         }
+         output.put(TrapOutputKeys.TOTAL_REIMBURSEMENT, String.valueOf(total));
+         output.put(TrapOutputKeys.NUM_DAYS, String.valueOf(getTrip().getNumDays()));
+
+    }
+
+    public List<Expense> getExpensesForType(ExpenseType type)
+    {
+        List<Expense> expenses = new ArrayList<Expense>();
+        for (Expense expense : getExpenses())
+        {
+            if (expense.getType() == type)
+            {
+                expenses.add(expense);
+            }
+        }
+        return expenses;
     }
 
     public List<Day> getDays()
     {
         Date date = getTrip().getDepartureDateTime();
-        List<Day> days  = new ArrayList<Day>();
+        List<Day> days = new ArrayList<Day>();
         for (int i = 0; i < trip.getNumDays(); i++)
         {
             date.setTime(date.getTime() + ((3600 * 24) * i));
@@ -136,15 +215,18 @@ public class TrapForm
             String incidentalJustification = "";
             for (Expense expense : getExpenses())
             {
-                if(TrapUtil.sameDay(date, expense.getDate())){
+                if (TrapUtil.sameDay(date, expense.getDate()))
+                {
                     total += expense.getAmount();
-                    if(expense.getType() == ExpenseType.INCIDENTAL){
+                    if (expense.getType() == ExpenseType.INCIDENTAL)
+                    {
                         incidentalTotal += expense.getAmount();
                         incidentalJustification += expense.getJustification();
                     }
                 }
             }
-            days.add(new Day(date, total, incidentalTotal, incidentalJustification));
+            days.add(new Day(date, total, incidentalTotal,
+                    incidentalJustification));
         }
         return days;
     }
@@ -304,6 +386,11 @@ public class TrapForm
     public void setSubmissionDate(Date submissionDate)
     {
         this.submissionDate = submissionDate;
+    }
+
+    public Map<String, Double> getAccountToPercentMap()
+    {
+        return this.accountToPercentMap;
     }
 
 }
