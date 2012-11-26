@@ -63,8 +63,10 @@ public class GrantAuthorizationRuleTest
     {
         Set<FormGrant> grants = new HashSet<FormGrant>();
 
+        String[] authorizedPayees = {"linc001"};
+        
         FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
-                500.00, "noExport", null, null);
+                500.00, "noExport", null, authorizedPayees);
 
         grants.add(grant1);
 
@@ -92,7 +94,7 @@ public class GrantAuthorizationRuleTest
 
         String[] authorized = new String[1];
 
-        authorized[0] = "Ron Smith";
+        authorized[0] = "smit002";
 
         FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
                 500.00, "noExport", null, authorized);
@@ -109,11 +111,13 @@ public class GrantAuthorizationRuleTest
             GrantAuthorizationRule rule = new GrantAuthorizationRule();
 
             rule.checkGrantAuthorization(grants, user);
+            
+            fail("The grant authorization failed to throw an error.");
         }
         catch (TrapException E)
         {
 
-            fail("Unexpected error was received: " + E.getMessage());
+            
 
         }
 

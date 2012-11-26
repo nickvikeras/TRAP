@@ -81,7 +81,7 @@ public class HotelOvernightRule extends AbstractRule
                         "Invalid TrapForm object: expenses was null.");
             }
 
-            checkHotel(arrivalTime, departureTime, expenses);
+            checkHotel(departureTime, arrivalTime, expenses);
         }
         else
         {
