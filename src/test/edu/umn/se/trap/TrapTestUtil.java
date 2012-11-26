@@ -580,6 +580,41 @@ public class TrapTestUtil
 
         return expenseList;
     }
+    
+    public static List<Expense> getSampleExpensesValidDollarAmounts(double price1, double price2, double price3)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location1 = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        Expense expense1 = new Expense(ExpenseType.LODGING, date, price1,
+                location1, grantSet, "I was sleepy.");
+
+        Expense expense2 = new Expense(ExpenseType.BREAKFAST, date, price2,
+                location1, grantSet, null);
+        
+        Expense expense3 = new Expense(ExpenseType.OTHER, date, price3,
+                location1, grantSet, null);
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(expense1);
+        expenseList.add(expense2);
+        expenseList.add(expense3);
+
+        return expenseList;
+    }
 
     public static Expense getSampleExpenseSponsoredOtherExpense(
             String justification)
