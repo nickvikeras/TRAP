@@ -18,6 +18,7 @@
  */
 package edu.umn.se.trap.form;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -58,6 +59,21 @@ public class TrapUtil
                         .get(Calendar.DAY_OF_YEAR);
         return sameDay;
 
+    }
+    
+    public static String formatDouble(Double d) {        
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(d);
+    }
+
+    /**
+     * @param double1
+     * @return
+     */
+    public static String formatDoubleNoDecimals(Double d)
+    {
+        DecimalFormat df = new DecimalFormat("0.##");
+        return df.format(d);
     }
 
 }

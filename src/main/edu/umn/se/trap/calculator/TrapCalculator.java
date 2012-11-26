@@ -23,8 +23,11 @@ import java.util.Map;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
+import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
+import edu.umn.se.trap.form.TrapDateUtil;
 import edu.umn.se.trap.form.TrapForm;
+import edu.umn.se.trap.form.TrapUtil;
 
 /**
  * @author nick
@@ -73,11 +76,15 @@ public class TrapCalculator
         double grandTotal = 0;
         for (Expense expense : form.getExpenses())
         {
-            grandTotal += expense.getAmount();
+            double amount = expense.getAmount();
+            grandTotal += amount;
         }
         Map<String, Double> accountNumToChargeAmount = new HashMap<String, Double>();
-        for(FormGrant grant : form.getGrantSet().getGrants()){
-            double grantAmount = form.getAccountToPercentMap().get(grant.getAccountName()) * grandTotal;
+        for (FormGrant grant : form.getGrantSet().getGrants())
+        {
+            double percent = form.getAccountToPercentMap().get(
+                    grant.getAccountName()) / 100;
+            double grantAmount = percent * grandTotal;
             accountNumToChargeAmount.put(grant.getAccountName(), grantAmount);
         }
         return accountNumToChargeAmount;

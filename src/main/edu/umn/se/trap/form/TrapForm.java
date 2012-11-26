@@ -109,12 +109,21 @@ public class TrapForm
                 .getEmergencyContactName());
         putIfNotNull(output, TrapOutputKeys.EMERGENCY_CONTACT_PHONE, getUser()
                 .getEmergencyContactPhone());
-        putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED,
-                TrapUtil.boolToYesNo(getTrip().isTravelTypeCseSponsored()));
-        putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED,
-                TrapUtil.boolToYesNo(getTrip().isTravelTypeDtcSponsored()));
-        putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED,
-                TrapUtil.boolToYesNo(getTrip().isTravelTypeNonsponsored()));
+        if (getTrip().isTravelTypeCseSponsored())
+        {
+            putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED,
+                    TrapUtil.boolToYesNo(getTrip().isTravelTypeCseSponsored()));
+        }
+        if (getTrip().isTravelTypeDtcSponsored())
+        {
+            putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED,
+                    TrapUtil.boolToYesNo(getTrip().isTravelTypeDtcSponsored()));
+        }
+        if (getTrip().isTravelTypeNonsponsored())
+        {
+            putIfNotNull(output, TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED,
+                    TrapUtil.boolToYesNo(getTrip().isTravelTypeNonsponsored()));
+        }
         putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_CONFERENCE_TITLE,
                 getTrip().getJustificationConferenceTitle());
         putIfNotNull(output, TrapOutputKeys.JUSTIFICATION_PRESENTED,
@@ -147,6 +156,7 @@ public class TrapForm
             putIfNotNull(output,
                     String.format(TrapOutputKeys.DESTINATIONa_COUNTRY, i),
                     location.getCountry());
+            i++;
         }
 
         List<Day> days = getDays();
@@ -157,10 +167,10 @@ public class TrapForm
             putIfNotNull(output, String.format(TrapOutputKeys.DAYa_DATE, i),
                     TrapDateUtil.printDate(day.getDate()));
             putIfNotNull(output, String.format(TrapOutputKeys.DAYa_TOTAL, i),
-                    String.valueOf(day.getTotal()));
+                    TrapUtil.formatDouble(day.getTotal()));
             putIfNotNull(output,
                     String.format(TrapOutputKeys.DAYa_INCIDENTAL_TOTAL, i),
-                    String.valueOf(day.getIncidentalTotal()));
+                    TrapUtil.formatDouble(day.getIncidentalTotal()));
             putIfNotNull(output, String.format(
                     TrapOutputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i),
                     day.getIncidentalJustification());
@@ -182,13 +192,13 @@ public class TrapForm
                     tExpense.getTranportationType());
             putIfNotNull(output,
                     String.format(TrapOutputKeys.TRANSPORTATIONb_TOTAL, i),
-                    String.valueOf(tExpense.getAmount()));
+                    TrapUtil.formatDouble(tExpense.getAmount()));
             i++;
         }
 
         List<Expense> otherExpenses = getExpensesForType(ExpenseType.OTHER);
         putIfNotNull(output, TrapOutputKeys.NUM_OTHER_EXPENSES,
-                String.valueOf(travelExpenses.size()));
+                String.valueOf(otherExpenses.size()));
         i = 1;
         for (Expense expense : otherExpenses)
         {
@@ -198,7 +208,7 @@ public class TrapForm
                     String.format(TrapOutputKeys.OTHERc_JUSTIFICATION, i),
                     expense.getJustification());
             putIfNotNull(output, String.format(TrapOutputKeys.OTHERc_TOTAL, i),
-                    String.valueOf(expense.getAmount()));
+                    TrapUtil.formatDoubleNoDecimals(expense.getAmount()));
             i++;
         }
 
@@ -213,12 +223,12 @@ public class TrapForm
             putIfNotNull(
                     output,
                     String.format(TrapOutputKeys.GRANTd_PERCENT, i),
-                    String.valueOf(getAccountToPercentMap().get(
+                    TrapUtil.formatDoubleNoDecimals(getAccountToPercentMap().get(
                             grant.getAccountName())));
-            putIfNotNull(
-                    output,
-                    String.format(TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, i),
-                    String.valueOf(accountAmountMap.get(grant.getAccountName())));
+            putIfNotNull(output, String.format(
+                    TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, i),
+                    TrapUtil.formatDouble(accountAmountMap.get(grant
+                            .getAccountName())));
             putIfNotNull(output,
                     String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, i),
                     grant.getGrantAdmin());
@@ -231,7 +241,7 @@ public class TrapForm
             total += entry.getValue();
         }
         putIfNotNull(output, TrapOutputKeys.TOTAL_REIMBURSEMENT,
-                String.valueOf(total));
+                TrapUtil.formatDouble(total));
         putIfNotNull(output, TrapOutputKeys.NUM_DAYS,
                 String.valueOf(getTrip().getNumDays()));
 
@@ -251,7 +261,10 @@ public class TrapForm
     private void putIfNotNull(Map<String, String> output, String key,
             String value)
     {
-        if (value != null && !StringUtils.equals(value, "") && !StringUtils.equals(value, "0.0"))
+        if (value != null && !StringUtils.equals(value, "")
+                && !StringUtils.equals(value, "0.0")
+                && !StringUtils.equals(value, "0.00")
+                && !StringUtils.equals(value, "0"))
         {
             output.put(key, value);
         }
@@ -277,9 +290,9 @@ public class TrapForm
         List<Day> days = new ArrayList<Day>();
         for (int i = 0; i < trip.getNumDays(); i++)
         {
-            
+
             Calendar cal = new GregorianCalendar();
-            cal.setTime(departureDate);            
+            cal.setTime(departureDate);
             cal.add(Calendar.DAY_OF_MONTH, i);
             Date date = cal.getTime();
             Double total = 0.0;
@@ -289,7 +302,10 @@ public class TrapForm
             {
                 if (TrapUtil.sameDay(date, expense.getDate()))
                 {
-                    total += expense.getAmount();
+                    if (!expense.getType().equals(ExpenseType.TRANSPORTATION))
+                    {
+                        total += expense.getAmount();
+                    }
                     if (expense.getType() == ExpenseType.INCIDENTAL)
                     {
                         incidentalTotal += expense.getAmount();
