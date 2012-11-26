@@ -113,8 +113,7 @@ public class ItemizedCostsBetweenDatesRule extends AbstractRule
             if (expense.getType() != ExpenseType.OTHER)
             {
                 if ((expenseDate.getTime() > arrivalTime.getTime())
-                        || (expenseDate.getTime() < departureTime
-                                .getTime()))
+                        || (expenseDate.getTime() < departureTime.getTime()))
                 {
                     throw new TrapException(
                             "Expenses cannot be claimed outside of the dates of the trip.");
