@@ -43,16 +43,10 @@ import edu.umn.se.trap.db.orm.UserGrant;
  * @author mark
  * 
  */
-public class FormFactory
+public class TrapFormFactory
 {
 
-    public static TrapForm getNewForm(final Map<String, String> formData,
-            String description, DatabaseAccessor dbAccessor)
-            throws TrapException
-    {
-        Integer id = generateId();
-        return getNewForm(formData, description, id, dbAccessor);
-    }
+   
 
     public static TrapForm getNewForm(final Map<String, String> formData,
             String description, Integer id, DatabaseAccessor dbAccessor)
@@ -453,13 +447,6 @@ public class FormFactory
         return new GrantSet(grants);
     }
 
-    /**
-     * @return
-     */
-    private static Integer generateId()
-    {
-        return new Integer((int) Math.floor((Math.random() * 100000000)));
-    }
 
     /**
      * @param formData

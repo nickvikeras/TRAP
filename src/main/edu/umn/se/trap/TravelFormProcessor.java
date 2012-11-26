@@ -21,6 +21,7 @@ package edu.umn.se.trap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import edu.umn.se.trap.TravelFormProcessorIntf.FORM_STATUS;
 import edu.umn.se.trap.calculator.TrapCalculator;
 import edu.umn.se.trap.db.CurrencyDB;
 import edu.umn.se.trap.db.GrantDB;
@@ -29,7 +30,8 @@ import edu.umn.se.trap.db.PerDiemDB;
 import edu.umn.se.trap.db.UserDB;
 import edu.umn.se.trap.db.UserGrantDB;
 import edu.umn.se.trap.db.orm.DatabaseAccessor;
-import edu.umn.se.trap.form.FormFactory;
+import edu.umn.se.trap.db.orm.FormData;
+import edu.umn.se.trap.form.TrapFormFactory;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.FormChecker;
 import edu.umn.se.trap.rule.FormCheckerFactory;
@@ -57,9 +59,11 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
      * @param currencyDB
      *            the table abstraction for the currency DB.
      */
-    public TravelFormProcessor(UserDB userDB, PerDiemDB perDiemDB, GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
+    public TravelFormProcessor(UserDB userDB, PerDiemDB perDiemDB,
+            GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
     {
-        this.databaseAccessor = new DatabaseAccessor(userDB, perDiemDB, grantDB, userGrantDB, currencyDB);
+        this.databaseAccessor = new DatabaseAccessor(userDB, perDiemDB,
+                grantDB, userGrantDB, currencyDB);
     }
 
     /**
@@ -114,14 +118,15 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
      * )
      */
     @Override
-    public Map<String, String> getSavedFormData(Integer formId) throws Exception
+    public Map<String, String> getSavedFormData(Integer formId)
+            throws Exception
     {
-        TrapForm form = databaseAccessor.getFormDB().getForm(formId);
-        if (form == null)
+        FormData data = databaseAccessor.getFormDB().getForm(formId);
+        if (data == null || data.getInput() == null)
         {
             throw new TrapException("No form with id " + formId + " found.");
         }
-        return form.getFormInput();
+        return data.getInput();
     }
 
     /*
@@ -131,11 +136,22 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
      * java.lang.String)
      */
     @Override
-    public Integer saveFormData(Map<String, String> formData, String description) throws Exception
+    public Integer saveFormData(Map<String, String> formData, String description)
+            throws Exception
     {
-        TrapForm form = FormFactory.getNewForm(formData, description, databaseAccessor);
-        databaseAccessor.getFormDB().saveForm(form);
-        return form.getFormId();
+        FormData data = new FormData(formData, null, new TravelFormMetadata(
+                description, FORM_STATUS.DRAFT));
+        Integer formId = generateId();
+        databaseAccessor.getFormDB().saveForm(data, formId);
+        return formId;
+    }
+
+    /**
+     * @return
+     */
+    private Integer generateId()
+    {
+        return new Integer((int) Math.floor((Math.random() * 100000000)));
     }
 
     /*
@@ -145,12 +161,13 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
      * java.lang.Integer)
      */
     @Override
-    public Integer saveFormData(Map<String, String> formData, Integer id) throws Exception
+    public Integer saveFormData(Map<String, String> formData, Integer id)
+            throws Exception
     {
-        TrapForm form = databaseAccessor.getFormDB().getForm(id);
-        form = FormFactory.getNewForm(formData, form.getFormMetaData().description, id, databaseAccessor);
-        databaseAccessor.getFormDB().saveForm(form);
-        return form.getFormId();
+        FormData savedData = databaseAccessor.getFormDB().getForm(id);
+        savedData.setInput(formData);
+        databaseAccessor.getFormDB().saveForm(savedData, id);
+        return id;
     }
 
     /*
@@ -162,33 +179,48 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
     @Override
     public void submitFormData(Integer formId) throws Exception
     {
-        TrapForm form = databaseAccessor.getFormDB().getForm(formId);
-        FormChecker wellFormedChecker = FormCheckerFactory.createWellFormedChecker();
-        FormChecker businessRuleChecker = FormCheckerFactory.createBusinessRuleChecker();
-        FormChecker grantRuleChecker = FormCheckerFactory.createGrantRuleChecker();
+
+        //
+
+        FormData data = databaseAccessor.getFormDB().getForm(formId);
+        TrapForm form = TrapFormFactory.getNewForm(data.getInput(),
+                data.getMetadata().description, formId, databaseAccessor);
+        FormChecker wellFormedChecker = FormCheckerFactory
+                .createWellFormedChecker();
+        FormChecker businessRuleChecker = FormCheckerFactory
+                .createBusinessRuleChecker();
+        FormChecker grantRuleChecker = FormCheckerFactory
+                .createGrantRuleChecker();
 
         wellFormedChecker.fireRules(form);
         businessRuleChecker.fireRules(form);
         grantRuleChecker.fireRules(form);
 
-        Map<String, Double> amountsToCharge = TrapCalculator.calculateAmountsToCharge(form);
+        Map<String, Double> amountsToCharge = TrapCalculator
+                .calculateAmountsToCharge(form);
         chargeAccounts(amountsToCharge);
-        form.buildOutput(amountsToCharge);
-        databaseAccessor.getFormDB().saveForm(form);
+
+        Map<String, String> output = TrapOutputBuilder.buildOut(form,
+                amountsToCharge);
+
+        data.setOutput(output);
+        databaseAccessor.getFormDB().saveForm(data, formId);
     }
 
     /**
      * @param amountsToCharge
-     * @throws TrapException 
+     * @throws TrapException
      */
-    private void chargeAccounts(Map<String, Double> amountsToCharge) throws TrapException
+    private void chargeAccounts(Map<String, Double> amountsToCharge)
+            throws TrapException
     {
-       for(Entry<String, Double> entry : amountsToCharge.entrySet()){
-           String accountName = entry.getKey();
-           Double amountToCharge = entry.getValue();
-           this.databaseAccessor.chargeAccount(accountName, amountToCharge); 
-       }
-       
+        for (Entry<String, Double> entry : amountsToCharge.entrySet())
+        {
+            String accountName = entry.getKey();
+            Double amountToCharge = entry.getValue();
+            this.databaseAccessor.chargeAccount(accountName, amountToCharge);
+        }
+
     }
 
     /*
@@ -199,22 +231,17 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
      * )
      */
     @Override
-    public Map<String, String> getCompletedForm(Integer formId) throws TrapException
+    public Map<String, String> getCompletedForm(Integer formId)
+            throws TrapException
     {
-        Map<String, String> completedForm = null;
-        try
-        {
-            completedForm = databaseAccessor.getFormDB().getForm(formId).getFormOutput();
 
-        } catch (KeyNotFoundException e)
-        {
-            throw new TrapException("Form with ID " + formId + " not found.");
-        }
-        if (completedForm == null)
+        FormData data = databaseAccessor.getFormDB().getForm(formId);
+        if (data == null || data.getOutput() == null)
         {
             throw new TrapException("Form has not been completed.");
         }
-        return completedForm;
+
+        return data.getOutput();
     }
 
 }

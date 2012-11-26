@@ -57,7 +57,7 @@ public class FormFactoryTest
     }
 
     /**
-     * Test method for {@link edu.umn.se.trap.form.FormFactory#getNewForm(java.util.Map, java.lang.String, edu.umn.se.trap.db.orm.DatabaseAccessor)}.
+     * Test method for {@link edu.umn.se.trap.form.TrapFormFactory#getNewForm(java.util.Map, java.lang.String, edu.umn.se.trap.db.orm.DatabaseAccessor)}.
      */
     @Test
     public void testGetNewFormMapOfStringStringStringDatabaseAccessor()
@@ -65,7 +65,7 @@ public class FormFactoryTest
         DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(), new PerDiemDB(), new GrantDB(), new UserGrantDB(), new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(TrapTestUtil.getSampleInput1(), "sample trap input", dbAccessor);
+            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil.getSampleInput1(), "sample trap input", 1, dbAccessor);
             assertNotNull(form);
             assertNotNull(form.getFormId());
             assertNotNull(form.getFormInput());
@@ -79,7 +79,7 @@ public class FormFactoryTest
     }
 
     /**
-     * Test method for {@link edu.umn.se.trap.form.FormFactory#getNewForm(java.util.Map, java.lang.String, java.lang.Integer, edu.umn.se.trap.db.orm.DatabaseAccessor)}.
+     * Test method for {@link edu.umn.se.trap.form.TrapFormFactory#getNewForm(java.util.Map, java.lang.String, java.lang.Integer, edu.umn.se.trap.db.orm.DatabaseAccessor)}.
      */
     @Test
     public void testGetNewFormMapOfStringStringStringIntegerDatabaseAccessor()

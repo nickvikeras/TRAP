@@ -32,7 +32,7 @@ import edu.umn.se.trap.db.PerDiemDB;
 import edu.umn.se.trap.db.UserDB;
 import edu.umn.se.trap.db.UserGrantDB;
 import edu.umn.se.trap.db.orm.DatabaseAccessor;
-import edu.umn.se.trap.form.FormFactory;
+import edu.umn.se.trap.form.TrapFormFactory;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
 
@@ -58,7 +58,7 @@ public class RequiredFieldsRuleTest
     public void tearDown() throws Exception
     {
     }
-    
+
     @Test
     public void testBasicForm()
     {
@@ -67,8 +67,8 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
-                    TrapTestUtil.getSampleInput1(), "sample trap input",
+            TrapForm form = TrapFormFactory.getNewForm(
+                    TrapTestUtil.getSampleInput1(), "sample trap input", 1,
                     dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
@@ -93,9 +93,9 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
+            TrapForm form = TrapFormFactory.getNewForm(
                     TrapTestUtil.getSampleInputMissingJustification(),
-                    "sample trap input", dbAccessor);
+                    "sample trap input", 1, dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
 
@@ -109,7 +109,7 @@ public class RequiredFieldsRuleTest
             fail("Unexpected failure: " + E.getMessage());
         }
     }
-    
+
     @Test
     public void testMissingExpenseLocationMissingCity()
     {
@@ -118,9 +118,9 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
-                    TrapTestUtil.getSampleInputMissingExpenseLocation(null, "MO", "USA"),
-                    "sample trap input", dbAccessor);
+            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
+                    .getSampleInputMissingExpenseLocation(null, "MO", "USA"),
+                    "sample trap input", 1, dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
 
@@ -136,7 +136,7 @@ public class RequiredFieldsRuleTest
             fail("Unexpected failure: " + E.getMessage());
         }
     }
-    
+
     @Test
     public void testMissingExpenseLocationMissingState()
     {
@@ -145,9 +145,9 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
-                    TrapTestUtil.getSampleInputMissingExpenseLocation("Kansas City", null, "USA"),
-                    "sample trap input", dbAccessor);
+            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
+                    .getSampleInputMissingExpenseLocation("Kansas City", null,
+                            "USA"), "sample trap input", 1, dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
 
@@ -163,7 +163,7 @@ public class RequiredFieldsRuleTest
             fail("Unexpected failure: " + E.getMessage());
         }
     }
-    
+
     @Test
     public void testMissingExpenseLocationMissingCountry()
     {
@@ -172,9 +172,9 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
-                    TrapTestUtil.getSampleInputMissingExpenseLocation("Kansas City", "MO", null),
-                    "sample trap input", dbAccessor);
+            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
+                    .getSampleInputMissingExpenseLocation("Kansas City", "MO",
+                            null), "sample trap input", 1, dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
 
@@ -190,7 +190,7 @@ public class RequiredFieldsRuleTest
             fail("Unexpected failure: " + E.getMessage());
         }
     }
-    
+
     @Test
     public void testMissingExpenseLocationCityOnly()
     {
@@ -199,9 +199,9 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
-                    TrapTestUtil.getSampleInputMissingExpenseLocation("Kansas City", null, null),
-                    "sample trap input", dbAccessor);
+            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
+                    .getSampleInputMissingExpenseLocation("Kansas City", null,
+                            null), "sample trap input", 1, dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
 
@@ -226,9 +226,9 @@ public class RequiredFieldsRuleTest
                 new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(
+            TrapForm form = TrapFormFactory.getNewForm(
                     TrapTestUtil.getSampleInputNoSponsorship(),
-                    "sample trap input", dbAccessor);
+                    "sample trap input", 1, dbAccessor);
 
             AbstractRule rule = new RequiredFieldsRule();
 
