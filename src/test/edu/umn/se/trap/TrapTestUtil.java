@@ -32,6 +32,7 @@ import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.Location;
 import edu.umn.se.trap.form.TransportationExpense;
+import edu.umn.se.trap.form.Trip;
 
 /**
  * @author nick
@@ -273,7 +274,7 @@ public class TrapTestUtil
 
         return transportationExpense;
     }
-    
+
     public static List<Expense> getSampleExpenseHotelOvernight()
     {
 
@@ -291,14 +292,247 @@ public class TrapTestUtil
         Location location = new Location("Minneapolis", "Minnesota",
                 "United States");
 
-        Expense expense = new Expense(
-                ExpenseType.LODGING, date, 40.34, location, grantSet,
-                "I was sleepy.");
-        
+        Expense expense = new Expense(ExpenseType.LODGING, date, 40.34,
+                location, grantSet, "I was sleepy.");
+
         List<Expense> expenseList = new ArrayList<Expense>();
-        
+
         expenseList.add(expense);
 
         return expenseList;
     }
+
+    public static Expense getSampleExpenseSponsoredOtherExpense(
+            String justification)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Generic", "Place", "USA");
+
+        Expense otherExpense = new Expense(ExpenseType.OTHER, date, 50,
+                location, grantSet, "Alcohol");
+
+        return otherExpense;
+    }
+
+    public static Expense getSampleExpenseNonDodGrantNationalRule(
+            String rentalPlace)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored",
+                null, 500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
+                "needed rental car", "CAR", rentalPlace, 53, true);
+
+        return transportationExpense;
+    }
+
+    public static List<Expense> getSampleExpenseBaggageClaim(Double expense)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored",
+                null, 500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, date, expense, location, grantSet,
+                "needed checked bags", "BAGGAGE", "American Airlines", 53, true);
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(transportationExpense);
+
+        return expenseList;
+
+    }
+
+    public static List<Expense> getSampleExpenseNumBaggageClaim(int moreClaims)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored",
+                null, 500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        if (moreClaims == 1)
+        {
+
+            for (int i = 0; i < 5; i++)
+            {
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location,
+                        grantSet, "needed checked bags", "BAGGAGE",
+                        "American Airlines", 53, true);
+                expenseList.add(transportationExpense);
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location,
+                        grantSet, "needed checked bags", "AIR",
+                        "American Airlines", 53, true);
+                expenseList.add(transportationExpense);
+            }
+
+        }
+
+        if (moreClaims == 0)
+        {
+
+            for (int i = 0; i < 5; i++)
+            {
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location,
+                        grantSet, "needed checked bags", "BAGGAGE",
+                        "American Airlines", 53, true);
+                expenseList.add(transportationExpense);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location,
+                        grantSet, "needed checked bags", "AIR",
+                        "American Airlines", 53, true);
+                expenseList.add(transportationExpense);
+            }
+
+        }
+
+        if (moreClaims == -1)
+        {
+
+            for (int i = 0; i < 4; i++)
+            {
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location,
+                        grantSet, "needed checked bags", "BAGGAGE",
+                        "American Airlines", 53, true);
+                expenseList.add(transportationExpense);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                TransportationExpense transportationExpense = new TransportationExpense(
+                        ExpenseType.TRANSPORTATION, date, 100, location,
+                        grantSet, "needed checked bags", "AIR",
+                        "American Airlines", 53, true);
+                expenseList.add(transportationExpense);
+            }
+
+        }
+
+        return expenseList;
+
+    }
+
+    public static List<Expense> getSampleExpensePersonalandCarRental(
+            Date personal, Date rental)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored",
+                null, 500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        TransportationExpense transportationExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, personal, 50, location, grantSet,
+                "needed checked bags", "CAR", "National", 53, true);
+
+        TransportationExpense personalExpense = new TransportationExpense(
+                ExpenseType.TRANSPORTATION, rental, 50, location, grantSet,
+                "needed checked bags", "CAR", "National", 53, true);
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(transportationExpense);
+        expenseList.add(personalExpense);
+
+        return expenseList;
+
+    }
+
+    public static List<Expense> getSampleExpenseArrivalandDeparture(
+            Date expenseDate)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "non-Sponsored",
+                null, 500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Location location = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        Expense expense = new Expense(ExpenseType.LODGING, expenseDate, 40.34,
+                location, grantSet, "I was sleepy.");
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(expense);
+
+        return expenseList;
+
+    }
+
+    /*
+     * Set FormGrant rules
+     */
+
 }

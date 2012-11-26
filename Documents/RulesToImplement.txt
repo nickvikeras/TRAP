@@ -15,7 +15,6 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 
 
-8: GrantAuthorizationRule (in progress by Andrew)
 
 12: RequiredFieldsRule 
 
