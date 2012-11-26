@@ -108,10 +108,12 @@ public class ItemizedCostsBetweenDatesRule extends AbstractRule
                     .printDate(arrivalTime));
             departureTime = TrapDateUtil.parseTrapDate(TrapDateUtil
                     .printDate(departureTime));
+            Date expenseDate = TrapDateUtil.parseTrapDate(TrapDateUtil
+                    .printDate(expense.getDate()));
             if (expense.getType() != ExpenseType.OTHER)
             {
-                if ((expense.getDate().getTime() > arrivalTime.getTime())
-                        || (expense.getDate().getTime() < departureTime
+                if ((expenseDate.getTime() > arrivalTime.getTime())
+                        || (expenseDate.getTime() < departureTime
                                 .getTime()))
                 {
                     throw new TrapException(
