@@ -16,7 +16,7 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 
 
-Rewrite ForeignGrantsForeignTravelOnlyRule
+Rewrite ForeignGrantsForeignTravelOnlyRule <---- Not sure about this anymore. Awaiting feedback from the forums.
 
 
 THIS ONE SHOULD BE HANDLED IN THE CALCULATOR!!!!!!!!!!!!!!!
