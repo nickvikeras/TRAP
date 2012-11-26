@@ -74,7 +74,7 @@ public class TrapTestUtil
         map.put("DAY1_DINNER_COUNTRY", "USA");
         map.put("DAY1_LODGING_CITY", "Lawrence");
         map.put("DAY1_LODGING_STATE", "KS");
-        map.put("DAY1_LODGING_COUINTRY", "USA");
+        map.put("DAY1_LODGING_COUNTRY", "USA");
         map.put("DAY1_LODGING_AMOUNT", "86.31");
         map.put("DAY1_LODGING_CURRENCY", "USD");
         map.put("DAY2_DINNER_CITY", "Lawrence");
@@ -82,12 +82,12 @@ public class TrapTestUtil
         map.put("DAY2_DINNER_COUNTRY", "USA");
         map.put("DAY2_LODGING_CITY", "Lawrence");
         map.put("DAY2_LODGING_STATE", "KS");
-        map.put("DAY2_LODGING_COUINTRY", "USA");
+        map.put("DAY2_LODGING_COUNTRY", "USA");
         map.put("DAY2_LODGING_AMOUNT", "86.31");
         map.put("DAY2_LODGING_CURRENCY", "USD");
         map.put("DAY3_LODGING_CITY", "Lawrence");
         map.put("DAY3_LODGING_STATE", "KS");
-        map.put("DAY3_LODGING_COUINTRY", "USA");
+        map.put("DAY3_LODGING_COUNTRY", "USA");
         map.put("DAY3_LODGING_AMOUNT", "86.31");
         map.put("DAY3_LODGING_CURRENCY", "USD");
         map.put("DAY4_DINNER_CITY", "Lawrence");
@@ -95,7 +95,7 @@ public class TrapTestUtil
         map.put("DAY4_DINNER_COUNTRY", "USA");
         map.put("DAY4_LODGING_CITY", "Lawrence");
         map.put("DAY4_LODGING_STATE", "KS");
-        map.put("DAY4_LODGING_COUINTRY", "USA");
+        map.put("DAY4_LODGING_COUNTRY", "USA");
         map.put("DAY4_LODGING_AMOUNT", "86.31");
         map.put("DAY4_LODGING_CURRENCY", "USD");
         map.put("DAY5_DINNER_CITY", "Des Moines");
@@ -146,8 +146,8 @@ public class TrapTestUtil
          * Removed input:
          */
 
-        // map.put("JUSTIFICATION_SPONSORED",
-        // "Learn about research in the field.");
+         //map.put("JUSTIFICATION_SPONSORED",
+         //"Learn about research in the field.");
 
         map.put("NUM_GRANTS", "1");
         map.put("GRANT1_ACCOUNT", "010101010101");
@@ -170,7 +170,7 @@ public class TrapTestUtil
         map.put("DAY1_DINNER_COUNTRY", "USA");
         map.put("DAY1_LODGING_CITY", "Lawrence");
         map.put("DAY1_LODGING_STATE", "KS");
-        map.put("DAY1_LODGING_COUINTRY", "USA");
+        map.put("DAY1_LODGING_COUNTRY", "USA");
         map.put("DAY1_LODGING_AMOUNT", "86.31");
         map.put("DAY1_LODGING_CURRENCY", "USD");
         map.put("DAY2_DINNER_CITY", "Lawrence");
@@ -178,12 +178,12 @@ public class TrapTestUtil
         map.put("DAY2_DINNER_COUNTRY", "USA");
         map.put("DAY2_LODGING_CITY", "Lawrence");
         map.put("DAY2_LODGING_STATE", "KS");
-        map.put("DAY2_LODGING_COUINTRY", "USA");
+        map.put("DAY2_LODGING_COUNTRY", "USA");
         map.put("DAY2_LODGING_AMOUNT", "86.31");
         map.put("DAY2_LODGING_CURRENCY", "USD");
         map.put("DAY3_LODGING_CITY", "Lawrence");
         map.put("DAY3_LODGING_STATE", "KS");
-        map.put("DAY3_LODGING_COUINTRY", "USA");
+        map.put("DAY3_LODGING_COUNTRY", "USA");
         map.put("DAY3_LODGING_AMOUNT", "86.31");
         map.put("DAY3_LODGING_CURRENCY", "USD");
         map.put("DAY4_DINNER_CITY", "Lawrence");
@@ -191,7 +191,7 @@ public class TrapTestUtil
         map.put("DAY4_DINNER_COUNTRY", "USA");
         map.put("DAY4_LODGING_CITY", "Lawrence");
         map.put("DAY4_LODGING_STATE", "KS");
-        map.put("DAY4_LODGING_COUINTRY", "USA");
+        map.put("DAY4_LODGING_COUNTRY", "USA");
         map.put("DAY4_LODGING_AMOUNT", "86.31");
         map.put("DAY4_LODGING_CURRENCY", "USD");
         map.put("DAY5_DINNER_CITY", "Des Moines");
@@ -225,7 +225,7 @@ public class TrapTestUtil
         return map;
     }
 
-    public static Map<String, String> getSampleInputMissingExpenseLocation()
+    public static Map<String, String> getSampleInputMissingExpenseLocation(String city, String state, String country)
     {
         Map<String, String> map = new HashMap<String, String>();
         map.put("USER_NAME", "linc001");
@@ -254,18 +254,17 @@ public class TrapTestUtil
         map.put("DAY1_LUNCH_CITY", "Des Moines");
         map.put("DAY1_LUNCH_STATE", "IA");
         map.put("DAY1_LUNCH_COUNTRY", "USA");
-        map.put("DAY1_DINNER_CITY", "Kansas City");
 
         /*
-         * Removed Input:
+         * Input under test:
          */
-
-        // map.put("DAY1_DINNER_STATE", "MO");
-        // map.put("DAY1_DINNER_COUNTRY", "USA");
+        map.put("DAY1_DINNER_STATE", state); // MO
+        map.put("DAY1_DINNER_CITY", city); // Kansas City
+        map.put("DAY1_DINNER_COUNTRY", country); // USA
 
         map.put("DAY1_LODGING_CITY", "Lawrence");
         map.put("DAY1_LODGING_STATE", "KS");
-        map.put("DAY1_LODGING_COUINTRY", "USA");
+        map.put("DAY1_LODGING_COUNTRY", "USA");
         map.put("DAY1_LODGING_AMOUNT", "86.31");
         map.put("DAY1_LODGING_CURRENCY", "USD");
         map.put("DAY2_DINNER_CITY", "Lawrence");
@@ -273,12 +272,12 @@ public class TrapTestUtil
         map.put("DAY2_DINNER_COUNTRY", "USA");
         map.put("DAY2_LODGING_CITY", "Lawrence");
         map.put("DAY2_LODGING_STATE", "KS");
-        map.put("DAY2_LODGING_COUINTRY", "USA");
+        map.put("DAY2_LODGING_COUNTRY", "USA");
         map.put("DAY2_LODGING_AMOUNT", "86.31");
         map.put("DAY2_LODGING_CURRENCY", "USD");
         map.put("DAY3_LODGING_CITY", "Lawrence");
         map.put("DAY3_LODGING_STATE", "KS");
-        map.put("DAY3_LODGING_COUINTRY", "USA");
+        map.put("DAY3_LODGING_COUNTRY", "USA");
         map.put("DAY3_LODGING_AMOUNT", "86.31");
         map.put("DAY3_LODGING_CURRENCY", "USD");
         map.put("DAY4_DINNER_CITY", "Lawrence");
@@ -286,7 +285,7 @@ public class TrapTestUtil
         map.put("DAY4_DINNER_COUNTRY", "USA");
         map.put("DAY4_LODGING_CITY", "Lawrence");
         map.put("DAY4_LODGING_STATE", "KS");
-        map.put("DAY4_LODGING_COUINTRY", "USA");
+        map.put("DAY4_LODGING_COUNTRY", "USA");
         map.put("DAY4_LODGING_AMOUNT", "86.31");
         map.put("DAY4_LODGING_CURRENCY", "USD");
         map.put("DAY5_DINNER_CITY", "Des Moines");
@@ -354,7 +353,7 @@ public class TrapTestUtil
         map.put("DAY1_DINNER_COUNTRY", "USA");
         map.put("DAY1_LODGING_CITY", "Lawrence");
         map.put("DAY1_LODGING_STATE", "KS");
-        map.put("DAY1_LODGING_COUINTRY", "USA");
+        map.put("DAY1_LODGING_COUNTRY", "USA");
         map.put("DAY1_LODGING_AMOUNT", "86.31");
         map.put("DAY1_LODGING_CURRENCY", "USD");
         map.put("DAY2_DINNER_CITY", "Lawrence");
@@ -362,12 +361,12 @@ public class TrapTestUtil
         map.put("DAY2_DINNER_COUNTRY", "USA");
         map.put("DAY2_LODGING_CITY", "Lawrence");
         map.put("DAY2_LODGING_STATE", "KS");
-        map.put("DAY2_LODGING_COUINTRY", "USA");
+        map.put("DAY2_LODGING_COUNTRY", "USA");
         map.put("DAY2_LODGING_AMOUNT", "86.31");
         map.put("DAY2_LODGING_CURRENCY", "USD");
         map.put("DAY3_LODGING_CITY", "Lawrence");
         map.put("DAY3_LODGING_STATE", "KS");
-        map.put("DAY3_LODGING_COUINTRY", "USA");
+        map.put("DAY3_LODGING_COUNTRY", "USA");
         map.put("DAY3_LODGING_AMOUNT", "86.31");
         map.put("DAY3_LODGING_CURRENCY", "USD");
         map.put("DAY4_DINNER_CITY", "Lawrence");
@@ -375,7 +374,7 @@ public class TrapTestUtil
         map.put("DAY4_DINNER_COUNTRY", "USA");
         map.put("DAY4_LODGING_CITY", "Lawrence");
         map.put("DAY4_LODGING_STATE", "KS");
-        map.put("DAY4_LODGING_COUINTRY", "USA");
+        map.put("DAY4_LODGING_COUNTRY", "USA");
         map.put("DAY4_LODGING_AMOUNT", "86.31");
         map.put("DAY4_LODGING_CURRENCY", "USD");
         map.put("DAY5_DINNER_CITY", "Des Moines");
@@ -578,6 +577,41 @@ public class TrapTestUtil
         List<Expense> expenseList = new ArrayList<Expense>();
 
         expenseList.add(expense);
+
+        return expenseList;
+    }
+    
+    public static List<Expense> getSampleExpensesValidDollarAmounts(double price1, double price2, double price3)
+    {
+
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+        GrantSet grantSet = new GrantSet(grants);
+
+        Date date = new Date();
+
+        Location location1 = new Location("Minneapolis", "Minnesota",
+                "United States");
+
+        Expense expense1 = new Expense(ExpenseType.LODGING, date, price1,
+                location1, grantSet, "I was sleepy.");
+
+        Expense expense2 = new Expense(ExpenseType.BREAKFAST, date, price2,
+                location1, grantSet, null);
+        
+        Expense expense3 = new Expense(ExpenseType.OTHER, date, price3,
+                location1, grantSet, null);
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(expense1);
+        expenseList.add(expense2);
+        expenseList.add(expense3);
 
         return expenseList;
     }

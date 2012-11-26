@@ -16,8 +16,6 @@ From Design Document/Requirements Document with consideration to the rules liste
 
 
 
-12: RequiredFieldsRule 
-
 Rewrite ForeignGrantsForeignTravelOnlyRule
 
 
