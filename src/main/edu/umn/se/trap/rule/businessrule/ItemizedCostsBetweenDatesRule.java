@@ -75,7 +75,7 @@ public class ItemizedCostsBetweenDatesRule extends AbstractRule
                         "Invalid TrapForm object: expenses was null.");
             }
 
-            checkItemizedCosts(arrivalTime, departureTime, expenses);
+            checkItemizedCosts(departureTime, arrivalTime, expenses);
         }
         else
         {

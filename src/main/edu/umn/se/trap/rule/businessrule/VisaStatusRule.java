@@ -99,7 +99,7 @@ public class VisaStatusRule extends AbstractRule
 
         if (!(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
                 "United States"))
-                || !(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
+                && !(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
                         "USA")))
         {
 
@@ -112,8 +112,7 @@ public class VisaStatusRule extends AbstractRule
                     "valid")))
             {
 
-                throw new TrapException(
-                        "Invalid citizenship and visa status");
+                throw new TrapException("Invalid citizenship and visa status");
 
             }
 

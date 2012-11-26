@@ -69,43 +69,47 @@ public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule
      */
     private void checkExpenseGrants(Expense expense) throws TrapException
     {
-
-        if (StringUtils.equalsIgnoreCase(expense.getLocation().getCountry(),
-                "USA")
-                || StringUtils.equalsIgnoreCase(expense.getLocation()
-                        .getCountry(), "United States"))
+        if (expense.getLocation() != null)
         {
-            GrantSet grantSet = expense.getEligibleGrants();
 
-            if (grantSet == null)
+            if (StringUtils.equalsIgnoreCase(
+                    expense.getLocation().getCountry(), "USA")
+                    || StringUtils.equalsIgnoreCase(expense.getLocation()
+                            .getCountry(), "United States"))
             {
-                throw new TrapException(
-                        "Invalid TrapForm object: grantSet was null.");
-            }
+                GrantSet grantSet = expense.getEligibleGrants();
 
-            Set<FormGrant> grants = grantSet.getGrants();
-
-            if (grants == null)
-            {
-                throw new TrapException(
-                        "Invalid TrapForm object: grants was null.");
-            }
-
-            Iterator<FormGrant> grantIter = grants.iterator();
-
-            while (grantIter.hasNext())
-            {
-                FormGrant grant = grantIter.next();
-
-                if (StringUtils.equalsIgnoreCase(grant.getOrganizationType(),
-                        "foreign"))
+                if (grantSet == null)
                 {
-                    // Remove the grant if it is a foreign grant trying to cover
-                    // a domestic expense
-                    grantSet.removeGrant(grant.getAccountName());
+                    throw new TrapException(
+                            "Invalid TrapForm object: grantSet was null.");
                 }
-            }
 
+                Set<FormGrant> grants = grantSet.getGrants();
+
+                if (grants == null)
+                {
+                    throw new TrapException(
+                            "Invalid TrapForm object: grants was null.");
+                }
+
+                Iterator<FormGrant> grantIter = grants.iterator();
+
+                while (grantIter.hasNext())
+                {
+                    FormGrant grant = grantIter.next();
+
+                    if (StringUtils.equalsIgnoreCase(
+                            grant.getOrganizationType(), "foreign"))
+                    {
+                        // Remove the grant if it is a foreign grant trying to
+                        // cover
+                        // a domestic expense
+                        grantSet.removeGrant(grant.getAccountName());
+                    }
+                }
+
+            }
         }
 
     }
