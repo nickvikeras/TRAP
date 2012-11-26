@@ -83,7 +83,7 @@ public class GrantAuthorizationRule extends AbstractRule
     {
         Iterator<FormGrant> grantIter = grants.iterator();
         
-        String user = formUser.getFullName();
+        String user = formUser.getUserName();
                
         while (grantIter.hasNext())
         {
