@@ -54,11 +54,10 @@ public class BaggageCostLimitRuleTest
     {
     }
 
-    
     @Test
     public void testSuccess() throws TrapException
     {
-        
+
         try
         {
             List<Expense> testExpense = TrapTestUtil
@@ -67,11 +66,11 @@ public class BaggageCostLimitRuleTest
             BaggageCostLimitRule rule = new BaggageCostLimitRule();
 
             rule.checkBaggageClaimCost(testExpense);
-                    
-            
+
         }
-        catch (TrapException E){
-            
+        catch (TrapException E)
+        {
+
         }
     }
 
@@ -81,21 +80,19 @@ public class BaggageCostLimitRuleTest
         try
         {
             List<Expense> testExpense = TrapTestUtil
-                    .getSampleExpenseBaggageClaim((double)26);
+                    .getSampleExpenseBaggageClaim(25.1);
 
             BaggageCostLimitRule rule = new BaggageCostLimitRule();
 
             rule.checkBaggageClaimCost(testExpense);
-        }
-        catch (TrapException E){
-            
-          fail("Unexpected error was received: " + E.getMessage());
-            
-        }
 
+            fail("An invalid baggage claim did not throw an error.");
+        }
+        catch (TrapException E)
+        {
+
+        }
 
     }
-
-
 
 }

@@ -636,7 +636,7 @@ public class TrapTestUtil
         Location location = new Location("Generic", "Place", "USA");
 
         Expense otherExpense = new Expense(ExpenseType.OTHER, date, 50,
-                location, grantSet, "Alcohol");
+                location, grantSet, justification);
 
         return otherExpense;
     }

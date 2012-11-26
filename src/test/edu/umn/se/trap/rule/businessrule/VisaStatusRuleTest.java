@@ -69,7 +69,8 @@ public class VisaStatusRuleTest
         grants.add(grant1);
 
         FormUser user = new FormUser("linc001", "Greg Gay", "765-432-1098",
-                "Ron Smith", "smith@umn.edu", "8790111", "Icelandic", "valid", true);
+                "Ron Smith", "smith@umn.edu", "8790111", "Icelandic", "valid",
+                true);
 
         try
         {
@@ -95,7 +96,8 @@ public class VisaStatusRuleTest
         grants.add(grant1);
 
         FormUser user = new FormUser("linc001", "Greg Gay", "765-432-1098",
-                "Ron Smith", "smith@umn.edu", "8790111", "Icelandic", "NA", true);
+                "Ron Smith", "smith@umn.edu", "8790111", "Icelandic", "NA",
+                true);
 
         try
         {
@@ -103,11 +105,11 @@ public class VisaStatusRuleTest
             VisaStatusRule rule = new VisaStatusRule();
 
             rule.checkVisaStatus(grants, user);
+
+            fail("A user with a bad visa status did not throw an error.");
         }
         catch (TrapException E)
         {
-
-            fail("Unexpected error was received: " + E.getMessage());
 
         }
 

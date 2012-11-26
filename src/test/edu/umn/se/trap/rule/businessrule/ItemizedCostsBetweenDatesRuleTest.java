@@ -94,11 +94,11 @@ public class ItemizedCostsBetweenDatesRuleTest
             ItemizedCostsBetweenDatesRule rule = new ItemizedCostsBetweenDatesRule();
 
             rule.checkItemizedCosts(depart, arrival, testExpense);
+
+            fail("An invalid expense did not throw an error.");
         }
         catch (TrapException E)
         {
-
-            fail("Unexpected error was received: " + E.getMessage());
 
         }
 

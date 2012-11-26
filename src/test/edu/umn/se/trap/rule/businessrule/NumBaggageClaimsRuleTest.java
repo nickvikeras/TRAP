@@ -54,11 +54,10 @@ public class NumBaggageClaimsRuleTest
     {
     }
 
-    
     @Test
     public void testLessThan() throws TrapException
     {
-        
+
         try
         {
             List<Expense> testExpense = TrapTestUtil
@@ -67,17 +66,18 @@ public class NumBaggageClaimsRuleTest
             NumBaggageClaimsRule rule = new NumBaggageClaimsRule();
 
             rule.checkNumBaggageClaims(testExpense);
-                    
-            
+
         }
-        catch (TrapException E){
-            
+        catch (TrapException E)
+        {
+
         }
     }
+
     @Test
     public void testEqualsTo() throws TrapException
     {
-        
+
         try
         {
             List<Expense> testExpense = TrapTestUtil
@@ -86,11 +86,11 @@ public class NumBaggageClaimsRuleTest
             NumBaggageClaimsRule rule = new NumBaggageClaimsRule();
 
             rule.checkNumBaggageClaims(testExpense);
-                    
-            
+
         }
-        catch (TrapException E){
-            
+        catch (TrapException E)
+        {
+
         }
     }
 
@@ -102,20 +102,17 @@ public class NumBaggageClaimsRuleTest
             List<Expense> testExpense = TrapTestUtil
                     .getSampleExpenseNumBaggageClaim(1);
 
-
             NumBaggageClaimsRule rule = new NumBaggageClaimsRule();
 
             rule.checkNumBaggageClaims(testExpense);
-        }
-        catch (TrapException E){
-            
-          fail("Unexpected error was received: " + E.getMessage());
-            
-        }
 
+            fail("An invalid expense list did not throw an error.");
+        }
+        catch (TrapException E)
+        {
+
+        }
 
     }
-
-
 
 }

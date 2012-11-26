@@ -103,11 +103,11 @@ public class ExportGrantCitizenRuleTest
             ExportGrantCitizenRule rule = new ExportGrantCitizenRule();
 
             rule.checkExportGrantCitizen(grants, user);
+            
+            fail("An invalid grant did not throw an error.");
         }
         catch (TrapException E)
         {
-
-            fail("Unexpected error was received: " + E.getMessage());
 
         }
 
