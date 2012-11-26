@@ -47,7 +47,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.umn.se.trap.TravelFormMetadata;
-import edu.umn.se.trap.TravelFormProcessorImpl;
+import edu.umn.se.trap.TravelFormProcessor;
 import edu.umn.se.trap.TravelFormProcessorIntf;
 import edu.umn.se.trap.db.CurrencyDB;
 import edu.umn.se.trap.db.GrantDB;
@@ -312,7 +312,7 @@ public class TravelFormProcessorTestValidData
     public void setUp() throws Exception
     {
         
-        this.testProcessor = new TravelFormProcessorImpl(this.userDB,
+        this.testProcessor = new TravelFormProcessor(this.userDB,
                                                      this.perDiemDB,
                                                      this.grantDB,
                                                      this.userGrantDB,

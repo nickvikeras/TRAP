@@ -174,6 +174,7 @@ public class DatabaseAccessor
             throw new TrapException("Cannot find grant info");
         }
     }
+    
 
     public UserGrant getUserGrant(String accountName) throws TrapException
     {
@@ -206,5 +207,28 @@ public class DatabaseAccessor
         {
             throw new TrapException("Cannot find currency info");
         }
+    }
+
+    /**
+     * @param accountName
+     * @param amountToCharge
+     * @throws TrapException 
+     */
+    public void chargeAccount(String accountName, Double amountToCharge) throws TrapException
+    {
+        final double currentBalance = getGrant(accountName).getAccountBalance();
+        final double newBalance = currentBalance - amountToCharge;
+        if(newBalance < 0){
+            throw new TrapException("not enough money in account");
+        }
+        try
+        {
+            this.grantDB.updateAccountBalance(accountName, newBalance);
+        }
+        catch (KeyNotFoundException e)
+        {
+           throw new TrapException("account not found for charge");
+        }
+        
     }
 }

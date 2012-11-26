@@ -19,6 +19,7 @@
 package edu.umn.se.trap;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import edu.umn.se.trap.calculator.TrapCalculator;
 import edu.umn.se.trap.db.CurrencyDB;
@@ -37,7 +38,7 @@ import edu.umn.se.trap.rule.FormCheckerFactory;
  * @author nick
  * 
  */
-public class TravelFormProcessorImpl implements TravelFormProcessorIntf
+public class TravelFormProcessor implements TravelFormProcessorIntf
 {
     private String userId;
     private DatabaseAccessor databaseAccessor;
@@ -56,7 +57,7 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
      * @param currencyDB
      *            the table abstraction for the currency DB.
      */
-    public TravelFormProcessorImpl(UserDB userDB, PerDiemDB perDiemDB, GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
+    public TravelFormProcessor(UserDB userDB, PerDiemDB perDiemDB, GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
     {
         this.databaseAccessor = new DatabaseAccessor(userDB, perDiemDB, grantDB, userGrantDB, currencyDB);
     }
@@ -170,21 +171,23 @@ public class TravelFormProcessorImpl implements TravelFormProcessorIntf
         businessRuleChecker.fireRules(form);
         grantRuleChecker.fireRules(form);
 
-        Map<Integer, Double> amountsToCharge = TrapCalculator.calculateAmountsToCharge(form);
+        Map<String, Double> amountsToCharge = TrapCalculator.calculateAmountsToCharge(form);
         chargeAccounts(amountsToCharge);
         form.buildOutput(amountsToCharge);
     }
 
     /**
      * @param amountsToCharge
+     * @throws TrapException 
      */
-    private void chargeAccounts(Map<Integer, Double> amountsToCharge)
+    private void chargeAccounts(Map<String, Double> amountsToCharge) throws TrapException
     {
-        // for( Entry<Integer, Double> entry : amountsToCharge.entrySet()){
-
-        // }
-        // this.grantDB.updateAccountBalance(accountName, newBalance)
-
+       for(Entry<String, Double> entry : amountsToCharge.entrySet()){
+           String accountName = entry.getKey();
+           Double amountToCharge = entry.getValue();
+           this.databaseAccessor.chargeAccount(accountName, amountToCharge); 
+       }
+       
     }
 
     /*

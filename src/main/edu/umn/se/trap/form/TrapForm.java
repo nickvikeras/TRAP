@@ -66,7 +66,7 @@ public class TrapForm
         this.accountToPercentMap = accountToPercentMap;
     }
 
-    public void buildOutput(Map<Integer, Double> accountAmountMap)
+    public void buildOutput(Map<String, Double> accountAmountMap)
     {
 
     }

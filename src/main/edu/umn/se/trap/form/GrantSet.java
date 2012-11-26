@@ -20,6 +20,8 @@ package edu.umn.se.trap.form;
 
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author mark
  * 
@@ -57,6 +59,20 @@ public class GrantSet
     public Set<FormGrant> getGrants()
     {
         return grants;
+    }
+
+    /**
+     * @param accountName
+     * @return
+     */
+    public boolean contains(String accountName)
+    {
+        for(FormGrant fg : this.grants){
+            if (StringUtils.equals(fg.getAccountName(), accountName)){
+                return true;
+            }
+        }
+        return false;
     }
 
     
