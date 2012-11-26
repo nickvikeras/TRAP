@@ -60,7 +60,7 @@ public class FormFactory
             Trip trip = getNewTrip(formData);
             List<Expense> expenses = getNewExpenseList(formData, dbAccessor);
             Map<String, Double> accountToPercentMap = getNewAccountToPercentMap(formData);
-            return new TrapForm(id, formData, null, travelFormMetaData, grantSet, user, trip, expenses, accountToPercentMap);
+            return new TrapForm(id, formData, null, travelFormMetaData, grantSet, user, trip, expenses, accountToPercentMap, new Date());
         } catch (Exception e)
         {
             throw new TrapException("Error parsing input");
@@ -114,7 +114,7 @@ public class FormFactory
             PerDiem lunchPerDiem = getPerDiem(lunchCity, lunchState, lunchCountry, dbAccessor);
             if (lunchPerDiem != null)
             {
-                Expense expense = new Expense(ExpenseType.LUNCH, date, breakfastPerDiem.getLunchRate(), new Location(lunchCity, lunchState, lunchCountry), getNewGrantSet(formData, dbAccessor), null);
+                Expense expense = new Expense(ExpenseType.LUNCH, date, lunchPerDiem.getLunchRate(), new Location(lunchCity, lunchState, lunchCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }
 
@@ -124,7 +124,7 @@ public class FormFactory
             PerDiem dinnerPerDiem = getPerDiem(dinnerCity, dinnerState, dinnerCountry, dbAccessor);
             if (dinnerPerDiem != null)
             {
-                Expense expense = new Expense(ExpenseType.DINNER, date, breakfastPerDiem.getDinnerRate(), new Location(dinnerCity, dinnerState, dinnerCountry), getNewGrantSet(formData, dbAccessor), null);
+                Expense expense = new Expense(ExpenseType.DINNER, date, dinnerPerDiem.getDinnerRate(), new Location(dinnerCity, dinnerState, dinnerCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }
             String incidentalCity = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CITY, i + 1));
