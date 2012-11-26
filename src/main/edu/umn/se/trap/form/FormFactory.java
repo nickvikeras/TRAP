@@ -107,6 +107,11 @@ public class FormFactory
                 Expense expense = new Expense(ExpenseType.BREAKFAST, date, breakfastPerDiem.getBreakfastRate(), new Location(breakfastCity, breakfastState, breakfastCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }
+            else if(breakfastPerDiem == null && breakfastState == null && breakfastCountry == null && breakfastCity != null)
+            {
+                Expense expense = new Expense(ExpenseType.BREAKFAST, date, 0.00, new Location(breakfastCity, breakfastState, breakfastCountry), getNewGrantSet(formData, dbAccessor), null);
+                expenses.add(expense);
+            }
 
             String lunchCity = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_CITY, i + 1));
             String lunchState = formData.get(String.format(TrapInputKeys.DAYa_LUNCH_STATE, i + 1));
@@ -115,6 +120,11 @@ public class FormFactory
             if (lunchPerDiem != null)
             {
                 Expense expense = new Expense(ExpenseType.LUNCH, date, lunchPerDiem.getLunchRate(), new Location(lunchCity, lunchState, lunchCountry), getNewGrantSet(formData, dbAccessor), null);
+                expenses.add(expense);
+            }
+            else if(lunchPerDiem == null && lunchState == null && lunchCountry == null && lunchCity != null)
+            {
+                Expense expense = new Expense(ExpenseType.LUNCH, date, 0.00, new Location(lunchCity, lunchState, lunchCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }
 
@@ -127,6 +137,12 @@ public class FormFactory
                 Expense expense = new Expense(ExpenseType.DINNER, date, dinnerPerDiem.getDinnerRate(), new Location(dinnerCity, dinnerState, dinnerCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }
+            else if(dinnerPerDiem == null && dinnerState == null && dinnerCountry == null && dinnerCity != null)
+            {
+                Expense expense = new Expense(ExpenseType.DINNER, date, 0.00, new Location(dinnerCity, dinnerState, dinnerCountry), getNewGrantSet(formData, dbAccessor), null);
+                expenses.add(expense);
+            }
+            
             String incidentalCity = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CITY, i + 1));
             String incidentalState = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_STATE, i + 1));
             String incidentalCountry = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_COUNTRY, i + 1));
@@ -144,6 +160,16 @@ public class FormFactory
                 Expense expense = new Expense(ExpenseType.INCIDENTAL, date, incidentalAmountUSD, new Location(incidentalCity, incidentalState, incidentalCountry), getNewGrantSet(formData, dbAccessor), incidentalJustification);
                 expenses.add(expense);
             }
+            else if(incidentalPerdiem == null && incidentalState == null && incidentalCountry == null && incidentalCity != null)
+            {
+                Double incidentalAmount = 0.00;
+                String incidentalCurrency = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_CURRENCY, i + 1));
+                String incidentalJustification = formData.get(String.format(TrapInputKeys.DAYa_INCIDENTAL_JUSTIFICATION, i + 1));
+                Double incidentalAmountUSD = dbAccessor.getUsd(incidentalCurrency, incidentalAmount, date);
+
+                Expense expense = new Expense(ExpenseType.INCIDENTAL, date, incidentalAmountUSD, new Location(incidentalCity, incidentalState, incidentalCountry), getNewGrantSet(formData, dbAccessor), incidentalJustification);
+                expenses.add(expense);
+            }
 
             String lodgingCity = formData.get(String.format(TrapInputKeys.DAYa_LODGING_CITY, i + 1));
             String lodgingState = formData.get(String.format(TrapInputKeys.DAYa_LODGING_STATE, i + 1));
@@ -158,6 +184,15 @@ public class FormFactory
                 {
                     throw new TrapException("lodging amount too high");
                 }
+                Expense expense = new Expense(ExpenseType.LODGING, date, lodgingAmountUSD, new Location(lodgingCity, lodgingState, lodgingCountry), getNewGrantSet(formData, dbAccessor), null);
+                expenses.add(expense);
+            }
+            else if(lodgingPerDiem == null && lodgingState == null && lodgingCountry == null && lodgingCity != null)
+            {
+                double lodgingAmount = 0.00;
+                String lodgingCurrency = formData.get(String.format(TrapInputKeys.DAYa_LODGING_CURRENCY, i + 1));
+                Double lodgingAmountUSD = dbAccessor.getUsd(lodgingCurrency, lodgingAmount, date);
+
                 Expense expense = new Expense(ExpenseType.LODGING, date, lodgingAmountUSD, new Location(lodgingCity, lodgingState, lodgingCountry), getNewGrantSet(formData, dbAccessor), null);
                 expenses.add(expense);
             }

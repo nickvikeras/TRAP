@@ -38,7 +38,7 @@ import edu.umn.se.trap.rule.AbstractRule;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class RequiredFieldsRuleTest
 {
@@ -58,17 +58,21 @@ public class RequiredFieldsRuleTest
     public void tearDown() throws Exception
     {
     }
-    /*
+    
     @Test
     public void testBasicForm()
     {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(), new PerDiemDB(), new GrantDB(), new UserGrantDB(), new CurrencyDB());
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(TrapTestUtil.getSampleInput1(), "sample trap input", dbAccessor);
-            
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInput1(), "sample trap input",
+                    dbAccessor);
+
             AbstractRule rule = new RequiredFieldsRule();
-            
+
             rule.validateRule(form);
         }
         catch (TrapException TE)
@@ -80,17 +84,21 @@ public class RequiredFieldsRuleTest
             fail("Unexpected failure: " + E.getMessage());
         }
     }
-    
+
     @Test
     public void testMissingJustification()
     {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(), new PerDiemDB(), new GrantDB(), new UserGrantDB(), new CurrencyDB());
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(TrapTestUtil.getSampleInputMissingJustification(), "sample trap input", dbAccessor);
-            
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInputMissingJustification(),
+                    "sample trap input", dbAccessor);
+
             AbstractRule rule = new RequiredFieldsRule();
-            
+
             rule.validateRule(form);
         }
         catch (TrapException TE)
@@ -101,19 +109,23 @@ public class RequiredFieldsRuleTest
             fail("Unexpected failure: " + E.getMessage());
         }
     }
-    */
+    
     @Test
-    public void testMissingExpenseLocation()
+    public void testMissingExpenseLocationMissingCity()
     {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(), new PerDiemDB(), new GrantDB(), new UserGrantDB(), new CurrencyDB());
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(TrapTestUtil.getSampleInputMissingExpenseLocation(), "sample trap input", dbAccessor);
-            
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInputMissingExpenseLocation(null, "MO", "USA"),
+                    "sample trap input", dbAccessor);
+
             AbstractRule rule = new RequiredFieldsRule();
-            
+
             rule.validateRule(form);
-            
+
             fail("Failure: TrapException was not thrown.");
         }
         catch (TrapException TE)
@@ -126,17 +138,102 @@ public class RequiredFieldsRuleTest
     }
     
     @Test
-    public void testMissingNoSponsorship()
+    public void testMissingExpenseLocationMissingState()
     {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(), new PerDiemDB(), new GrantDB(), new UserGrantDB(), new CurrencyDB());
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
         try
         {
-            TrapForm form = FormFactory.getNewForm(TrapTestUtil.getSampleInputNoSponsorship(), "sample trap input", dbAccessor);
-            
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInputMissingExpenseLocation("Kansas City", null, "USA"),
+                    "sample trap input", dbAccessor);
+
             AbstractRule rule = new RequiredFieldsRule();
-            
+
             rule.validateRule(form);
-            
+
+            fail("Failure: TrapException was not thrown.");
+        }
+        catch (TrapException TE)
+        {
+        }
+        catch (Exception E)
+        {
+            fail("Unexpected failure: " + E.getMessage());
+        }
+    }
+    
+    @Test
+    public void testMissingExpenseLocationMissingCountry()
+    {
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
+        try
+        {
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInputMissingExpenseLocation("Kansas City", "MO", null),
+                    "sample trap input", dbAccessor);
+
+            AbstractRule rule = new RequiredFieldsRule();
+
+            rule.validateRule(form);
+
+            fail("Failure: TrapException was not thrown.");
+        }
+        catch (TrapException TE)
+        {
+        }
+        catch (Exception E)
+        {
+            fail("Unexpected failure: " + E.getMessage());
+        }
+    }
+    
+    @Test
+    public void testMissingExpenseLocationCityOnly()
+    {
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
+        try
+        {
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInputMissingExpenseLocation("Kansas City", null, null),
+                    "sample trap input", dbAccessor);
+
+            AbstractRule rule = new RequiredFieldsRule();
+
+            rule.validateRule(form);
+
+            fail("Failure: TrapException was not thrown.");
+        }
+        catch (TrapException TE)
+        {
+        }
+        catch (Exception E)
+        {
+            fail("Unexpected failure: " + E.getMessage());
+        }
+    }
+
+    @Test
+    public void testMissingNoSponsorship()
+    {
+        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
+                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
+                new CurrencyDB());
+        try
+        {
+            TrapForm form = FormFactory.getNewForm(
+                    TrapTestUtil.getSampleInputNoSponsorship(),
+                    "sample trap input", dbAccessor);
+
+            AbstractRule rule = new RequiredFieldsRule();
+
+            rule.validateRule(form);
+
             fail("Failure: TrapException was not thrown.");
         }
         catch (TrapException TE)
