@@ -19,7 +19,9 @@
 package edu.umn.se.trap.form;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -110,10 +112,13 @@ public class FormFactory
                 .get(TrapInputKeys.NUM_DAYS));
         for (int i = 0; i < numDays; i++)
         {
-            Date date = TrapDateUtil.parseTrapDateTime(formData
-                    .get(TrapInputKeys.DEPARTURE_DATETIME));
+           Date date = TrapDateUtil.parseTrapDateTime(formData                    .get(TrapInputKeys.DEPARTURE_DATETIME));
             // get date for this day.
-            date.setTime(date.getTime() + ((3600 * 24) * i));
+            Calendar cal = new GregorianCalendar();
+            cal.setTime(date);            
+            cal.add(Calendar.DAY_OF_MONTH, i);
+            date = cal.getTime();
+           
             String breakfastCity = formData.get(String.format(
                     TrapInputKeys.DAYa_BREAKFAST_CITY, i + 1));
             String breakfastState = formData.get(String.format(

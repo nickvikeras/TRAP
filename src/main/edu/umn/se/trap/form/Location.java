@@ -103,13 +103,27 @@ public class Location
     {
         if (location instanceof Location)
         {
-            return StringUtils.equals(this.city,
+            return StringUtils.equalsIgnoreCase(this.city,
                     ((Location) location).getCity())
-                    && StringUtils.equals(this.country,
+                    && StringUtils.equalsIgnoreCase(this.country,
                             ((Location) location).getCountry())
-                    && StringUtils.equals(this.state,
+                    && StringUtils.equalsIgnoreCase(this.state,
                             ((Location) location).getState());
         }
         return false;
+    }
+    
+    @Override public int hashCode(){
+        String s = "";
+        if(city != null){
+            s += city.toLowerCase();
+        }
+        if(state != null){
+            s += state.toLowerCase();
+        }
+        if(country != null){
+            s += country.toLowerCase();
+        }
+        return s.hashCode();
     }
 }

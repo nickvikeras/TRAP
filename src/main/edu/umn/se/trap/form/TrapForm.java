@@ -20,7 +20,9 @@ package edu.umn.se.trap.form;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -100,7 +102,7 @@ public class TrapForm
         putIfNotNull(output, TrapOutputKeys.DEPARTURE_DATETIME,
                 TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
         putIfNotNull(output, TrapOutputKeys.ARRIVAL_DATETIME,
-                TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
+                TrapDateUtil.printDateTime(getTrip().getArrivalDateTime()));
         putIfNotNull(output, TrapOutputKeys.PAID_BY_UNIVERSITY,
                 TrapUtil.boolToYesNo(getUser().isPaidByUniversity()));
         putIfNotNull(output, TrapOutputKeys.EMERGENCY_CONTACT_NAME, getUser()
@@ -150,7 +152,7 @@ public class TrapForm
         List<Day> days = getDays();
         java.util.Collections.sort(days, new DayComparator());
         i = 1;
-        for (Day day : getDays())
+        for (Day day : days)
         {
             putIfNotNull(output, String.format(TrapOutputKeys.DAYa_DATE, i),
                     TrapDateUtil.printDate(day.getDate()));
@@ -249,7 +251,7 @@ public class TrapForm
     private void putIfNotNull(Map<String, String> output, String key,
             String value)
     {
-        if (value != null && !StringUtils.equals(value, ""))
+        if (value != null && !StringUtils.equals(value, "") && !StringUtils.equals(value, "0.0"))
         {
             output.put(key, value);
         }
@@ -271,11 +273,15 @@ public class TrapForm
 
     public List<Day> getDays()
     {
-        Date date = getTrip().getDepartureDateTime();
+        Date departureDate = getTrip().getDepartureDateTime();
         List<Day> days = new ArrayList<Day>();
         for (int i = 0; i < trip.getNumDays(); i++)
         {
-            date.setTime(date.getTime() + ((3600 * 24) * i));
+            
+            Calendar cal = new GregorianCalendar();
+            cal.setTime(departureDate);            
+            cal.add(Calendar.DAY_OF_MONTH, i);
+            Date date = cal.getTime();
             Double total = 0.0;
             Double incidentalTotal = 0.0;
             String incidentalJustification = "";
