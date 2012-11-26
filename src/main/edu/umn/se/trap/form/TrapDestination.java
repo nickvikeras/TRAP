@@ -6,47 +6,40 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
-    
+
         http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
- */
+*/
 package edu.umn.se.trap.form;
 
-import org.apache.commons.lang3.StringUtils;
-
 /**
- * @author mark
- * 
+ * @author nick
+ *
  */
-public class Location
+public class TrapDestination
 {
-
-    // Public member variables:
     private String city;
     private String state;
     private String country;
-
-    // Getters and setters:
-
+    
     /**
      * @param city
      * @param state
      * @param country
      */
-    public Location(String city, String state, String country)
+    public TrapDestination(String city, String state, String country)
     {
         super();
         this.city = city;
         this.state = state;
         this.country = country;
     }
-
     /**
      * @return the city
      */
@@ -54,16 +47,13 @@ public class Location
     {
         return city;
     }
-
     /**
-     * @param city
-     *            the city to set
+     * @param city the city to set
      */
     public void setCity(String city)
     {
         this.city = city;
     }
-
     /**
      * @return the state
      */
@@ -71,16 +61,13 @@ public class Location
     {
         return state;
     }
-
     /**
-     * @param state
-     *            the state to set
+     * @param state the state to set
      */
     public void setState(String state)
     {
         this.state = state;
     }
-
     /**
      * @return the country
      */
@@ -88,28 +75,12 @@ public class Location
     {
         return country;
     }
-
     /**
-     * @param country
-     *            the country to set
+     * @param country the country to set
      */
     public void setCountry(String country)
     {
         this.country = country;
-    }
+    }    
 
-    @Override
-    public boolean equals(Object location)
-    {
-        if (location instanceof Location)
-        {
-            return StringUtils.equals(this.city,
-                    ((Location) location).getCity())
-                    && StringUtils.equals(this.country,
-                            ((Location) location).getCountry())
-                    && StringUtils.equals(this.state,
-                            ((Location) location).getState());
-        }
-        return false;
-    }
 }
