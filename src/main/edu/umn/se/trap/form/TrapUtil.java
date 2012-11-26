@@ -18,6 +18,9 @@
  */
 package edu.umn.se.trap.form;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * @author nick
  * 
@@ -33,6 +36,28 @@ public class TrapUtil
             s = "yes";
         }
         return s;
+    }
+
+    /**
+     * @param date
+     * @param date2
+     * @return
+     */
+    public static boolean sameDay(Date date1, Date date2)
+    {
+        if (date1 == null || date2 == null)
+        {
+            return false;
+        }
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(date1);
+        cal2.setTime(date2);
+        boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.DAY_OF_YEAR) == cal2
+                        .get(Calendar.DAY_OF_YEAR);
+        return sameDay;
+
     }
 
 }

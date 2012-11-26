@@ -18,6 +18,7 @@
  */
 package edu.umn.se.trap.form;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,7 +63,11 @@ public class TrapForm
      * @param expenses
      * @param accountToPercentMap
      */
-    public TrapForm(Integer formId, Map<String, String> formInput, Map<String, String> formOutput, TravelFormMetadata formMetaData, GrantSet grantSet, FormUser user, Trip trip, List<Expense> expenses, Map<String, Double> accountToPercentMap, Date submissionDate)
+    public TrapForm(Integer formId, Map<String, String> formInput,
+            Map<String, String> formOutput, TravelFormMetadata formMetaData,
+            GrantSet grantSet, FormUser user, Trip trip,
+            List<Expense> expenses, Map<String, Double> accountToPercentMap,
+            Date submissionDate)
     {
         super();
         this.formId = formId;
@@ -84,35 +89,73 @@ public class TrapForm
         output.put(TrapOutputKeys.EMAIL, getUser().getEmail());
         output.put(TrapOutputKeys.CITIZENSHIP, getUser().getCitizenship());
         output.put(TrapOutputKeys.VISA_STATUS, getUser().getVisaStatus());
-        output.put(TrapOutputKeys.FORM_SUBMISSION_DATETIME, TrapDateUtil.printDateTime(getSubmissionDate()));
-        output.put(TrapOutputKeys.DEPARTURE_DATETIME, TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
-        output.put(TrapOutputKeys.ARRIVAL_DATETIME, TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
-        output.put(TrapOutputKeys.PAID_BY_UNIVERSITY, TrapUtil.boolToYesNo(getUser().isPaidByUniversity()));
-        output.put(TrapOutputKeys.EMERGENCY_CONTACT_NAME, getUser().getEmergencyContactName());
-        output.put(TrapOutputKeys.EMERGENCY_CONTACT_PHONE, getUser().getEmergencyContactPhone());
-        output.put(TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED, TrapUtil.boolToYesNo(getTrip().isTravelTypeCseSponsored()));
-        output.put(TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED, TrapUtil.boolToYesNo(getTrip().isTravelTypeDtcSponsored()));
-        output.put(TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED, TrapUtil.boolToYesNo(getTrip().isTravelTypeNonsponsored()));
-        output.put(TrapOutputKeys.JUSTIFICATION_CONFERENCE_TITLE, getTrip().getJustificationConferenceTitle());
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTED, TrapUtil.boolToYesNo(getTrip().isJustificationPresented()));
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_TITLE, getTrip().getJustificationPresentationTitle());
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ABSTRACT, getTrip().getJustificationPresentationAbstract());
-        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ACKNOWLEDGEMENT, getTrip().getJustificationPresentationAcknowledgement());
-        output.put(TrapOutputKeys.JUSTIFICATION_NONSPONSORED, getTrip().getJustificationNonsponsored());
-        output.put(TrapOutputKeys.JUSTIFICATION_SPONSORED, getTrip().getJustificationSponsored());
-        
+        output.put(TrapOutputKeys.FORM_SUBMISSION_DATETIME,
+                TrapDateUtil.printDateTime(getSubmissionDate()));
+        output.put(TrapOutputKeys.DEPARTURE_DATETIME,
+                TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
+        output.put(TrapOutputKeys.ARRIVAL_DATETIME,
+                TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
+        output.put(TrapOutputKeys.PAID_BY_UNIVERSITY,
+                TrapUtil.boolToYesNo(getUser().isPaidByUniversity()));
+        output.put(TrapOutputKeys.EMERGENCY_CONTACT_NAME, getUser()
+                .getEmergencyContactName());
+        output.put(TrapOutputKeys.EMERGENCY_CONTACT_PHONE, getUser()
+                .getEmergencyContactPhone());
+        output.put(TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED,
+                TrapUtil.boolToYesNo(getTrip().isTravelTypeCseSponsored()));
+        output.put(TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED,
+                TrapUtil.boolToYesNo(getTrip().isTravelTypeDtcSponsored()));
+        output.put(TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED,
+                TrapUtil.boolToYesNo(getTrip().isTravelTypeNonsponsored()));
+        output.put(TrapOutputKeys.JUSTIFICATION_CONFERENCE_TITLE, getTrip()
+                .getJustificationConferenceTitle());
+        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTED,
+                TrapUtil.boolToYesNo(getTrip().isJustificationPresented()));
+        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_TITLE, getTrip()
+                .getJustificationPresentationTitle());
+        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ABSTRACT,
+                getTrip().getJustificationPresentationAbstract());
+        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ACKNOWLEDGEMENT,
+                getTrip().getJustificationPresentationAcknowledgement());
+        output.put(TrapOutputKeys.JUSTIFICATION_NONSPONSORED, getTrip()
+                .getJustificationNonsponsored());
+        output.put(TrapOutputKeys.JUSTIFICATION_SPONSORED, getTrip()
+                .getJustificationSponsored());
+
     }
-    
-//    public List<Day> getDays()
-//    { 
-//        
-//    }
-    
+
+    public List<Day> getDays()
+    {
+        Date date = getTrip().getDepartureDateTime();
+        List<Day> days  = new ArrayList<Day>();
+        for (int i = 0; i < trip.getNumDays(); i++)
+        {
+            date.setTime(date.getTime() + ((3600 * 24) * i));
+            Double total = 0.0;
+            Double incidentalTotal = 0.0;
+            String incidentalJustification = "";
+            for (Expense expense : getExpenses())
+            {
+                if(TrapUtil.sameDay(date, expense.getDate())){
+                    total += expense.getAmount();
+                    if(expense.getType() == ExpenseType.INCIDENTAL){
+                        incidentalTotal += expense.getAmount();
+                        incidentalJustification += expense.getJustification();
+                    }
+                }
+            }
+            days.add(new Day(date, total, incidentalTotal, incidentalJustification));
+        }
+        return days;
+    }
+
     public List<Location> getLocations()
     {
-       Set<Location> locations = new HashSet<Location>();
-        for(Expense expense : getExpenses()){
-            if(expense.getLocation() != null){
+        Set<Location> locations = new HashSet<Location>();
+        for (Expense expense : getExpenses())
+        {
+            if (expense.getLocation() != null)
+            {
                 locations.add(expense.getLocation());
             }
         }
