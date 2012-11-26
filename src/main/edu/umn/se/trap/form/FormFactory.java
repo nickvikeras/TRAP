@@ -216,10 +216,10 @@ public class FormFactory
         {
             if (city != null)
             {
-                dbAccessor.getDomesticPerdiem(city, state);
+                perDiem = dbAccessor.getDomesticPerdiem(city, state);
             } else
             {
-                dbAccessor.getDomesticPerdiem(state);
+                perDiem = dbAccessor.getDomesticPerdiem(state);
             }
         } else if (country != null)
         {

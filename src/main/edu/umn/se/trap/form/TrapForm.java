@@ -18,9 +18,12 @@
  */
 package edu.umn.se.trap.form;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.umn.se.trap.TrapOutputKeys;
 import edu.umn.se.trap.TravelFormMetadata;
 
 /**
@@ -40,6 +43,7 @@ public class TrapForm
     private Trip trip;
     private List<Expense> expenses;
     private Map<String, Double> accountToPercentMap;
+    private Date submissionDate;
 
     /**
      * @param formId
@@ -52,7 +56,7 @@ public class TrapForm
      * @param expenses
      * @param accountToPercentMap
      */
-    public TrapForm(Integer formId, Map<String, String> formInput, Map<String, String> formOutput, TravelFormMetadata formMetaData, GrantSet grantSet, FormUser user, Trip trip, List<Expense> expenses, Map<String, Double> accountToPercentMap)
+    public TrapForm(Integer formId, Map<String, String> formInput, Map<String, String> formOutput, TravelFormMetadata formMetaData, GrantSet grantSet, FormUser user, Trip trip, List<Expense> expenses, Map<String, Double> accountToPercentMap, Date submissionDate)
     {
         super();
         this.formId = formId;
@@ -64,11 +68,33 @@ public class TrapForm
         this.trip = trip;
         this.expenses = expenses;
         this.accountToPercentMap = accountToPercentMap;
+        this.submissionDate = submissionDate;
     }
 
     public void buildOutput(Map<String, Double> accountAmountMap)
     {
-
+        Map<String, String> output = new HashMap<String, String>();
+        output.put(TrapOutputKeys.USER_NAME, getUser().getUserName());
+        output.put(TrapOutputKeys.EMAIL, getUser().getEmail());
+        output.put(TrapOutputKeys.CITIZENSHIP, getUser().getCitizenship());
+        output.put(TrapOutputKeys.VISA_STATUS, getUser().getVisaStatus());
+        output.put(TrapOutputKeys.FORM_SUBMISSION_DATETIME, TrapDateUtil.printDateTime(getSubmissionDate()));
+        output.put(TrapOutputKeys.DEPARTURE_DATETIME, TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
+        output.put(TrapOutputKeys.ARRIVAL_DATETIME, TrapDateUtil.printDateTime(getTrip().getDepartureDateTime()));
+        
+//        output.put(TrapOutputKeys.PAID_BY_UNIVERSITY, TrapUtil.boolToYesNo(getUser().isPaidByUniversity()));
+//        output.put(TrapOutputKeys.EMERGENCY_CONTACT_NAME, );
+//        output.put(TrapOutputKeys.EMERGENCY_CONTACT_PHONE, );
+//        output.put(TrapOutputKeys.TRAVEL_TYPE_CSE_SPONSORED, );
+//        output.put(TrapOutputKeys.TRAVEL_TYPE_DTC_SPONSORED, );
+//        output.put(TrapOutputKeys.TRAVEL_TYPE_NONSPONSORED, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_CONFERENCE_TITLE, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTED, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_TITLE, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ABSTRACT, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_PRESENTATION_ACKNOWLEDGEMENT, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_NONSPONSORED, );
+//        output.put(TrapOutputKeys.JUSTIFICATION_SPONSORED, );
     }
 
     /**
@@ -196,6 +222,22 @@ public class TrapForm
     public void setExpenses(List<Expense> expenses)
     {
         this.expenses = expenses;
+    }
+
+    /**
+     * @return the submissionDate
+     */
+    public Date getSubmissionDate()
+    {
+        return submissionDate;
+    }
+
+    /**
+     * @param submissionDate the submissionDate to set
+     */
+    public void setSubmissionDate(Date submissionDate)
+    {
+        this.submissionDate = submissionDate;
     }
 
 }
