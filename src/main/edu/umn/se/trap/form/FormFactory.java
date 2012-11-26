@@ -112,13 +112,14 @@ public class FormFactory
                 .get(TrapInputKeys.NUM_DAYS));
         for (int i = 0; i < numDays; i++)
         {
-           Date date = TrapDateUtil.parseTrapDateTime(formData                    .get(TrapInputKeys.DEPARTURE_DATETIME));
+            Date date = TrapDateUtil.parseTrapDateTime(formData
+                    .get(TrapInputKeys.DEPARTURE_DATETIME));
             // get date for this day.
             Calendar cal = new GregorianCalendar();
-            cal.setTime(date);            
+            cal.setTime(date);
             cal.add(Calendar.DAY_OF_MONTH, i);
             date = cal.getTime();
-           
+
             String breakfastCity = formData.get(String.format(
                     TrapInputKeys.DAYa_BREAKFAST_CITY, i + 1));
             String breakfastState = formData.get(String.format(
