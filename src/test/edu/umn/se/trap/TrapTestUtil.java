@@ -146,8 +146,8 @@ public class TrapTestUtil
          * Removed input:
          */
 
-         //map.put("JUSTIFICATION_SPONSORED",
-         //"Learn about research in the field.");
+        // map.put("JUSTIFICATION_SPONSORED",
+        // "Learn about research in the field.");
 
         map.put("NUM_GRANTS", "1");
         map.put("GRANT1_ACCOUNT", "010101010101");
@@ -225,7 +225,8 @@ public class TrapTestUtil
         return map;
     }
 
-    public static Map<String, String> getSampleInputMissingExpenseLocation(String city, String state, String country)
+    public static Map<String, String> getSampleInputMissingExpenseLocation(
+            String city, String state, String country)
     {
         Map<String, String> map = new HashMap<String, String>();
         map.put("USER_NAME", "linc001");
@@ -580,8 +581,9 @@ public class TrapTestUtil
 
         return expenseList;
     }
-    
-    public static List<Expense> getSampleExpensesValidDollarAmounts(double price1, double price2, double price3)
+
+    public static List<Expense> getSampleExpensesValidDollarAmounts(
+            double price1, double price2, double price3)
     {
 
         Set<FormGrant> grants = new HashSet<FormGrant>();
@@ -603,7 +605,7 @@ public class TrapTestUtil
 
         Expense expense2 = new Expense(ExpenseType.BREAKFAST, date, price2,
                 location1, grantSet, null);
-        
+
         Expense expense3 = new Expense(ExpenseType.OTHER, date, price3,
                 location1, grantSet, null);
 
@@ -848,5 +850,19 @@ public class TrapTestUtil
     /*
      * Set FormGrant rules
      */
+
+    public static Set<FormGrant> getSampleGrantsSponsorshipType(
+            String sponsorship)
+    {
+        Set<FormGrant> grants = new HashSet<FormGrant>();
+
+        FormGrant grant1 = new FormGrant("test account 1", sponsorship, null,
+                500.00, "noExport", null, null);
+
+        grants.add(grant1);
+
+
+        return grants;
+    }
 
 }
