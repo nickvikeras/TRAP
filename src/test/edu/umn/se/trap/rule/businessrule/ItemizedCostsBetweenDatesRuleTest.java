@@ -30,6 +30,7 @@ import org.junit.Test;
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.TrapTestUtil;
 import edu.umn.se.trap.form.Expense;
+import edu.umn.se.trap.form.TrapDateUtil;
 import edu.umn.se.trap.rule.grantrule.DodGrantHertzRule;
 import edu.umn.se.trap.form.Trip;
 
@@ -59,9 +60,9 @@ public class ItemizedCostsBetweenDatesRuleTest
     public void testSuccess() throws TrapException
     {
 
-        Date arrival = new Date(200000);
-        Date depart = new Date(20000);
-        Date edate = new Date(30000);
+        Date arrival = TrapDateUtil.parseTrapDate("20120901 111111");
+        Date depart = TrapDateUtil.parseTrapDate("20120900 111111");
+        Date edate = TrapDateUtil.parseTrapDate("20120901 110000");
 
         try
         {
@@ -82,9 +83,9 @@ public class ItemizedCostsBetweenDatesRuleTest
     @Test
     public void testFail() throws TrapException
     {
-        Date arrival = new Date(200000);
-        Date depart = new Date(20000);
-        Date edate = new Date(19000);
+        Date arrival = TrapDateUtil.parseTrapDate("20120901 111111");
+        Date depart = TrapDateUtil.parseTrapDate("20120900 111111");
+        Date edate = TrapDateUtil.parseTrapDate("20120902 110000");
 
         try
         {
