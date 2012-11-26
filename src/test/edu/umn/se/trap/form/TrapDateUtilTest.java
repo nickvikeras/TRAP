@@ -57,7 +57,7 @@ public class TrapDateUtilTest
     public void testPrintDate()
     {
         Date date = new Date(0);
-        assertEquals("19690031", TrapDateUtil.printDate(date));
+        assertEquals("19691231", TrapDateUtil.printDate(date));
     }
 
     /**
@@ -68,7 +68,7 @@ public class TrapDateUtilTest
     public void testPrintDateTime()
     {
         Date date = new Date(0);
-        assertEquals("19690031 061200", TrapDateUtil.printDateTime(date));
+        assertEquals("19691231 180000", TrapDateUtil.printDateTime(date));
     }
 
 }
