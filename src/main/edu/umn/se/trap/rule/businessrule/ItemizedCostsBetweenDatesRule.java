@@ -24,19 +24,24 @@ import java.util.List;
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
+import edu.umn.se.trap.form.TrapDateUtil;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.form.Trip;
 import edu.umn.se.trap.rule.AbstractRule;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class ItemizedCostsBetweenDatesRule extends AbstractRule
 {
 
-    /* (non-Javadoc)
-     * @see edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
+     * )
      */
     @Override
     public void validateRule(TrapForm form) throws TrapException
@@ -97,15 +102,23 @@ public class ItemizedCostsBetweenDatesRule extends AbstractRule
     {
 
         // Check the date of each expense.
-            for (Expense expense : expenses)
+        for (Expense expense : expenses)
+        {
+            arrivalTime = TrapDateUtil.parseTrapDate(TrapDateUtil
+                    .printDate(arrivalTime));
+            departureTime = TrapDateUtil.parseTrapDate(TrapDateUtil
+                    .printDate(departureTime));
+            if (expense.getType() != ExpenseType.OTHER)
             {
-                if ((expense.getDate().getTime() >= arrivalTime.getTime()) || (expense.getDate().getTime() <= departureTime.getTime()))
+                if ((expense.getDate().getTime() > arrivalTime.getTime())
+                        || (expense.getDate().getTime() < departureTime
+                                .getTime()))
                 {
                     throw new TrapException(
                             "Expenses cannot be claimed outside of the dates of the trip.");
                 }
             }
-       
+        }
 
     }
 
