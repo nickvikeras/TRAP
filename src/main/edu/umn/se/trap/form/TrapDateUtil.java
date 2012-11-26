@@ -31,8 +31,8 @@ import edu.umn.se.trap.TrapException;
  */
 public class TrapDateUtil
 {
-    private static final String formatDateTimeString = "yyyymmdd hhMMss";
-    private static final String formatDateString = "yyyymmdd";
+    private static final String formatDateTimeString = "yyyyMMdd HHmmss";
+    private static final String formatDateString = "yyyyMMdd";
 
     /**
      * @param string
