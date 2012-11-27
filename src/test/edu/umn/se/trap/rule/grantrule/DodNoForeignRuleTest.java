@@ -33,6 +33,8 @@ import edu.umn.se.trap.form.Expense;
 /**
  * @author Mark
  * 
+ *         JUnit test for DodNoForeignRule
+ * 
  */
 public class DodNoForeignRuleTest
 {

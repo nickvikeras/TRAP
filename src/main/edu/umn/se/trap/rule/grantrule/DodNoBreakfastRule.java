@@ -35,6 +35,11 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 18 
+ *         Description: DOD grants don’t reimburse breakfast.
+ * 
  */
 public class DodNoBreakfastRule extends AbstractGrantRule
 {
@@ -47,7 +52,8 @@ public class DodNoBreakfastRule extends AbstractGrantRule
      * )
      */
     @Override
-    public void removeGrants(Expense expense, TrapForm form) throws TrapException
+    public void removeGrants(Expense expense, TrapForm form)
+            throws TrapException
     {
 
         if (expense != null)
@@ -57,7 +63,8 @@ public class DodNoBreakfastRule extends AbstractGrantRule
         }
         else
         {
-            throw new TrapException("Invalid TrapForm object: expense was null.");
+            throw new TrapException(
+                    "Invalid TrapForm object: expense was null.");
         }
 
     }
@@ -96,7 +103,8 @@ public class DodNoBreakfastRule extends AbstractGrantRule
                 if (StringUtils.equalsIgnoreCase(
                         grant.getFundingOrganization(), "DOD"))
                 {
-                    // Remove the grant if it is a DOD grant trying to cover a breakfast expense.
+                    // Remove the grant if it is a DOD grant trying to cover a
+                    // breakfast expense.
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }

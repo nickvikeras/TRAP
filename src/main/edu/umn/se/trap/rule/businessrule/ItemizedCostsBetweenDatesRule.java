@@ -32,6 +32,12 @@ import edu.umn.se.trap.util.TrapDateUtil;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 14
+ *         Description: This rule checks that all itemized costs fall between
+ *         the departure date and the arrival date.
+ * 
  */
 public class ItemizedCostsBetweenDatesRule extends AbstractRule
 {

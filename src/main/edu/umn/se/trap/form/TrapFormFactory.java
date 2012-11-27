@@ -42,13 +42,16 @@ import edu.umn.se.trap.util.TrapDateUtil;
 import edu.umn.se.trap.util.TrapInputKeys;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         This class is responsible for generating the TrapForm from the input
+ *         map. It creates all of the expenses, grants, the user, the trip, and
+ *         everything else necessary for TrapForm. This class has database
+ *         accessors to extract information from the relevant databases.
  * 
  */
 public class TrapFormFactory
 {
-
-   
 
     public static TrapForm getNewForm(final Map<String, String> formData,
             String description, Integer id, DatabaseAccessor dbAccessor)
@@ -450,7 +453,6 @@ public class TrapFormFactory
         }
         return new GrantSet(grants);
     }
-
 
     /**
      * @param formData

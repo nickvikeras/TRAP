@@ -36,6 +36,12 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 1 
+ *         Description: The user must be a US citizen in order to
+ *         use a non-export grant. This rule will check this.
+ * 
  */
 public class ExportGrantCitizenRule extends AbstractRule
 {

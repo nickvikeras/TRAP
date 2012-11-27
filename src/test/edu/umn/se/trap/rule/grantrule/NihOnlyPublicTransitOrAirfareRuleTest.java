@@ -31,6 +31,8 @@ import edu.umn.se.trap.form.ExpenseType;
 
 /**
  * @author Mark
+ * 
+ * JUnit test for NihOnlyPublicTransitOrAirfareRule
  *
  */
 public class NihOnlyPublicTransitOrAirfareRuleTest

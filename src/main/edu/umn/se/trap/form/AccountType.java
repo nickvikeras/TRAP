@@ -20,7 +20,9 @@
 package edu.umn.se.trap.form;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Enumeration for the account type of a grant.
  * 
  */
 

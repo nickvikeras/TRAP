@@ -21,7 +21,10 @@ package edu.umn.se.trap.form;
 import java.util.Date;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Contains all of the information for a Trap trip. It has
+ *         justifications, travel sponsorships, and departure/arrival dates.
  * 
  */
 public class Trip
@@ -59,7 +62,16 @@ public class Trip
      * @param justificationSponsored
      * @param numDays
      */
-    public Trip(Date departureDateTime, Date arrivalDateTime, boolean travelTypeCseSponsored, boolean travelTypeDtcSponsored, boolean travelTypeNonsponsored, String justificationConferenceTitle, boolean justificationPresented, String justificationPresentationTitle, String justificationPresentationAbstract, String justificationPresentationAcknowledgement, String justificationNonsponsored, String justificationSponsored, int numDays)
+    public Trip(Date departureDateTime, Date arrivalDateTime,
+            boolean travelTypeCseSponsored, boolean travelTypeDtcSponsored,
+            boolean travelTypeNonsponsored,
+            String justificationConferenceTitle,
+            boolean justificationPresented,
+            String justificationPresentationTitle,
+            String justificationPresentationAbstract,
+            String justificationPresentationAcknowledgement,
+            String justificationNonsponsored, String justificationSponsored,
+            int numDays)
     {
         super();
         this.departureDateTime = departureDateTime;
@@ -174,7 +186,8 @@ public class Trip
      * @param justificationConferenceTitle
      *            the justificationConferenceTitle to set
      */
-    public void setJustificationConferenceTitle(String justificationConferenceTitle)
+    public void setJustificationConferenceTitle(
+            String justificationConferenceTitle)
     {
         this.justificationConferenceTitle = justificationConferenceTitle;
     }
@@ -208,7 +221,8 @@ public class Trip
      * @param justificationPresentationTitle
      *            the justificationPresentationTitle to set
      */
-    public void setJustificationPresentationTitle(String justificationPresentationTitle)
+    public void setJustificationPresentationTitle(
+            String justificationPresentationTitle)
     {
         this.justificationPresentationTitle = justificationPresentationTitle;
     }
@@ -225,7 +239,8 @@ public class Trip
      * @param justificationPresentationAbstract
      *            the justificationPresentationAbstract to set
      */
-    public void setJustificationPresentationAbstract(String justificationPresentationAbstract)
+    public void setJustificationPresentationAbstract(
+            String justificationPresentationAbstract)
     {
         this.justificationPresentationAbstract = justificationPresentationAbstract;
     }
@@ -242,7 +257,8 @@ public class Trip
      * @param justificationPresentationAcknowledgement
      *            the justificationPresentationAcknowledgement to set
      */
-    public void setJustificationPresentationAcknowledgement(String justificationPresentationAcknowledgement)
+    public void setJustificationPresentationAcknowledgement(
+            String justificationPresentationAcknowledgement)
     {
         this.justificationPresentationAcknowledgement = justificationPresentationAcknowledgement;
     }

@@ -33,18 +33,28 @@ import edu.umn.se.trap.form.TrapForm;
 
 /**
  * @author Mark
- *
+ * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 19 
+ *         Description: NIH grants don’t reimburse food.
+ * 
  */
 public class NihNoFoodRule extends AbstractGrantRule
 {
 
-    /* (non-Javadoc)
-     * @see edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn.se.trap.form.Expense)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn
+     * .se.trap.form.Expense)
      */
     @Override
-    protected void removeGrants(Expense expense, TrapForm form) throws TrapException
+    protected void removeGrants(Expense expense, TrapForm form)
+            throws TrapException
     {
-        
+
         if (expense != null)
         {
             checkNihFood(expense);
@@ -60,17 +70,19 @@ public class NihNoFoodRule extends AbstractGrantRule
 
     /**
      * @param expense
-     * @throws TrapException 
+     * @throws TrapException
      */
     private void checkNihFood(Expense expense) throws TrapException
     {
-        
+
         /*
          * Check to make sure the expense is a food expense.
          */
-        if (expense.getType().equals(ExpenseType.BREAKFAST) || expense.getType().equals(ExpenseType.LUNCH) || expense.getType().equals(ExpenseType.DINNER))
+        if (expense.getType().equals(ExpenseType.BREAKFAST)
+                || expense.getType().equals(ExpenseType.LUNCH)
+                || expense.getType().equals(ExpenseType.DINNER))
         {
-            
+
             GrantSet grantSet = expense.getEligibleGrants();
 
             if (grantSet == null)
@@ -100,9 +112,9 @@ public class NihNoFoodRule extends AbstractGrantRule
                     grantSet.removeGrant(grant.getAccountName());
                 }
             }
-            
+
         }
-        
+
     }
 
 }

@@ -45,11 +45,18 @@ import edu.umn.se.trap.rule.wellformedrule.ValidDollarAmountRule;
 /**
  * @author Mark
  * 
- *         Creates the checkers for every rule.
+ *         Creates the checkers for every rule. Contains a method for each rule
+ *         type
  * 
  */
 public class FormCheckerFactory
 {
+
+    /**
+     * @return FormChecker
+     * 
+     *         Creates a FormChecker for all of the well formed rules.
+     */
     public static FormChecker createWellFormedChecker()
     {
         FormChecker checker = new FormChecker();
@@ -62,6 +69,11 @@ public class FormCheckerFactory
 
     }
 
+    /**
+     * @return FormChecker
+     * 
+     *         Creates a FormChecker for all of the business rules.
+     */
     public static FormChecker createBusinessRuleChecker()
     {
         FormChecker checker = new FormChecker();
@@ -81,6 +93,11 @@ public class FormCheckerFactory
         return checker;
     }
 
+    /**
+     * @return FormChecker
+     * 
+     *         Creates a FormChecker for all of the grant rules.
+     */
     public static FormChecker createGrantRuleChecker()
     {
         FormChecker checker = new FormChecker();

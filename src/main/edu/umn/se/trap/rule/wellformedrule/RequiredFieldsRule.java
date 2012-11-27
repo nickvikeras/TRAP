@@ -38,6 +38,11 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 12 Description: This rule checks that all required
+ *         fields are filled out.
+ * 
  */
 public class RequiredFieldsRule extends AbstractRule
 {

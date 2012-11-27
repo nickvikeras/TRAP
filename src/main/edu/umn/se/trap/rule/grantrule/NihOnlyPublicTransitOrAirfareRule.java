@@ -34,6 +34,11 @@ import edu.umn.se.trap.form.TrapForm;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 20 Description: The only transportation NIH grants cover
+ *         is public transit or airfare.
+ * 
  */
 public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
 {
@@ -46,7 +51,8 @@ public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
      * .se.trap.form.Expense)
      */
     @Override
-    protected void removeGrants(Expense expense, TrapForm form) throws TrapException
+    protected void removeGrants(Expense expense, TrapForm form)
+            throws TrapException
     {
 
         if (expense != null)
@@ -80,8 +86,7 @@ public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
                         "PUBLIC_TRANSPORTATION")
                         || StringUtils.equalsIgnoreCase(
                                 ((TransportationExpense) expense)
-                                        .getTranportationType(), "AIR") 
-                        || StringUtils
+                                        .getTranportationType(), "AIR") || StringUtils
                             .equalsIgnoreCase(((TransportationExpense) expense)
                                     .getTranportationType(), "LUGGAGE")))
         {

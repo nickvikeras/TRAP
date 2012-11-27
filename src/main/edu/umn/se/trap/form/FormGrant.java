@@ -19,7 +19,9 @@
 package edu.umn.se.trap.form;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Contains all of the information about grants for Trap.
  * 
  */
 public class FormGrant
@@ -41,9 +43,12 @@ public class FormGrant
      * @param accountType
      * @param fundingOrganization
      * @param accountBalance
-     * @param organizationType 
+     * @param organizationType
      */
-    public FormGrant(String accountName, String accountType, String fundingOrganization, Double accountBalance, String organizationType, String grantAdmin, String[] authorizedPayees)
+    public FormGrant(String accountName, String accountType,
+            String fundingOrganization, Double accountBalance,
+            String organizationType, String grantAdmin,
+            String[] authorizedPayees)
     {
         super();
         this.accountName = accountName;
@@ -115,7 +120,8 @@ public class FormGrant
     }
 
     /**
-     * @param organizationType the organizationType to set
+     * @param organizationType
+     *            the organizationType to set
      */
     public void setOrganizationType(String organizationType)
     {
@@ -148,7 +154,8 @@ public class FormGrant
     }
 
     /**
-     * @param grantAdmin the grantAdmin to set
+     * @param grantAdmin
+     *            the grantAdmin to set
      */
     public void setGrantAdmin(String grantAdmin)
     {
@@ -164,7 +171,8 @@ public class FormGrant
     }
 
     /**
-     * @param authorizedPayees the authorizedPayees to set
+     * @param authorizedPayees
+     *            the authorizedPayees to set
      */
     public void setAuthorizedPayees(String[] authorizedPayees)
     {

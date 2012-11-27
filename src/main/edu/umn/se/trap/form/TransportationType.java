@@ -20,7 +20,13 @@
 package edu.umn.se.trap.form;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Enumeration for the transportation type of an expense. The values
+ *         are:
+ * 
+ *         AIR, CAR, RAIL, TAXI, PUBLIC_TRANSPORTATION, GAS, PARKING, TOLL,
+ *         BAGGAGE, RENTAL
  * 
  */
 

@@ -19,7 +19,10 @@
 package edu.umn.se.trap.form;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Contains all of the information for a Trap user. This class is not
+ *         responsible for getting user data from the database
  * 
  */
 public class FormUser
@@ -47,7 +50,10 @@ public class FormUser
      * @param visaStatus
      * @param paidByUniversity
      */
-    public FormUser(String userName, String emergencyContactName, String emergencyContactPhone, String fullName, String email, String employeeId, String citizenship, String visaStatus, boolean paidByUniversity)
+    public FormUser(String userName, String emergencyContactName,
+            String emergencyContactPhone, String fullName, String email,
+            String employeeId, String citizenship, String visaStatus,
+            boolean paidByUniversity)
     {
         super();
         this.userName = userName;

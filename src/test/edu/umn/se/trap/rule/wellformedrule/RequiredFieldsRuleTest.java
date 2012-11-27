@@ -39,6 +39,8 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         JUnit test for RequiredFieldsRule
+ * 
  */
 public class RequiredFieldsRuleTest
 {

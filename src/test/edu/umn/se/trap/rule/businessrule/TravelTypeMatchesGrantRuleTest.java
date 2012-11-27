@@ -33,7 +33,9 @@ import edu.umn.se.trap.form.Trip;
 
 /**
  * @author Mark
- *
+ * 
+ *         JUnit test for TravelTypeMatchesGrantRule
+ * 
  */
 public class TravelTypeMatchesGrantRuleTest
 {
@@ -59,56 +61,62 @@ public class TravelTypeMatchesGrantRuleTest
     {
         try
         {
-            Set<FormGrant> grants = TrapTestUtil.getSampleGrantsSponsorshipType("sponsored");
-            Trip trip = new Trip(null, null, true, false, true, null, false, null, null, null, null, null, 1);
-            
+            Set<FormGrant> grants = TrapTestUtil
+                    .getSampleGrantsSponsorshipType("sponsored");
+            Trip trip = new Trip(null, null, true, false, true, null, false,
+                    null, null, null, null, null, 1);
+
             TravelTypeMatchesGrantRule rule = new TravelTypeMatchesGrantRule();
-            
+
             rule.checkExportGrantCitizen(grants, trip);
         }
-        catch(TrapException E)
+        catch (TrapException E)
         {
             fail("A matching sponsorship grant failed.");
         }
     }
-    
+
     @Test
     public void testIncorrectSponsorship()
     {
         try
         {
-            Set<FormGrant> grants = TrapTestUtil.getSampleGrantsSponsorshipType("sponsored");
-            Trip trip = new Trip(null, null, false, false, true, null, false, null, null, null, null, null, 1);
-            
+            Set<FormGrant> grants = TrapTestUtil
+                    .getSampleGrantsSponsorshipType("sponsored");
+            Trip trip = new Trip(null, null, false, false, true, null, false,
+                    null, null, null, null, null, 1);
+
             TravelTypeMatchesGrantRule rule = new TravelTypeMatchesGrantRule();
-            
+
             rule.checkExportGrantCitizen(grants, trip);
-            
+
             fail("An invalid grant passed through the rule.");
         }
-        catch(TrapException E)
+        catch (TrapException E)
         {
-            
+
         }
     }
-    
+
     @Test
     public void testIncorrectNonSponsorship()
     {
         try
         {
-            Set<FormGrant> grants = TrapTestUtil.getSampleGrantsSponsorshipType("Non-sponsored");
-            Trip trip = new Trip(null, null, true, true, false, null, false, null, null, null, null, null, 1);
-            
+            Set<FormGrant> grants = TrapTestUtil
+                    .getSampleGrantsSponsorshipType("Non-sponsored");
+            Trip trip = new Trip(null, null, true, true, false, null, false,
+                    null, null, null, null, null, 1);
+
             TravelTypeMatchesGrantRule rule = new TravelTypeMatchesGrantRule();
-            
+
             rule.checkExportGrantCitizen(grants, trip);
-            
+
             fail("An invalid grant passed through the rule.");
         }
-        catch(TrapException E)
+        catch (TrapException E)
         {
-            
+
         }
     }
 

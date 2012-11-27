@@ -23,7 +23,10 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Stores the set of grants. Has functionality to remove grants as
+ *         needed.
  * 
  */
 public class GrantSet
@@ -32,11 +35,19 @@ public class GrantSet
     // Public member variables:
     private Set<FormGrant> grants;
 
+    /**
+     * @param grants
+     */
     public GrantSet(Set<FormGrant> grants)
     {
         this.grants = grants;
     }
 
+    /**
+     * @param accountName
+     * 
+     * Method for removing grants from the set. For the convenience of the calculator.
+     */
     public void removeGrant(String accountName)
     {
         FormGrant grantToRemove = null;
@@ -67,15 +78,14 @@ public class GrantSet
      */
     public boolean contains(String accountName)
     {
-        for(FormGrant fg : this.grants){
-            if (StringUtils.equals(fg.getAccountName(), accountName)){
+        for (FormGrant fg : this.grants)
+        {
+            if (StringUtils.equals(fg.getAccountName(), accountName))
+            {
                 return true;
             }
         }
         return false;
     }
-
-    
-
 
 }

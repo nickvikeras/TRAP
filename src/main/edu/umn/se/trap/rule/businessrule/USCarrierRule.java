@@ -34,6 +34,12 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 11 
+ *         Description: This rule checks that a US air carrier
+ *         is being used.
+ * 
  */
 public class USCarrierRule extends AbstractRule
 {

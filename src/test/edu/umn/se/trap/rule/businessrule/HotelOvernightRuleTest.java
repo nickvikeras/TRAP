@@ -33,11 +33,13 @@ import edu.umn.se.trap.form.Expense;
 
 /**
  * @author Mark
- *
+ * 
+ *         JUnit test for HotelOvernightRule
+ * 
  */
 public class HotelOvernightRuleTest
 {
-    
+
     private final int DAY_LENGTH = 86400000;
 
     /**
@@ -62,11 +64,12 @@ public class HotelOvernightRuleTest
         try
         {
             HotelOvernightRule rule = new HotelOvernightRule();
-            
-            List<Expense> expenseList = TrapTestUtil.getSampleExpenseHotelOvernight();
-            
+
+            List<Expense> expenseList = TrapTestUtil
+                    .getSampleExpenseHotelOvernight();
+
             Date departure = new Date(0);
-            Date arrival = new Date(DAY_LENGTH-1);
+            Date arrival = new Date(DAY_LENGTH - 1);
 
             rule.checkHotel(departure, arrival, expenseList);
         }
@@ -74,16 +77,17 @@ public class HotelOvernightRuleTest
         {
         }
     }
-    
+
     @Test
     public void testExactlyOneDay()
     {
         try
         {
             HotelOvernightRule rule = new HotelOvernightRule();
-            
-            List<Expense> expenseList = TrapTestUtil.getSampleExpenseHotelOvernight();
-            
+
+            List<Expense> expenseList = TrapTestUtil
+                    .getSampleExpenseHotelOvernight();
+
             Date departure = new Date(0);
             Date arrival = new Date(DAY_LENGTH);
 
@@ -94,18 +98,19 @@ public class HotelOvernightRuleTest
             fail("Unexpected error was received: " + E.getMessage());
         }
     }
-    
+
     @Test
     public void testMoreThanOneDay()
     {
         try
         {
             HotelOvernightRule rule = new HotelOvernightRule();
-            
-            List<Expense> expenseList = TrapTestUtil.getSampleExpenseHotelOvernight();
-            
+
+            List<Expense> expenseList = TrapTestUtil
+                    .getSampleExpenseHotelOvernight();
+
             Date departure = new Date(0);
-            Date arrival = new Date(DAY_LENGTH+1);
+            Date arrival = new Date(DAY_LENGTH + 1);
 
             rule.checkHotel(departure, arrival, expenseList);
         }

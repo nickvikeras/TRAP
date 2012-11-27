@@ -31,7 +31,9 @@ import edu.umn.se.trap.form.ExpenseType;
 
 /**
  * @author Mark
- *
+ * 
+ *         JUnit test for NihNoFoodRule
+ * 
  */
 public class NihNoFoodRuleTest
 {
@@ -67,7 +69,7 @@ public class NihNoFoodRuleTest
             fail("Grant was not deleted.");
         }
     }
-    
+
     @Test
     public void testNotFood() throws TrapException
     {

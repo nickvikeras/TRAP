@@ -32,6 +32,8 @@ import edu.umn.se.trap.rule.wellformedrule.ArrivalAfterDepartureRule;
 /**
  * @author Mark
  * 
+ *         JUnit test for FileDeadlineRule
+ * 
  */
 public class FileDeadlineRuleTest
 {

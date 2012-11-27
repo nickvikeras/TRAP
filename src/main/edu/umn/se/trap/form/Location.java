@@ -21,7 +21,9 @@ package edu.umn.se.trap.form;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Contains the city, state, country for a Trap expense.
  * 
  */
 public class Location
@@ -112,16 +114,21 @@ public class Location
         }
         return false;
     }
-    
-    @Override public int hashCode(){
+
+    @Override
+    public int hashCode()
+    {
         String s = "";
-        if(city != null){
+        if (city != null)
+        {
             s += city.toLowerCase();
         }
-        if(state != null){
+        if (state != null)
+        {
             s += state.toLowerCase();
         }
-        if(country != null){
+        if (country != null)
+        {
             s += country.toLowerCase();
         }
         return s.hashCode();

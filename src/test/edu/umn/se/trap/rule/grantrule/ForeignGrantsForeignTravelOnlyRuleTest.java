@@ -32,7 +32,9 @@ import edu.umn.se.trap.form.Expense;
 
 /**
  * @author Mark
- *
+ * 
+ *         JUnit test for ForeignGrantsForeignTravelOnlyRule
+ * 
  */
 public class ForeignGrantsForeignTravelOnlyRuleTest
 {
@@ -68,12 +70,13 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
             fail("Grant was improperly deleted.");
         }
     }
-    
+
     @Test
     public void testDomestic() throws TrapException
     {
         List<Expense> testExpense = TrapTestUtil
-                .getSampleExpenseForeignGrantForeignTravel("noExport", "United States");
+                .getSampleExpenseForeignGrantForeignTravel("noExport",
+                        "United States");
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
@@ -84,12 +87,13 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
             fail("Grant was improperly deleted.");
         }
     }
-    
+
     @Test
     public void testDomesticFailure() throws TrapException
     {
         List<Expense> testExpense = TrapTestUtil
-                .getSampleExpenseForeignGrantForeignTravel("foreign", "United States");
+                .getSampleExpenseForeignGrantForeignTravel("foreign",
+                        "United States");
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 

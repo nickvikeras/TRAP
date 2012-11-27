@@ -29,6 +29,8 @@ import edu.umn.se.trap.TrapException;
 /**
  * @author Mark
  * 
+ *         JUnit test for USCarrierRule
+ * 
  */
 public class USCarrierRuleTest
 {

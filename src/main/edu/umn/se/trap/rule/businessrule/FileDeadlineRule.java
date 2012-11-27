@@ -29,6 +29,12 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 7 
+ *         Description: A form must be submitted 15 days after
+ *         the arrival date. This rule checks that.
+ * 
  */
 public class FileDeadlineRule extends AbstractRule
 {

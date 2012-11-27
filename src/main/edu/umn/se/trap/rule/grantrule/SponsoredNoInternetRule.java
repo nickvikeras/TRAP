@@ -35,6 +35,11 @@ import edu.umn.se.trap.form.TrapForm;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 23 
+ *         Description: Sponsored grants don’t cover internet.
+ * 
  */
 public class SponsoredNoInternetRule extends AbstractGrantRule
 {
@@ -49,7 +54,8 @@ public class SponsoredNoInternetRule extends AbstractGrantRule
      * .se.trap.form.Expense)
      */
     @Override
-    protected void removeGrants(Expense expense, TrapForm form) throws TrapException
+    protected void removeGrants(Expense expense, TrapForm form)
+            throws TrapException
     {
         if (expense != null)
         {

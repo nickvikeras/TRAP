@@ -21,7 +21,9 @@ package edu.umn.se.trap.form;
 import java.util.Date;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Contains all of the information about a Trap expense.
  * 
  */
 public class Expense
@@ -44,7 +46,8 @@ public class Expense
      * @param eligibleGrants
      * @param justification
      */
-    public Expense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification)
+    public Expense(ExpenseType type, Date date, double amount,
+            Location location, GrantSet eligibleGrants, String justification)
     {
         super();
         this.type = type;
@@ -158,6 +161,5 @@ public class Expense
     {
         this.justification = justification;
     }
-    
 
 }

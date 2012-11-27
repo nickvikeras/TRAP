@@ -34,6 +34,13 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 5, 6 
+ *         Description: This rule checks the requirements
+ *         dealing with sponsorship types. It makes sure the travel type matches
+ *         the sponsor types.
+ * 
  */
 public class TravelTypeMatchesGrantRule extends AbstractRule
 {
@@ -110,7 +117,8 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
         {
             FormGrant grant = grantIter.next();
 
-            if (StringUtils.equalsIgnoreCase(grant.getAccountType(), "Sponsored"))
+            if (StringUtils.equalsIgnoreCase(grant.getAccountType(),
+                    "Sponsored"))
             {
                 // Throw an error if the grant is not sponsored by Dtc or Cse.
                 if (!(cseSponsored || dtcSponsored))
@@ -122,7 +130,8 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
                 }
 
             }
-            else if (StringUtils.equalsIgnoreCase(grant.getAccountType(), "Non-sponsored"))
+            else if (StringUtils.equalsIgnoreCase(grant.getAccountType(),
+                    "Non-sponsored"))
             {
                 // Throw an error if the trip is sponsored and trying to charge
                 // to a non-sponsored grant.

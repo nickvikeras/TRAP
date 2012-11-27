@@ -31,6 +31,8 @@ import edu.umn.se.trap.form.Expense;
 /**
  * @author Mark
  * 
+ *         JUnit test for DodNoBreakfastRule
+ * 
  */
 public class DodNoBreakfastRuleTest
 {

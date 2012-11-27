@@ -34,6 +34,12 @@ import edu.umn.se.trap.form.TrapForm;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 16 
+ *         Description: Hertz is the only rental car carrier
+ *         that can be charged to a DOD grant.
+ * 
  */
 public class DodGrantHertzRule extends AbstractGrantRule
 {
@@ -46,7 +52,8 @@ public class DodGrantHertzRule extends AbstractGrantRule
      * .se.trap.form.Expense)
      */
     @Override
-    protected void removeGrants(Expense expense, TrapForm form) throws TrapException
+    protected void removeGrants(Expense expense, TrapForm form)
+            throws TrapException
     {
 
         if (expense != null)

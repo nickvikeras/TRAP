@@ -31,6 +31,12 @@ import edu.umn.se.trap.rule.AbstractRule;
 /**
  * @author Mark
  * 
+ *         From the TRAP Design Document:
+ * 
+ *         Requirement: 10 
+ *         Description: This rule checks that a hotel is not
+ *         claimed for a trip less than one day long.
+ * 
  */
 public class HotelOvernightRule extends AbstractRule
 {

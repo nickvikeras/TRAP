@@ -21,7 +21,10 @@ package edu.umn.se.trap.form;
 import java.util.Date;
 
 /**
- * @author mark
+ * @author Mark
+ * 
+ *         Contains information specific to a TRANSPORTATION expense. Extends
+ *         from Expense.
  * 
  */
 public class TransportationExpense extends Expense
@@ -42,7 +45,10 @@ public class TransportationExpense extends Expense
      * @param eligibleGrants
      * @param justification
      */
-    public TransportationExpense(ExpenseType type, Date date, double amount, Location location, GrantSet eligibleGrants, String justification, String tranportationType, String carrier, Integer milesTraveled, boolean isRental)
+    public TransportationExpense(ExpenseType type, Date date, double amount,
+            Location location, GrantSet eligibleGrants, String justification,
+            String tranportationType, String carrier, Integer milesTraveled,
+            boolean isRental)
     {
         super(type, date, amount, location, eligibleGrants, justification);
         this.tranportationType = tranportationType;
