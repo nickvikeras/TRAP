@@ -43,6 +43,7 @@ import edu.umn.se.trap.util.TrapInputKeys;
 
 /**
  * @author Mark
+ * @author Nick
  * 
  *         This class is responsible for generating the TrapForm from the input
  *         map. It creates all of the expenses, grants, the user, the trip, and
