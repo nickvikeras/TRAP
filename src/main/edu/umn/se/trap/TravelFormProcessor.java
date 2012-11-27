@@ -140,7 +140,7 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
     {
         FormData data = new FormData(formData, null, new TravelFormMetadata(
                 description, FORM_STATUS.DRAFT));
-        Integer formId = generateId();
+        Integer formId = generateFormId();
         databaseAccessor.getFormDB().saveForm(data, formId);
         return formId;
     }
@@ -148,7 +148,7 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
     /**
      * @return
      */
-    private Integer generateId()
+    private Integer generateFormId()
     {
         return new Integer((int) Math.floor((Math.random() * 100000000)));
     }
