@@ -18,7 +18,7 @@
  */
 package edu.umn.se.trap.db.orm;
 
-/**
+/** This class's purpose is store a single grant's info from grantDb
  * @author nick
  * 
  */

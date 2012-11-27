@@ -38,6 +38,8 @@ import edu.umn.se.trap.db.orm.Grant;
 import edu.umn.se.trap.db.orm.PerDiem;
 import edu.umn.se.trap.db.orm.User;
 import edu.umn.se.trap.db.orm.UserGrant;
+import edu.umn.se.trap.util.TrapDateUtil;
+import edu.umn.se.trap.util.TrapInputKeys;
 
 /**
  * @author mark
@@ -347,10 +349,10 @@ public class TrapFormFactory
 
         for (Expense expense : expenses)
         {
-            if (TrapUtil.sameDay(expense.getDate(), TrapDateUtil
+            if (TrapDateUtil.sameDay(expense.getDate(), TrapDateUtil
                     .parseTrapDateTime(formData
                             .get(TrapInputKeys.DEPARTURE_DATETIME)))
-                    || TrapUtil.sameDay(expense.getDate(), TrapDateUtil
+                    || TrapDateUtil.sameDay(expense.getDate(), TrapDateUtil
                             .parseTrapDateTime(formData
                                     .get(TrapInputKeys.ARRIVAL_DATETIME))))
             {

@@ -25,6 +25,8 @@ import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
 
 /**
+ * This class ensures the arrival date is after the departure date
+ * 
  * @author nick
  * 
  */
@@ -41,27 +43,33 @@ public class ArrivalAfterDepartureRule extends AbstractRule
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
-        
-        if(form != null)
+
+        if (form != null)
         {
-            checkDates(form.getTrip().getDepartureDateTime(), form.getTrip().getArrivalDateTime());
+            checkDates(form.getTrip().getDepartureDateTime(), form.getTrip()
+                    .getArrivalDateTime());
         }
-        else 
+        else
         {
             throw new TrapException("Invalid TrapForm object: form was null.");
         }
     }
 
     /**
+     * ensures the arrival date is after the departure date. Throws a
+     * TrapException if not;
+     * 
      * @param departureDateTime
      * @param arrivalDateTime
-     * @throws TrapException 
+     * @throws TrapException
      */
-    protected void checkDates(Date departureDateTime, Date arrivalDateTime) throws TrapException
+    protected void checkDates(Date departureDateTime, Date arrivalDateTime)
+            throws TrapException
     {
         if (arrivalDateTime.getTime() <= departureDateTime.getTime())
         {
-            throw new TrapException("Departure time must come before arrival time");
+            throw new TrapException(
+                    "Departure time must come before arrival time");
         }
 
     }

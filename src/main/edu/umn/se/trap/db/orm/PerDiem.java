@@ -19,6 +19,8 @@
 package edu.umn.se.trap.db.orm;
 
 /**
+ * This class's purpose is store a single perDiem's info from perDiemDb
+ * 
  * @author nick
  * 
  */
@@ -37,7 +39,8 @@ public class PerDiem
      * @param incidentalCeiling
      * @param lodgingCeiling
      */
-    public PerDiem(Double breakfastRate, Double lunchRate, Double dinnerRate, Double incidentalCeiling, Double lodgingCeiling)
+    public PerDiem(Double breakfastRate, Double lunchRate, Double dinnerRate,
+            Double incidentalCeiling, Double lodgingCeiling)
     {
         super();
         this.breakfastRate = breakfastRate;

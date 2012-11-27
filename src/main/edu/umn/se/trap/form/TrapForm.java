@@ -19,25 +19,20 @@
 package edu.umn.se.trap.form;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.print.attribute.standard.Destination;
 
-import org.apache.commons.lang3.StringUtils;
-
-import edu.umn.se.trap.TrapOutputKeys;
 import edu.umn.se.trap.TravelFormMetadata;
+import edu.umn.se.trap.util.TrapDateUtil;
 
-/**
+/** This class stores all of info parsed from the input map.
  * @author nick
  * 
  */
@@ -87,7 +82,11 @@ public class TrapForm
         this.submissionDate = submissionDate;
     }
 
-  
+/**
+ * get a list of expenses of ExpenseType type.  
+ * @param type
+ * @return
+ */
     public List<Expense> getExpensesForType(ExpenseType type)
     {
         List<Expense> expenses = new ArrayList<Expense>();
@@ -100,7 +99,10 @@ public class TrapForm
         }
         return expenses;
     }
-
+/**
+ * get a list of each day for the user's trip.
+ * @return
+ */
     public List<Day> getDays()
     {
         Date departureDate = getTrip().getDepartureDateTime();
@@ -117,7 +119,7 @@ public class TrapForm
             String incidentalJustification = "";
             for (Expense expense : getExpenses())
             {
-                if (TrapUtil.sameDay(date, expense.getDate()))
+                if (TrapDateUtil.sameDay(date, expense.getDate()))
                 {
                     if (!expense.getType().equals(ExpenseType.TRANSPORTATION))
                     {

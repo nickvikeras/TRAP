@@ -30,13 +30,9 @@ import edu.umn.se.trap.rule.AbstractRule;
 public abstract class AbstractGrantRule extends AbstractRule
 {
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * edu.umn.se.trap.rule.AbstractRule#validateRule(edu.umn.se.trap.form.TrapForm
-     * )
-     */
+   /** For each expense, remove any grants from the expense's grant set, that the expense is not eligible for.
+    * @param form
+    */
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {

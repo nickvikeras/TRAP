@@ -16,16 +16,17 @@
     specific language governing permissions and limitations
     under the License. 
  */
-package edu.umn.se.trap.form;
+package edu.umn.se.trap.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import edu.umn.se.trap.TrapException;
 
-/**
+/** static utility methods for dealing with dates in TRAP.
  * @author nick
  * 
  */
@@ -34,7 +35,7 @@ public class TrapDateUtil
     private static final String formatDateTimeString = "yyyyMMdd HHmmss";
     private static final String formatDateString = "yyyyMMdd";
 
-    /**
+    /** Read a date
      * @param string
      * @return
      * @throws TrapException
@@ -89,5 +90,28 @@ public class TrapDateUtil
         DateFormat dateFormat = new SimpleDateFormat(formatDateTimeString);
         return dateFormat.format(date);
     }
+    
+    /**
+     * @param date
+     * @param date2
+     * @return
+     */
+    public static boolean sameDay(Date date1, Date date2)
+    {
+        if (date1 == null || date2 == null)
+        {
+            return false;
+        }
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(date1);
+        cal2.setTime(date2);
+        boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.DAY_OF_YEAR) == cal2
+                        .get(Calendar.DAY_OF_YEAR);
+        return sameDay;
+
+    }
+    
 
 }

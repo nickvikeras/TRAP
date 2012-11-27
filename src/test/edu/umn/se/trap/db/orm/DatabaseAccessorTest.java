@@ -34,7 +34,7 @@ import edu.umn.se.trap.db.GrantDB;
 import edu.umn.se.trap.db.PerDiemDB;
 import edu.umn.se.trap.db.UserDB;
 import edu.umn.se.trap.db.UserGrantDB;
-import edu.umn.se.trap.form.TrapDateUtil;
+import edu.umn.se.trap.util.TrapDateUtil;
 
 /**
  * @author nick

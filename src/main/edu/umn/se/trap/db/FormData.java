@@ -15,22 +15,26 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
-package edu.umn.se.trap.db.orm;
+ */
+package edu.umn.se.trap.db;
 
 import java.util.Map;
 
 import edu.umn.se.trap.TravelFormMetadata;
 
 /**
+ * We use this class to keep a form's input, output, and metadata together in
+ * one place.
+ * 
  * @author nick
- *
+ * 
  */
 public class FormData
 {
     private Map<String, String> input;
     private Map<String, String> output;
     private TravelFormMetadata metadata;
+
     /**
      * @param input
      * @param output
@@ -44,6 +48,7 @@ public class FormData
         this.output = output;
         this.metadata = metadata;
     }
+
     /**
      * @return the input
      */
@@ -51,13 +56,16 @@ public class FormData
     {
         return input;
     }
+
     /**
-     * @param input the input to set
+     * @param input
+     *            the input to set
      */
     public void setInput(Map<String, String> input)
     {
         this.input = input;
     }
+
     /**
      * @return the output
      */
@@ -65,13 +73,16 @@ public class FormData
     {
         return output;
     }
+
     /**
-     * @param output the output to set
+     * @param output
+     *            the output to set
      */
     public void setOutput(Map<String, String> output)
     {
         this.output = output;
     }
+
     /**
      * @return the metadata
      */
@@ -79,8 +90,10 @@ public class FormData
     {
         return metadata;
     }
+
     /**
-     * @param metadata the metadata to set
+     * @param metadata
+     *            the metadata to set
      */
     public void setMetadata(TravelFormMetadata metadata)
     {

@@ -18,7 +18,7 @@
 */
 package edu.umn.se.trap.form;
 
-/**
+/** This class stores information about each inidividual location of the user's trip.
  * @author nick
  *
  */

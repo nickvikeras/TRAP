@@ -20,7 +20,7 @@ package edu.umn.se.trap.db.orm;
 
 import java.util.Date;
 
-/**
+/** This class holds the data retrieved from currencyDb.
  * @author nick
  * 
  */

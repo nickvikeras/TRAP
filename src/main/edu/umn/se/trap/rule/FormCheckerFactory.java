@@ -43,7 +43,6 @@ import edu.umn.se.trap.rule.wellformedrule.RequiredFieldsRule;
 import edu.umn.se.trap.rule.wellformedrule.ValidDollarAmountRule;
 
 /**
- * @author nick
  * @author Mark
  * 
  *         Creates the checkers for every rule.

@@ -18,7 +18,7 @@
  */
 package edu.umn.se.trap.rule.businessrule;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.util.Date;
 import java.util.List;
@@ -30,9 +30,7 @@ import org.junit.Test;
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.TrapTestUtil;
 import edu.umn.se.trap.form.Expense;
-import edu.umn.se.trap.form.TrapDateUtil;
-import edu.umn.se.trap.rule.grantrule.DodGrantHertzRule;
-import edu.umn.se.trap.form.Trip;
+import edu.umn.se.trap.util.TrapDateUtil;
 
 /**
  * @author Andrew

@@ -23,10 +23,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import edu.umn.se.trap.TravelFormMetadata;
-import edu.umn.se.trap.db.orm.FormData;
-import edu.umn.se.trap.form.TrapForm;
 
-/**
+/** This class is just used to store form data in a map.
  * @author nick
  * 
  */
@@ -34,11 +32,21 @@ public class FormDB
 {
     private Map<Integer, FormData> map = new HashMap<Integer, FormData>();
 
+    /**
+     * Save a form. The saved form will not persist past TRAP's execution.
+     * @param form
+     * @param id
+     */
     public void saveForm(FormData form, Integer id)
     {
         map.put(id, form);
     }
 
+    /**
+     * Retrieve a previously saved or completed form.
+     * @param formId
+     * @return
+     */
     public FormData getForm(Integer formId)
     {
         FormData formData = map.get(formId);
@@ -46,6 +54,10 @@ public class FormDB
 
     }
 
+    /**
+     * Get a Map with a key of a form's id and  a value of it's metadata for all forms that have been saved for completed.
+     * @return
+     */
     public Map<Integer, TravelFormMetadata> getSavedForms()
     {
         Map<Integer, TravelFormMetadata> savedForms = new HashMap<Integer, TravelFormMetadata>();

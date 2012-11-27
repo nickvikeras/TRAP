@@ -25,6 +25,8 @@ import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 
 /**
+ * Stores a list of rules that can be checked .
+ * 
  * @author nick
  * 
  */
@@ -37,6 +39,11 @@ public class FormChecker
         rules.add(rule);
     }
 
+    /**
+     * Check each rule's validateRule method.
+     * @param form
+     * @throws TrapException
+     */
     public void fireRules(TrapForm form) throws TrapException
     {
         for (AbstractRule rule : rules)

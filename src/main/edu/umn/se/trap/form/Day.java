@@ -20,7 +20,7 @@ package edu.umn.se.trap.form;
 
 import java.util.Date;
 
-/**
+/** This class stores information about each inidividual day of the user's trip.
  * @author nick
  * 
  */

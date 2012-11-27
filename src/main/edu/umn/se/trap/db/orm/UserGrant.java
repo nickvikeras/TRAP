@@ -20,7 +20,7 @@ package edu.umn.se.trap.db.orm;
 
 import java.util.List;
 
-/**
+/**  This class's purpose is store a single userGrant's info from userGrantDb
  * @author nick
  * 
  */

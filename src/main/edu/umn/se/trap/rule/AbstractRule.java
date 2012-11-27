@@ -22,6 +22,9 @@ import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 
 /**
+ * Abstract rule so that trap can put different concrete rules in a list
+ * together and call their validateRule method.
+ * 
  * @author nick
  * 
  */

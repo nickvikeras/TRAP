@@ -20,7 +20,7 @@ package edu.umn.se.trap.form;
 
 import java.util.Comparator;
 
-/**
+/** this class is used to compare Day objects based on their date attributes.
  * @author nick
  * 
  */

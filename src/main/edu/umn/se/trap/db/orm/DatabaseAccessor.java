@@ -31,9 +31,12 @@ import edu.umn.se.trap.db.KeyNotFoundException;
 import edu.umn.se.trap.db.PerDiemDB;
 import edu.umn.se.trap.db.UserDB;
 import edu.umn.se.trap.db.UserGrantDB;
-import edu.umn.se.trap.form.TrapDateUtil;
+import edu.umn.se.trap.util.TrapDateUtil;
 
 /**
+ * This class is an abstraction of the databases. It retrieves the data from the
+ * db classes, and returns nice pojos.
+ * 
  * @author nick
  * 
  */
@@ -54,7 +57,8 @@ public class DatabaseAccessor
      * @param currencyDB
      * @param formDB
      */
-    public DatabaseAccessor(UserDB userDB, PerDiemDB perDiemDB, GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
+    public DatabaseAccessor(UserDB userDB, PerDiemDB perDiemDB,
+            GrantDB grantDB, UserGrantDB userGrantDB, CurrencyDB currencyDB)
     {
         super();
         this.userDB = userDB;
@@ -82,15 +86,25 @@ public class DatabaseAccessor
             String employeeId = userInfo.get(3);
             String citizenship = userInfo.get(4);
             String visaStatus = userInfo.get(5);
-            boolean paidByUniversity = StringUtils.equalsIgnoreCase(userInfo.get(6), "yes");
-            return new User(userName, fullName, email, employeeId, citizenship, visaStatus, paidByUniversity);
-        } catch (KeyNotFoundException e)
+            boolean paidByUniversity = StringUtils.equalsIgnoreCase(
+                    userInfo.get(6), "yes");
+            return new User(userName, fullName, email, employeeId, citizenship,
+                    visaStatus, paidByUniversity);
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("cannot find user info");
         }
 
     }
 
+    /**
+     * Get the perdiem info for a US state.
+     * 
+     * @param state
+     * @return
+     * @throws TrapException
+     */
     public PerDiem getDomesticPerdiem(String state) throws TrapException
     {
         try
@@ -101,14 +115,25 @@ public class DatabaseAccessor
             Double dinnerRate = perDiem.get(2);
             Double incidentalCeiling = perDiem.get(3);
             Double lodgingCeiling = perDiem.get(4);
-            return new PerDiem(breakfastRate, lunchRate, dinnerRate, incidentalCeiling, lodgingCeiling);
-        } catch (KeyNotFoundException e)
+            return new PerDiem(breakfastRate, lunchRate, dinnerRate,
+                    incidentalCeiling, lodgingCeiling);
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find perDiem info");
         }
     }
 
-    public PerDiem getDomesticPerdiem(String city, String state) throws TrapException
+    /**
+     * Get the perdiem info for a US state and city.
+     * 
+     * @param city
+     * @param state
+     * @return
+     * @throws TrapException
+     */
+    public PerDiem getDomesticPerdiem(String city, String state)
+            throws TrapException
     {
         try
         {
@@ -118,13 +143,22 @@ public class DatabaseAccessor
             Double dinnerRate = perDiem.get(2);
             Double incidentalCeiling = perDiem.get(3);
             Double lodgingCeiling = perDiem.get(4);
-            return new PerDiem(breakfastRate, lunchRate, dinnerRate, incidentalCeiling, lodgingCeiling);
-        } catch (KeyNotFoundException e)
+            return new PerDiem(breakfastRate, lunchRate, dinnerRate,
+                    incidentalCeiling, lodgingCeiling);
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find perDiem info");
         }
     }
 
+    /**
+     * Get the perdiem info for a foreign country.
+     * 
+     * @param country
+     * @return
+     * @throws TrapException
+     */
     public PerDiem getIntlPerdiem(String country) throws TrapException
     {
         try
@@ -135,30 +169,52 @@ public class DatabaseAccessor
             Double dinnerRate = perDiem.get(2);
             Double incidentalCeiling = perDiem.get(3);
             Double lodgingCeiling = perDiem.get(4);
-            return new PerDiem(breakfastRate, lunchRate, dinnerRate, incidentalCeiling, lodgingCeiling);
-        } catch (KeyNotFoundException e)
+            return new PerDiem(breakfastRate, lunchRate, dinnerRate,
+                    incidentalCeiling, lodgingCeiling);
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find perDiem info");
         }
     }
 
-    public PerDiem getIntlPerdiem(String city, String country) throws TrapException
+    /**
+     * Get the perdiem info for a foreign country and city.
+     * 
+     * @param city
+     * @param country
+     * @return
+     * @throws TrapException
+     */
+    public PerDiem getIntlPerdiem(String city, String country)
+            throws TrapException
     {
         try
         {
-            List<Double> perDiem = perDiemDB.getInternationalPerDiem(city, country);
+            List<Double> perDiem = perDiemDB.getInternationalPerDiem(city,
+                    country);
             Double breakfastRate = perDiem.get(0);
             Double lunchRate = perDiem.get(1);
             Double dinnerRate = perDiem.get(2);
             Double incidentalCeiling = perDiem.get(3);
             Double lodgingCeiling = perDiem.get(4);
-            return new PerDiem(breakfastRate, lunchRate, dinnerRate, incidentalCeiling, lodgingCeiling);
-        } catch (KeyNotFoundException e)
+            return new PerDiem(breakfastRate, lunchRate, dinnerRate,
+                    incidentalCeiling, lodgingCeiling);
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find perDiem info");
         }
     }
 
+    /**
+     * Get a Grant object containing all info for the grant with the input
+     * accountName.
+     * 
+     * @param accountName
+     * @return
+     * @throws TrapException
+     */
     public Grant getGrant(String accountName) throws TrapException
     {
         try
@@ -168,57 +224,85 @@ public class DatabaseAccessor
             String fundingOrganization = (String) grantInfo.get(2);
             String organizationType = (String) grantInfo.get(3);
             double accountBalance = (Double) grantInfo.get(4);
-            return new Grant(accountName, accountType, fundingOrganization, organizationType, accountBalance);
-        } catch (KeyNotFoundException e)
+            return new Grant(accountName, accountType, fundingOrganization,
+                    organizationType, accountBalance);
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find grant info");
         }
     }
-    
 
+    /**
+     * 
+     * @param accountName
+     * @return
+     * @throws TrapException
+     */
     public UserGrant getUserGrant(String accountName) throws TrapException
     {
         try
         {
-            List<String> userGrantInfo = userGrantDB.getUserGrantInfo(accountName);
+            List<String> userGrantInfo = userGrantDB
+                    .getUserGrantInfo(accountName);
             String grantAdmin = userGrantInfo.get(1);
-            String[] authorizedPayees = StringUtils.split(userGrantInfo.get(2), ", ");
+            String[] authorizedPayees = StringUtils.split(userGrantInfo.get(2),
+                    ", ");
             return new UserGrant(accountName, grantAdmin, authorizedPayees);
-        } catch (KeyNotFoundException e)
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find userGrant info");
         }
     }
 
-    public double getUsd(String currency, double amount, Date date) throws TrapException
+    /**
+     * Convert a monetary amount measured in a foreign currency to USD.
+     * 
+     * @param currency
+     * @param amount
+     * @param date
+     * @return
+     * @throws TrapException
+     */
+    public double getUsd(String currency, double amount, Date date)
+            throws TrapException
     {
         try
         {
             if (StringUtils.equals(currency, "USD"))
             {
                 return amount;
-            } else
+            }
+            else
             {
-                Double conversionRate = currencyDB.getConversion(currency, TrapDateUtil.printDate(date));
+                Double conversionRate = currencyDB.getConversion(currency,
+                        TrapDateUtil.printDate(date));
                 return conversionRate.doubleValue() * amount;
             }
 
-        } catch (KeyNotFoundException e)
+        }
+        catch (KeyNotFoundException e)
         {
             throw new TrapException("Cannot find currency info");
         }
     }
 
     /**
+     * Charge account with name/number accountName for amountToCharge dollars
+     * (USD).
+     * 
      * @param accountName
      * @param amountToCharge
-     * @throws TrapException 
+     * @throws TrapException
      */
-    public void chargeAccount(String accountName, Double amountToCharge) throws TrapException
+    public void chargeAccount(String accountName, Double amountToCharge)
+            throws TrapException
     {
         final double currentBalance = getGrant(accountName).getAccountBalance();
         final double newBalance = currentBalance - amountToCharge;
-        if(newBalance < 0){
+        if (newBalance < 0)
+        {
             throw new TrapException("not enough money in account");
         }
         try
@@ -227,8 +311,8 @@ public class DatabaseAccessor
         }
         catch (KeyNotFoundException e)
         {
-           throw new TrapException("account not found for charge");
+            throw new TrapException("account not found for charge");
         }
-        
+
     }
 }

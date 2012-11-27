@@ -20,7 +20,7 @@ package edu.umn.se.trap.form;
 
 import java.util.Comparator;
 
-/**
+/** ExpenseComparator compares
  * @author nick
  * 
  */

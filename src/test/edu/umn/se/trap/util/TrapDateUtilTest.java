@@ -16,7 +16,7 @@
     specific language governing permissions and limitations
     under the License. 
  */
-package edu.umn.se.trap.form;
+package edu.umn.se.trap.util;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,6 +25,8 @@ import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import edu.umn.se.trap.util.TrapDateUtil;
 
 /**
  * @author nick

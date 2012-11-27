@@ -16,7 +16,7 @@
     specific language governing permissions and limitations
     under the License. 
  */
-package edu.umn.se.trap;
+package edu.umn.se.trap.output;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,11 +32,14 @@ import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.Location;
 import edu.umn.se.trap.form.TransportationExpense;
-import edu.umn.se.trap.form.TrapDateUtil;
 import edu.umn.se.trap.form.TrapForm;
-import edu.umn.se.trap.form.TrapUtil;
+import edu.umn.se.trap.util.TrapDateUtil;
+import edu.umn.se.trap.util.TrapOutputKeys;
+import edu.umn.se.trap.util.TrapUtil;
 
 /**
+ * This class is for generating output for TRAP.
+ * 
  * @author nick
  * 
  */
@@ -44,12 +47,14 @@ public class TrapOutputBuilder
 {
 
     /**
+     * One massive ugly method to generate output for a form.
+     * 
      * @param form
      * @param amountsToCharge
      * @return
      */
     public static Map<String, String> buildOut(TrapForm form,
-            Map<String, Double> amountsToCharge)
+            Map<String, Double> amountsToChargeEachGrant)
     {
 
         Map<String, String> output = new HashMap<String, String>();
@@ -198,7 +203,7 @@ public class TrapOutputBuilder
                             grant.getAccountName())));
             putIfNotNull(output, String.format(
                     TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, i),
-                    TrapUtil.formatDouble(amountsToCharge.get(grant
+                    TrapUtil.formatDouble(amountsToChargeEachGrant.get(grant
                             .getAccountName())));
             putIfNotNull(output,
                     String.format(TrapOutputKeys.GRANTd_APPROVER_NAME, i),
@@ -207,7 +212,7 @@ public class TrapOutputBuilder
         }
 
         double total = 0;
-        for (Entry<String, Double> entry : amountsToCharge.entrySet())
+        for (Entry<String, Double> entry : amountsToChargeEachGrant.entrySet())
         {
             total += entry.getValue();
         }

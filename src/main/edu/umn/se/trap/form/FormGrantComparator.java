@@ -22,7 +22,7 @@ import java.util.Comparator;
 
 import edu.umn.se.trap.form.FormGrant;
 
-/**
+/** Compare FormGrant objects based on their available account balance.
  * @author nick
  *
  */

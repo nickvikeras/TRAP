@@ -23,21 +23,26 @@ import java.util.Map;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
-import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
-import edu.umn.se.trap.form.TrapDateUtil;
 import edu.umn.se.trap.form.TrapForm;
-import edu.umn.se.trap.form.TrapUtil;
 
-/**
+/** TrapCalculator is a class for calculating the amount to charge each grant.
  * @author nick
  * 
  */
 public class TrapCalculator
 {
+    /**
+     * Returns a map of account numbers to the amount trap should charge to each account.
+     * @param form
+     * @return
+     * @throws TrapException
+     */
     public static Map<String, Double> calculateAmountsToCharge(TrapForm form)
             throws TrapException
     {
+        //this was my fancy algorithm for trying to figure out the "hard" problem. 
+        //I will leave it here, commented out, incase the reqs change 
         // Map<String, Double> accountNumToChargeAmount = new HashMap<String,
         // Double>();
         // List<Expense> expenses = form.getExpenses();
