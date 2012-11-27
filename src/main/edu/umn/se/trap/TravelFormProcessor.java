@@ -35,7 +35,7 @@ import edu.umn.se.trap.output.TrapOutputBuilder;
 import edu.umn.se.trap.rule.FormChecker;
 import edu.umn.se.trap.rule.FormCheckerFactory;
 
-/**
+/** Implements the provided TravelFormProcessoriIntf
  * @author nick
  * 
  */

@@ -31,6 +31,11 @@ import java.util.Date;
 public class TrapUtil
 {
 
+    /** return "yes" if true, "no" if false.
+     * 
+     * @param b
+     * @return
+     */
     public static String boolToYesNo(boolean b)
     {
         String s = "no";
@@ -41,6 +46,11 @@ public class TrapUtil
         return s;
     }
 
+    /**
+     * return a string with the double formated as "0.00"
+     * @param d
+     * @return
+     */
     public static String formatDouble(Double d)
     {
         DecimalFormat df = new DecimalFormat("0.00");

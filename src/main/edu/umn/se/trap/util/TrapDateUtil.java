@@ -35,7 +35,7 @@ public class TrapDateUtil
     private static final String formatDateTimeString = "yyyyMMdd HHmmss";
     private static final String formatDateString = "yyyyMMdd";
 
-    /** Read a date
+    /** Parse a date with format "yyyyMMdd HHmmss"
      * @param string
      * @return
      * @throws TrapException
@@ -52,7 +52,7 @@ public class TrapDateUtil
         }
     }
 
-    /**
+    /**Parse a date with format "yyyyMMdd"
      * @param string
      * @return
      * @throws TrapException
@@ -69,7 +69,7 @@ public class TrapDateUtil
         }
     }
 
-    /**
+    /**Print a date with format "yyyyMMdd HHmmss"
      * @param date
      * @return
      * @throws TrapException
@@ -80,7 +80,7 @@ public class TrapDateUtil
         return dateFormat.format(date);
     }
 
-    /**
+    /**Print a date with format "yyyyMMdd"
      * @param date
      * @return
      * @throws TrapException

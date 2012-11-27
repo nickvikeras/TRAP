@@ -23,7 +23,7 @@ import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
 
-/**
+/** All GrantRules should extend this class.
  * @author nick
  * 
  */
