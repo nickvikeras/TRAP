@@ -20,6 +20,8 @@ package edu.umn.se.trap.rule.grantrule;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,14 +56,14 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
     @Test
     public void testForeign() throws TrapException
     {
-        Expense testExpense = TrapTestUtil
+        List<Expense> testExpense = TrapTestUtil
                 .getSampleExpenseForeignGrantForeignTravel("foreign", "Canada");
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
-        rule.removeGrants(testExpense, null);
+        rule.checkExpenseGrants(testExpense.get(0), testExpense);
 
-        if (testExpense.getEligibleGrants().getGrants().isEmpty())
+        if (testExpense.get(0).getEligibleGrants().getGrants().isEmpty())
         {
             fail("Grant was improperly deleted.");
         }
@@ -70,14 +72,14 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
     @Test
     public void testDomestic() throws TrapException
     {
-        Expense testExpense = TrapTestUtil
+        List<Expense> testExpense = TrapTestUtil
                 .getSampleExpenseForeignGrantForeignTravel("noExport", "United States");
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
-        rule.removeGrants(testExpense, null);
+        rule.checkExpenseGrants(testExpense.get(0), testExpense);
 
-        if (testExpense.getEligibleGrants().getGrants().isEmpty())
+        if (testExpense.get(0).getEligibleGrants().getGrants().isEmpty())
         {
             fail("Grant was improperly deleted.");
         }
@@ -86,14 +88,14 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
     @Test
     public void testDomesticFailure() throws TrapException
     {
-        Expense testExpense = TrapTestUtil
+        List<Expense> testExpense = TrapTestUtil
                 .getSampleExpenseForeignGrantForeignTravel("foreign", "United States");
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
-        rule.removeGrants(testExpense, null);
+        rule.checkExpenseGrants(testExpense.get(0), testExpense);
 
-        if (!testExpense.getEligibleGrants().getGrants().isEmpty())
+        if (!testExpense.get(0).getEligibleGrants().getGrants().isEmpty())
         {
             fail("Invalid grant was not removed.");
         }

@@ -20,6 +20,8 @@ package edu.umn.se.trap.rule.grantrule;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,30 +56,30 @@ public class DodNoForeignRuleTest
     @Test
     public void testForeign() throws TrapException
     {
-        Expense testExpense = TrapTestUtil
+        List<Expense> testExpense = TrapTestUtil
                 .getSampleExpenseDodGrantNoForeign("Canada");
 
         DodNoForeignRule rule = new DodNoForeignRule();
 
-        rule.removeGrants(testExpense, null);
+        rule.checkExpenseGrants(testExpense.get(0), testExpense);
 
-        if (!testExpense.getEligibleGrants().getGrants().isEmpty())
+        if (!testExpense.get(0).getEligibleGrants().getGrants().isEmpty())
         {
             fail("Grant was not deleted.");
         }
     }
-    
+
     @Test
     public void testDomestic() throws TrapException
     {
-        Expense testExpense = TrapTestUtil
+        List<Expense> testExpense = TrapTestUtil
                 .getSampleExpenseDodGrantNoForeign("USA");
 
         DodNoForeignRule rule = new DodNoForeignRule();
 
-        rule.removeGrants(testExpense, null);
+        rule.checkExpenseGrants(testExpense.get(0), testExpense);
 
-        if (testExpense.getEligibleGrants().getGrants().isEmpty())
+        if (testExpense.get(0).getEligibleGrants().getGrants().isEmpty())
         {
             fail("Grant was improperly deleted.");
         }

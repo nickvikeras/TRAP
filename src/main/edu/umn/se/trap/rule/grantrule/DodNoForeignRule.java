@@ -20,6 +20,7 @@
 package edu.umn.se.trap.rule.grantrule;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
@@ -29,6 +30,7 @@ import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
+import edu.umn.se.trap.form.Location;
 import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TrapForm;
 
@@ -48,12 +50,13 @@ public class DodNoForeignRule extends AbstractGrantRule
      * )
      */
     @Override
-    public void removeGrants(Expense expense, TrapForm form) throws TrapException
+    public void removeGrants(Expense expense, TrapForm form)
+            throws TrapException
     {
 
         if (expense != null)
         {
-            checkExpenseGrants(expense);
+            checkExpenseGrants(expense, form.getExpenses());
 
         }
         else
@@ -68,14 +71,37 @@ public class DodNoForeignRule extends AbstractGrantRule
      * @param expenses
      * @throws TrapException
      */
-    private void checkExpenseGrants(Expense expense) throws TrapException
+    protected void checkExpenseGrants(Expense expense, List<Expense> expenses)
+            throws TrapException
     {
-        if (expense.getLocation() != null)
+        Location location = expense.getLocation();
+
+        /*
+         * If a transportation or other expense has the same date as any other
+         * type of expense, then it must have the same location.
+         */
+        if (location == null
+                && (expense.getType().equals(ExpenseType.TRANSPORTATION) || expense
+                        .getType().equals(ExpenseType.OTHER)))
         {
-            if (!StringUtils.equalsIgnoreCase(expense.getLocation()
-                    .getCountry(), "USA")
-                    && !StringUtils.equalsIgnoreCase(expense.getLocation()
-                            .getCountry(), "United States"))
+            for (Expense ex : expenses)
+            {
+                if (!(ex.getType().equals(ExpenseType.TRANSPORTATION) || ex
+                        .getType().equals(ExpenseType.OTHER)))
+                {
+                    if (expense.getDate().equals(ex.getDate()))
+                    {
+                        location = ex.getLocation();
+                    }
+                }
+            }
+        }
+
+        if (location != null)
+        {
+            if (!StringUtils.equalsIgnoreCase(location.getCountry(), "USA")
+                    && !StringUtils.equalsIgnoreCase(location.getCountry(),
+                            "United States"))
             {
                 GrantSet grantSet = expense.getEligibleGrants();
 

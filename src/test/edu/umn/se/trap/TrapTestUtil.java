@@ -460,7 +460,7 @@ public class TrapTestUtil
         return expense;
     }
 
-    public static Expense getSampleExpenseDodGrantNoForeign(String country)
+    public static List<Expense> getSampleExpenseDodGrantNoForeign(String country)
     {
 
         Set<FormGrant> grants = new HashSet<FormGrant>();
@@ -480,10 +480,18 @@ public class TrapTestUtil
                 ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
                 "needed rental car", "CAR", "Hertz", 53, true);
 
-        return transportationExpense;
+        Expense expense = new Expense(ExpenseType.BREAKFAST, date, 40.34,
+                location, grantSet, "I was hungry");
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(transportationExpense);
+        expenseList.add(expense);
+
+        return expenseList;
     }
 
-    public static Expense getSampleExpenseForeignGrantForeignTravel(
+    public static List<Expense> getSampleExpenseForeignGrantForeignTravel(
             String organizationType, String country)
     {
 
@@ -504,7 +512,15 @@ public class TrapTestUtil
                 ExpenseType.TRANSPORTATION, date, 40.34, location, grantSet,
                 "needed rental car", "CAR", "Hertz", 53, true);
 
-        return transportationExpense;
+        Expense expense = new Expense(ExpenseType.BREAKFAST, date, 40.34,
+                location, grantSet, "I was hungry");
+
+        List<Expense> expenseList = new ArrayList<Expense>();
+
+        expenseList.add(transportationExpense);
+        expenseList.add(expense);
+
+        return expenseList;
     }
 
     public static Expense getSampleExpenseNihNoFood(ExpenseType type)
@@ -860,7 +876,6 @@ public class TrapTestUtil
                 500.00, "noExport", null, null);
 
         grants.add(grant1);
-
 
         return grants;
     }
