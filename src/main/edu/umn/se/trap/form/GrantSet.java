@@ -46,7 +46,8 @@ public class GrantSet
     /**
      * @param accountName
      * 
-     * Method for removing grants from the set. For the convenience of the calculator.
+     *            Method for removing grants from the set. For the convenience
+     *            of the calculator.
      */
     public void removeGrant(String accountName)
     {
@@ -75,6 +76,9 @@ public class GrantSet
     /**
      * @param accountName
      * @return
+     * 
+     *         Return whether or not a grant is contained in this GrantSet.
+     * 
      */
     public boolean contains(String accountName)
     {
