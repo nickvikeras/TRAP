@@ -59,7 +59,7 @@ public class NonDodGrantNationalRuleTest
 
         NonDodGrantNationalRule rule = new NonDodGrantNationalRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -75,7 +75,7 @@ public class NonDodGrantNationalRuleTest
 
         NonDodGrantNationalRule rule = new NonDodGrantNationalRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (!testExpense.getEligibleGrants().getGrants().isEmpty())
         {

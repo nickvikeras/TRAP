@@ -60,7 +60,7 @@ public class NihNoFoodRuleTest
 
         NihNoFoodRule rule = new NihNoFoodRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (!testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -76,7 +76,7 @@ public class NihNoFoodRuleTest
 
         NihNoFoodRule rule = new NihNoFoodRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {

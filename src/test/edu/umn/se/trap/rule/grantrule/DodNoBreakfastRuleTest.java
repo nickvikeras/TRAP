@@ -59,7 +59,7 @@ public class DodNoBreakfastRuleTest
 
         DodNoBreakfastRule rule = new DodNoBreakfastRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (!testExpense.getEligibleGrants().getGrants().isEmpty())
         {

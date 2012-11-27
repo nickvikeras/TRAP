@@ -29,6 +29,7 @@ import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.TransportationExpense;
+import edu.umn.se.trap.form.TrapForm;
 
 /**
  * @author Mark
@@ -41,7 +42,7 @@ public class NihNoFoodRule extends AbstractGrantRule
      * @see edu.umn.se.trap.rule.grantrule.AbstractGrantRule#removeGrants(edu.umn.se.trap.form.Expense)
      */
     @Override
-    protected void removeGrants(Expense expense) throws TrapException
+    protected void removeGrants(Expense expense, TrapForm form) throws TrapException
     {
         
         if (expense != null)

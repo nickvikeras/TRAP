@@ -60,7 +60,7 @@ public class NihOnlyPublicTransitOrAirfareRuleTest
 
         NihOnlyPublicTransitOrAirfareRule rule = new NihOnlyPublicTransitOrAirfareRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -76,7 +76,7 @@ public class NihOnlyPublicTransitOrAirfareRuleTest
 
         NihOnlyPublicTransitOrAirfareRule rule = new NihOnlyPublicTransitOrAirfareRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -92,7 +92,7 @@ public class NihOnlyPublicTransitOrAirfareRuleTest
 
         NihOnlyPublicTransitOrAirfareRule rule = new NihOnlyPublicTransitOrAirfareRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {

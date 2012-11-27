@@ -35,6 +35,7 @@ import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.TransportationExpense;
+import edu.umn.se.trap.form.TrapForm;
 
 public class NonDodGrantNationalRule extends AbstractGrantRule
 {
@@ -47,7 +48,7 @@ public class NonDodGrantNationalRule extends AbstractGrantRule
      * .se.trap.form.Expense)
      */
     @Override
-    protected void removeGrants(Expense expense) throws TrapException
+    protected void removeGrants(Expense expense, TrapForm form) throws TrapException
     {
 
         if (expense != null)

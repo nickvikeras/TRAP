@@ -38,7 +38,7 @@ public abstract class AbstractGrantRule extends AbstractRule
     {
         for (Expense expense : form.getExpenses())
         {
-            removeGrants(expense);
+            removeGrants(expense, form);
             if (expense.getEligibleGrants().getGrants().isEmpty())
             {
                 throw new TrapException("No grants can cover one or more expenses.");
@@ -48,7 +48,8 @@ public abstract class AbstractGrantRule extends AbstractRule
 
     /**
      * @param expense
+     * @param form TODO
      */
-    protected abstract void removeGrants(Expense expense) throws TrapException;
+    protected abstract void removeGrants(Expense expense, TrapForm form) throws TrapException;
 
 }

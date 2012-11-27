@@ -59,7 +59,7 @@ public class DodGrantHertzRuleTest
 
         DodGrantHertzRule rule = new DodGrantHertzRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -75,7 +75,7 @@ public class DodGrantHertzRuleTest
 
         DodGrantHertzRule rule = new DodGrantHertzRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (!testExpense.getEligibleGrants().getGrants().isEmpty())
         {

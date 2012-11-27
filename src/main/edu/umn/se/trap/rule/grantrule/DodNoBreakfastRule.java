@@ -47,7 +47,7 @@ public class DodNoBreakfastRule extends AbstractGrantRule
      * )
      */
     @Override
-    public void removeGrants(Expense expense) throws TrapException
+    public void removeGrants(Expense expense, TrapForm form) throws TrapException
     {
 
         if (expense != null)

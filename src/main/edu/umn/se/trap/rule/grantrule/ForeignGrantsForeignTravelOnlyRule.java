@@ -30,6 +30,7 @@ import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.TransportationExpense;
+import edu.umn.se.trap.form.TrapForm;
 
 /**
  * @author Andrew
@@ -47,7 +48,7 @@ public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule
      * )
      */
     @Override
-    public void removeGrants(Expense expense) throws TrapException
+    public void removeGrants(Expense expense, TrapForm form) throws TrapException
     {
 
         if (expense != null)

@@ -59,7 +59,7 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -75,7 +75,7 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (testExpense.getEligibleGrants().getGrants().isEmpty())
         {
@@ -91,7 +91,7 @@ public class ForeignGrantsForeignTravelOnlyRuleTest
 
         ForeignGrantsForeignTravelOnlyRule rule = new ForeignGrantsForeignTravelOnlyRule();
 
-        rule.removeGrants(testExpense);
+        rule.removeGrants(testExpense, null);
 
         if (!testExpense.getEligibleGrants().getGrants().isEmpty())
         {
