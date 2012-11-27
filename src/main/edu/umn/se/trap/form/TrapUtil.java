@@ -66,14 +66,4 @@ public class TrapUtil
         return df.format(d);
     }
 
-    /**
-     * @param double1
-     * @return
-     */
-    public static String formatDoubleNoDecimals(Double d)
-    {
-        DecimalFormat df = new DecimalFormat("0.##");
-        return df.format(d);
-    }
-
 }

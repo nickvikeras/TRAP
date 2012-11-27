@@ -143,11 +143,11 @@ public class TravelFormProcessorTestValidData
         formData.put("NUM_OTHER_EXPENSES", "2");
         formData.put("OTHER1_DATE", "20121003");
         formData.put("OTHER1_JUSTIFICATION", "Conference Registration");
-        formData.put("OTHER1_AMOUNT", "450");
+        formData.put("OTHER1_AMOUNT", "450.00");
         formData.put("OTHER1_CURRENCY", "USD");
         formData.put("OTHER2_DATE", "20121003");
         formData.put("OTHER2_JUSTIFICATION", "Workshop Registration");
-        formData.put("OTHER2_AMOUNT", "100");
+        formData.put("OTHER2_AMOUNT", "100.00");
         formData.put("OTHER2_CURRENCY", "USD");
         formData.put("NUM_DAYS", "5");
         formData.put("DAY1_LUNCH_CITY", "Des Moines");
@@ -285,10 +285,10 @@ public class TravelFormProcessorTestValidData
         formData.put("NUM_OTHER_EXPENSES", "2");
         formData.put("OTHER1_DATE", "20121003");
         formData.put("OTHER1_JUSTIFICATION", "Conference Registration");
-        formData.put("OTHER1_TOTAL", "450");
+        formData.put("OTHER1_TOTAL", "450.00");
         formData.put("OTHER2_DATE", "20121003");
         formData.put("OTHER2_JUSTIFICATION", "Workshop Registration");
-        formData.put("OTHER2_TOTAL", "100");
+        formData.put("OTHER2_TOTAL", "100.00");
         formData.put("NUM_GRANTS", "1");
         formData.put("GRANT1_ACCOUNT", "010101010101");
         formData.put("GRANT1_PERCENT", "100");

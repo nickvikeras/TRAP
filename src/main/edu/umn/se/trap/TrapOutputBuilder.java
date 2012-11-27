@@ -179,7 +179,7 @@ public class TrapOutputBuilder
                     String.format(TrapOutputKeys.OTHERc_JUSTIFICATION, i),
                     expense.getJustification());
             putIfNotNull(output, String.format(TrapOutputKeys.OTHERc_TOTAL, i),
-                    TrapUtil.formatDoubleNoDecimals(expense.getAmount()));
+                    TrapUtil.formatDouble(expense.getAmount()));
             i++;
         }
 
@@ -191,11 +191,11 @@ public class TrapOutputBuilder
             putIfNotNull(output,
                     String.format(TrapOutputKeys.GRANTd_ACCOUNT, i),
                     grant.getAccountName());
-            putIfNotNull(output,
+            putIfNotNull(
+                    output,
                     String.format(TrapOutputKeys.GRANTd_PERCENT, i),
-                    TrapUtil.formatDoubleNoDecimals(form
-                            .getAccountToPercentMap().get(
-                                    grant.getAccountName())));
+                    String.valueOf(form.getAccountToPercentMap().get(
+                            grant.getAccountName())));
             putIfNotNull(output, String.format(
                     TrapOutputKeys.GRANTd_AMOUNT_TO_CHARGE, i),
                     TrapUtil.formatDouble(amountsToCharge.get(grant
@@ -216,11 +216,12 @@ public class TrapOutputBuilder
         putIfNotNull(output, TrapOutputKeys.NUM_DAYS,
                 String.valueOf(form.getTrip().getNumDays()));
 
-//        for (Entry<String, String> entry : output.entrySet())
-//        {
-//            System.out.println(entry.getKey() + "=" + entry.getValue());
-//        }
-        
+        // this is useful for debugging output.
+        // for (Entry<String, String> entry : output.entrySet())
+        // {
+        // System.out.println(entry.getKey() + "=" + entry.getValue());
+        // }
+
         return output;
 
     }

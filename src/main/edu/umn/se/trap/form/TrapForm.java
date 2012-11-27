@@ -53,7 +53,7 @@ public class TrapForm
     private FormUser user;
     private Trip trip;
     private List<Expense> expenses;
-    private Map<String, Double> accountToPercentMap;
+    private Map<String, Integer> accountToPercentMap;
     private Date submissionDate;
     private List<Destination> destinations;
 
@@ -71,7 +71,7 @@ public class TrapForm
     public TrapForm(Integer formId, Map<String, String> formInput,
             Map<String, String> formOutput, TravelFormMetadata formMetaData,
             GrantSet grantSet, FormUser user, Trip trip,
-            List<Expense> expenses, Map<String, Double> accountToPercentMap,
+            List<Expense> expenses, Map<String, Integer> accountToPercentMap,
             Date submissionDate)
     {
         super();
@@ -295,7 +295,7 @@ public class TrapForm
         this.submissionDate = submissionDate;
     }
 
-    public Map<String, Double> getAccountToPercentMap()
+    public Map<String, Integer> getAccountToPercentMap()
     {
         return this.accountToPercentMap;
     }

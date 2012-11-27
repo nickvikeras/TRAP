@@ -60,7 +60,7 @@ public class TrapFormFactory
             FormUser user = getNewUser(formData, dbAccessor);
             Trip trip = getNewTrip(formData);
             List<Expense> expenses = getNewExpenseList(formData, dbAccessor);
-            Map<String, Double> accountToPercentMap = getNewAccountToPercentMap(formData);
+            Map<String, Integer> accountToPercentMap = getNewAccountToPercentMap(formData);
             Date submissionDate = new Date();
             System.out.println(submissionDate.getTime());
             return new TrapForm(id, formData, null, travelFormMetaData,
@@ -77,17 +77,17 @@ public class TrapFormFactory
      * @param formData
      * @return
      */
-    protected static Map<String, Double> getNewAccountToPercentMap(
+    protected static Map<String, Integer> getNewAccountToPercentMap(
             Map<String, String> formData) throws Exception
     {
-        Map<String, Double> accountToPercentMap = new HashMap<String, Double>();
+        Map<String, Integer> accountToPercentMap = new HashMap<String, Integer>();
         Integer numGrants = Integer.parseInt(formData
                 .get(TrapInputKeys.NUM_GRANTS));
         for (int i = 0; i < numGrants; i++)
         {
             String accountNumber = formData.get(String.format(
                     TrapInputKeys.GRANTd_ACCOUNT, i + 1));
-            Double percentToCharge = Double.parseDouble(formData.get(String
+            Integer percentToCharge = Integer.parseInt(formData.get(String
                     .format(TrapInputKeys.GRANTd_PERCENT, i + 1)));
             accountToPercentMap.put(accountNumber, percentToCharge);
         }
