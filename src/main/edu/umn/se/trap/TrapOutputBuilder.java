@@ -216,10 +216,10 @@ public class TrapOutputBuilder
         putIfNotNull(output, TrapOutputKeys.NUM_DAYS,
                 String.valueOf(form.getTrip().getNumDays()));
 
-        for (Entry<String, String> entry : output.entrySet())
-        {
-            System.out.println(entry.getKey() + "=" + entry.getValue());
-        }
+//        for (Entry<String, String> entry : output.entrySet())
+//        {
+//            System.out.println(entry.getKey() + "=" + entry.getValue());
+//        }
         
         return output;
 
