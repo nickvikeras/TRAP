@@ -1,0 +1,41 @@
+<class-diagram version="1.0.11" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.rule.FormCheckerFactory" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/rule/FormCheckerFactory.java" binary="false">    
+    <position height="-1" width="-1" x="347" y="315"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.rule.FormChecker" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/rule/FormChecker.java" binary="false">    
+    <position height="-1" width="-1" x="607" y="306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.rule.AbstractRule" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/rule/AbstractRule.java" binary="false">    
+    <position height="-1" width="-1" x="605" y="466"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="4">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="5" name="rules"/>      
+      <multiplicity id="6" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

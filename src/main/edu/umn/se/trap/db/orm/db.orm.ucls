@@ -1,0 +1,57 @@
+<class-diagram version="1.0.11" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.db.orm.UserGrant" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/db/orm/UserGrant.java" binary="false">    
+    <position height="-1" width="-1" x="229" y="166"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.db.orm.Currency" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/db/orm/Currency.java" binary="false">    
+    <position height="-1" width="-1" x="476" y="166"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.db.orm.PerDiem" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/db/orm/PerDiem.java" binary="false">    
+    <position height="-1" width="-1" x="764" y="217"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.db.orm.User" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/db/orm/User.java" binary="false">    
+    <position height="-1" width="-1" x="756" y="664"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.db.orm.DatabaseAccessor" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/db/orm/DatabaseAccessor.java" binary="false">    
+    <position height="-1" width="-1" x="338" y="655"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="edu.umn.se.trap.db.orm.Grant" project="TRAP" 
+    file="/TRAP/src/main/edu/umn/se/trap/db/orm/Grant.java" binary="false">    
+    <position height="-1" width="-1" x="235" y="1050"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
