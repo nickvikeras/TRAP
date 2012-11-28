@@ -69,7 +69,7 @@ public class TrapDateUtil
         }
     }
 
-    /**Print a date with format "yyyyMMdd HHmmss"
+    /**Print a date with format "yyyyMMdd"
      * @param date
      * @return
      * @throws TrapException
@@ -80,7 +80,7 @@ public class TrapDateUtil
         return dateFormat.format(date);
     }
 
-    /**Print a date with format "yyyyMMdd"
+    /**Print a date with format "yyyyMMdd HHmmss"
      * @param date
      * @return
      * @throws TrapException
