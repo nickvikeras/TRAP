@@ -199,10 +199,11 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
                 .calculateAmountsToCharge(form);
         chargeAccounts(amountsToCharge);
 
-        Map<String, String> output = TrapOutputBuilder.buildOut(form,
+        Map<String, String> output = TrapOutputBuilder.buildOutput(form,
                 amountsToCharge);
 
         data.setOutput(output);
+        data.getMetadata().status = FORM_STATUS.SUBMITTED;
         databaseAccessor.getFormDB().saveForm(data, formId);
     }
 
