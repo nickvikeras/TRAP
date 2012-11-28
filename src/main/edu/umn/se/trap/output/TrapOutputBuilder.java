@@ -53,7 +53,7 @@ public class TrapOutputBuilder
      * @param amountsToCharge
      * @return
      */
-    public static Map<String, String> buildOut(TrapForm form,
+    public static Map<String, String> buildOutput(TrapForm form,
             Map<String, Double> amountsToChargeEachGrant)
     {
 

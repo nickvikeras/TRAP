@@ -25,13 +25,15 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src/test">
-                <exclude name="**/*.launch"/>
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src/main">
-                <exclude name="**/*.launch"/>
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -118,7 +120,6 @@
             <formatter type="xml"/>
             <test name="edu.umn.se.trap.db.orm.DatabaseAccessorTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.trap.form.FormFactoryTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.form.TrapDateUtilTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.trap.rule.businessrule.BaggageCostLimitRuleTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.trap.rule.businessrule.ExportGrantCitizenRuleTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.trap.rule.businessrule.FileDeadlineRuleTest" todir="${junit.output.dir}"/>
@@ -142,6 +143,41 @@
             <test name="edu.umn.se.trap.rule.wellformedrule.ArrivalAfterDepartureRuleTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.trap.rule.wellformedrule.RequiredFieldsRuleTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.trap.rule.wellformedrule.ValidDollarAmountRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.util.TrapDateUtilTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.travel.test.TravelFormProcessorTestValidData" todir="${junit.output.dir}"/>
+            <classpath refid="TRAP.classpath"/>
+        </junit>
+    </target>
+    <target name="TRAP">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="edu.umn.se.trap.db.orm.DatabaseAccessorTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.form.FormFactoryTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.BaggageCostLimitRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.ExportGrantCitizenRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.FileDeadlineRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.GrantAuthorizationRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.HotelOvernightRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.ItemizedCostsBetweenDatesRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.NumBaggageClaimsRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.PersonalAndRentalCarRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.TravelTypeMatchesGrantRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.USCarrierRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.businessrule.VisaStatusRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.DodGrantHertzRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.DodNoBreakfastRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.DodNoForeignRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.ForeignGrantsForeignTravelOnlyRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.NihNoFoodRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.NihOnlyPublicTransitOrAirfareRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.NonDodGrantNationalRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.SponsoredNoAlcoholRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.grantrule.SponsoredNoInternetRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.wellformedrule.ArrivalAfterDepartureRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.wellformedrule.RequiredFieldsRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.rule.wellformedrule.ValidDollarAmountRuleTest" todir="${junit.output.dir}"/>
+            <test name="edu.umn.se.trap.util.TrapDateUtilTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.travel.test.TravelFormProcessorTestValidData" todir="${junit.output.dir}"/>
             <classpath refid="TRAP.classpath"/>
         </junit>
@@ -158,40 +194,6 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="edu.umn.se.travel.test.TravelFormProcessorTestValidData" todir="${junit.output.dir}"/>
-            <classpath refid="TRAP.classpath"/>
-        </junit>
-    </target>
-    <target name="TRAP">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="edu.umn.se.trap.db.orm.DatabaseAccessorTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.form.FormFactoryTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.form.TrapDateUtilTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.BaggageCostLimitRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.ExportGrantCitizenRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.FileDeadlineRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.GrantAuthorizationRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.HotelOvernightRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.ItemizedCostsBetweenDatesRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.NumBaggageClaimsRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.PersonalAndRentalCarRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.TravelTypeMatchesGrantRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.USCarrierRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.businessrule.VisaStatusRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.DodGrantHertzRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.DodNoBreakfastRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.DodNoForeignRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.ForeignGrantsForeignTravelOnlyRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.NihNoFoodRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.NihOnlyPublicTransitOrAirfareRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.NonDodGrantNationalRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.SponsoredNoAlcoholRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.grantrule.SponsoredNoInternetRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.wellformedrule.ArrivalAfterDepartureRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.wellformedrule.RequiredFieldsRuleTest" todir="${junit.output.dir}"/>
-            <test name="edu.umn.se.trap.rule.wellformedrule.ValidDollarAmountRuleTest" todir="${junit.output.dir}"/>
             <test name="edu.umn.se.travel.test.TravelFormProcessorTestValidData" todir="${junit.output.dir}"/>
             <classpath refid="TRAP.classpath"/>
         </junit>

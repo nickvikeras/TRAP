@@ -43,8 +43,7 @@ import edu.umn.se.trap.TravelFormProcessorIntf.FORM_STATUS;
 public class TravelFormMetadata
 {
     /**
-     * The description of the form data to allow easy identification of the 
-     * form.
+    *This is a description for the form when it is saved to the FormDB.
      */
     public String       description;
     
