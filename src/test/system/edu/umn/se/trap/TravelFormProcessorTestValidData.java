@@ -27,7 +27,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package edu.umn.se.travel.test;
+package edu.umn.se.trap;
 
 
 import static org.junit.Assert.assertEquals;
