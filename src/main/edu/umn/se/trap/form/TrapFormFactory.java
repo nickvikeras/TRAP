@@ -33,6 +33,7 @@ import org.apache.commons.lang3.StringUtils;
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.TravelFormMetadata;
 import edu.umn.se.trap.TravelFormProcessorIntf.FORM_STATUS;
+import edu.umn.se.trap.db.KeyNotFoundException;
 import edu.umn.se.trap.db.orm.DatabaseAccessor;
 import edu.umn.se.trap.db.orm.Grant;
 import edu.umn.se.trap.db.orm.PerDiem;
@@ -56,7 +57,7 @@ public class TrapFormFactory
 
     public static TrapForm getNewForm(final Map<String, String> formData,
             String description, Integer id, DatabaseAccessor dbAccessor)
-            throws TrapException
+            throws TrapException, KeyNotFoundException
     {
         try
         {
@@ -73,9 +74,17 @@ public class TrapFormFactory
                     grantSet, user, trip, expenses, accountToPercentMap,
                     submissionDate);
         }
+        catch (TrapException trap)
+        {
+            throw new TrapException(trap.getMessage());
+        }
+        catch (KeyNotFoundException key)
+        {
+            throw new KeyNotFoundException(key.getMessage());
+        }
         catch (Exception e)
         {
-            throw new TrapException("Error parsing input");
+            throw new TrapException("Error parsing input: " + e.getMessage());
         }
     }
 

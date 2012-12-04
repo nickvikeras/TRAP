@@ -28,6 +28,7 @@ import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.TrapTestUtil;
 import edu.umn.se.trap.db.CurrencyDB;
 import edu.umn.se.trap.db.GrantDB;
+import edu.umn.se.trap.db.KeyNotFoundException;
 import edu.umn.se.trap.db.PerDiemDB;
 import edu.umn.se.trap.db.UserDB;
 import edu.umn.se.trap.db.UserGrantDB;
@@ -58,9 +59,10 @@ public class FormFactoryTest
 
     /**
      * Test method for {@link edu.umn.se.trap.form.TrapFormFactory#getNewForm(java.util.Map, java.lang.String, edu.umn.se.trap.db.orm.DatabaseAccessor)}.
+     * @throws KeyNotFoundException 
      */
     @Test
-    public void testGetNewFormMapOfStringStringStringDatabaseAccessor()
+    public void testGetNewFormMapOfStringStringStringDatabaseAccessor() throws KeyNotFoundException
     {
         DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(), new PerDiemDB(), new GrantDB(), new UserGrantDB(), new CurrencyDB());
         try
