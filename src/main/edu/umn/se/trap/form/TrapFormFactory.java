@@ -74,9 +74,9 @@ public class TrapFormFactory
                     grantSet, user, trip, expenses, accountToPercentMap,
                     submissionDate);
         }
-        catch (TrapException trap)
+        catch (TrapException trapException)
         {
-            throw new TrapException(trap.getMessage());
+            throw trapException;
         }
         catch (KeyNotFoundException key)
         {
