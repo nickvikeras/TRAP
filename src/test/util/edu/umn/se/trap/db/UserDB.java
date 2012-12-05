@@ -73,6 +73,17 @@ public class UserDB
         user.add("Yes");
         
         this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
+        
+        user = new ArrayList<String>();
+        user.add("china001");
+        user.add("China, Bob");
+        user.add("china001@umn.edu");
+        user.add("111111");
+        user.add("China");
+        user.add(null);
+        user.add("Yes");
+        
+        this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
     }
     
     

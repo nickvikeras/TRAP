@@ -29,31 +29,13 @@
 
 package edu.umn.se.trap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import edu.umn.se.trap.TrapException;
-import edu.umn.se.trap.TravelFormMetadata;
-import edu.umn.se.trap.TravelFormProcessor;
-import edu.umn.se.trap.TravelFormProcessorIntf;
-import edu.umn.se.trap.db.CurrencyDB;
-import edu.umn.se.trap.db.GrantDB;
-import edu.umn.se.trap.db.PerDiemDB;
-import edu.umn.se.trap.db.UserDB;
-import edu.umn.se.trap.db.UserGrantDB;
+import edu.umn.se.trap.util.TrapDateUtil;
 
 /**
  * This is a test class for various black box tests. These tests will try to
@@ -65,37 +47,8 @@ import edu.umn.se.trap.db.UserGrantDB;
  * 
  * @author Mark
  */
-public class TravelFormProcessorTests
+public class SanityTests extends AbstractSystemTest
 {
-    // --------------------------------------------------------------------------
-    // DATA MEMBERS
-    // --------------------------------------------------------------------------
-    /**
-     * The object under test.
-     */
-    protected TravelFormProcessorIntf testProcessor;
-
-    /**
-     * The input form to test
-     */
-    private Map<String, String> inputFormData = new HashMap<String, String>();
-
-    /**
-     * The expected output
-     */
-    private Map<String, String> outputFormData = new HashMap<String, String>();
-
-    // The DBs to use to initialize TravelFormProcessor.
-    private CurrencyDB currencyDB = new CurrencyDB();
-    private GrantDB grantDB = new GrantDB();
-    private PerDiemDB perDiemDB = new PerDiemDB();
-    private UserDB userDB = new UserDB();
-    private UserGrantDB userGrantDB = new UserGrantDB();
-
-    /**
-     * Contains the description we will use to store the form.
-     */
-    private String description;
 
     // --------------------------------------------------------------------------
     // CONSTANTS
@@ -118,12 +71,15 @@ public class TravelFormProcessorTests
      * 
      * @return a valid travel input form for use in testing
      */
-    public static Map<String, String> getInputForm1()
+
+    public Map<String, String> getInputForm1()
     {
         Map<String, String> formData = new HashMap<String, String>();
         formData.put("USER_NAME", "linc001");
-        formData.put("ARRIVAL_DATETIME", "20121202 235900");
-        formData.put("DEPARTURE_DATETIME", "20121128 100000");
+        formData.put("DEPARTURE_DATETIME",
+                TrapDateUtil.printDateTime(departureDate));
+        formData.put("ARRIVAL_DATETIME",
+                TrapDateUtil.printDateTime(arrivalDate));
 
         formData.put("TRAVEL_TYPE_CSE_SPONSORED", "yes");
         formData.put("EMERGENCY_CONTACT_NAME", "Greg Gay");
@@ -144,7 +100,7 @@ public class TravelFormProcessorTests
         formData.put("OTHER1_CURRENCY", "USD");
         formData.put("OTHER2_DATE", "20121003");
         formData.put("OTHER2_JUSTIFICATION", "Workshop Registration");
-        formData.put("OTHER2_AMOUNT", "100.00");
+        formData.put("OTHER2_AMOUNT", "100");
         formData.put("OTHER2_CURRENCY", "USD");
         formData.put("NUM_DAYS", "5");
         formData.put("DAY1_LUNCH_CITY", "Des Moines");
@@ -153,13 +109,6 @@ public class TravelFormProcessorTests
         formData.put("DAY1_DINNER_CITY", "Kansas City");
         formData.put("DAY1_DINNER_STATE", "MO");
         formData.put("DAY1_DINNER_COUNTRY", "USA");
-        formData.put("DAY1_INCIDENTAL_CITY", "Kansas City");
-        formData.put("DAY1_INCIDENTAL_STATE", "MO");
-        formData.put("DAY1_INCIDENTAL_COUNTRY", "USA");
-        formData.put("DAY1_INCIDENTAL_AMOUNT", "24.53");
-        formData.put("DAY1_INCIDENTAL_CURRENCY", "USD");
-        formData.put("DAY1_INCIDENTAL_JUSTIFICATION",
-                "A really good justification");
         formData.put("DAY1_LODGING_CITY", "Lawrence");
         formData.put("DAY1_LODGING_STATE", "KS");
         formData.put("DAY1_LODGING_COUNTRY", "USA");
@@ -190,27 +139,37 @@ public class TravelFormProcessorTests
         formData.put("DAY5_DINNER_STATE", "IA");
         formData.put("DAY5_DINNER_COUNTRY", "USA");
         formData.put("NUM_TRANSPORTATION", "6");
-        formData.put("TRANSPORTATION1_DATE", "20121128");
+        GregorianCalendar departureCal = new GregorianCalendar();
+        departureCal.setTime(departureDate);
+        formData.put("TRANSPORTATION1_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION1_TYPE", "PARKING");
         formData.put("TRANSPORTATION1_AMOUNT", "12.00");
         formData.put("TRANSPORTATION1_CURRENCY", "USD");
-        formData.put("TRANSPORTATION2_DATE", "20121129");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("TRANSPORTATION2_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION2_TYPE", "PARKING");
         formData.put("TRANSPORTATION2_AMOUNT", "13.00");
         formData.put("TRANSPORTATION2_CURRENCY", "USD");
-        formData.put("TRANSPORTATION3_DATE", "20121130");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("TRANSPORTATION3_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION3_TYPE", "PARKING");
         formData.put("TRANSPORTATION3_AMOUNT", "12.00");
         formData.put("TRANSPORTATION3_CURRENCY", "USD");
-        formData.put("TRANSPORTATION4_DATE", "20121130");
+        formData.put("TRANSPORTATION4_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION4_TYPE", "PARKING");
         formData.put("TRANSPORTATION4_AMOUNT", "22");
         formData.put("TRANSPORTATION4_CURRENCY", "USD");
-        formData.put("TRANSPORTATION5_DATE", "20121130");
+        formData.put("TRANSPORTATION5_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION5_TYPE", "TOLL");
         formData.put("TRANSPORTATION5_AMOUNT", "1.65");
         formData.put("TRANSPORTATION5_CURRENCY", "USD");
-        formData.put("TRANSPORTATION6_DATE", "20121130");
+        formData.put("TRANSPORTATION6_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION6_TYPE", "TOLL");
         formData.put("TRANSPORTATION6_AMOUNT", "1.60");
         formData.put("TRANSPORTATION6_CURRENCY", "USD");
@@ -223,7 +182,7 @@ public class TravelFormProcessorTests
      * 
      * @return a valid travel output form for use in testing
      */
-    public static Map<String, String> getOutputForm1()
+    public Map<String, String> getOutputForm1()
     {
         Map<String, String> formData = new HashMap<String, String>();
 
@@ -235,8 +194,10 @@ public class TravelFormProcessorTests
         // We omit this because we have to check it separately.
         // formData.put("FORM_SUBMISSION_DATETIME",
         // "This one depends on the test");
-        formData.put("DEPARTURE_DATETIME", "20121128 100000");
-        formData.put("ARRIVAL_DATETIME", "20121202 235900");
+        formData.put("DEPARTURE_DATETIME",
+                TrapDateUtil.printDateTime(departureDate));
+        formData.put("ARRIVAL_DATETIME",
+                TrapDateUtil.printDateTime(arrivalDate));
         formData.put("PAID_BY_UNIVERSITY", "yes");
         formData.put("EMERGENCY_CONTACT_NAME", "Greg Gay");
         formData.put("EMERGENCY_CONTACT_PHONE", "765-432-1098");
@@ -258,36 +219,53 @@ public class TravelFormProcessorTests
         formData.put("DESTINATION3_STATE", "KS");
         formData.put("DESTINATION3_COUNTRY", "USA");
         formData.put("NUM_DAYS", "5");
-        formData.put("DAY1_DATE", "20121128");
+        GregorianCalendar departureCal = new GregorianCalendar();
+        departureCal.setTime(departureDate);
+        formData.put("DAY1_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("DAY1_TOTAL", "111.81");
-        formData.put("DAY1_INCIDENTAL_TOTAL", "10.00");
-        formData.put("DAY1_INCIDENTAL_JUSTIFICATION",
-                "A really good justification");
-        formData.put("DAY2_DATE", "20121129");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("DAY2_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("DAY2_TOTAL", "109.31");
-        formData.put("DAY3_DATE", "20121130");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("DAY3_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("DAY3_TOTAL", "86.31");
-        formData.put("DAY4_DATE", "20121201");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("DAY4_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("DAY4_TOTAL", "109.31");
-        formData.put("DAY5_DATE", "20121202");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("DAY5_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("DAY5_TOTAL", "17.25");
         formData.put("NUM_TRANSPORTATION", "6");
-        formData.put("TRANSPORTATION1_DATE", "20121128");
+        departureCal.setTime(departureDate);
+        formData.put("TRANSPORTATION1_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION1_TYPE", "PARKING");
         formData.put("TRANSPORTATION1_TOTAL", "12.00");
-        formData.put("TRANSPORTATION2_DATE", "20121129");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("TRANSPORTATION2_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION2_TYPE", "PARKING");
         formData.put("TRANSPORTATION2_TOTAL", "13.00");
-        formData.put("TRANSPORTATION3_DATE", "20121130");
+        departureCal.add(GregorianCalendar.DAY_OF_MONTH, 1);
+        formData.put("TRANSPORTATION3_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION3_TYPE", "PARKING");
         formData.put("TRANSPORTATION3_TOTAL", "12.00");
-        formData.put("TRANSPORTATION4_DATE", "20121130");
+        formData.put("TRANSPORTATION4_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION4_TYPE", "PARKING");
         formData.put("TRANSPORTATION4_TOTAL", "22.00");
-        formData.put("TRANSPORTATION5_DATE", "20121130");
+        formData.put("TRANSPORTATION5_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION5_TYPE", "TOLL");
         formData.put("TRANSPORTATION5_TOTAL", "1.65");
-        formData.put("TRANSPORTATION6_DATE", "20121130");
+        formData.put("TRANSPORTATION6_DATE",
+                TrapDateUtil.printDate(departureCal.getTime()));
         formData.put("TRANSPORTATION6_TYPE", "TOLL");
         formData.put("TRANSPORTATION6_TOTAL", "1.60");
         formData.put("NUM_OTHER_EXPENSES", "2");
@@ -302,7 +280,7 @@ public class TravelFormProcessorTests
         formData.put("GRANT1_PERCENT", "100");
         formData.put("GRANT1_AMOUNT_TO_CHARGE", "1046.24");
         formData.put("GRANT1_APPROVER_NAME", "heimd001");
-        formData.put("TOTAL_REIMBURSEMENT", "1056.24");
+        formData.put("TOTAL_REIMBURSEMENT", "1046.24");
 
         return formData;
     }
@@ -517,66 +495,16 @@ public class TravelFormProcessorTests
         return formData;
     }
 
-    // --------------------------------------------------------------------------
-    // SET-UP AND TEAR-DOWN FOR ALL TESTS IN THIS SUITE (FILE).
-    // --------------------------------------------------------------------------
-    /**
-     * Sets up the data needed for the tests in this suite.
-     * 
-     * @throws java.lang.Exception
-     */
-    @Before
-    public void setUp() throws Exception
-    {
-
-        this.testProcessor = new TravelFormProcessor(this.userDB,
-                this.perDiemDB, this.grantDB, this.userGrantDB, this.currencyDB);
-        this.testProcessor.clearSavedForms();
-
-    }
-
-    /**
-     * Tears down after the tests have completed.
-     * 
-     * @throws java.lang.Exception
-     */
-    @After
-    public void tearDown() throws Exception
-    {
-        this.testProcessor = null;
-
-        this.inputFormData = null;
-        this.outputFormData = null;
-        this.description = null;
-    }
-
     /**
      * @throws Exception
      */
     @Test
     public void testCase1() throws Exception
     {
-
-        this.testProcessor.setUser("linc001");
-        this.inputFormData = getInputForm1();
-        this.outputFormData = getOutputForm1();
-        this.description = "my form description";
-
-        try
-        {
-            getUser();
-            submitFormData();
-        }
-        catch (TrapException trap)
-        {
-            System.out.printf("Expected error thrown for testCase1: %s",
-                    trap.getMessage());
-        }
-        catch (Exception e)
-        {
-            throw new Exception(e.getMessage());
-        }
-
+        super.testProcessor.setUser("linc001");
+        String description = "my form description";
+        SystemTestUtil.submitFormData(getInputForm1(), description,
+                super.testProcessor, getOutputForm1());
     }
 
     /**
@@ -586,158 +514,10 @@ public class TravelFormProcessorTests
     public void testCase2() throws Exception
     {
 
-        /*
-         * Unknown problem with this test. Could be a problem with input or TRAP itself.
-         */
-        this.testProcessor.setUser("linc001");
-        this.inputFormData = getInputForm2();
-        this.outputFormData = getOutputForm2();
-        this.description = "my form description";
-
-        try
-        {
-            getUser();
-            submitFormData();
-        }
-        catch (Exception e)
-        {
-            throw new Exception(e.getMessage());
-        }
+        super.testProcessor.setUser("linc001");
+        String description = "my form description";
+        SystemTestUtil.submitFormData(getInputForm2(), description,
+                super.testProcessor, getOutputForm2());
 
     }
-
-    /**
-     * Method for {@link TravelFormProcessorIntf#getUser()} and
-     * {@link TravelFormProcessorIntf#setUser(String)}.
-     * 
-     * This checks to make sure the set user correctly set the user worked.
-     */
-    private void getUser()
-    {
-        String currentUser = this.testProcessor.getUser();
-
-        if (currentUser == null || !"linc001".equals(currentUser))
-            fail("Bad user name.  Expected linc001, but got " + currentUser);
-    }
-
-    /**
-     * Method for {@link TravelFormProcessorIntf#saveFormData(Map, String)} ,
-     * {@link TravelFormProcessorIntf#getSavedForms()}, and
-     * {@link TravelFormProcessorIntf#submitFormData(Integer)}.
-     * <p />
-     * This will save a new form, ensure that it exists in the list and then
-     * submit the form checking that the output is what we expect.
-     * 
-     * @throws Exception
-     */
-    private void submitFormData() throws Exception
-    {
-        // We need this later.
-        Calendar then = Calendar.getInstance();
-
-        // Save the form data, expecting no exception.
-        this.testProcessor.saveFormData(this.inputFormData, this.description);
-
-        Map<Integer, TravelFormMetadata> savedForms = this.testProcessor
-                .getSavedForms();
-
-        Set<Integer> keys = savedForms.keySet();
-        Integer formId = null;
-
-        // Find the form id we need.
-        for (Integer key : keys)
-        {
-            TravelFormMetadata metadata = savedForms.get(key);
-            if (metadata != null
-                    && this.description.equals(metadata.description))
-            {
-                // The form id was found, store it and break.
-                formId = key;
-                break;
-            }
-        }
-
-        // If the form id was not found.
-        if (formId == null)
-        {
-            fail("The saved form was not found with description '"
-                    + this.description + "'.");
-        }
-        // Otherwise, we have a valid form id.
-
-        // Now, we need to submit the form -- The test will fail if an exception
-        // is thrown by submit.
-        this.testProcessor.submitFormData(formId);
-
-        // If we get here, the submission should have succeeded. Get the
-        // completed form.
-        Map<String, String> actualOut = this.testProcessor
-                .getCompletedForm(formId);
-
-        this.checkOutput(actualOut, then);
-    }
-
-    /**
-     * Check the output to see if it matches what we expect.
-     * 
-     * @param actualOut
-     *            the form that was emitted by TRAP
-     * @param earliestFormSubmissionTime
-     *            the earliest possible submission time to use in checking our
-     *            times.
-     * @throws ParseException
-     */
-    private void checkOutput(Map<String, String> actualOut,
-            Calendar earliestFormSubmissionTime) throws ParseException
-    {
-        assertNotNull(actualOut);
-
-        // Check that they have the same size (assuming we are missing 1 field
-        // in
-        // our expected output, the form submission date)
-        assertEquals(this.outputFormData.size() + 1, actualOut.size());
-
-        // Now, check each key.
-        for (String key : this.outputFormData.keySet())
-        {
-            String expectedValue = this.outputFormData.get(key);
-            String actualValue = actualOut.get(key);
-
-            assertNotNull(actualValue);
-
-            assertEquals(expectedValue, actualValue);
-        }
-
-        // Check the form submission date
-        String formSubmissionDate = actualOut.get(FORM_SUBMISSION_DATE);
-
-        assertNotNull(formSubmissionDate);
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
-        Date submissionDate = dateFormat.parse(formSubmissionDate);
-
-        Calendar submissionDateCal = Calendar.getInstance();
-        submissionDateCal.setTime(submissionDate);
-
-        // Fail if submissionDate occurs before the earliest possible submission
-        // time
-        // if(earliestFormSubmissionTime != null &&
-        // submissionDateCal.before(earliestFormSubmissionTime))
-        // {
-        // fail("The form submission time is incorrect.  It is shown " +
-        // "as submitted before we started the submission.");
-        // }
-
-        Calendar now = Calendar.getInstance();
-
-        // Fail if the submission date occurs after the current time.
-        if (submissionDateCal.after(now))
-        {
-            fail("The form submission time is incorrect.  It is shown "
-                    + "as submitted after the current time.");
-        }
-
-        // We passed the output check.
-    }
-
 }

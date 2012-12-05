@@ -84,6 +84,17 @@ public class GrantDB
         
         this.grantInfo.put((String) grant2.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
                            grant2);
+        
+        /* Example 2: Non-sponsored funds */
+        ArrayList<Object> grant3 = new ArrayList<Object>();
+        grant3.add("11223344");                /* Account number */
+        grant3.add("noExport");        /* Account type */
+        grant3.add(null);               /* Funding organization */
+        grant3.add("government");                /* Organization type */
+        grant3.add((double)50000000);      /* Account balance */
+        
+        this.grantInfo.put((String) grant3.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                grant3);
 
     }
     
@@ -127,7 +138,7 @@ public class GrantDB
                     accountName +
                     ", in grant DB.");
         }
-        
+
         grantInfo.set(GRANT_FIELDS.ACCOUNT_BALANCE.ordinal(), newBalance);
         this.grantInfo.put(accountName, grantInfo);
     }
