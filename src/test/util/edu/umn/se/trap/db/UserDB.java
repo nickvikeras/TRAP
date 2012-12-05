@@ -80,7 +80,7 @@ public class UserDB
         user.add("china001@umn.edu");
         user.add("111111");
         user.add("China");
-        user.add(null);
+        user.add("valid");
         user.add("Yes");
         
         this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);

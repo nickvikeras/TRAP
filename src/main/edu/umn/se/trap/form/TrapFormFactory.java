@@ -310,8 +310,17 @@ public class TrapFormFactory
                             i + 1)));
             String transportationType = formData.get(String.format(
                     TrapInputKeys.TRANSPORTATIONb_TYPE, i + 1));
-            boolean isRental = StringUtils.equals(formData.get(String.format(
-                    TrapInputKeys.TRANSPORTATIONb_RENTAL, i + 1)), null);
+            boolean isRental = !StringUtils.equals(formData.get(String.format(
+                    TrapInputKeys.TRANSPORTATIONb_RENTAL, i + 1)), "no")
+                    && !StringUtils.equals(formData.get(String.format(
+                            TrapInputKeys.TRANSPORTATIONb_RENTAL, i + 1)),
+                            "false")
+                    && !StringUtils
+                            .equals(formData.get(String
+                                    .format(TrapInputKeys.TRANSPORTATIONb_RENTAL,
+                                            i + 1)), null)
+                    && !StringUtils.equals(formData.get(String.format(
+                            TrapInputKeys.TRANSPORTATIONb_RENTAL, i + 1)), "");
             String carrier = formData.get(String.format(
                     TrapInputKeys.TRANSPORTATIONb_CARRIER, i + 1));
             String milesTravelStr = formData.get(String.format(
@@ -432,11 +441,12 @@ public class TrapFormFactory
         String emergencyContactPhone = formData
                 .get(TrapInputKeys.EMERGENCY_CONTACT_PHONE);
         User user = dbAccessor.getUser(userName);
-        user.setVisaStatus(formData.get(TrapInputKeys.VISA_STATUS));
-        return new FormUser(userName, emergencyContactName,
+        FormUser formUser = new FormUser(userName, emergencyContactName,
                 emergencyContactPhone, user.getFullName(), user.getEmail(),
                 user.getEmployeeId(), user.getCitizenship(),
                 user.getVisaStatus(), user.isPaidByUniversity());
+        formUser.setCitizenship(user.getCitizenship());
+        return formUser;
     }
 
     /**

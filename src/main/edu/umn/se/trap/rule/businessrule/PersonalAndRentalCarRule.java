@@ -19,11 +19,8 @@
 
 package edu.umn.se.trap.rule.businessrule;
 
-import java.util.List;
-
-
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,9 +28,10 @@ import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.TransportationExpense;
-import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapDateUtil;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Andrew
@@ -62,55 +60,53 @@ public class PersonalAndRentalCarRule extends AbstractRule
      */
     protected void checkCarRentals(List<Expense> expenses) throws TrapException
     {
-        ArrayList<TransportationExpense> personal = new ArrayList<TransportationExpense>(expenses.size());
-        ArrayList<TransportationExpense> rental = new ArrayList<TransportationExpense>(expenses.size());
+        ArrayList<TransportationExpense> personal = new ArrayList<TransportationExpense>(
+                expenses.size());
+        ArrayList<TransportationExpense> rental = new ArrayList<TransportationExpense>(
+                expenses.size());
 
         for (Expense expense : expenses)
         {
             if (expense.getType().equals(ExpenseType.TRANSPORTATION))
             {
-                
+
                 if (StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
                                 .getTranportationType(), "Car"))
                 {
-                	if ( ((TransportationExpense) expense).isRental() ){
-                		rental.add(((TransportationExpense) expense));
-                	}
-                	
-                	else {
-                		personal.add(((TransportationExpense) expense));
-                	}
-                	               	
+                    if (((TransportationExpense) expense).isRental())
+                    {
+                        rental.add(((TransportationExpense) expense));
+                    }
+
+                    else
+                    {
+                        personal.add(((TransportationExpense) expense));
+                    }
+
                 }
             }
         }
         personal.trimToSize();
         rental.trimToSize();
-        
-        
-        if (rental.size() != 0 && personal.size() != 0 ){
-            for (TransportationExpense pcar : personal ){
-            	
-            	Date temp = pcar.getDate();
-            	
-            	for ( TransportationExpense rcar : rental ){
-            		if (rcar.getDate().equals(temp)){
-                        throw new TrapException(
-                                "Invalid Car Usage: Personal and Rental Vehicle Expense on Same Day");
-            		}
-            		
-            	}
-            	
+
+        if (rental.size() != 0 && personal.size() != 0)
+        {
+            for (TransportationExpense pcar : personal)
+            {
+                for (TransportationExpense rcar : rental)
+                {
+                    if (TrapDateUtil.sameDay(pcar.getDate(), rcar.getDate()))
+                    {
+                        throw new TrapException(TrapErrors.PERSONAL_RENTAL_CAR);
+                    }
+
+                }
+
             }
-        	
+
         }
 
-        
-
-
-    }    
-
-
+    }
 
 }

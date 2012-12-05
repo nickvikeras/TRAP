@@ -68,7 +68,7 @@ public class UserGrantDB
         ArrayList<String> user = new ArrayList<String>();
         user.add("010101010101");
         user.add("heimd001");
-        user.add("linc001, gayxx067");
+        user.add("linc001, gayxx067, china001");
         
         this.userInfo.put(user.get(USER_GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), user);
         

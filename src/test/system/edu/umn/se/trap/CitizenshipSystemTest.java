@@ -60,7 +60,7 @@ public class CitizenshipSystemTest extends AbstractSystemTest
     }
 
     @Test
-    public void testValidCitizen()
+    public void testValidCitizenNoExport()
     {
         Map<String, String> input = super.getBasicFormInput();
         Map<String, String> output = super.getBasicFormOutput();
@@ -70,8 +70,8 @@ public class CitizenshipSystemTest extends AbstractSystemTest
 
         try
         {
-            SystemTestUtil.submitFormData(input,
-                    "description", testProcessor, output);
+            SystemTestUtil.submitFormData(input, "description", testProcessor,
+                    output);
         }
         catch (Exception e)
         {
@@ -80,14 +80,14 @@ public class CitizenshipSystemTest extends AbstractSystemTest
     }
 
     @Test
-    public void testNonCitizen() throws Exception
+    public void testNonCitizenNoExport() throws Exception
     {
         Map<String, String> input = super.getBasicFormInput();
         Map<String, String> output = super.getBasicFormOutput();
-        
+
         input.put(TrapInputKeys.USER_NAME, "china001");
         input.put("GRANT1_ACCOUNT", "11223344");
-        input.put(TrapInputKeys.VISA_STATUS, "VISA_STATUS");
+        output.put(TrapInputKeys.VISA_STATUS, "valid");
         output.put("GRANT1_ACCOUNT", "11223344");
         output.put("NAME", "China, Bob");
         output.put("USER_NAME", "china001");
@@ -96,15 +96,56 @@ public class CitizenshipSystemTest extends AbstractSystemTest
 
         try
         {
-            SystemTestUtil.submitFormData(input,
-                    "description", testProcessor, output);
+            SystemTestUtil.submitFormData(input, "description", testProcessor,
+                    output);
         }
         catch (TrapException e)
         {
-           assertEquals(TrapErrors.NONCITIZEN_EXPORT, e.getMessage());
-           return;
+            assertEquals(TrapErrors.NONCITIZEN_EXPORT, e.getMessage());
+            return;
         }
         fail("An exception should have been caught because a non citizen used a non-export grant.");
+    }
+
+    @Test
+    public void testCitizenRegularGrant()
+    {
+        Map<String, String> input = super.getBasicFormInput();
+        Map<String, String> output = super.getBasicFormOutput();
+
+        try
+        {
+            SystemTestUtil.submitFormData(input, "description", testProcessor,
+                    output);
+        }
+        catch (Exception e)
+        {
+            fail("TRAP threw an exception when a US citizen tried using a non-export grant");
+        }
+    }
+
+    @Test
+    public void testNonCitizenRegularGrant() throws Exception
+    {
+        Map<String, String> input = super.getBasicFormInput();
+        Map<String, String> output = super.getBasicFormOutput();
+
+        input.put(TrapInputKeys.USER_NAME, "china001");
+        output.put(TrapInputKeys.VISA_STATUS, "valid");
+        output.put("NAME", "China, Bob");
+        output.put("USER_NAME", "china001");
+        output.put("EMAIL", "china001@umn.edu");
+        output.put("CITIZENSHIP", "China");
+
+        try
+        {
+            SystemTestUtil.submitFormData(input, "description", testProcessor,
+                    output);
+        }
+        catch (TrapException e)
+        {
+            fail("TRAP threw an exception when a US citizen tried using a non-export grant");
+        }
     }
 
 }
