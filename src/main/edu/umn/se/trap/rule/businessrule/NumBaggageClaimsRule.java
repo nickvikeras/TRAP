@@ -33,6 +33,7 @@ import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Andrew
@@ -91,7 +92,7 @@ public class NumBaggageClaimsRule extends AbstractRule
         if (numFlights < numClaims)
         {
             throw new TrapException(
-                    "Invalid Number of Baggage Claims: More claims than flights.");
+                   TrapErrors.INVALID_NUM_BAGGAGE);
         }
 
     }

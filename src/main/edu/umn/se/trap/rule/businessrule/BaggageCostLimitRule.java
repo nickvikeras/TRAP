@@ -33,6 +33,7 @@ import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Andrew
@@ -76,7 +77,7 @@ public class BaggageCostLimitRule extends AbstractRule
                     if (expense.getAmount() > maxClaim)
                     {
                         throw new TrapException(
-                                "Invalid Baggage Claim: Cost exceeds maximum amount");
+                                TrapErrors.INVALID_BAGGAGE_COST);
                     }
 
                 }

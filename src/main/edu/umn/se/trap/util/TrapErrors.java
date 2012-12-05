@@ -27,5 +27,7 @@ public class TrapErrors
 
     public static final String NONCITIZEN_EXPORT = "Only U.S. citizens can use non-export grants";
     public static final String PERSONAL_RENTAL_CAR = "Invalid Car Usage: Personal and Rental Vehicle Expense on Same Day";
+    public static final String INVALID_BAGGAGE_COST = "Invalid Baggage Claim: Cost exceeds maximum amount";
+    public static final String INVALID_NUM_BAGGAGE = "Invalid Number of Baggage Claims: More claims than flights.";
 
 }
