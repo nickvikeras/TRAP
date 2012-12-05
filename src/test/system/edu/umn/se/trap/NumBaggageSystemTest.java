@@ -32,7 +32,7 @@ import edu.umn.se.trap.util.TrapErrors;
  * @author nick
  *
  */
-public class BaggageFlightsSystemTest extends AbstractSystemTest
+public class NumBaggageSystemTest extends AbstractSystemTest
 {
 
     /* (non-Javadoc)
