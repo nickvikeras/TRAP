@@ -18,28 +18,24 @@
  */
 package edu.umn.se.trap.rule.businessrule;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
 import edu.umn.se.trap.TrapException;
-import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.FormUser;
 import edu.umn.se.trap.form.GrantSet;
-import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
  * 
  *         From the TRAP Design Document:
  * 
- *         Requirement: 1 
- *         Description: The user must be a US citizen in order to
+ *         Requirement: 1 Description: The user must be a US citizen in order to
  *         use a non-export grant. This rule will check this.
  * 
  */
@@ -103,28 +99,20 @@ public class ExportGrantCitizenRule extends AbstractRule
             FormUser formUser) throws TrapException
     {
 
-        if (!(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
-                "United States"))
-                || !(StringUtils.equalsIgnoreCase(formUser.getCitizenship(),
-                        "USA")))
+        if (formUser.getCitizenship().equalsIgnoreCase("united states")
+                || formUser.getCitizenship().equalsIgnoreCase("usa"))
         {
-
-            /*
-             * Iterate over the set and throw an error if any of the grants are
-             * non-export.
-             */
-
-            Iterator<FormGrant> grantIter = grants.iterator();
-
-            while (grantIter.hasNext())
+            return;
+        }
+        else
+        {
+            for (FormGrant grant : grants)
             {
-                FormGrant grant = grantIter.next();
-
-                if (StringUtils.equalsIgnoreCase(grant.getOrganizationType(),
+                if (StringUtils.equalsIgnoreCase(grant.getAccountType(),
                         "noExport"))
                 {
                     throw new TrapException(
-                            "Only U.S. citizens can use non-export grants");
+                            TrapErrors.NONCITIZEN_EXPORT);
                 }
             }
 

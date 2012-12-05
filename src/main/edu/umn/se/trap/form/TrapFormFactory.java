@@ -432,6 +432,7 @@ public class TrapFormFactory
         String emergencyContactPhone = formData
                 .get(TrapInputKeys.EMERGENCY_CONTACT_PHONE);
         User user = dbAccessor.getUser(userName);
+        user.setVisaStatus(formData.get(TrapInputKeys.VISA_STATUS));
         return new FormUser(userName, emergencyContactName,
                 emergencyContactPhone, user.getFullName(), user.getEmail(),
                 user.getEmployeeId(), user.getCitizenship(),

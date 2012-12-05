@@ -76,5 +76,6 @@ public class TrapInputKeys
     public static final String NUM_GRANTS = "NUM_GRANTS";
     public static final String GRANTd_ACCOUNT = "GRANT%d_ACCOUNT";
     public static final String GRANTd_PERCENT = "GRANT%d_PERCENT";
+    public static final String VISA_STATUS = "VISA_STATUS";
 
 }
