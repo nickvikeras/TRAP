@@ -23,6 +23,7 @@ import java.util.Date;
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * This class ensures the arrival date is after the departure date
@@ -69,7 +70,7 @@ public class ArrivalAfterDepartureRule extends AbstractRule
         if (arrivalDateTime.getTime() <= departureDateTime.getTime())
         {
             throw new TrapException(
-                    "Departure time must come before arrival time");
+                    TrapErrors.INVALID_ARRIVAL_DEPARTURE);
         }
 
     }

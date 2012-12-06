@@ -27,6 +27,7 @@ import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.form.Trip;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
@@ -116,7 +117,7 @@ public class HotelOvernightRule extends AbstractRule
                 if (expense.getType().equals(ExpenseType.LODGING))
                 {
                     throw new TrapException(
-                            "Lodging expenses cannot be claimed for a trip less than 1 day.");
+                            TrapErrors.LODGING_EXPENSE_1_DAY);
                 }
             }
         }

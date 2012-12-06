@@ -30,6 +30,8 @@ import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
+import edu.umn.se.trap.util.TrapUtil;
 
 /**
  * @author Mark
@@ -43,11 +45,6 @@ import edu.umn.se.trap.rule.AbstractRule;
  */
 public class USCarrierRule extends AbstractRule
 {
-
-    private final String[] USCARRIERS = { "Southwest", "Alaska Airlines",
-            "American", "Delta", "Frontier", "Great Lakes", "Spirit",
-            "Sun County", "United", "US Airways" };
-
     /*
      * (non-Javadoc)
      * 
@@ -94,7 +91,7 @@ public class USCarrierRule extends AbstractRule
                     else
                     {
                         throw new TrapException(
-                                "Invalid Air Carrier: Not a US Air Carrier.");
+                                TrapErrors.US_CARRIER_ONLY);
                     }
                 }
             }
@@ -110,9 +107,9 @@ public class USCarrierRule extends AbstractRule
 
         // Return false if the carrier is not one of the US carriers.
 
-        for (int i = 0; i < USCARRIERS.length; i++)
+        for (int i = 0; i < TrapUtil.USCARRIERS.length; i++)
         {
-            if (StringUtils.equalsIgnoreCase(carrier, USCARRIERS[i]))
+            if (StringUtils.equalsIgnoreCase(carrier,TrapUtil.USCARRIERS[i]))
             {
                 return true;
             }

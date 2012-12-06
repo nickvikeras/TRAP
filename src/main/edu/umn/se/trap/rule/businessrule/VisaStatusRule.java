@@ -32,6 +32,7 @@ import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Andrew
@@ -112,7 +113,7 @@ public class VisaStatusRule extends AbstractRule
                     "valid")))
             {
 
-                throw new TrapException("Invalid citizenship and visa status");
+                throw new TrapException(TrapErrors.INVALID_VISA);
 
             }
 

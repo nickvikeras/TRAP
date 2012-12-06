@@ -30,7 +30,9 @@ import java.util.Date;
  */
 public class TrapUtil
 {
-
+    public static final String[] USCARRIERS = { "Southwest", "Alaska Airlines",
+            "American", "Delta", "Frontier", "Great Lakes", "Spirit",
+            "Sun County", "United", "US Airways" };
     /** return "yes" if true, "no" if false.
      * 
      * @param b

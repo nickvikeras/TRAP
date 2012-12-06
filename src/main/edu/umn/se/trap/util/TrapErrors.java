@@ -32,5 +32,9 @@ public class TrapErrors
     public static final String NON_SPONSORED = "A trip must be non-sponsored to charge to a non-sponsored grant.";
     public static final String NO_GRANTS_FOR_TRAVEL_TYPE = "No grants exist in the order for one or more travel types.";
     public static final String USER_NOT_AUTORIZED = "Invalid Grant request: User is not authorized to use this grant";
+    public static final String INVALID_VISA = "Invalid citizenship and visa status";
+    public static final String US_CARRIER_ONLY = "Invalid Air Carrier: Not a US Air Carrier.";
+    public static final String INVALID_ARRIVAL_DEPARTURE = "Departure time must come before arrival time";
+    public static final String LODGING_EXPENSE_1_DAY = "Lodging expenses cannot be claimed for a trip less than 1 day.";
 
 }

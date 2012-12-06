@@ -300,8 +300,14 @@ public class TrapFormFactory
 
         }
 
-        final int numXport = Integer.parseInt(formData
-                .get(TrapInputKeys.NUM_TRANSPORTATION));
+        int numXport = 0;
+        String numTransportString = formData
+                .get(TrapInputKeys.NUM_TRANSPORTATION);
+        if (numTransportString != null)
+        {
+            numXport = Integer.parseInt(numTransportString);
+        }
+
         for (int i = 0; i < numXport; i++)
         {
             Date transportationDate = TrapDateUtil.parseTrapDate(formData
