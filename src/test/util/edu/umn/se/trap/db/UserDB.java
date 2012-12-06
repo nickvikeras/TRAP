@@ -95,6 +95,17 @@ public class UserDB
         user.add("No");
         
         this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
+        
+        user = new ArrayList<String>();
+        user.add("nocit001");
+        user.add("Nocit, Nick");
+        user.add("nocit001@umn.edu");
+        user.add("123456");
+        user.add(null);
+        user.add("valid");
+        user.add("No");
+        
+        this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
     }
     
     

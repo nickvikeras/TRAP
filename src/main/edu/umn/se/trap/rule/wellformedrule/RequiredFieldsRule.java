@@ -34,6 +34,7 @@ import edu.umn.se.trap.form.Location;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.form.Trip;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
@@ -114,7 +115,7 @@ public class RequiredFieldsRule extends AbstractRule
         else
         {
             throw new TrapException(
-                    "Invalid TrapForm object: grantSet was null.");
+                   "Invalid TrapForm object: grantSet was null.");
         }
     }
 
@@ -132,7 +133,7 @@ public class RequiredFieldsRule extends AbstractRule
         if (grants == null)
         {
             throw new TrapException(
-                    "Required field missing: grant list was empty.");
+                    TrapErrors.NO_GRANTS);
         }
 
         Iterator<FormGrant> grantIter = grants.iterator();
@@ -144,7 +145,7 @@ public class RequiredFieldsRule extends AbstractRule
             if (grant.getAccountName() == null)
             {
                 throw new TrapException(
-                        "Required field missing: grant account number was empty.");
+                        TrapErrors.NO_ACCOUNT_NUMBER);
             }
         }
 
@@ -167,13 +168,13 @@ public class RequiredFieldsRule extends AbstractRule
                 if (expense.getDate() == null)
                 {
                     throw new TrapException(
-                            "Required field missing: expense date/time.");
+                            TrapErrors.NO_EXPENSE_DATE);
                 }
 
                 if (expense.getType() == null)
                 {
                     throw new TrapException(
-                            "Required field missing: expense type.");
+                            TrapErrors.NO_EXPENSE_TYPE);
                 }
                 else
                 {
@@ -183,7 +184,7 @@ public class RequiredFieldsRule extends AbstractRule
                         if (expense.getJustification() == null)
                         {
                             throw new TrapException(
-                                    "Required field missing: expense justification.");
+                                    TrapErrors.NO_JUSTIFICATION);
                         }
                     }
                 }
@@ -196,37 +197,7 @@ public class RequiredFieldsRule extends AbstractRule
                         && location == null)
                 {
                     throw new TrapException(
-                            "Required field missing: expense location.");
-                }
-                else if (!expense.getType().equals(ExpenseType.OTHER)
-                        && !expense.getType()
-                                .equals(ExpenseType.TRANSPORTATION))
-                {
-                    if (location.getCity() == null)
-                    {
-                        throw new TrapException(
-                                "Required field missing: city of expense.");
-                    }
-
-                    if (location.getCountry() == null)
-                    {
-                        throw new TrapException(
-                                "Required field missing: country of expense.");
-                    }
-                    else
-                    {
-                        if (StringUtils.equalsIgnoreCase(location.getCountry(),
-                                "United States")
-                                || StringUtils.equalsIgnoreCase(
-                                        location.getCountry(), "USA"))
-                        {
-                            if (location.getState() == null)
-                            {
-                                throw new TrapException(
-                                        "Required field missing: state of expense (United States).");
-                            }
-                        }
-                    }
+                            TrapErrors.NO_EXPENSE_LOCATION);
                 }
 
             }
@@ -234,7 +205,7 @@ public class RequiredFieldsRule extends AbstractRule
         else
         {
             throw new TrapException(
-                    "Required field missing: the expense list is empty.");
+                    TrapErrors.NO_EXPENSES);
         }
 
     }
@@ -258,7 +229,7 @@ public class RequiredFieldsRule extends AbstractRule
         if ((trip.getArrivalDateTime() == null))
         {
             throw new TrapException(
-                    "Required field missing: arrival date/time.");
+                    TrapErrors.NO_DEPARTURE_TIME );
         }
 
         if (!(trip.isTravelTypeCseSponsored()
@@ -266,12 +237,12 @@ public class RequiredFieldsRule extends AbstractRule
                     .isTravelTypeNonsponsored()))
         {
             throw new TrapException(
-                    "Required field missing: travel sponsorship type.");
+                    TrapErrors.NO_TRAVEL_TYPE);
         }
 
         if (trip.getJustificationConferenceTitle() == null)
         {
-            throw new TrapException("Required field missing: conference title.");
+            throw new TrapException(TrapErrors.NO_CONF_TITLE);
         }
 
         if (trip.isTravelTypeCseSponsored() || trip.isTravelTypeDtcSponsored())
@@ -279,7 +250,7 @@ public class RequiredFieldsRule extends AbstractRule
             if (trip.getJustificationSponsored() == null)
             {
                 throw new TrapException(
-                        "Required field missing: justification for using sponsored funds.");
+                        TrapErrors.NO_JUSTIFICATION);
             }
         }
 
@@ -288,7 +259,7 @@ public class RequiredFieldsRule extends AbstractRule
             if (trip.getJustificationNonsponsored() == null)
             {
                 throw new TrapException(
-                        "Required field missing: justification for using non-sponsored funds.");
+                        TrapErrors.NO_JUSTIFICATION);
             }
         }
 
@@ -297,19 +268,19 @@ public class RequiredFieldsRule extends AbstractRule
             if (trip.getJustificationPresentationTitle() == null)
             {
                 throw new TrapException(
-                        "Required field missing: presentation title.");
+                        TrapErrors.PRES_TITLE);
             }
 
             if (trip.getJustificationPresentationAbstract() == null)
             {
                 throw new TrapException(
-                        "Required field missing: presentation abstract.");
+                        TrapErrors.NO_ABSTRACT);
             }
 
             if (trip.getJustificationPresentationAcknowledgement() == null)
             {
                 throw new TrapException(
-                        "Required field missing: presentation acknowledgement.");
+                        TrapErrors.MISSING_ACKNOWLEDGEMENT);
             }
         }
 
@@ -328,13 +299,13 @@ public class RequiredFieldsRule extends AbstractRule
 
         if ((user.getUserName() == null))
         {
-            throw new TrapException("Required field missing: x500 user name");
+            throw new TrapException(TrapErrors.NO_X500);
         }
 
         if (user.getCitizenship() == null)
         {
             throw new TrapException(
-                    "Required field missing: citizenship status");
+                    TrapErrors.NO_CITIZENSHIP);
         }
 
         if (!StringUtils.equalsIgnoreCase(user.getCitizenship(),
@@ -342,7 +313,7 @@ public class RequiredFieldsRule extends AbstractRule
                 && !StringUtils.equalsIgnoreCase(user.getCitizenship(), "USA")
                 && user.getVisaStatus() == null)
         {
-            throw new TrapException("Required field missing: visa status");
+            throw new TrapException(TrapErrors.NO_VISA_STATUS);
         }
     }
 
