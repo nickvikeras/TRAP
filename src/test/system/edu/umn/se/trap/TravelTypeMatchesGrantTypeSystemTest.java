@@ -34,7 +34,7 @@ import edu.umn.se.trap.util.TrapInputKeys;
  * @author nick
  * 
  */
-public class TravelTypeNonSponsoredSystemTest extends AbstractSystemTest
+public class TravelTypeMatchesGrantTypeSystemTest extends AbstractSystemTest
 {
 
     /*
@@ -134,13 +134,36 @@ public class TravelTypeNonSponsoredSystemTest extends AbstractSystemTest
         fail("An expception should have been thrown");
     }
 
-    // sponsored travel, sponsored grant
+    // cse sponsored travel, sponsored grant
     @Test
-    public void testSponsoredTravelNotGrant() throws Exception
+    public void testCseSponsoredTravelNotGrant() throws Exception
     {
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
 
+        try
+        {
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+        }
+        catch (TrapException e)
+        {
+            fail("No expception should have been thrown");
+        }
+    }
+    
+    // dtc sponsored travel, sponsored grant
+    @Test
+    public void testDtcSponsoredTravelNotGrant() throws Exception
+    {
+        Map<String, String> input = getBasicFormInput();
+        Map<String, String> output = getBasicFormOutput();
+        
+        input.put(TrapInputKeys.TRAVEL_TYPE_DTC_SPONSORED, "yes");
+        output.put(TrapInputKeys.TRAVEL_TYPE_DTC_SPONSORED, "yes");
+        
+        input.remove(TrapInputKeys.TRAVEL_TYPE_CSE_SPONSORED);
+        output.remove(TrapInputKeys.TRAVEL_TYPE_CSE_SPONSORED);
+        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);

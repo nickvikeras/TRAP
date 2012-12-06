@@ -31,5 +31,6 @@ public class TrapErrors
     public static final String INVALID_NUM_BAGGAGE = "Invalid Number of Baggage Claims: More claims than flights.";
     public static final String NON_SPONSORED = "A trip must be non-sponsored to charge to a non-sponsored grant.";
     public static final String NO_GRANTS_FOR_TRAVEL_TYPE = "No grants exist in the order for one or more travel types.";
+    public static final String USER_NOT_AUTORIZED = "Invalid Grant request: User is not authorized to use this grant";
 
 }

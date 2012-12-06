@@ -84,6 +84,17 @@ public class UserDB
         user.add("Yes");
         
         this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
+        
+        user = new ArrayList<String>();
+        user.add("canada001");
+        user.add("Canada, Northern");
+        user.add("canada001@umn.edu");
+        user.add("222222");
+        user.add("Canada");
+        user.add("invalid");
+        user.add("No");
+        
+        this.userInfo.put(user.get(USER_FIELDS.USER_NAME.ordinal()), user);
     }
     
     

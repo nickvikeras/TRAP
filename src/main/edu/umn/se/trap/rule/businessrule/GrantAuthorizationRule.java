@@ -37,6 +37,7 @@ import edu.umn.se.trap.form.TransportationExpense;
 import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 /**
  * @author Andrew
  * 
@@ -103,7 +104,7 @@ public class GrantAuthorizationRule extends AbstractRule
             
             if ( authorizedFlag != true ){
                 throw new TrapException(
-                        "Invalid Grant request: User is not authorized to use this grant");
+                       TrapErrors.USER_NOT_AUTORIZED);
             }
             
 
