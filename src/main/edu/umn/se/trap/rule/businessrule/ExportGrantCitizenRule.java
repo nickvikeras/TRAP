@@ -108,7 +108,7 @@ public class ExportGrantCitizenRule extends AbstractRule
         {
             for (FormGrant grant : grants)
             {
-                if (StringUtils.equalsIgnoreCase(grant.getAccountType(),
+                if (StringUtils.equalsIgnoreCase(grant.getOrganizationType(),
                         "noExport"))
                 {
                     throw new TrapException(

@@ -88,9 +88,9 @@ public class GrantDB
         /* Example 2: Non-sponsored funds */
         ArrayList<Object> grant3 = new ArrayList<Object>();
         grant3.add("11223344");                /* Account number */
-        grant3.add("noExport");        /* Account type */
+        grant3.add("sponsored");        /* Account type */
         grant3.add(null);               /* Funding organization */
-        grant3.add("government");                /* Organization type */
+        grant3.add("noExport");                /* Organization type */
         grant3.add((double)50000000);      /* Account balance */
         
         this.grantInfo.put((String) grant3.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 

@@ -89,7 +89,7 @@ public class ExportGrantCitizenRuleTest
     {
         Set<FormGrant> grants = new HashSet<FormGrant>();
 
-        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "Nih",
+        FormGrant grant1 = new FormGrant("test account 1", "government", "Nih",
                 500.00, "noExport", null, null);
 
         grants.add(grant1);

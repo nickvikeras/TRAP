@@ -25,11 +25,11 @@ import org.apache.commons.lang3.StringUtils;
 
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.FormGrant;
-import edu.umn.se.trap.form.FormUser;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.form.Trip;
 import edu.umn.se.trap.rule.AbstractRule;
+import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
@@ -138,11 +138,35 @@ public class TravelTypeMatchesGrantRule extends AbstractRule
                 if (!nonSponsored)
                 {
                     throw new TrapException(
-                            "A trip must be non-sponsored to charge to a non-sponsored grant.");
+                            TrapErrors.NON_SPONSORED);
                 }
             }
         }
+        
+        checkForGrantType("non-sponsored", trip.isTravelTypeNonsponsored(), grants);
+        checkForGrantType("sponsored", trip.isTravelTypeCseSponsored() || trip.isTravelTypeDtcSponsored(), grants);
+    }
 
+    /**
+     * @param string
+     * @param b 
+     * @param grants 
+     * @throws TrapException 
+     */
+    private void checkForGrantType(String type, boolean b, Set<FormGrant> grants) throws TrapException
+    {
+        if(b){
+            boolean noGrantTypeInForm = true;
+            for(FormGrant grant : grants){
+                if(StringUtils.equalsIgnoreCase(grant.getAccountType(), type)){
+                    noGrantTypeInForm = false;
+                }
+            }
+            if(noGrantTypeInForm){
+                throw new TrapException(TrapErrors.NO_GRANTS_FOR_TRAVEL_TYPE);
+            }
+        }
+        
     }
 
 }

@@ -69,7 +69,6 @@ public class TrapFormFactory
             List<Expense> expenses = getNewExpenseList(formData, dbAccessor);
             Map<String, Integer> accountToPercentMap = getNewAccountToPercentMap(formData);
             Date submissionDate = new Date();
-            System.out.println(submissionDate.getTime());
             return new TrapForm(id, formData, null, travelFormMetaData,
                     grantSet, user, trip, expenses, accountToPercentMap,
                     submissionDate);

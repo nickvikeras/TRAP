@@ -29,5 +29,7 @@ public class TrapErrors
     public static final String PERSONAL_RENTAL_CAR = "Invalid Car Usage: Personal and Rental Vehicle Expense on Same Day";
     public static final String INVALID_BAGGAGE_COST = "Invalid Baggage Claim: Cost exceeds maximum amount";
     public static final String INVALID_NUM_BAGGAGE = "Invalid Number of Baggage Claims: More claims than flights.";
+    public static final String NON_SPONSORED = "A trip must be non-sponsored to charge to a non-sponsored grant.";
+    public static final String NO_GRANTS_FOR_TRAVEL_TYPE = "No grants exist in the order for one or more travel types.";
 
 }
