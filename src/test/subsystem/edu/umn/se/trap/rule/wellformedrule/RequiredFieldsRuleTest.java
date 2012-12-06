@@ -139,86 +139,8 @@ public class RequiredFieldsRuleTest
         }
     }
 
-    @Test
-    public void testMissingExpenseLocationMissingState()
-    {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
-                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
-                new CurrencyDB());
-        try
-        {
-            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
-                    .getSampleInputMissingExpenseLocation("Kansas City", null,
-                            "USA"), "sample trap input", 1, dbAccessor);
 
-            AbstractRule rule = new RequiredFieldsRule();
-
-            rule.validateRule(form);
-
-            fail("Failure: TrapException was not thrown.");
-        }
-        catch (TrapException TE)
-        {
-        }
-        catch (Exception E)
-        {
-            fail("Unexpected failure: " + E.getMessage());
-        }
-    }
-
-    @Test
-    public void testMissingExpenseLocationMissingCountry()
-    {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
-                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
-                new CurrencyDB());
-        try
-        {
-            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
-                    .getSampleInputMissingExpenseLocation("Kansas City", "MO",
-                            null), "sample trap input", 1, dbAccessor);
-
-            AbstractRule rule = new RequiredFieldsRule();
-
-            rule.validateRule(form);
-
-            fail("Failure: TrapException was not thrown.");
-        }
-        catch (TrapException TE)
-        {
-        }
-        catch (Exception E)
-        {
-            fail("Unexpected failure: " + E.getMessage());
-        }
-    }
-
-    @Test
-    public void testMissingExpenseLocationCityOnly()
-    {
-        DatabaseAccessor dbAccessor = new DatabaseAccessor(new UserDB(),
-                new PerDiemDB(), new GrantDB(), new UserGrantDB(),
-                new CurrencyDB());
-        try
-        {
-            TrapForm form = TrapFormFactory.getNewForm(TrapTestUtil
-                    .getSampleInputMissingExpenseLocation("Kansas City", null,
-                            null), "sample trap input", 1, dbAccessor);
-
-            AbstractRule rule = new RequiredFieldsRule();
-
-            rule.validateRule(form);
-
-            fail("Failure: TrapException was not thrown.");
-        }
-        catch (TrapException TE)
-        {
-        }
-        catch (Exception E)
-        {
-            fail("Unexpected failure: " + E.getMessage());
-        }
-    }
+  
 
     @Test
     public void testMissingNoSponsorship()
