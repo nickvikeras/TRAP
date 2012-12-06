@@ -22,12 +22,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+
+import com.sun.tools.doclets.internal.toolkit.util.DocFinder.Output;
 
 /**
  * @author nick
@@ -95,7 +101,7 @@ public class SystemTestUtil
         // If we get here, the submission should have succeeded. Get the
         // completed form.
         Map<String, String> actualOut = testProcessor.getCompletedForm(formId);
-
+        
         checkOutput(actualOut, then, expectedOut);
     }
 
