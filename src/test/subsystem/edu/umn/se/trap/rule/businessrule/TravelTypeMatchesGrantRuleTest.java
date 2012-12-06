@@ -63,7 +63,7 @@ public class TravelTypeMatchesGrantRuleTest
         {
             Set<FormGrant> grants = TrapTestUtil
                     .getSampleGrantsSponsorshipType("sponsored");
-            Trip trip = new Trip(null, null, true, false, true, null, false,
+            Trip trip = new Trip(null, null, true, false, false, null, false,
                     null, null, null, null, null, 1);
 
             TravelTypeMatchesGrantRule rule = new TravelTypeMatchesGrantRule();
