@@ -72,7 +72,7 @@ public class Printer
                 + input.get("JUSTIFICATION_SPONSORED"));
         System.out.println("NUM_DAYS\t" + input.get("NUM_DAYS"));
 
-        for (int i = 0; i < Integer.parseInt(input.get("NUM_DAYS")); i++)
+        for (int i = 1; i <= Integer.parseInt(input.get("NUM_DAYS")); i++)
         {
             if (input.get("DAY" + i + "_BREAKFAST_CITY") != null)
             {
@@ -199,7 +199,7 @@ public class Printer
         System.out.println("NUM_TRANSPORTATION\t"
                 + input.get("NUM_TRANSPORTATION"));
 
-        for (int i = 0; i < Integer.parseInt(input.get("NUM_TRANSPORTATION")); i++)
+        for (int i = 1; i <= Integer.parseInt(input.get("NUM_TRANSPORTATION")); i++)
         {
 
             if (input.get("TRANSPORTATION" + i + "_DATE") != null)
@@ -249,7 +249,7 @@ public class Printer
         System.out.println("NUM_OTHER_EXPENSES\t"
                 + input.get("NUM_OTHER_EXPENSES"));
 
-        for (int i = 0; i < Integer.parseInt(input.get("NUM_OTHER_EXPENSES")); i++)
+        for (int i = 1; i <= Integer.parseInt(input.get("NUM_OTHER_EXPENSES")); i++)
         {
 
             if (input.get("OTHER" + i + "_DATE") != null)
@@ -280,7 +280,7 @@ public class Printer
 
         System.out.println("NUM_GRANTS\t" + input.get("NUM_GRANTS"));
 
-        for (int i = 0; i < Integer.parseInt(input.get("NUM_GRANTS")); i++)
+        for (int i = 1; i <= Integer.parseInt(input.get("NUM_GRANTS")); i++)
         {
 
             if (input.get("GRANT" + i + "_ACCOUNT") != null)
@@ -351,7 +351,7 @@ public class Printer
         System.out.println("NUM_DESTINATIONS\t"
                 + output.get("NUM_DESTINATIONS"));
 
-        for (int i = 0; i < Integer.parseInt(output.get("NUM_DESTINATIONS")); i++)
+        for (int i = 1; i <= Integer.parseInt(output.get("NUM_DESTINATIONS")); i++)
         {
             if (output.get("DESTINATION" + i + "_CITY") != null)
             {
@@ -374,7 +374,7 @@ public class Printer
 
         System.out.println("NUM_DAYS\t" + output.get("NUM_DAYS"));
 
-        for (int i = 0; i < Integer.parseInt(output.get("NUM_DAYS")); i++)
+        for (int i = 1; i <= Integer.parseInt(output.get("NUM_DAYS")); i++)
         {
             if (output.get("DAY" + i + "_DATE") != null)
             {
@@ -404,7 +404,7 @@ public class Printer
         System.out.println("NUM_TRANSPORTATION\t"
                 + output.get("NUM_TRANSPORTATION"));
 
-        for (int i = 0; i < Integer.parseInt(output.get("NUM_TRANSPORTATION")); i++)
+        for (int i = 1; i <= Integer.parseInt(output.get("NUM_TRANSPORTATION")); i++)
         {
 
             if (output.get("TRANSPORTATION" + i + "_DATE") != null)
@@ -430,7 +430,7 @@ public class Printer
         System.out.println("NUM_OTHER_EXPENSES\t"
                 + output.get("NUM_OTHER_EXPENSES"));
 
-        for (int i = 0; i < Integer.parseInt(output.get("NUM_OTHER_EXPENSES")); i++)
+        for (int i = 1; i <= Integer.parseInt(output.get("NUM_OTHER_EXPENSES")); i++)
         {
 
             if (output.get("OTHER" + i + "_DATE") != null)
@@ -455,7 +455,7 @@ public class Printer
 
         System.out.println("NUM_GRANTS\t" + output.get("NUM_GRANTS"));
 
-        for (int i = 0; i < Integer.parseInt(output.get("NUM_GRANTS")); i++)
+        for (int i = 1; i <= Integer.parseInt(output.get("NUM_GRANTS")); i++)
         {
 
             if (output.get("GRANT" + i + "_ACCOUNT") != null)
