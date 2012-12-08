@@ -107,7 +107,7 @@ public class GrantDB
         this.grantInfo.put((String) grant4.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
                 grant4);
         
-        /* Dod Grant Account */
+        /* Foreign Grant Account */
         ArrayList<Object> grant5 = new ArrayList<Object>();
         grant5.add("777555111");                /* Account number */
         grant5.add("sponsored");        /* Account type */
@@ -117,6 +117,17 @@ public class GrantDB
         
         this.grantInfo.put((String) grant5.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
                 grant5);
+        
+        /* Nih Grant Account */
+        ArrayList<Object> grant6 = new ArrayList<Object>();
+        grant6.add("835938467");                /* Account number */
+        grant6.add("sponsored");        /* Account type */
+        grant6.add("NIH");               /* Funding organization */
+        grant6.add("noExport");                /* Organization type */
+        grant6.add((double)63005301.42);      /* Account balance */
+        
+        this.grantInfo.put((String) grant6.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                grant6);
 
     }
     
