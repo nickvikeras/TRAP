@@ -69,7 +69,7 @@ public class GrantDB
         grant.add("DARPA"); 			/* Funding organization */
         grant.add("government");		/* Organization type 
         								 * (i.e., government, industry) */
-        grant.add((double)250000);		/* Account balance */
+        grant.add((double)2500000);		/* Account balance */
         
         this.grantInfo.put((String) grant.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
                             grant);
@@ -95,6 +95,28 @@ public class GrantDB
         
         this.grantInfo.put((String) grant3.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
                 grant3);
+        
+        /* Dod Grant Account */
+        ArrayList<Object> grant4 = new ArrayList<Object>();
+        grant4.add("62735842");                /* Account number */
+        grant4.add("sponsored");        /* Account type */
+        grant4.add("DOD");               /* Funding organization */
+        grant4.add("noExport");                /* Organization type */
+        grant4.add((double)63005301.42);      /* Account balance */
+        
+        this.grantInfo.put((String) grant4.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                grant4);
+        
+        /* Dod Grant Account */
+        ArrayList<Object> grant5 = new ArrayList<Object>();
+        grant5.add("777555111");                /* Account number */
+        grant5.add("sponsored");        /* Account type */
+        grant5.add("ForeignGrant");               /* Funding organization */
+        grant5.add("foreign");                /* Organization type */
+        grant5.add((double)63005301.42);      /* Account balance */
+        
+        this.grantInfo.put((String) grant5.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                grant5);
 
     }
     
