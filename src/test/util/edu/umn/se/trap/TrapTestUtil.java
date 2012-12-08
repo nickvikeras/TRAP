@@ -413,12 +413,12 @@ public class TrapTestUtil
      * Sample Expense Utils
      */
 
-    public static Expense getSampleExpenseDodGrantHertzRule(String rentalPlace)
+    public static Expense getSampleExpenseDodGrantHertzRule(String rentalPlace, String fundingOrganization)
     {
 
         Set<FormGrant> grants = new HashSet<FormGrant>();
 
-        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", "DOD",
+        FormGrant grant1 = new FormGrant("test account 1", "Sponsored", fundingOrganization,
                 500.00, "noExport", null, null);
 
         grants.add(grant1);
