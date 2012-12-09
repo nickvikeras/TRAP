@@ -179,7 +179,7 @@ public class PerDiemDB
         rates4.add(7.0); /* Breakfast rate in USD */
         rates4.add(11.0); /* Lunch rate in USD */
         rates4.add(23.0); /* Dinner rate in USD */
-        rates4.add(0.0); /* Incidental ceiling in USD */
+        rates4.add(5.0); /* Incidental ceiling in USD */
         rates4.add(150.0); /* Hotel ceiling in USD */
 
         this.perDiemInfo.put(location4, rates4);

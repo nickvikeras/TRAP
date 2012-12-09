@@ -56,5 +56,7 @@ public class TrapErrors
     public static final String VALID_DOLLAR_AMOUNT = "Invalid Expense: Amount must be greater than 0";
     public static final String NO_GRANTS_FOR_EXPENSE = "No grants can cover one or more expenses.";
     public static final String NOT_ENOUGH_MONEY_IN_ACCOUNT = "not enough money in account";
+    public static final String INCIDENTAL_AMOUNT_TOO_HIGH = "Incidental amount too high";
+    public static final String INCIDENTAL_AMOUNT_GREATER_THAN_ZERO = "Invalid Expense: Amount must be greater than 0";
 
 }
