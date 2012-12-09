@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -464,7 +465,7 @@ public class TrapFormFactory
     {
         int numGrants = Integer
                 .parseInt(formData.get(TrapInputKeys.NUM_GRANTS));
-        Set<FormGrant> grants = new HashSet<FormGrant>();
+        Set<FormGrant> grants = new LinkedHashSet<FormGrant>();
         for (int i = 0; i < numGrants; i++)
         {
             String accountName = formData.get(String.format(
