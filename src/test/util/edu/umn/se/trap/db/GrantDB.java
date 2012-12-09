@@ -128,6 +128,42 @@ public class GrantDB
         
         this.grantInfo.put((String) grant6.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
                 grant6);
+        
+        /* Low Funds Account */
+        ArrayList<Object> grant7 = new ArrayList<Object>();
+        grant7.add("111551335674");      /* Account number */
+        grant7.add("sponsored");         /* Account type */
+        grant7.add("Generic");             /* Funding organization */
+        grant7.add("government");        /* Organization type 
+                                         * (i.e., government, industry) */
+        grant7.add((double)50);     /* Account balance */
+        
+        this.grantInfo.put((String) grant7.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                            grant7);
+        
+        /* Low Funds Foreign Account */
+        ArrayList<Object> grant8 = new ArrayList<Object>();
+        grant8.add("700554324");      /* Account number */
+        grant8.add("sponsored");         /* Account type */
+        grant8.add("Low Foreign");             /* Funding organization */
+        grant8.add("foreign");        /* Organization type 
+                                         * (i.e., government, industry) */
+        grant8.add((double)900);     /* Account balance */
+        
+        this.grantInfo.put((String) grant8.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                grant8);
+        
+        /* Low Funds Account 2 */
+        ArrayList<Object> grant9 = new ArrayList<Object>();
+        grant9.add("444337883");      /* Account number */
+        grant9.add("sponsored");         /* Account type */
+        grant9.add("Generic2");             /* Funding organization */
+        grant9.add("government");        /* Organization type 
+                                         * (i.e., government, industry) */
+        grant9.add((double)900);     /* Account balance */
+        
+        this.grantInfo.put((String) grant9.get(GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), 
+                grant9);
 
     }
     

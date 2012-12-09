@@ -57,7 +57,7 @@ public class DodGrantHertzRuleTest
     public void testSuccess() throws TrapException
     {
         Expense testExpense = TrapTestUtil
-                .getSampleExpenseDodGrantHertzRule("Hertz");
+                .getSampleExpenseDodGrantHertzRule("Hertz", "Dod");
 
         DodGrantHertzRule rule = new DodGrantHertzRule();
 
@@ -73,7 +73,7 @@ public class DodGrantHertzRuleTest
     public void testFail() throws TrapException
     {
         Expense testExpense = TrapTestUtil
-                .getSampleExpenseDodGrantHertzRule("Enterprise Rent-A-Car");
+                .getSampleExpenseDodGrantHertzRule("Enterprise Rent-A-Car", "Dod");
 
         DodGrantHertzRule rule = new DodGrantHertzRule();
 
@@ -82,6 +82,38 @@ public class DodGrantHertzRuleTest
         if (!testExpense.getEligibleGrants().getGrants().isEmpty())
         {
             fail("Grant was not deleted.");
+        }
+    }
+    
+    @Test
+    public void testNoDodHertz() throws TrapException
+    {
+        Expense testExpense = TrapTestUtil
+                .getSampleExpenseDodGrantHertzRule("Hertz", "DARPA");
+
+        DodGrantHertzRule rule = new DodGrantHertzRule();
+
+        rule.removeGrants(testExpense, null);
+
+        if (testExpense.getEligibleGrants().getGrants().isEmpty())
+        {
+            fail("Grant was improperly deleted.");
+        }
+    }
+    
+    @Test
+    public void testNoDodNoHertz() throws TrapException
+    {
+        Expense testExpense = TrapTestUtil
+                .getSampleExpenseDodGrantHertzRule("National", "DARPA");
+
+        DodGrantHertzRule rule = new DodGrantHertzRule();
+
+        rule.removeGrants(testExpense, null);
+
+        if (testExpense.getEligibleGrants().getGrants().isEmpty())
+        {
+            fail("Grant was improperly deleted.");
         }
     }
 

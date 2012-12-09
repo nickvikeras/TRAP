@@ -86,9 +86,12 @@ public class NihOnlyPublicTransitOrAirfareRule extends AbstractGrantRule
                         "PUBLIC_TRANSPORTATION")
                         || StringUtils.equalsIgnoreCase(
                                 ((TransportationExpense) expense)
-                                        .getTranportationType(), "AIR") || StringUtils
+                                        .getTranportationType(), "AIR")
+                        || StringUtils.equalsIgnoreCase(
+                                ((TransportationExpense) expense)
+                                        .getTranportationType(), "LUGGAGE") || StringUtils
                             .equalsIgnoreCase(((TransportationExpense) expense)
-                                    .getTranportationType(), "LUGGAGE")))
+                                    .getTranportationType(), "BAGGAGE")))
         {
 
             GrantSet grantSet = expense.getEligibleGrants();

@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.sun.tools.doclets.internal.toolkit.util.DocFinder.Output;
+//import com.sun.tools.doclets.internal.toolkit.util.DocFinder.Output;
 
 /**
  * @author nick
@@ -101,7 +101,10 @@ public class SystemTestUtil
         // If we get here, the submission should have succeeded. Get the
         // completed form.
         Map<String, String> actualOut = testProcessor.getCompletedForm(formId);
-        
+
+        System.out.println("actual out:");
+        Printer.printOutput(actualOut);
+        //System.out.println(actualOut.toString());
         checkOutput(actualOut, then, expectedOut);
     }
 

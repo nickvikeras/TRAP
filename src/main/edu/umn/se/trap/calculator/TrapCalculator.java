@@ -88,7 +88,7 @@ public class TrapCalculator
         for (FormGrant grant : form.getGrantSet().getGrants())
         {
             double percent = form.getAccountToPercentMap().get(
-                    grant.getAccountName()) / 100;
+                    grant.getAccountName()) / 100.0;
             double grantAmount = percent * grandTotal;
             accountNumToChargeAmount.put(grant.getAccountName(), grantAmount);
         }

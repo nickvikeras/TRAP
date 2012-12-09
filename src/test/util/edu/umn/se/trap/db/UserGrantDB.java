@@ -106,6 +106,27 @@ public class UserGrantDB
         user.add("linc001");
         
         this.userInfo.put(user.get(USER_GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), user);
+        
+        user = new ArrayList<String>();
+        user.add("111551335674");
+        user.add("heimd001");
+        user.add("linc001");
+        
+        this.userInfo.put(user.get(USER_GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), user);
+        
+        user = new ArrayList<String>();
+        user.add("700554324");
+        user.add("heimd001");
+        user.add("linc001");
+        
+        this.userInfo.put(user.get(USER_GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), user);
+        
+        user = new ArrayList<String>();
+        user.add("444337883");
+        user.add("heimd001");
+        user.add("linc001");
+        
+        this.userInfo.put(user.get(USER_GRANT_FIELDS.ACCOUNT_NUMBER.ordinal()), user);
     }
     
     

@@ -19,6 +19,7 @@
 
 package edu.umn.se.trap.rule.grantrule;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -122,21 +123,21 @@ public class ForeignGrantsForeignTravelOnlyRule extends AbstractGrantRule
                             "Invalid TrapForm object: grants was null.");
                 }
 
-                Iterator<FormGrant> grantIter = grants.iterator();
+                Set<FormGrant> newGrants = new HashSet<FormGrant>();
 
-                while (grantIter.hasNext())
+                for (FormGrant grant : grants)
                 {
-                    FormGrant grant = grantIter.next();
 
-                    if (StringUtils.equalsIgnoreCase(
+                    if (!StringUtils.equalsIgnoreCase(
                             grant.getOrganizationType(), "foreign"))
                     {
-                        // Remove the grant if it is a foreign grant trying to
-                        // cover
-                        // a domestic expense
-                        grantSet.removeGrant(grant.getAccountName());
+                        // Add domestic grants to the newGrants object.
+                        newGrants.add(grant);
                     }
                 }
+                
+                // Set the newGrants for the grantSet.
+                grantSet.setGrants(newGrants);
 
             }
         }

@@ -15,12 +15,12 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap.util;
 
 /**
  * @author nick
- *
+ * 
  */
 public class TrapErrors
 {
@@ -40,24 +40,21 @@ public class TrapErrors
     public static final String NO_VISA_STATUS = "Required field missing: visa status";
     public static final String NO_X500 = "Required field missing: x500 user name";
     public static final String MISSING_ACKNOWLEDGEMENT = "Required field missing: presentation acknowledgement.";
-    public static final String NO_GRANTS =  "Required field missing: grant list was empty.";
-    public static final String NO_ACCOUNT_NUMBER =  "Required field missing: grant account number was empty.";
+    public static final String NO_GRANTS = "Required field missing: grant list was empty.";
+    public static final String NO_ACCOUNT_NUMBER = "Required field missing: grant account number was empty.";
     public static final String NO_EXPENSE_DATE = "Required field missing: expense date/time.";
     public static final String NO_EXPENSE_TYPE = "Required field missing: expense type.";
     public static final String NO_JUSTIFICATION = "Required field missing: justification.";
-    public static final String NO_EXPENSE_LOCATION =  "Required field missing: expense location.";
-    public static final String NO_EXPENSES =  "Required field missing: the expense list is empty.";
+    public static final String NO_EXPENSE_LOCATION = "Required field missing: expense location.";
+    public static final String NO_EXPENSES = "Required field missing: the expense list is empty.";
     public static final String NO_DEPARTURE_TIME = "Required field missing: arrival date/time.";
     public static final String NO_TRAVEL_TYPE = "Required field missing: travel sponsorship type.";
     public static final String NO_CONF_TITLE = "Required field missing: conference title.";
     public static final String PRES_TITLE = "Required field missing: presentation title.";
     public static final String NO_ABSTRACT = "Required field missing: presentation abstract.";
-    
-    
-    
-    
-    
-    
-    
+    public static final String EXPENSES_BETWEEN_DATES = "Expenses cannot be claimed outside of the dates of the trip.";
+    public static final String VALID_DOLLAR_AMOUNT = "Invalid Expense: Amount must be greater than 0";
+    public static final String NO_GRANTS_FOR_EXPENSE = "No grants can cover one or more expenses.";
+    public static final String NOT_ENOUGH_MONEY_IN_ACCOUNT = "not enough money in account";
 
 }

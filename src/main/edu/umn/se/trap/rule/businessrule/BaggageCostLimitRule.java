@@ -72,12 +72,14 @@ public class BaggageCostLimitRule extends AbstractRule
 
                 if (StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
-                                .getTranportationType(), "BAGGAGE"))
+                                .getTranportationType(), "BAGGAGE")
+                        || StringUtils.equalsIgnoreCase(
+                                ((TransportationExpense) expense)
+                                        .getTranportationType(), "LUGGAGE"))
                 {
                     if (expense.getAmount() > maxClaim)
                     {
-                        throw new TrapException(
-                                TrapErrors.INVALID_BAGGAGE_COST);
+                        throw new TrapException(TrapErrors.INVALID_BAGGAGE_COST);
                     }
 
                 }

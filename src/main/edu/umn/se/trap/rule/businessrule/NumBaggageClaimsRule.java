@@ -74,7 +74,10 @@ public class NumBaggageClaimsRule extends AbstractRule
 
                 if (StringUtils.equalsIgnoreCase(
                         ((TransportationExpense) expense)
-                                .getTranportationType(), "BAGGAGE"))
+                                .getTranportationType(), "BAGGAGE")
+                        || StringUtils.equalsIgnoreCase(
+                                ((TransportationExpense) expense)
+                                        .getTranportationType(), "LUGGAGE"))
                 {
                     numClaims++;
 
@@ -91,8 +94,7 @@ public class NumBaggageClaimsRule extends AbstractRule
 
         if (numFlights < numClaims)
         {
-            throw new TrapException(
-                   TrapErrors.INVALID_NUM_BAGGAGE);
+            throw new TrapException(TrapErrors.INVALID_NUM_BAGGAGE);
         }
 
     }

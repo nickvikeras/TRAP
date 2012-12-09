@@ -74,6 +74,14 @@ public class GrantSet
     }
 
     /**
+     * @param grants the grants to set
+     */
+    public void setGrants(Set<FormGrant> grants)
+    {
+        this.grants = grants;
+    }
+
+    /**
      * @param accountName
      * @return
      * 

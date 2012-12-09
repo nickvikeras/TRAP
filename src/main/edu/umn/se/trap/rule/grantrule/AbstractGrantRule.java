@@ -18,6 +18,8 @@
  */
 package edu.umn.se.trap.rule.grantrule;
 
+import java.util.List;
+
 import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.TrapForm;
@@ -36,7 +38,8 @@ public abstract class AbstractGrantRule extends AbstractRule
     @Override
     public void validateRule(TrapForm form) throws TrapException
     {
-        for (Expense expense : form.getExpenses())
+        List<Expense> expenses = form.getExpenses();
+        for (Expense expense : expenses)
         {
             removeGrants(expense, form);
             if (expense.getEligibleGrants().getGrants().isEmpty())
