@@ -40,7 +40,8 @@ public class Printer
             Map<String, String> output)
     {
 
-        System.out.println("Test Inputs:");
+        System.out
+                .println("-----------------------------Test Inputs:-----------------------------");
         System.out.println("USER_NAME\t" + input.get("USER_NAME"));
         System.out.println("DEPARTURE_DATETIME\t"
                 + input.get("DEPARTURE_DATETIME"));
@@ -70,236 +71,264 @@ public class Printer
                 + input.get("JUSTIFICATION_NONSPONSORED"));
         System.out.println("JUSTIFICATION_SPONSORED\t"
                 + input.get("JUSTIFICATION_SPONSORED"));
-        System.out.println("NUM_DAYS\t" + input.get("NUM_DAYS"));
 
-        for (int i = 1; i <= Integer.parseInt(input.get("NUM_DAYS")); i++)
+        if (input.get("NUM_DAYS") != null)
         {
-            if (input.get("DAY" + i + "_BREAKFAST_CITY") != null)
-            {
-                System.out.println("DAY" + i + "_BREAKFAST_CITY\t"
-                        + input.get("DAY" + i + "_BREAKFAST_CITY"));
-            }
+            System.out.println("NUM_DAYS\t" + input.get("NUM_DAYS"));
 
-            if (input.get("DAY" + i + "_BREAKFAST_STATE") != null)
+            for (int i = 1; i <= Integer.parseInt(input.get("NUM_DAYS")); i++)
             {
-                System.out.println("DAY" + i + "_BREAKFAST_STATE\t"
-                        + input.get("DAY" + i + "_BREAKFAST_STATE"));
-            }
+                if (input.get("DAY" + i + "_BREAKFAST_CITY") != null)
+                {
+                    System.out.println("DAY" + i + "_BREAKFAST_CITY\t"
+                            + input.get("DAY" + i + "_BREAKFAST_CITY"));
+                }
 
-            if (input.get("DAY" + i + "_BREAKFAST_COUNTRY") != null)
-            {
-                System.out.println("DAY" + i + "_BREAKFAST_COUNTRY\t"
-                        + input.get("DAY" + i + "_BREAKFAST_COUNTRY"));
-            }
+                if (input.get("DAY" + i + "_BREAKFAST_STATE") != null)
+                {
+                    System.out.println("DAY" + i + "_BREAKFAST_STATE\t"
+                            + input.get("DAY" + i + "_BREAKFAST_STATE"));
+                }
 
-            if (input.get("DAY" + i + "_LUNCH_CITY") != null)
-            {
-                System.out.println("DAY" + i + "_LUNCH_CITY\t"
-                        + input.get("DAY" + i + "_LUNCH_CITY"));
-            }
+                if (input.get("DAY" + i + "_BREAKFAST_COUNTRY") != null)
+                {
+                    System.out.println("DAY" + i + "_BREAKFAST_COUNTRY\t"
+                            + input.get("DAY" + i + "_BREAKFAST_COUNTRY"));
+                }
 
-            if (input.get("DAY" + i + "_LUNCH_STATE") != null)
-            {
-                System.out.println("DAY" + i + "_LUNCH_STATE\t"
-                        + input.get("DAY" + i + "_LUNCH_STATE"));
-            }
+                if (input.get("DAY" + i + "_LUNCH_CITY") != null)
+                {
+                    System.out.println("DAY" + i + "_LUNCH_CITY\t"
+                            + input.get("DAY" + i + "_LUNCH_CITY"));
+                }
 
-            if (input.get("DAY" + i + "_LUNCH_COUNTRY") != null)
-            {
-                System.out.println("DAY" + i + "_LUNCH_COUNTRY\t"
-                        + input.get("DAY" + i + "_LUNCH_COUNTRY"));
-            }
+                if (input.get("DAY" + i + "_LUNCH_STATE") != null)
+                {
+                    System.out.println("DAY" + i + "_LUNCH_STATE\t"
+                            + input.get("DAY" + i + "_LUNCH_STATE"));
+                }
 
-            if (input.get("DAY" + i + "_DINNER_CITY") != null)
-            {
-                System.out.println("DAY" + i + "_DINNER_CITY\t"
-                        + input.get("DAY" + i + "_DINNER_CITY"));
-            }
+                if (input.get("DAY" + i + "_LUNCH_COUNTRY") != null)
+                {
+                    System.out.println("DAY" + i + "_LUNCH_COUNTRY\t"
+                            + input.get("DAY" + i + "_LUNCH_COUNTRY"));
+                }
 
-            if (input.get("DAY" + i + "_DINNER_STATE") != null)
-            {
-                System.out.println("DAY" + i + "_DINNER_STATE\t"
-                        + input.get("DAY" + i + "_DINNER_STATE"));
-            }
+                if (input.get("DAY" + i + "_DINNER_CITY") != null)
+                {
+                    System.out.println("DAY" + i + "_DINNER_CITY\t"
+                            + input.get("DAY" + i + "_DINNER_CITY"));
+                }
 
-            if (input.get("DAY" + i + "_DINNER_COUNTRY") != null)
-            {
-                System.out.println("DAY" + i + "_DINNER_COUNTRY\t"
-                        + input.get("DAY" + i + "_DINNER_COUNTRY"));
-            }
+                if (input.get("DAY" + i + "_DINNER_STATE") != null)
+                {
+                    System.out.println("DAY" + i + "_DINNER_STATE\t"
+                            + input.get("DAY" + i + "_DINNER_STATE"));
+                }
 
-            if (input.get("DAY" + i + "_INCIDENTAL_CITY") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_CITY\t"
-                        + input.get("DAY" + i + "_INCIDENTAL_CITY"));
-            }
+                if (input.get("DAY" + i + "_DINNER_COUNTRY") != null)
+                {
+                    System.out.println("DAY" + i + "_DINNER_COUNTRY\t"
+                            + input.get("DAY" + i + "_DINNER_COUNTRY"));
+                }
 
-            if (input.get("DAY" + i + "_INCIDENTAL_STATE") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_STATE\t"
-                        + input.get("DAY" + i + "_INCIDENTAL_STATE"));
-            }
+                if (input.get("DAY" + i + "_INCIDENTAL_CITY") != null)
+                {
+                    System.out.println("DAY" + i + "_INCIDENTAL_CITY\t"
+                            + input.get("DAY" + i + "_INCIDENTAL_CITY"));
+                }
 
-            if (input.get("DAY" + i + "_INCIDENTAL_COUNTRY") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_COUNTRY\t"
-                        + input.get("DAY" + i + "_INCIDENTAL_COUNTRY"));
-            }
+                if (input.get("DAY" + i + "_INCIDENTAL_STATE") != null)
+                {
+                    System.out.println("DAY" + i + "_INCIDENTAL_STATE\t"
+                            + input.get("DAY" + i + "_INCIDENTAL_STATE"));
+                }
 
-            if (input.get("DAY" + i + "_INCIDENTAL_AMOUNT") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_AMOUNT\t"
-                        + input.get("DAY" + i + "_INCIDENTAL_AMOUNT"));
-            }
+                if (input.get("DAY" + i + "_INCIDENTAL_COUNTRY") != null)
+                {
+                    System.out.println("DAY" + i + "_INCIDENTAL_COUNTRY\t"
+                            + input.get("DAY" + i + "_INCIDENTAL_COUNTRY"));
+                }
 
-            if (input.get("DAY" + i + "_INCIDENTAL_CURRENCY") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_CURRENCY\t"
-                        + input.get("DAY" + i + "_INCIDENTAL_CURRENCY"));
-            }
+                if (input.get("DAY" + i + "_INCIDENTAL_AMOUNT") != null)
+                {
+                    System.out.println("DAY" + i + "_INCIDENTAL_AMOUNT\t"
+                            + input.get("DAY" + i + "_INCIDENTAL_AMOUNT"));
+                }
 
-            if (input.get("DAY" + i + "_INCIDENTAL_JUSTIFICATION") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_JUSTIFICATION\t"
-                        + input.get("DAY" + i + "_INCIDENTAL_JUSTIFICATION"));
-            }
+                if (input.get("DAY" + i + "_INCIDENTAL_CURRENCY") != null)
+                {
+                    System.out.println("DAY" + i + "_INCIDENTAL_CURRENCY\t"
+                            + input.get("DAY" + i + "_INCIDENTAL_CURRENCY"));
+                }
 
-            if (input.get("DAY" + i + "_LODGING_CITY") != null)
-            {
-                System.out.println("DAY" + i + "_LODGING_CITY\t"
-                        + input.get("DAY" + i + "_LODGING_CITY"));
-            }
+                if (input.get("DAY" + i + "_INCIDENTAL_JUSTIFICATION") != null)
+                {
+                    System.out
+                            .println("DAY"
+                                    + i
+                                    + "_INCIDENTAL_JUSTIFICATION\t"
+                                    + input.get("DAY" + i
+                                            + "_INCIDENTAL_JUSTIFICATION"));
+                }
 
-            if (input.get("DAY" + i + "_LODGING_STATE") != null)
-            {
-                System.out.println("DAY" + i + "_LODGING_STATE\t"
-                        + input.get("DAY" + i + "_LODGING_STATE"));
-            }
+                if (input.get("DAY" + i + "_LODGING_CITY") != null)
+                {
+                    System.out.println("DAY" + i + "_LODGING_CITY\t"
+                            + input.get("DAY" + i + "_LODGING_CITY"));
+                }
 
-            if (input.get("DAY" + i + "_LODGING_COUNTRY") != null)
-            {
-                System.out.println("DAY" + i + "_LODGING_COUNTRY\t"
-                        + input.get("DAY" + i + "_LODGING_COUNTRY"));
-            }
+                if (input.get("DAY" + i + "_LODGING_STATE") != null)
+                {
+                    System.out.println("DAY" + i + "_LODGING_STATE\t"
+                            + input.get("DAY" + i + "_LODGING_STATE"));
+                }
 
-            if (input.get("DAY" + i + "_LODGING_AMOUNT") != null)
-            {
-                System.out.println("DAY" + i + "_LODGING_AMOUNT\t"
-                        + input.get("DAY" + i + "_LODGING_AMOUNT"));
-            }
+                if (input.get("DAY" + i + "_LODGING_COUNTRY") != null)
+                {
+                    System.out.println("DAY" + i + "_LODGING_COUNTRY\t"
+                            + input.get("DAY" + i + "_LODGING_COUNTRY"));
+                }
 
-            if (input.get("DAY" + i + "_LODGING_CURRENCY") != null)
-            {
-                System.out.println("DAY" + i + "_LODGING_CURRENCY\t"
-                        + input.get("DAY" + i + "_LODGING_CURRENCY"));
-            }
+                if (input.get("DAY" + i + "_LODGING_AMOUNT") != null)
+                {
+                    System.out.println("DAY" + i + "_LODGING_AMOUNT\t"
+                            + input.get("DAY" + i + "_LODGING_AMOUNT"));
+                }
 
+                if (input.get("DAY" + i + "_LODGING_CURRENCY") != null)
+                {
+                    System.out.println("DAY" + i + "_LODGING_CURRENCY\t"
+                            + input.get("DAY" + i + "_LODGING_CURRENCY"));
+                }
+
+            }
         }
 
-        System.out.println("NUM_TRANSPORTATION\t"
-                + input.get("NUM_TRANSPORTATION"));
-
-        for (int i = 1; i <= Integer.parseInt(input.get("NUM_TRANSPORTATION")); i++)
+        if (input.get("NUM_TRANSPORTATION") != null)
         {
 
-            if (input.get("TRANSPORTATION" + i + "_DATE") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_DATE\t"
-                        + input.get("TRANSPORTATION" + i + "_DATE"));
-            }
+            System.out.println("NUM_TRANSPORTATION\t"
+                    + input.get("NUM_TRANSPORTATION"));
 
-            if (input.get("TRANSPORTATION" + i + "_TYPE") != null)
+            for (int i = 1; i <= Integer.parseInt(input
+                    .get("NUM_TRANSPORTATION")); i++)
             {
-                System.out.println("TRANSPORTATION" + i + "_TYPE\t"
-                        + input.get("TRANSPORTATION" + i + "_TYPE"));
-            }
 
-            if (input.get("TRANSPORTATION" + i + "_RENTAL") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_RENTAL\t"
-                        + input.get("TRANSPORTATION" + i + "_RENTAL"));
-            }
+                if (input.get("TRANSPORTATION" + i + "_DATE") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_DATE\t"
+                            + input.get("TRANSPORTATION" + i + "_DATE"));
+                }
 
-            if (input.get("TRANSPORTATION" + i + "_CARRIER") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_CARRIER\t"
-                        + input.get("TRANSPORTATION" + i + "_CARRIER"));
-            }
+                if (input.get("TRANSPORTATION" + i + "_TYPE") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_TYPE\t"
+                            + input.get("TRANSPORTATION" + i + "_TYPE"));
+                }
 
-            if (input.get("TRANSPORTATION" + i + "_MILES_TRAVELED") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_MILES_TRAVELED\t"
-                        + input.get("TRANSPORTATION" + i + "_MILES_TRAVELED"));
-            }
+                if (input.get("TRANSPORTATION" + i + "_RENTAL") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_RENTAL\t"
+                            + input.get("TRANSPORTATION" + i + "_RENTAL"));
+                }
 
-            if (input.get("TRANSPORTATION" + i + "_AMOUNT") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_AMOUNT\t"
-                        + input.get("TRANSPORTATION" + i + "_AMOUNT"));
-            }
+                if (input.get("TRANSPORTATION" + i + "_CARRIER") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_CARRIER\t"
+                            + input.get("TRANSPORTATION" + i + "_CARRIER"));
+                }
 
-            if (input.get("TRANSPORTATION" + i + "_CURRENCY") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_CURRENCY\t"
-                        + input.get("TRANSPORTATION" + i + "_CURRENCY"));
-            }
+                if (input.get("TRANSPORTATION" + i + "_MILES_TRAVELED") != null)
+                {
+                    System.out.println("TRANSPORTATION"
+                            + i
+                            + "_MILES_TRAVELED\t"
+                            + input.get("TRANSPORTATION" + i
+                                    + "_MILES_TRAVELED"));
+                }
 
+                if (input.get("TRANSPORTATION" + i + "_AMOUNT") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_AMOUNT\t"
+                            + input.get("TRANSPORTATION" + i + "_AMOUNT"));
+                }
+
+                if (input.get("TRANSPORTATION" + i + "_CURRENCY") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_CURRENCY\t"
+                            + input.get("TRANSPORTATION" + i + "_CURRENCY"));
+                }
+
+            }
         }
 
-        System.out.println("NUM_OTHER_EXPENSES\t"
-                + input.get("NUM_OTHER_EXPENSES"));
-
-        for (int i = 1; i <= Integer.parseInt(input.get("NUM_OTHER_EXPENSES")); i++)
+        if (input.get("NUM_OTHER_EXPENSES") != null)
         {
 
-            if (input.get("OTHER" + i + "_DATE") != null)
-            {
-                System.out.println("OTHER" + i + "_DATE\t"
-                        + input.get("OTHER" + i + "_DATE"));
-            }
+            System.out.println("NUM_OTHER_EXPENSES\t"
+                    + input.get("NUM_OTHER_EXPENSES"));
 
-            if (input.get("OTHER" + i + "_JUSTIFICATION") != null)
+            for (int i = 1; i <= Integer.parseInt(input
+                    .get("NUM_OTHER_EXPENSES")); i++)
             {
-                System.out.println("OTHER" + i + "_JUSTIFICATION\t"
-                        + input.get("OTHER" + i + "_JUSTIFICATION"));
-            }
 
-            if (input.get("OTHER" + i + "_AMOUNT") != null)
-            {
-                System.out.println("OTHER" + i + "_AMOUNT\t"
-                        + input.get("OTHER" + i + "_AMOUNT"));
-            }
+                if (input.get("OTHER" + i + "_DATE") != null)
+                {
+                    System.out.println("OTHER" + i + "_DATE\t"
+                            + input.get("OTHER" + i + "_DATE"));
+                }
 
-            if (input.get("OTHER" + i + "_CURRENCY") != null)
-            {
-                System.out.println("OTHER" + i + "_CURRENCY\t"
-                        + input.get("OTHER" + i + "_CURRENCY"));
-            }
+                if (input.get("OTHER" + i + "_JUSTIFICATION") != null)
+                {
+                    System.out.println("OTHER" + i + "_JUSTIFICATION\t"
+                            + input.get("OTHER" + i + "_JUSTIFICATION"));
+                }
 
+                if (input.get("OTHER" + i + "_AMOUNT") != null)
+                {
+                    System.out.println("OTHER" + i + "_AMOUNT\t"
+                            + input.get("OTHER" + i + "_AMOUNT"));
+                }
+
+                if (input.get("OTHER" + i + "_CURRENCY") != null)
+                {
+                    System.out.println("OTHER" + i + "_CURRENCY\t"
+                            + input.get("OTHER" + i + "_CURRENCY"));
+                }
+
+            }
         }
 
-        System.out.println("NUM_GRANTS\t" + input.get("NUM_GRANTS"));
-
-        for (int i = 1; i <= Integer.parseInt(input.get("NUM_GRANTS")); i++)
+        if (input.get("NUM_GRANTS") != null)
         {
+            System.out.println("NUM_GRANTS\t" + input.get("NUM_GRANTS"));
 
-            if (input.get("GRANT" + i + "_ACCOUNT") != null)
+            for (int i = 1; i <= Integer.parseInt(input.get("NUM_GRANTS")); i++)
             {
-                System.out.println("GRANT" + i + "_ACCOUNT\t"
-                        + input.get("GRANT" + i + "_ACCOUNT"));
-            }
 
-            if (input.get("GRANT" + i + "_PERCENT") != null)
-            {
-                System.out.println("GRANT" + i + "_PERCENT\t"
-                        + input.get("GRANT" + i + "_PERCENT"));
-            }
+                if (input.get("GRANT" + i + "_ACCOUNT") != null)
+                {
+                    System.out.println("GRANT" + i + "_ACCOUNT\t"
+                            + input.get("GRANT" + i + "_ACCOUNT"));
+                }
 
+                if (input.get("GRANT" + i + "_PERCENT") != null)
+                {
+                    System.out.println("GRANT" + i + "_PERCENT\t"
+                            + input.get("GRANT" + i + "_PERCENT"));
+                }
+
+            }
         }
 
-        System.out.println("Expected Results:");
+        if (output != null)
+        {
+            System.out
+                    .println("\n-----------------------------Expected Results:-----------------------------");
 
-        printOutput(output);
+            printOutput(output);
+        }
     }
 
     /**
@@ -348,140 +377,165 @@ public class Printer
                 + output.get("JUSTIFICATION_NONSPONSORED"));
         System.out.println("JUSTIFICATION_SPONSORED\t"
                 + output.get("JUSTIFICATION_SPONSORED"));
-        System.out.println("NUM_DESTINATIONS\t"
-                + output.get("NUM_DESTINATIONS"));
 
-        for (int i = 1; i <= Integer.parseInt(output.get("NUM_DESTINATIONS")); i++)
+        if (output.get("NUM_DESTINATIONS") != null)
         {
-            if (output.get("DESTINATION" + i + "_CITY") != null)
-            {
-                System.out.println("DESTINATION" + i + "_CITY\t"
-                        + output.get("DESTINATION" + i + "_CITY"));
-            }
+            System.out.println("NUM_DESTINATIONS\t"
+                    + output.get("NUM_DESTINATIONS"));
 
-            if (output.get("DESTINATION" + i + "_STATE") != null)
+            for (int i = 1; i <= Integer.parseInt(output
+                    .get("NUM_DESTINATIONS")); i++)
             {
-                System.out.println("DESTINATION" + i + "_STATE\t"
-                        + output.get("DESTINATION" + i + "_STATE"));
-            }
+                if (output.get("DESTINATION" + i + "_CITY") != null)
+                {
+                    System.out.println("DESTINATION" + i + "_CITY\t"
+                            + output.get("DESTINATION" + i + "_CITY"));
+                }
 
-            if (output.get("DESTINATION" + i + "_COUNTRY") != null)
-            {
-                System.out.println("DESTINATION" + i + "_COUNTRY\t"
-                        + output.get("DESTINATION" + i + "_COUNTRY"));
+                if (output.get("DESTINATION" + i + "_STATE") != null)
+                {
+                    System.out.println("DESTINATION" + i + "_STATE\t"
+                            + output.get("DESTINATION" + i + "_STATE"));
+                }
+
+                if (output.get("DESTINATION" + i + "_COUNTRY") != null)
+                {
+                    System.out.println("DESTINATION" + i + "_COUNTRY\t"
+                            + output.get("DESTINATION" + i + "_COUNTRY"));
+                }
             }
         }
 
-        System.out.println("NUM_DAYS\t" + output.get("NUM_DAYS"));
-
-        for (int i = 1; i <= Integer.parseInt(output.get("NUM_DAYS")); i++)
+        if (output.get("NUM_DAYS") != null)
         {
-            if (output.get("DAY" + i + "_DATE") != null)
-            {
-                System.out.println("DAY" + i + "_DATE\t"
-                        + output.get("DAY" + i + "_DATE"));
-            }
 
-            if (output.get("DAY" + i + "_TOTAL") != null)
-            {
-                System.out.println("DAY" + i + "_TOTAL\t"
-                        + output.get("DAY" + i + "_TOTAL"));
-            }
+            System.out.println("NUM_DAYS\t" + output.get("NUM_DAYS"));
 
-            if (output.get("DAY" + i + "_INCIDENTAL_TOTAL") != null)
+            for (int i = 1; i <= Integer.parseInt(output.get("NUM_DAYS")); i++)
             {
-                System.out.println("DAY" + i + "_INCIDENTAL_TOTAL\t"
-                        + output.get("DAY" + i + "_INCIDENTAL_TOTAL"));
-            }
+                if (output.get("DAY" + i + "_DATE") != null)
+                {
+                    System.out.println("DAY" + i + "_DATE\t"
+                            + output.get("DAY" + i + "_DATE"));
+                }
 
-            if (output.get("DAY" + i + "_INCIDENTAL_JUSTIFICATION") != null)
-            {
-                System.out.println("DAY" + i + "_INCIDENTAL_JUSTIFICATION\t"
-                        + output.get("DAY" + i + "_INCIDENTAL_JUSTIFICATION"));
+                if (output.get("DAY" + i + "_TOTAL") != null)
+                {
+                    System.out.println("DAY" + i + "_TOTAL\t"
+                            + output.get("DAY" + i + "_TOTAL"));
+                }
+
+                if (output.get("DAY" + i + "_INCIDENTAL_TOTAL") != null)
+                {
+                    System.out.println("DAY" + i + "_INCIDENTAL_TOTAL\t"
+                            + output.get("DAY" + i + "_INCIDENTAL_TOTAL"));
+                }
+
+                if (output.get("DAY" + i + "_INCIDENTAL_JUSTIFICATION") != null)
+                {
+                    System.out.println("DAY"
+                            + i
+                            + "_INCIDENTAL_JUSTIFICATION\t"
+                            + output.get("DAY" + i
+                                    + "_INCIDENTAL_JUSTIFICATION"));
+                }
             }
         }
 
-        System.out.println("NUM_TRANSPORTATION\t"
-                + output.get("NUM_TRANSPORTATION"));
-
-        for (int i = 1; i <= Integer.parseInt(output.get("NUM_TRANSPORTATION")); i++)
+        if (output.get("NUM_TRANSPORTATION") != null)
         {
+            System.out.println("NUM_TRANSPORTATION\t"
+                    + output.get("NUM_TRANSPORTATION"));
 
-            if (output.get("TRANSPORTATION" + i + "_DATE") != null)
+            for (int i = 1; i <= Integer.parseInt(output
+                    .get("NUM_TRANSPORTATION")); i++)
             {
-                System.out.println("TRANSPORTATION" + i + "_DATE\t"
-                        + output.get("TRANSPORTATION" + i + "_DATE"));
-            }
 
-            if (output.get("TRANSPORTATION" + i + "_TYPE") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_TYPE\t"
-                        + output.get("TRANSPORTATION" + i + "_TYPE"));
-            }
+                if (output.get("TRANSPORTATION" + i + "_DATE") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_DATE\t"
+                            + output.get("TRANSPORTATION" + i + "_DATE"));
+                }
 
-            if (output.get("TRANSPORTATION" + i + "_TOTAL") != null)
-            {
-                System.out.println("TRANSPORTATION" + i + "_TOTAL\t"
-                        + output.get("TRANSPORTATION" + i + "_TOTAL"));
-            }
+                if (output.get("TRANSPORTATION" + i + "_TYPE") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_TYPE\t"
+                            + output.get("TRANSPORTATION" + i + "_TYPE"));
+                }
 
+                if (output.get("TRANSPORTATION" + i + "_TOTAL") != null)
+                {
+                    System.out.println("TRANSPORTATION" + i + "_TOTAL\t"
+                            + output.get("TRANSPORTATION" + i + "_TOTAL"));
+                }
+
+            }
         }
 
-        System.out.println("NUM_OTHER_EXPENSES\t"
-                + output.get("NUM_OTHER_EXPENSES"));
-
-        for (int i = 1; i <= Integer.parseInt(output.get("NUM_OTHER_EXPENSES")); i++)
+        if (output.get("NUM_OTHER_EXPENSES") != null)
         {
 
-            if (output.get("OTHER" + i + "_DATE") != null)
-            {
-                System.out.println("OTHER" + i + "_DATE\t"
-                        + output.get("OTHER" + i + "_DATE"));
-            }
+            System.out.println("NUM_OTHER_EXPENSES\t"
+                    + output.get("NUM_OTHER_EXPENSES"));
 
-            if (output.get("OTHER" + i + "_JUSTIFICATION") != null)
+            for (int i = 1; i <= Integer.parseInt(output
+                    .get("NUM_OTHER_EXPENSES")); i++)
             {
-                System.out.println("OTHER" + i + "_JUSTIFICATION\t"
-                        + output.get("OTHER" + i + "_JUSTIFICATION"));
-            }
 
-            if (output.get("OTHER" + i + "_AMOUNT") != null)
-            {
-                System.out.println("OTHER" + i + "_AMOUNT\t"
-                        + output.get("OTHER" + i + "_AMOUNT"));
-            }
+                if (output.get("OTHER" + i + "_DATE") != null)
+                {
+                    System.out.println("OTHER" + i + "_DATE\t"
+                            + output.get("OTHER" + i + "_DATE"));
+                }
 
+                if (output.get("OTHER" + i + "_JUSTIFICATION") != null)
+                {
+                    System.out.println("OTHER" + i + "_JUSTIFICATION\t"
+                            + output.get("OTHER" + i + "_JUSTIFICATION"));
+                }
+
+                if (output.get("OTHER" + i + "_AMOUNT") != null)
+                {
+                    System.out.println("OTHER" + i + "_AMOUNT\t"
+                            + output.get("OTHER" + i + "_AMOUNT"));
+                }
+
+            }
         }
 
-        System.out.println("NUM_GRANTS\t" + output.get("NUM_GRANTS"));
-
-        for (int i = 1; i <= Integer.parseInt(output.get("NUM_GRANTS")); i++)
+        if (output.get("NUM_GRANTS") != null)
         {
 
-            if (output.get("GRANT" + i + "_ACCOUNT") != null)
-            {
-                System.out.println("GRANT" + i + "_ACCOUNT\t"
-                        + output.get("GRANT" + i + "_ACCOUNT"));
-            }
+            System.out.println("NUM_GRANTS\t" + output.get("NUM_GRANTS"));
 
-            if (output.get("GRANT" + i + "_PERCENT") != null)
+            for (int i = 1; i <= Integer.parseInt(output.get("NUM_GRANTS")); i++)
             {
-                System.out.println("GRANT" + i + "_PERCENT\t"
-                        + output.get("GRANT" + i + "_PERCENT"));
-            }
 
-            if (output.get("GRANT" + i + "_AMOUNT_TO_CHARGE") != null)
-            {
-                System.out.println("GRANT" + i + "_AMOUNT_TO_CHARGE\t"
-                        + output.get("GRANT" + i + "_AMOUNT_TO_CHARGE"));
-            }
+                if (output.get("GRANT" + i + "_ACCOUNT") != null)
+                {
+                    System.out.println("GRANT" + i + "_ACCOUNT\t"
+                            + output.get("GRANT" + i + "_ACCOUNT"));
+                }
 
-            if (output.get("GRANT" + i + "_APPROVER_NAME") != null)
-            {
-                System.out.println("GRANT" + i + "_APPROVER_NAME\t"
-                        + output.get("GRANT" + i + "_APPROVER_NAME"));
-            }
+                if (output.get("GRANT" + i + "_PERCENT") != null)
+                {
+                    System.out.println("GRANT" + i + "_PERCENT\t"
+                            + output.get("GRANT" + i + "_PERCENT"));
+                }
 
+                if (output.get("GRANT" + i + "_AMOUNT_TO_CHARGE") != null)
+                {
+                    System.out.println("GRANT" + i + "_AMOUNT_TO_CHARGE\t"
+                            + output.get("GRANT" + i + "_AMOUNT_TO_CHARGE"));
+                }
+
+                if (output.get("GRANT" + i + "_APPROVER_NAME") != null)
+                {
+                    System.out.println("GRANT" + i + "_APPROVER_NAME\t"
+                            + output.get("GRANT" + i + "_APPROVER_NAME"));
+                }
+
+            }
         }
 
         System.out.println("TOTAL_REIMBURSEMENT\t"
