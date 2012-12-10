@@ -32,7 +32,7 @@ import edu.umn.se.trap.util.TrapErrors;
  * @author Mark
  *
  */
-public class GeneralCoverageTests extends AbstractSystemTest
+public class IncidentalCoverageTests extends AbstractSystemTest
 {
 
     /* (non-Javadoc)
