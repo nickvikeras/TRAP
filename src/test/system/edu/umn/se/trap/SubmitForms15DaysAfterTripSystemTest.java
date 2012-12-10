@@ -70,6 +70,10 @@ public class SubmitForms15DaysAfterTripSystemTest extends AbstractSystemTest
     {
         super.testProcessor.setUser("linc001");
         String description = "my form description";
+        
+        // TODO
+        Printer.print(getBasicFormInput(), null);
+        
         try{
         SystemTestUtil.submitFormData(getBasicFormInput(), description,
                 super.testProcessor, getBasicFormOutput());

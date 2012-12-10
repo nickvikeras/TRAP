@@ -81,6 +81,8 @@ public class TravelTypeMatchesGrantTypeSystemTest extends AbstractSystemTest
         input.remove(TrapInputKeys.JUSTIFICATION_SPONSORED);
         output.remove(TrapInputKeys.JUSTIFICATION_SPONSORED);
         
+
+        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -122,6 +124,37 @@ public class TravelTypeMatchesGrantTypeSystemTest extends AbstractSystemTest
         Map<String, String> output = getBasicFormOutput();
         input.put("GRANT1_ACCOUNT", "99999");
         output.put("GRANT1_ACCOUNT", "99999");
+        
+        
+        try
+        {
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+        }
+        catch (TrapException e)
+        {
+            assertEquals(TrapErrors.NON_SPONSORED, e.getMessage());
+            return;
+        }
+        fail("An expception should have been thrown");
+    }
+    
+    // dtc sponsored travel, non-sponsored grant
+    @Test
+    public void testNonSponsoredGrantDtcTravel() throws Exception
+    {
+        Map<String, String> input = getBasicFormInput();
+        Map<String, String> output = getBasicFormOutput();
+        
+        input.put("GRANT1_ACCOUNT", "99999");
+        output.put("GRANT1_ACCOUNT", "99999");
+        
+        input.put(TrapInputKeys.TRAVEL_TYPE_DTC_SPONSORED, "yes");
+        output.put(TrapInputKeys.TRAVEL_TYPE_DTC_SPONSORED, "yes");
+        
+        input.remove(TrapInputKeys.TRAVEL_TYPE_CSE_SPONSORED);
+        output.remove(TrapInputKeys.TRAVEL_TYPE_CSE_SPONSORED);
+        
+        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);

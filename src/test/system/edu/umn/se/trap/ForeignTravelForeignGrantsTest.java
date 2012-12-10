@@ -32,7 +32,7 @@ import edu.umn.se.trap.util.TrapErrors;
  * @author Mark
  *
  */
-public class ForeignGrantsForeignGrantsTest extends AbstractSystemTest
+public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
 {
 
     /* (non-Javadoc)

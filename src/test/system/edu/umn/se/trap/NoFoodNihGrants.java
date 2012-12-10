@@ -113,8 +113,6 @@ public class NoFoodNihGrants extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
 
     }
     
@@ -134,9 +132,6 @@ public class NoFoodNihGrants extends AbstractSystemTest
         {
             fail("No exception should have been thrown: " + e.getMessage());
         }
-
-        // TODO
-        Printer.print(input, output);
 
     }
     

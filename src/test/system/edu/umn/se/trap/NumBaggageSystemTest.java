@@ -15,7 +15,7 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap;
 
 import static org.junit.Assert.*;
@@ -30,12 +30,14 @@ import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author nick
- *
+ * 
  */
 public class NumBaggageSystemTest extends AbstractSystemTest
 {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#setUp()
      */
     @Before
@@ -44,7 +46,9 @@ public class NumBaggageSystemTest extends AbstractSystemTest
         super.setUp();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#tearDown()
      */
     @After
@@ -63,6 +67,10 @@ public class NumBaggageSystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION6_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION6_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION5_TYPE", "AIR");
+        
+        // TODO
+        Printer.print(input, output);
+        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -72,7 +80,7 @@ public class NumBaggageSystemTest extends AbstractSystemTest
             fail("No expception should have been thrown");
         }
     }
-    
+
     @Test
     public void testInvalidNumBaggage()
     {
@@ -85,6 +93,10 @@ public class NumBaggageSystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION4_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION4_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION5_TYPE", "AIR");
+        
+        // TODO
+        Printer.print(input, output);
+        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -96,7 +108,5 @@ public class NumBaggageSystemTest extends AbstractSystemTest
         }
         fail("an exception should have been caught.");
     }
-    
-    
 
 }

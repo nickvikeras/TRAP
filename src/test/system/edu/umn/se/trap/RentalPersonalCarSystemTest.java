@@ -44,6 +44,7 @@ public class RentalPersonalCarSystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION6_CURRENCY", "USD");
         input.put("TRANSPORTATION5_TYPE", "Car");
 
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -65,6 +66,10 @@ public class RentalPersonalCarSystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION6_CARRIER", "National");
         output.put("TRANSPORTATION6_TYPE", "CAR");
 
+        // TODO
+        Printer.print(input, output);
+        System.out.println();
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -82,6 +87,11 @@ public class RentalPersonalCarSystemTest extends AbstractSystemTest
         Map<String, String> output = getBasicFormOutput();
         input.put("TRANSPORTATION5_TYPE", "Car");
         output.put("TRANSPORTATION5_TYPE", "Car");
+        
+
+        // TODO
+        Printer.print(input, output);
+        System.out.println();
 
         try
         {
