@@ -75,9 +75,6 @@ public class NoBreakfastDodGrants extends AbstractSystemTest
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1082.90");
         output.put("TOTAL_REIMBURSEMENT", "1082.90");
 
-        // TODO
-        Printer.print(input, output);
-
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -118,8 +115,6 @@ public class NoBreakfastDodGrants extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
     @Test
@@ -164,8 +159,6 @@ public class NoBreakfastDodGrants extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
     @Test
@@ -192,8 +185,6 @@ public class NoBreakfastDodGrants extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
 }

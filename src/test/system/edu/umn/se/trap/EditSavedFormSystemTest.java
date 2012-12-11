@@ -85,7 +85,6 @@ public class EditSavedFormSystemTest extends AbstractSystemTest
         testMap.put("OTHER1_JUSTIFICATION", "Conference Fee");
         output.put("OTHER1_JUSTIFICATION", "Conference Fee");
 
-        Printer.printOutput(output);
 
         try
         {

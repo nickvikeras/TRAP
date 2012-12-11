@@ -67,10 +67,7 @@ public class NumBaggageSystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION6_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION6_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION5_TYPE", "AIR");
-        
-        // TODO
-        Printer.print(input, output);
-        
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -93,10 +90,7 @@ public class NumBaggageSystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION4_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION4_TYPE", "BAGGAGE");
         output.put("TRANSPORTATION5_TYPE", "AIR");
-        
-        // TODO
-        Printer.print(input, output);
-        
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);

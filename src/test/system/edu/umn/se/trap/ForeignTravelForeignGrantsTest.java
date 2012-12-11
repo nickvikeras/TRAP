@@ -30,12 +30,14 @@ import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
 {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#setUp()
      */
     @Before
@@ -44,7 +46,9 @@ public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
         super.setUp();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#tearDown()
      */
     @After
@@ -52,7 +56,7 @@ public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
     {
         super.tearDown();
     }
-    
+
     @Test
     public void testForeignTravelForeignGrant() throws Exception
     {
@@ -70,22 +74,20 @@ public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
-    
+
     @Test
     public void testForeignTravelNoForeignGrant() throws Exception
     {
 
         Map<String, String> input = getForeignAndDomesticTravelInput();
         Map<String, String> output = getForeignAndDomesticTravelOutput();
-        
+
         input.put("NUM_GRANTS", "1");
         input.put("GRANT1_PERCENT", "100");
         input.remove("GRANT2_ACCOUNT");
         input.remove("GRANT2_PERCENT");
-        
+
         output.put("NUM_GRANTS", "1");
         output.put("GRANT1_PERCENT", "100");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "957.49");
@@ -94,7 +96,6 @@ public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
         output.remove("GRANT2_AMOUNT_TO_CHARGE");
         output.remove("GRANT2_APPROVER_NAME");
 
-        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -105,24 +106,19 @@ public class ForeignTravelForeignGrantsTest extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
-    
+
     @Test
     public void testNoForeignTravelForeignGrant() throws Exception
     {
 
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
-        
+
         input.put("GRANT1_ACCOUNT", "777555111");
-        
+
         output.put("GRANT1_ACCOUNT", "777555111");
 
-        // TODO
-        Printer.print(input, output);
-        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);

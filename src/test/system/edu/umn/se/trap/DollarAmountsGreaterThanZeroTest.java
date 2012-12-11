@@ -31,7 +31,6 @@ import org.junit.Test;
 import edu.umn.se.trap.util.TrapDateUtil;
 import edu.umn.se.trap.util.TrapErrors;
 
-
 /**
  * @author Mark
  * 
@@ -77,9 +76,6 @@ public class DollarAmountsGreaterThanZeroTest extends AbstractSystemTest
         input.put("TRANSPORTATION1_AMOUNT", "-0.99");
         input.put("TRANSPORTATION1_CURRENCY", "USD");
 
-        // TODO
-        Printer.print(input, output);
-
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -110,9 +106,6 @@ public class DollarAmountsGreaterThanZeroTest extends AbstractSystemTest
         input.put("OTHER" + number + "_JUSTIFICATION", "Free Drinks!");
         input.put("OTHER" + number + "_AMOUNT", "0.00");
         input.put("OTHER" + number + "_CURRENCY", "USD");
-
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -148,8 +141,6 @@ public class DollarAmountsGreaterThanZeroTest extends AbstractSystemTest
             fail("No expception should have been thrown");
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
 }

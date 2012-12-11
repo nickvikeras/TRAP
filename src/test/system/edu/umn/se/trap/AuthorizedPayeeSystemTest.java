@@ -64,8 +64,6 @@ public class AuthorizedPayeeSystemTest extends AbstractSystemTest
         output.put("EMAIL", "china001@umn.edu");
         output.put("CITIZENSHIP", "China");
         
-        // TODO
-        Printer.print(input, output);
 
         try
         {

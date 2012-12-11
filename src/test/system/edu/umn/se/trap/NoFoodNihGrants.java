@@ -76,9 +76,7 @@ public class NoFoodNihGrants extends AbstractSystemTest
         output.put("TRANSPORTATION5_TYPE", "PUBLIC_TRANSPORTATION");
         output.put("TRANSPORTATION6_TYPE", "PUBLIC_TRANSPORTATION");
         
-        // TODO
-        Printer.print(input, output);
-
+ 
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -155,9 +153,6 @@ public class NoFoodNihGrants extends AbstractSystemTest
         {
             fail("No exception should have been thrown: " + e.getMessage());
         }
-
-        // TODO
-        Printer.print(input, output);
 
     }
 

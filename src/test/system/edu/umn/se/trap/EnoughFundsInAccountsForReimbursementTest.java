@@ -85,8 +85,6 @@ public class EnoughFundsInAccountsForReimbursementTest extends
 
         output.put("GRANT1_ACCOUNT", "111551335674");
         
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -112,9 +110,6 @@ public class EnoughFundsInAccountsForReimbursementTest extends
         output.put("GRANT1_ACCOUNT", "444337883");
         output.put("GRANT2_ACCOUNT", "700554324");
         
-        // TODO
-        Printer.print(input, output);
-
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);

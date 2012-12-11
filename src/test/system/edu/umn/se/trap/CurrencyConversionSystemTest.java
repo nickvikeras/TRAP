@@ -102,7 +102,6 @@ public class CurrencyConversionSystemTest extends AbstractSystemTest
         input.put("OTHER1_JUSTIFICATION", "Conference Registration");
         input.put("OTHER1_AMOUNT", "15.00");
         input.put("OTHER1_CURRENCY", "zam");
-        Printer.print(input, output);
 
         try
         {

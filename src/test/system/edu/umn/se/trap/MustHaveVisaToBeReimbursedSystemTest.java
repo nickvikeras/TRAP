@@ -49,8 +49,6 @@ public class MustHaveVisaToBeReimbursedSystemTest extends AbstractSystemTest
         output.put("EMAIL", "canada001@umn.edu");
         output.put("CITIZENSHIP", "canada");
         
-        // TODO
-        Printer.print(input, output);
 
         try
         {

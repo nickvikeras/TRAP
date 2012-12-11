@@ -103,7 +103,6 @@ public class SystemTestUtil
         Map<String, String> actualOut = testProcessor.getCompletedForm(formId);
 
         System.out.println("actual out:");
-        Printer.printOutput(actualOut);
         //System.out.println(actualOut.toString());
         checkOutput(actualOut, then, expectedOut);
     }

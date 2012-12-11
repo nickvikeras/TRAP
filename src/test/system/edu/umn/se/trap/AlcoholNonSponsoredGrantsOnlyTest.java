@@ -63,9 +63,6 @@ public class AlcoholNonSponsoredGrantsOnlyTest extends AbstractSystemTest
         input.put("OTHER2_JUSTIFICATION", "Alcohol");
         
         output.put("OTHER2_JUSTIFICATION", "Alcohol");
-
-        // TODO
-        Printer.print(input, output);
         
         try
         {
@@ -109,9 +106,6 @@ public class AlcoholNonSponsoredGrantsOnlyTest extends AbstractSystemTest
         {
             fail("No exception should have been thrown: " + e.getMessage());
         }
-
-        // TODO
-        Printer.print(input, output);
-    }
+   }
 
 }

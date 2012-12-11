@@ -63,9 +63,6 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         Map<String, String> input = getIncidentalInput();
         Map<String, String> output = getIncidentalOutput();
 
-        // TODO
-        Printer.print(input, output);
-
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -100,8 +97,6 @@ public class IncidentalCoverageTests extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
     @Test
@@ -117,9 +112,6 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         output.put("DAY1_TOTAL", "115.81");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
         output.put("TOTAL_REIMBURSEMENT", "1050.24");
-
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -159,8 +151,6 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
         output.put("TOTAL_REIMBURSEMENT", "1050.24");
 
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -198,9 +188,6 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         output.put("DAY1_TOTAL", "115.81");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
         output.put("TOTAL_REIMBURSEMENT", "1050.24");
-
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -240,8 +227,6 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
         output.put("TOTAL_REIMBURSEMENT", "1050.24");
 
-        // TODO
-        Printer.print(input, output);
 
         try
         {

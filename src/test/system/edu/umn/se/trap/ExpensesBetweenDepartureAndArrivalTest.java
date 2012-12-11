@@ -83,9 +83,6 @@ public class ExpensesBetweenDepartureAndArrivalTest extends AbstractSystemTest
         input.put("TRANSPORTATION1_AMOUNT", "12.00");
         input.put("TRANSPORTATION1_CURRENCY", "USD");
 
-        // TODO
-        Printer.print(input, output);
-
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -114,9 +111,6 @@ public class ExpensesBetweenDepartureAndArrivalTest extends AbstractSystemTest
         input.put("TRANSPORTATION1_TYPE", "PARKING");
         input.put("TRANSPORTATION1_AMOUNT", "12.00");
         input.put("TRANSPORTATION1_CURRENCY", "USD");
-
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -154,8 +148,6 @@ public class ExpensesBetweenDepartureAndArrivalTest extends AbstractSystemTest
             fail("No expception should have been thrown");
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
 }

@@ -84,9 +84,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
-
     }
     
     @Test
@@ -117,9 +114,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
-
     }
     
     @Test
@@ -146,10 +140,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
         {
             fail("No exception should have been thrown: " + e.getMessage());
         }
-
-        // TODO
-        Printer.print(input, output);
-
     }
     
     @Test
@@ -169,10 +159,7 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
         output.put("TRANSPORTATION2_TOTAL", "13.00");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "957.49");
         output.put("TOTAL_REIMBURSEMENT", "957.49");
-        
-        // TODO
-        Printer.print(input, output);
-
+      
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);

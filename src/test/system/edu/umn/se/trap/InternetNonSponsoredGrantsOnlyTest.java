@@ -30,12 +30,14 @@ import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class InternetNonSponsoredGrantsOnlyTest extends AbstractSystemTest
 {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#setUp()
      */
     @Before
@@ -44,7 +46,9 @@ public class InternetNonSponsoredGrantsOnlyTest extends AbstractSystemTest
         super.setUp();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#tearDown()
      */
     @After
@@ -59,14 +63,11 @@ public class InternetNonSponsoredGrantsOnlyTest extends AbstractSystemTest
 
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
-        
+
         input.put("OTHER2_JUSTIFICATION", "Internet");
-        
+
         output.put("OTHER2_JUSTIFICATION", "Internet");
 
-        // TODO
-        Printer.print(input, output);
-        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -78,21 +79,18 @@ public class InternetNonSponsoredGrantsOnlyTest extends AbstractSystemTest
             return;
         }
     }
-    
+
     @Test
     public void testWifiSponsored() throws Exception
     {
 
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
-        
+
         input.put("OTHER2_JUSTIFICATION", "Wifi");
-        
+
         output.put("OTHER2_JUSTIFICATION", "Wifi");
 
-        // TODO
-        Printer.print(input, output);
-        
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -104,23 +102,25 @@ public class InternetNonSponsoredGrantsOnlyTest extends AbstractSystemTest
             return;
         }
     }
-    
+
     @Test
     public void testInternetNonSponsored() throws Exception
     {
 
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
-        
+
         input.put("OTHER2_JUSTIFICATION", "Internet");
-        input.put("JUSTIFICATION_NONSPONSORED", "Learn about research in the field.");
+        input.put("JUSTIFICATION_NONSPONSORED",
+                "Learn about research in the field.");
         input.remove("JUSTIFICATION_SPONSORED");
         input.remove("TRAVEL_TYPE_CSE_SPONSORED");
         input.put("TRAVEL_TYPE_NONSPONSORED", "yes");
         input.put("GRANT1_ACCOUNT", "99999");
-        
+
         output.put("OTHER2_JUSTIFICATION", "Internet");
-        output.put("JUSTIFICATION_NONSPONSORED", "Learn about research in the field.");
+        output.put("JUSTIFICATION_NONSPONSORED",
+                "Learn about research in the field.");
         output.remove("JUSTIFICATION_SPONSORED");
         output.remove("TRAVEL_TYPE_CSE_SPONSORED");
         output.put("TRAVEL_TYPE_NONSPONSORED", "yes");
@@ -136,8 +136,6 @@ public class InternetNonSponsoredGrantsOnlyTest extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
 }

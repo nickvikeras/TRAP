@@ -73,9 +73,6 @@ public class DepartureDateBeforeArrivalDateSystemTest extends AbstractSystemTest
         super.testProcessor.setUser("linc001");
         String description = "my form description";
         
-        // TODO
-        Printer.print(getBasicFormInput(), null);
-        
         try
         {
             SystemTestUtil.submitFormData(getBasicFormInput(), description,

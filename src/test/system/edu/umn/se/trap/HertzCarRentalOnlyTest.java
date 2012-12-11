@@ -100,9 +100,6 @@ public class HertzCarRentalOnlyTest extends AbstractSystemTest
         {
             fail("No exception should have been thrown: " + e.getMessage());
         }
-
-        // TODO
-        Printer.print(input, output);
     }
 
     @Test
@@ -131,9 +128,7 @@ public class HertzCarRentalOnlyTest extends AbstractSystemTest
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1082.90");
         output.put("TOTAL_REIMBURSEMENT", "1082.90");
 
-        // TODO
-        Printer.print(input, output);
-
+ 
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -176,9 +171,7 @@ public class HertzCarRentalOnlyTest extends AbstractSystemTest
         output.put("GRANT1_ACCOUNT", "010101010101");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1082.90");
         output.put("TOTAL_REIMBURSEMENT", "1082.90");
-        
-        // TODO
-        Printer.print(input, output);
+
 
         try
         {
@@ -238,8 +231,6 @@ public class HertzCarRentalOnlyTest extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
 }

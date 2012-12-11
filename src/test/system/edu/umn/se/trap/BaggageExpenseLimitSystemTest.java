@@ -67,10 +67,7 @@ public class BaggageExpenseLimitSystemTest extends AbstractSystemTest
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1069.64");
         output.put("TOTAL_REIMBURSEMENT", "1069.64");
         output.put("TRANSPORTATION6_TOTAL", "25.00");
-        
-        // TODO
-        Printer.print(input, output);
-        
+       
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -96,10 +93,7 @@ public class BaggageExpenseLimitSystemTest extends AbstractSystemTest
         output.put("TOTAL_REIMBURSEMENT", "1070.64");
         output.put("TRANSPORTATION6_TOTAL", "26.00");
         
-        // TODO
-        Printer.print(input, output);
-        
-        try
+     try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
         }

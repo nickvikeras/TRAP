@@ -33,12 +33,14 @@ import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
 {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#setUp()
      */
     @Before
@@ -47,7 +49,9 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
         super.setUp();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#tearDown()
      */
     @After
@@ -80,9 +84,6 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
         output.put("GRANT1_ACCOUNT", "010101010101");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1082.90");
         output.put("TOTAL_REIMBURSEMENT", "1082.90");
-        
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -100,7 +101,7 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
             return;
         }
     }
-    
+
     @Test
     public void testNonDodGrantNonNationalRental() throws Exception
     {
@@ -125,9 +126,6 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
         output.put("GRANT1_ACCOUNT", "010101010101");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1082.90");
         output.put("TOTAL_REIMBURSEMENT", "1082.90");
-        
-        // TODO
-        Printer.print(input, output);
 
         try
         {
@@ -145,7 +143,7 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
             return;
         }
     }
-    
+
     @Test
     public void testNonDodGrantNationalRental() throws Exception
     {
@@ -170,7 +168,7 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
         output.put("GRANT1_ACCOUNT", "010101010101");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1082.90");
         output.put("TOTAL_REIMBURSEMENT", "1082.90");
-        
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -181,8 +179,6 @@ public class NationalCarRentalForNonDodGrantsTest extends AbstractSystemTest
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
 
 }
