@@ -38,7 +38,7 @@ import edu.umn.se.trap.form.TrapForm;
  *         From the TRAP Design Document:
  * 
  *         Requirement: 23 
- *         Description: Sponsored grants don’t cover internet.
+ *         Description: Sponsored grants don't cover internet.
  * 
  */
 public class SponsoredNoInternetRule extends AbstractGrantRule

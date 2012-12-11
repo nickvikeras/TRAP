@@ -6,16 +6,20 @@
 <project basedir="." default="build" name="TRAP">
 	<property environment="env" />
 	<property name="ECLIPSE_HOME" value="../../../../../Applications/eclipse" />
+
+	<property name="test.home" value="junit/edu/umn/se/trap/" />
 	<property name="junit.output.dir" value="junit" />
-	<property name="junit.output.dir" value="edu.umn.se.trap" />
 	<property name="debuglevel" value="source,lines,vars" />
+	<property name="testclasses.home" value="junit" />
 	<property name="target" value="1.6" />
 	<property name="source" value="1.6" />
 	<path id="TRAP.classpath">
 		<pathelement location="bin" />
+		<pathelement location="junit" />
 		<pathelement location="lib/commons-lang3-3.1.jar" />
 		<pathelement location="lib/mockito-all-1.9.5.jar" />
 		<pathelement location="lib/junit-4.10.jar" />
+		<pathelement location="lib/TRAPInterfaces.jar" />
 	</path>
 	<target name="init">
 		<mkdir dir="bin" />
@@ -124,6 +128,22 @@
 			<classpath refid="TRAP.classpath" />
 		</junit>
 	</target>
+	<target name="ClearSavedFormsSystemTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="edu.umn.se.trap.ClearSavedFormsSystemTest" todir="${junit.output.dir}" />
+			<classpath refid="TRAP.classpath" />
+		</junit>
+	</target>
+	<target name="CurrencyConversionSystemTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="edu.umn.se.trap.CurrencyConversionSystemTest" todir="${junit.output.dir}" />
+			<classpath refid="TRAP.classpath" />
+		</junit>
+	</target>
 	<target name="DatabaseAccessorTest (1)">
 		<mkdir dir="${junit.output.dir}" />
 		<junit fork="yes" printsummary="withOutAndErr">
@@ -154,6 +174,14 @@
 			<formatter type="xml" />
 			<test name="edu.umn.se.trap.DepartureDateBeforeArrivalDateSystemTest"
 				todir="${junit.output.dir}" />
+			<classpath refid="TRAP.classpath" />
+		</junit>
+	</target>
+	<target name="EditSavedFormSystemTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="edu.umn.se.trap.EditSavedFormSystemTest" todir="${junit.output.dir}" />
 			<classpath refid="TRAP.classpath" />
 		</junit>
 	</target>
@@ -232,6 +260,15 @@
 		<junit fork="yes" printsummary="withOutAndErr">
 			<formatter type="xml" />
 			<test name="edu.umn.se.trap.HotelMustHave2DayTripSystemTest"
+				todir="${junit.output.dir}" />
+			<classpath refid="TRAP.classpath" />
+		</junit>
+	</target>
+	<target name="IncidentalExpenseConversionTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="edu.umn.se.trap.IncidentalExpenseConversionTest"
 				todir="${junit.output.dir}" />
 			<classpath refid="TRAP.classpath" />
 		</junit>
@@ -418,13 +455,29 @@
 			<classpath refid="TRAP.classpath" />
 		</junit>
 	</target>
-	<target name="test">
+	<target name="test" depends="TRAP">
+		<junit printsummary="false" fork="off" haltonfailure="true">
+			<classpath>
+				<path refid="TRAP.classpath" />
+				<fileset dir="${testclasses.home}" />
+			</classpath>
+			<formatter type="brief" usefile="false" />
+		</junit>
+	</target>
+	<target name="report">
+		<junitreport todir="${testclasses.home}">
+			<fileset dir="${testclasses.home}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="./report/html" />
+		</junitreport>
+	</target>
+	<target name="TransportationFieldTest">
 		<mkdir dir="${junit.output.dir}" />
 		<junit fork="yes" printsummary="withOutAndErr">
 			<formatter type="xml" />
+			<test name="edu.umn.se.trap.TransportationFieldTest" todir="${junit.output.dir}" />
 			<classpath refid="TRAP.classpath" />
-			<test name="${test.class.name}" />
-			<formatter type="plain" usefile="false" />
 		</junit>
 	</target>
 	<target name="TRAP">
@@ -585,47 +638,6 @@
 		<junit fork="yes" printsummary="withOutAndErr">
 			<formatter type="xml" />
 			<test name="edu.umn.se.trap.UsCarrierOnlySystemTest" todir="${junit.output.dir}" />
-			<classpath refid="TRAP.classpath" />
-		</junit>
-	</target>
-	<target name="ClearSavedFormsSystemTest">
-		<mkdir dir="${junit.output.dir}" />
-		<junit fork="yes" printsummary="withOutAndErr">
-			<formatter type="xml" />
-			<test name="edu.umn.se.trap.ClearSavedFormsSystemTest" todir="${junit.output.dir}" />
-			<classpath refid="TRAP.classpath" />
-		</junit>
-	</target>
-	<target name="EditSavedFormSystemTest">
-		<mkdir dir="${junit.output.dir}" />
-		<junit fork="yes" printsummary="withOutAndErr">
-			<formatter type="xml" />
-			<test name="edu.umn.se.trap.EditSavedFormSystemTest" todir="${junit.output.dir}" />
-			<classpath refid="TRAP.classpath" />
-		</junit>
-	</target>
-	<target name="IncidentalExpenseConversionTest">
-		<mkdir dir="${junit.output.dir}" />
-		<junit fork="yes" printsummary="withOutAndErr">
-			<formatter type="xml" />
-			<test name="edu.umn.se.trap.IncidentalExpenseConversionTest"
-				todir="${junit.output.dir}" />
-			<classpath refid="TRAP.classpath" />
-		</junit>
-	</target>
-	<target name="TransportationFieldTest">
-		<mkdir dir="${junit.output.dir}" />
-		<junit fork="yes" printsummary="withOutAndErr">
-			<formatter type="xml" />
-			<test name="edu.umn.se.trap.TransportationFieldTest" todir="${junit.output.dir}" />
-			<classpath refid="TRAP.classpath" />
-		</junit>
-	</target>
-	<target name="CurrencyConversionSystemTest">
-		<mkdir dir="${junit.output.dir}" />
-		<junit fork="yes" printsummary="withOutAndErr">
-			<formatter type="xml" />
-			<test name="edu.umn.se.trap.CurrencyConversionSystemTest" todir="${junit.output.dir}" />
 			<classpath refid="TRAP.classpath" />
 		</junit>
 	</target>

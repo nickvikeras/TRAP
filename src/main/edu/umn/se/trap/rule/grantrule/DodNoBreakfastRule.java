@@ -38,7 +38,7 @@ import edu.umn.se.trap.rule.AbstractRule;
  *         From the TRAP Design Document:
  * 
  *         Requirement: 18 
- *         Description: DOD grants don’t reimburse breakfast.
+ *         Description: DOD grants don't reimburse breakfast.
  * 
  */
 public class DodNoBreakfastRule extends AbstractGrantRule

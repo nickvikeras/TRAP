@@ -38,7 +38,7 @@ import edu.umn.se.trap.form.TrapForm;
  *         From the TRAP Design Document:
  * 
  *         Requirement: 22
- *         Description: Sponsored grants don’t cover alcohol.
+ *         Description: Sponsored grants don't cover alcohol.
  * 
  */
 public class SponsoredNoAlcoholRule extends AbstractGrantRule

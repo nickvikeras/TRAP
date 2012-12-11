@@ -37,7 +37,7 @@ import edu.umn.se.trap.form.TrapForm;
  *         From the TRAP Design Document:
  * 
  *         Requirement: 19 
- *         Description: NIH grants don’t reimburse food.
+ *         Description: NIH grants don't reimburse food.
  * 
  */
 public class NihNoFoodRule extends AbstractGrantRule
