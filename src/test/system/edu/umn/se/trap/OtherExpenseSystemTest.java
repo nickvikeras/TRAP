@@ -66,15 +66,8 @@ public class OtherExpenseSystemTest extends AbstractSystemTest
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
 
-        // input.put("ARRIVAL_DATETIME", "20121202 235900");
-        // input.put("DEPARTURE_DATETIME", "20121016 100000");
-
-        // input.put("OTHER1_DATE", "20121003");
-        // input.put("OTHER1_JUSTIFICATION", "Conference Registration");
-        // input.put("OTHER1_AMOUNT", "15.00");
         input.put("OTHER1_CURRENCY", "eur");
 
-        // output.put("DAY1_OTHER_TOTAL", "15");
         output.put("OTHER1_TOTAL", "810.00");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1406.24");
         output.put("TOTAL_REIMBURSEMENT", "1406.24");
@@ -84,6 +77,14 @@ public class OtherExpenseSystemTest extends AbstractSystemTest
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+            
+            double inputEur = Double.parseDouble(input.get("OTHER1_AMOUNT"));
+            
+            double conversion = 1.80;
+            
+            double outputUsd = Double.parseDouble(output.get("OTHER1_TOTAL"));
+            
+            assertTrue(inputEur*conversion == outputUsd);
         }
         catch (Exception e)
         {
@@ -106,6 +107,14 @@ public class OtherExpenseSystemTest extends AbstractSystemTest
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+            
+            double inputEur = Double.parseDouble(input.get("OTHER1_AMOUNT"));
+            
+            double conversion = 1.80;
+            
+            double outputUsd = Double.parseDouble(output.get("OTHER1_TOTAL"));
+            
+            assertTrue(inputEur*conversion == outputUsd);
         }
         catch (Exception e)
         {
@@ -127,10 +136,10 @@ public class OtherExpenseSystemTest extends AbstractSystemTest
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+            
         }
         catch (TrapException e)
         {
-            // KeyNotFoundException
             assertEquals(TrapErrors.CANNOT_FIND_CURRENCY_INFO, e.getMessage());
             return;
         }
@@ -154,7 +163,6 @@ public class OtherExpenseSystemTest extends AbstractSystemTest
         }
         catch (TrapException e)
         {
-            // KeyNotFoundException
             assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO,
                     e.getMessage());
             return;
