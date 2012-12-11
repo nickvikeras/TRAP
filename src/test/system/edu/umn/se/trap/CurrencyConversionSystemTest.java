@@ -35,7 +35,7 @@ import edu.umn.se.trap.util.TrapErrors;
  * @author Andrew
  * 
  */
-public class OtherExpenseSystemTest extends AbstractSystemTest
+public class CurrencyConversionSystemTest extends AbstractSystemTest
 {
 
     /*
@@ -136,54 +136,4 @@ public class OtherExpenseSystemTest extends AbstractSystemTest
         }
         fail("an exception should have been caught because we used a made-up currency");
     }
-
-    @Test
-    public void testZeroAmount() throws Exception
-    {
-        Map<String, String> input = getBasicFormInput();
-        Map<String, String> output = getBasicFormOutput();
-
-        input.put("OTHER1_DATE", "20121003");
-        input.put("OTHER1_JUSTIFICATION", "Conference Registration");
-        input.put("OTHER1_AMOUNT", "0");
-        input.put("OTHER1_CURRENCY", "eur");
-
-        try
-        {
-            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
-        }
-        catch (TrapException e)
-        {
-            // KeyNotFoundException
-            assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO,
-                    e.getMessage());
-            return;
-        }
-        fail("an exception should have been caught because we used 0 as the value of the expense");
-    }
-
-    @Test
-    public void testNegativeAmount() throws Exception
-    {
-        Map<String, String> input = getBasicFormInput();
-        Map<String, String> output = getBasicFormOutput();
-
-        input.put("OTHER1_DATE", "20121003");
-        input.put("OTHER1_JUSTIFICATION", "Conference Registration");
-        input.put("OTHER1_AMOUNT", "-10.00");
-        input.put("OTHER1_CURRENCY", "eur");
-
-        try
-        {
-            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
-        }
-        catch (TrapException e)
-        {
-            assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO,
-                    e.getMessage());
-            return;
-        }
-        fail("an exception should have been caught because we used a negative as the value of the expense");
-    }
-
 }
