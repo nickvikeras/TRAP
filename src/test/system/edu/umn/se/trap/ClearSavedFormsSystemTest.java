@@ -60,7 +60,7 @@ public class ClearSavedFormsSystemTest extends AbstractSystemTest {
 	    
     //Create and save a valid form then load it
     @Test
-    public void ClearSavedFormsTest() throws Exception
+    public void clearSavedFormsTest() throws Exception
     {
     	//Create several forms and save them
     	Map<String, String> input = getBasicFormInput();

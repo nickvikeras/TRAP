@@ -15,7 +15,7 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License. 
-*/
+ */
 package edu.umn.se.trap;
 
 import static org.junit.Assert.*;
@@ -33,12 +33,14 @@ import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Andrew
- *
+ * 
  */
 public class TransportationFieldTest extends AbstractSystemTest
 {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#setUp()
      */
     @Before
@@ -47,7 +49,9 @@ public class TransportationFieldTest extends AbstractSystemTest
         super.setUp();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#tearDown()
      */
     @After
@@ -61,23 +65,13 @@ public class TransportationFieldTest extends AbstractSystemTest
     {
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
-        
-        input.put("ARRIVAL_DATETIME", "20121202 235900");
-        input.put("DEPARTURE_DATETIME", "20121016 100000");
-        
-        input.put("TRANSPORTATION1_DATE", "20121108");
-        input.put("TRANSPORTATION1_TYPE", "PARKING");
-        input.put("TRANSPORTATION1_AMOUNT", "12.00");
+
         input.put("TRANSPORTATION1_CURRENCY", "eur");
-        
-        
-        output.put("DAY1_TRANSPORTATION_TOTAL", "");
-        /*
-         *     private static void checkOutput(Map<String, String> actualOut,
-            Calendar earliestFormSubmissionTime,
-            Map<String, String> expectOutput) throws ParseException
-         */
-       
+
+        output.put("TRANSPORTATION1_TOTAL", "21.60");
+        output.put("GRANT1_AMOUNT_TO_CHARGE", "1055.84");
+        output.put("TOTAL_REIMBURSEMENT", "1055.84");
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -87,38 +81,22 @@ public class TransportationFieldTest extends AbstractSystemTest
             fail("No exception should have been thrown");
         }
     }
-    
+
     public void testValidInTransConversion()
     {
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
-        
-        /*
-         *        formData.put("DAY1_INCIDENTAL_CITY", "Minneapolis");
-        formData.put("DAY1_INCIDENTAL_STATE", "MN");
-        formData.put("DAY1_INCIDENTAL_COUNTRY", "USA");
-        formData.put("DAY1_INCIDENTAL_AMOUNT", "2.00");
-        formData.put("DAY1_INCIDENTAL_CURRENCY", "USD");
-        formData.put("DAY1_INCIDENTAL_JUSTIFICATION",
-                "A really good justification");
-         * 
-         */
+
         input.put("ARRIVAL_DATETIME", "20121202 235900");
         input.put("DEPARTURE_DATETIME", "20121016 100000");
-        
+
         input.put("TRANSPORTATION1_DATE", "20121108");
         input.put("TRANSPORTATION1_TYPE", "PARKING");
         input.put("TRANSPORTATION1_AMOUNT", "12");
         input.put("TRANSPORTATION1_CURRENCY", "eur");
-        
-        
+
         output.put("DAY1_INCIDENTAL_TOTAL", "");
-        /*
-         *     private static void checkOutput(Map<String, String> actualOut,
-            Calendar earliestFormSubmissionTime,
-            Map<String, String> expectOutput) throws ParseException
-         */
-       
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -128,7 +106,7 @@ public class TransportationFieldTest extends AbstractSystemTest
             fail("No exception should have been thrown");
         }
     }
-    
+
     @Test
     public void testInvalidTrans() throws Exception
     {
@@ -139,22 +117,21 @@ public class TransportationFieldTest extends AbstractSystemTest
         input.put("TRANSPORTATION1_TYPE", "PARKING");
         input.put("TRANSPORTATION1_AMOUNT", "12");
         input.put("TRANSPORTATION1_CURRENCY", "zam");
-               
+
         try
         {
-        	SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
         }
         catch (TrapException e)
         {
-        	//KeyNotFoundException
-            assertEquals(TrapException.class, e.getMessage());
+            assertEquals(TrapErrors.CANNOT_FIND_CURRENCY_INFO, e.getMessage());
             return;
         }
         fail("an exception should have been caught because we used a made-up currency");
     }
-    
+
     @Test
-    public void testZeroAmount () throws Exception
+    public void testZeroAmount() throws Exception
     {
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
@@ -163,22 +140,21 @@ public class TransportationFieldTest extends AbstractSystemTest
         input.put("TRANSPORTATION1_TYPE", "PARKING");
         input.put("TRANSPORTATION1_AMOUNT", "0");
         input.put("TRANSPORTATION1_CURRENCY", "eur");
-               
+
         try
         {
-        	SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
         }
         catch (TrapException e)
         {
-        	//KeyNotFoundException
-            assertEquals(TrapException.class, e.getMessage());
+            assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO, e.getMessage());
             return;
         }
         fail("an exception should have been caught because we used 0 as the value of the expense");
     }
-    
+
     @Test
-    public void testNegativeAmount () throws Exception
+    public void testNegativeAmount() throws Exception
     {
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
@@ -187,21 +163,17 @@ public class TransportationFieldTest extends AbstractSystemTest
         input.put("TRANSPORTATION1_TYPE", "PARKING");
         input.put("TRANSPORTATION1_AMOUNT", "-12.00");
         input.put("TRANSPORTATION1_CURRENCY", "eur");
-               
+
         try
         {
-        	SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
         }
         catch (TrapException e)
         {
-        	//KeyNotFoundException
-            assertEquals(TrapException.class, e.getMessage());
+            assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO, e.getMessage());
             return;
         }
         fail("an exception should have been caught because we used a negative  as the value of the expense");
     }
-    
-    
 
 }
-
