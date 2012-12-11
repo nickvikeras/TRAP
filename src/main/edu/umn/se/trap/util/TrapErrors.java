@@ -60,5 +60,5 @@ public class TrapErrors
     public static final String INCIDENTAL_AMOUNT_GREATER_THAN_ZERO = "Invalid Expense: Amount must be greater than 0";
     public static final String NO_FORM_WITH_ID_0_FOUND = "No form with id 0 found.";
     public static final String CANNOT_FIND_CURRENCY_INFO = "Cannot find currency info";
-
+    public static final String CANNOT_FIND_PERDIEM_INFO = "Cannot find perDiem info";
 }

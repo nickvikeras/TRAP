@@ -214,4 +214,46 @@ public class IncidentalCoverageTests extends AbstractSystemTest
 
     }
 
+    @Test
+    public void testIncidentalCoverageInvalidCountry() throws Exception
+    {
+        Map<String, String> input = getIncidentalInput();
+        Map<String, String> output = getIncidentalOutput();
+
+        input.put("DAY1_INCIDENTAL_AMOUNT", "4.00");
+        input.remove("DAY1_INCIDENTAL_STATE");
+        input.remove("DAY1_INCIDENTAL_CITY");
+        input.put("DAY1_INCIDENTAL_COUNTRY", "zimbabwe");
+
+        output.put("NUM_DESTINATIONS", "4");
+        output.put("DESTINATION3_COUNTRY", "zimbabwe");
+        output.remove("DESTINATION3_CITY");
+        output.remove("DESTINATION3_STATE");
+        output.put("DESTINATION2_CITY", "Kansas City");
+        output.put("DESTINATION2_STATE", "MO");
+        output.put("DESTINATION2_COUNTRY", "USA");
+        output.put("DESTINATION4_CITY", "Lawrence");
+        output.put("DESTINATION4_STATE", "KS");
+        output.put("DESTINATION4_COUNTRY", "USA");
+
+        output.put("DAY1_TOTAL", "115.81");
+        output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
+        output.put("TOTAL_REIMBURSEMENT", "1050.24");
+
+        // TODO
+        Printer.print(input, output);
+
+        try
+        {
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+
+        }
+        catch (TrapException e)
+        {
+            assertEquals(TrapErrors.CANNOT_FIND_PERDIEM_INFO, e.getMessage());
+            return;
+        }
+
+    }
+
 }
