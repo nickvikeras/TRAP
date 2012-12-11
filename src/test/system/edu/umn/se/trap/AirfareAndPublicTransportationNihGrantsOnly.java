@@ -82,7 +82,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
         catch (TrapException e)
         {
             fail("No exception should have been thrown: " + e.getMessage());
-            e.printStackTrace();
         }
 
         // TODO
@@ -116,7 +115,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
         catch (TrapException e)
         {
             fail("No exception should have been thrown: " + e.getMessage());
-            e.printStackTrace();
         }
 
         // TODO
@@ -133,7 +131,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
         
         input.put("TRANSPORTATION2_TYPE", "PARKING");
         input.put("TRANSPORTATION2_AMOUNT", "13.00");
-        input.put("TRANSPORTATION2_CARRIER", "Spirit");
 
         output.put("TRANSPORTATION2_TYPE", "PARKING");
         output.put("TRANSPORTATION2_TOTAL", "13.00");
@@ -148,7 +145,6 @@ public class AirfareAndPublicTransportationNihGrantsOnly extends
         catch (TrapException e)
         {
             fail("No exception should have been thrown: " + e.getMessage());
-            e.printStackTrace();
         }
 
         // TODO

@@ -62,6 +62,9 @@ public class UsCarrierOnlySystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION5_TYPE", "AIR");
         input.put("TRANSPORTATION5_CARRIER", "KOREAN AIR");
         output.put("TRANSPORTATION5_TYPE", "AIR");
+        
+        // TODO
+        Printer.print(input, output);
    
         try
         {
@@ -84,6 +87,9 @@ public class UsCarrierOnlySystemTest extends AbstractSystemTest
         input.put("TRANSPORTATION5_TYPE", "AIR");
         input.put("TRANSPORTATION5_CARRIER", "DELTA");
         output.put("TRANSPORTATION5_TYPE", "AIR");
+        
+        // TODO
+        Printer.print(input, output);
    
         try
         {

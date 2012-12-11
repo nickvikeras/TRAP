@@ -67,6 +67,8 @@ public class CitizenshipSystemTest extends AbstractSystemTest
 
         input.put("GRANT1_ACCOUNT", "11223344");
         output.put("GRANT1_ACCOUNT", "11223344");
+        
+
 
         try
         {
@@ -94,6 +96,8 @@ public class CitizenshipSystemTest extends AbstractSystemTest
         output.put("EMAIL", "china001@umn.edu");
         output.put("CITIZENSHIP", "China");
 
+
+
         try
         {
             SystemTestUtil.submitFormData(input, "description", testProcessor,
@@ -112,6 +116,7 @@ public class CitizenshipSystemTest extends AbstractSystemTest
     {
         Map<String, String> input = super.getBasicFormInput();
         Map<String, String> output = super.getBasicFormOutput();
+
 
         try
         {
@@ -136,6 +141,10 @@ public class CitizenshipSystemTest extends AbstractSystemTest
         output.put("USER_NAME", "china001");
         output.put("EMAIL", "china001@umn.edu");
         output.put("CITIZENSHIP", "China");
+        
+        
+        // TODO
+        Printer.print(input, output);
 
         try
         {

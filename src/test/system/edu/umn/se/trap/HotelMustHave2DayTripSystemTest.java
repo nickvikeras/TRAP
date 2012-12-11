@@ -103,6 +103,10 @@ public class HotelMustHave2DayTripSystemTest extends AbstractSystemTest
         
         super.testProcessor.setUser("linc001");
         String description = "my form description";
+        
+        // TODO
+        Printer.print(formData, null);
+        
         try
         {
             SystemTestUtil.submitFormData(formData, description,

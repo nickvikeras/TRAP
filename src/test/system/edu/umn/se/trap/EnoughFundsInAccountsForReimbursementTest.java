@@ -73,8 +73,6 @@ public class EnoughFundsInAccountsForReimbursementTest extends
             fail("No exception should have been thrown: " + e.getMessage());
         }
 
-        // TODO
-        Printer.print(input, output);
     }
     
     @Test
