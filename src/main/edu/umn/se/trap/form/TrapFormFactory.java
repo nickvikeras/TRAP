@@ -62,8 +62,9 @@ public class TrapFormFactory
     {
         try
         {
-            TravelFormMetadata travelFormMetaData = new TravelFormMetadata(
-                    description, FORM_STATUS.DRAFT);
+            TravelFormMetadata travelFormMetaData = new TravelFormMetadata();
+            travelFormMetaData.description = description;
+            travelFormMetaData.status = FORM_STATUS.DRAFT;
             GrantSet grantSet = getNewGrantSet(formData, dbAccessor);
             FormUser user = getNewUser(formData, dbAccessor);
             Trip trip = getNewTrip(formData);

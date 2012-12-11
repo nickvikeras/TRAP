@@ -13,7 +13,6 @@
 	<property name="source" value="1.6" />
 	<path id="TRAP.classpath">
 		<pathelement location="bin" />
-		<pathelement location="junit" />
 		<pathelement location="lib/commons-lang3-3.1.jar" />
 		<pathelement location="lib/mockito-all-1.9.5.jar" />
 		<pathelement location="lib/junit-4.10.jar" />

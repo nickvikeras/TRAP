@@ -138,8 +138,10 @@ public class TravelFormProcessor implements TravelFormProcessorIntf
     public Integer saveFormData(Map<String, String> formData, String description)
             throws Exception
     {
-        FormData data = new FormData(formData, null, new TravelFormMetadata(
-                description, FORM_STATUS.DRAFT));
+        TravelFormMetadata metaData = new TravelFormMetadata();
+        metaData.description = description;
+        metaData.status = FORM_STATUS.DRAFT;
+        FormData data = new FormData(formData, null, metaData);
         Integer formId = generateFormId();
         databaseAccessor.getFormDB().saveForm(data, formId);
         return formId;
