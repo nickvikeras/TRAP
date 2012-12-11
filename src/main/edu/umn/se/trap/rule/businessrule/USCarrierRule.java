@@ -27,7 +27,6 @@ import edu.umn.se.trap.TrapException;
 import edu.umn.se.trap.form.Expense;
 import edu.umn.se.trap.form.ExpenseType;
 import edu.umn.se.trap.form.TransportationExpense;
-import edu.umn.se.trap.form.TransportationType;
 import edu.umn.se.trap.form.TrapForm;
 import edu.umn.se.trap.rule.AbstractRule;
 import edu.umn.se.trap.util.TrapErrors;
