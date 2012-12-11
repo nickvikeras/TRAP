@@ -277,6 +277,9 @@ public class CurrencyDB
         Currency entry53 = new Currency("eur","20121130");
         value=1.80;
         this.currencyInfo.put(entry53, value);
+        Currency entry54 = new Currency("eur","20121003");
+        value=1.80;
+        this.currencyInfo.put(entry54, value);
     }
     
     /**

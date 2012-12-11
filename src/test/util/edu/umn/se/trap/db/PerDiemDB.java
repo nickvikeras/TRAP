@@ -183,6 +183,18 @@ public class PerDiemDB
         rates4.add(150.0); /* Hotel ceiling in USD */
 
         this.perDiemInfo.put(location4, rates4);
+        
+        Location location7 = new Location("", "ia", "");
+        
+        this.perDiemInfo.put(location7, rates4);
+        
+        Location location8 = new Location("", "", "usa");
+        
+        this.perDiemInfo.put(location8, rates4);
+        
+        Location location9 = new Location("", "ia", "united states");
+        
+        this.perDiemInfo.put(location9, rates4);
 
         // NOTE, I'm using the same rates here. If the rates change for 1,
         // even at runtime, they will all change!

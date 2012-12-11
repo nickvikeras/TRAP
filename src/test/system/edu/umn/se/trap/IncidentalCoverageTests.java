@@ -30,12 +30,14 @@ import edu.umn.se.trap.util.TrapErrors;
 
 /**
  * @author Mark
- *
+ * 
  */
 public class IncidentalCoverageTests extends AbstractSystemTest
 {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#setUp()
      */
     @Before
@@ -44,7 +46,9 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         super.setUp();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see edu.umn.se.trap.AbstractSystemTest#tearDown()
      */
     @After
@@ -52,7 +56,7 @@ public class IncidentalCoverageTests extends AbstractSystemTest
     {
         super.tearDown();
     }
-    
+
     @Test
     public void testIncidentalCoverageAmountTooHigh() throws Exception
     {
@@ -73,19 +77,19 @@ public class IncidentalCoverageTests extends AbstractSystemTest
             return;
         }
     }
-    
+
     @Test
     public void testIncidentalCoverage() throws Exception
     {
         Map<String, String> input = getIncidentalInput();
         Map<String, String> output = getIncidentalOutput();
-        
+
         input.put("DAY1_INCIDENTAL_AMOUNT", "4.00");
-        
+
         output.put("DAY1_TOTAL", "115.81");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
         output.put("TOTAL_REIMBURSEMENT", "1050.24");
-        
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -99,24 +103,24 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         // TODO
         Printer.print(input, output);
     }
-    
+
     @Test
     public void testIncidentalCoverageCityOnly() throws Exception
     {
         Map<String, String> input = getIncidentalInput();
         Map<String, String> output = getIncidentalOutput();
-        
+
         input.put("DAY1_INCIDENTAL_AMOUNT", "4.00");
         input.remove("DAY1_INCIDENTAL_STATE");
         input.remove("DAY1_INCIDENTAL_COUNTRY");
-        
+
         output.put("DAY1_TOTAL", "115.81");
         output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
         output.put("TOTAL_REIMBURSEMENT", "1050.24");
-        
+
         // TODO
         Printer.print(input, output);
-        
+
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
@@ -124,9 +128,90 @@ public class IncidentalCoverageTests extends AbstractSystemTest
         }
         catch (TrapException e)
         {
-            assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO, e.getMessage());
+            assertEquals(TrapErrors.INCIDENTAL_AMOUNT_GREATER_THAN_ZERO,
+                    e.getMessage());
             return;
         }
+    }
+
+    @Test
+    public void testIncidentalCoverageStateOnly() throws Exception
+    {
+        Map<String, String> input = getIncidentalInput();
+        Map<String, String> output = getIncidentalOutput();
+
+        input.put("DAY1_INCIDENTAL_AMOUNT", "4.00");
+        input.remove("DAY1_INCIDENTAL_CITY");
+        input.remove("DAY1_INCIDENTAL_COUNTRY");
+
+        output.put("NUM_DESTINATIONS", "4");
+        output.put("DESTINATION2_STATE", "IA");
+        output.remove("DESTINATION2_CITY");
+        output.remove("DESTINATION2_COUNTRY");
+        output.put("DESTINATION3_CITY", "Kansas City");
+        output.put("DESTINATION3_STATE", "MO");
+        output.put("DESTINATION3_COUNTRY", "USA");
+        output.put("DESTINATION4_CITY", "Lawrence");
+        output.put("DESTINATION4_STATE", "KS");
+        output.put("DESTINATION4_COUNTRY", "USA");
+
+        output.put("DAY1_TOTAL", "115.81");
+        output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
+        output.put("TOTAL_REIMBURSEMENT", "1050.24");
+
+        // TODO
+        Printer.print(input, output);
+
+        try
+        {
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+
+        }
+        catch (TrapException e)
+        {
+            fail("No exception should have been thrown: " + e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void testIncidentalCoverageCountryOnly() throws Exception
+    {
+        Map<String, String> input = getIncidentalInput();
+        Map<String, String> output = getIncidentalOutput();
+
+        input.put("DAY1_INCIDENTAL_AMOUNT", "4.00");
+        input.remove("DAY1_INCIDENTAL_STATE");
+        input.remove("DAY1_INCIDENTAL_CITY");
+
+        output.put("NUM_DESTINATIONS", "4");
+        output.put("DESTINATION3_COUNTRY", "USA");
+        output.remove("DESTINATION3_CITY");
+        output.remove("DESTINATION3_STATE");
+        output.put("DESTINATION2_CITY", "Kansas City");
+        output.put("DESTINATION2_STATE", "MO");
+        output.put("DESTINATION2_COUNTRY", "USA");
+        output.put("DESTINATION4_CITY", "Lawrence");
+        output.put("DESTINATION4_STATE", "KS");
+        output.put("DESTINATION4_COUNTRY", "USA");
+
+        output.put("DAY1_TOTAL", "115.81");
+        output.put("GRANT1_AMOUNT_TO_CHARGE", "1050.24");
+        output.put("TOTAL_REIMBURSEMENT", "1050.24");
+
+        // TODO
+        Printer.print(input, output);
+
+        try
+        {
+            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+
+        }
+        catch (TrapException e)
+        {
+            fail("No exception should have been thrown: " + e.getMessage());
+        }
+
     }
 
 }
