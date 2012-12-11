@@ -13,12 +13,14 @@
     <property name="source" value="1.6"/>
     <path id="TRAP.classpath">
         <pathelement location="bin"/>
+        <pathelement location="junit"/>
         <pathelement location="lib/commons-lang3-3.1.jar"/>
         <pathelement location="lib/mockito-all-1.9.5.jar"/>
         <pathelement location="lib/junit-4.10.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
+        <mkdir dir="junit"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src/main">
                 <exclude name="**/*.ucls"/>
@@ -40,7 +42,7 @@
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
-        <copy includeemptydirs="false" todir="bin">
+        <copy includeemptydirs="false" todir="junit">
             <fileset dir="src/test/system">
                 <exclude name="**/*.ucls"/>
                 <exclude name="**/*.useq"/>
@@ -50,6 +52,7 @@
     </target>
     <target name="clean">
         <delete dir="bin"/>
+        <delete dir="junit"/>
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
@@ -60,6 +63,9 @@
             <src path="src/main"/>
             <src path="src/test/util"/>
             <src path="src/test/subsystem"/>
+            <classpath refid="TRAP.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="junit" includeantruntime="false" source="${source}" target="${target}">
             <src path="src/test/system"/>
             <classpath refid="TRAP.classpath"/>
         </javac>

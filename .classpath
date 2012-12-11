@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src/main"/>
 	<classpathentry kind="src" path="src/test/util"/>
 	<classpathentry kind="src" path="src/test/subsystem"/>
-	<classpathentry kind="src" path="src/test/system"/>
+	<classpathentry kind="src" output="junit" path="src/test/system"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.9.5.jar"/>
