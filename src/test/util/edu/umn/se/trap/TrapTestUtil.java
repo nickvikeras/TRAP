@@ -32,7 +32,6 @@ import edu.umn.se.trap.form.FormGrant;
 import edu.umn.se.trap.form.GrantSet;
 import edu.umn.se.trap.form.Location;
 import edu.umn.se.trap.form.TransportationExpense;
-import edu.umn.se.trap.form.Trip;
 
 /**
  * @author nick

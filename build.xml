@@ -11,15 +11,11 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
-    <path id="JUnit 4.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
-    </path>
     <path id="TRAP.classpath">
         <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
         <pathelement location="lib/commons-lang3-3.1.jar"/>
         <pathelement location="lib/mockito-all-1.9.5.jar"/>
+        <pathelement location="lib/junit-4.10.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
