@@ -61,51 +61,30 @@ public class CurrencyConversionSystemTest extends AbstractSystemTest
     }
 
     @Test
-    public void testValidExpense()
-    {
-        Map<String, String> input = getBasicFormInput();
-        Map<String, String> output = getBasicFormOutput();
-
-        // input.put("ARRIVAL_DATETIME", "20121202 235900");
-        // input.put("DEPARTURE_DATETIME", "20121016 100000");
-
-        // input.put("OTHER1_DATE", "20121003");
-        // input.put("OTHER1_JUSTIFICATION", "Conference Registration");
-        // input.put("OTHER1_AMOUNT", "15.00");
-        input.put("OTHER1_CURRENCY", "eur");
-
-        // output.put("DAY1_OTHER_TOTAL", "15");
-        output.put("OTHER1_TOTAL", "810.00");
-        output.put("GRANT1_AMOUNT_TO_CHARGE", "1406.24");
-        output.put("TOTAL_REIMBURSEMENT", "1406.24");
-
-        Printer.printOutput(output);
-
-        try
-        {
-            SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
-        }
-        catch (Exception e)
-        {
-            fail("No exception should have been thrown: " + e.getMessage());
-        }
-    }
-
     public void testValidInConversion()
     {
         Map<String, String> input = getBasicFormInput();
         Map<String, String> output = getBasicFormOutput();
 
-        input.put("OTHER1_DATE", "20121003");
-        input.put("OTHER1_JUSTIFICATION", "Conference Registration");
+
         input.put("OTHER1_AMOUNT", "15");
         input.put("OTHER1_CURRENCY", "eur");
 
-        output.put("DAY1_INCIDENTAL_TOTAL", "");
-
+        output.put("GRANT1_AMOUNT_TO_CHARGE", "623.24");
+        output.put("TOTAL_REIMBURSEMENT", "623.24");
+        output.put("OTHER1_TOTAL", "27.00");
+                
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+
+            double inputEur = Double.parseDouble(input.get("OTHER1_AMOUNT"));
+
+            double conversion = 1.80;
+
+            double outputUsd = Double.parseDouble(output.get("OTHER1_TOTAL"));
+
+            assertTrue(inputEur * conversion == outputUsd);
         }
         catch (Exception e)
         {
@@ -123,14 +102,15 @@ public class CurrencyConversionSystemTest extends AbstractSystemTest
         input.put("OTHER1_JUSTIFICATION", "Conference Registration");
         input.put("OTHER1_AMOUNT", "15.00");
         input.put("OTHER1_CURRENCY", "zam");
+        Printer.print(input, output);
 
         try
         {
             SystemTestUtil.submitFormData(input, "desc", testProcessor, output);
+
         }
         catch (TrapException e)
         {
-            // KeyNotFoundException
             assertEquals(TrapErrors.CANNOT_FIND_CURRENCY_INFO, e.getMessage());
             return;
         }
