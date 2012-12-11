@@ -136,4 +136,5 @@ public class CurrencyConversionSystemTest extends AbstractSystemTest
         }
         fail("an exception should have been caught because we used a made-up currency");
     }
+
 }
